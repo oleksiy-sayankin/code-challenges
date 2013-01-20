@@ -1,5 +1,9 @@
 package com.javasensei.portfolio.balls;
 
+/**
+ * @author oleksiy sayankin
+ */
+
 import java.awt.Color;
 import java.awt.Graphics;
 

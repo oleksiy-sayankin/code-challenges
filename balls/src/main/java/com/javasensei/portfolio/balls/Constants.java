@@ -1,5 +1,9 @@
 package com.javasensei.portfolio.balls;
 
+/**
+ * @author oleksiy sayankin
+ */
+
 public final class Constants {
     private Constants(){}
 

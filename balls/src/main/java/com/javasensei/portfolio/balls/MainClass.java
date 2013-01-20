@@ -1,7 +1,7 @@
 package com.javasensei.portfolio.balls;
 
 /**
- * @author asayankin
+ * @author oleksiy sayankin
  */
 public class MainClass {
     public static void main(String[] args){

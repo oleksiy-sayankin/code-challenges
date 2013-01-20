@@ -1,5 +1,9 @@
 package com.javasensei.portfolio.balls;
 
+/**
+ * @author oleksiy sayankin
+ */
+
 import com.javasensei.portfolio.balls.math.ISegment;
 import com.javasensei.portfolio.balls.math.Point;
 import com.javasensei.portfolio.balls.math.Segment;

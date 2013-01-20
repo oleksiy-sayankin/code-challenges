@@ -1,5 +1,9 @@
 package com.javasensei.portfolio.balls;
 
+/**
+ * @author oleksiy sayankin
+ */
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -25,7 +29,7 @@ public class MainWindow extends JFrame {
 		add(buildExitJButton());
 		add(buildStartJButtonButton());		
 	}	
-	
+
 
 	
 	public void startMainWindow(){
