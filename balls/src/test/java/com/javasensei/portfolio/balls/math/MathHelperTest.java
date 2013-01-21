@@ -261,7 +261,7 @@ public class MathHelperTest {
     public void orthogonalTrueTest(){
         Vector a = new Vector(3, 2);
         Vector EXPECTED_VECTOR = new Vector(-4, 6);
-        Vector actualVector = MathHelper.orthogonal(a);
+        IVector actualVector = MathHelper.orthogonal(a);
         EXPECTED_VECTOR.normalize();
         actualVector.normalize();
         assertEquals(EXPECTED_VECTOR, actualVector);
@@ -271,11 +271,37 @@ public class MathHelperTest {
     public void orthogonalFalseTest(){
         Vector a = new Vector(1, 2);
         Vector EXPECTED_VECTOR = new Vector(-2, 3);
-        Vector actualVector = MathHelper.orthogonal(a);
+        IVector actualVector = MathHelper.orthogonal(a);
         EXPECTED_VECTOR.normalize();
         actualVector.normalize();
         assertFalse(EXPECTED_VECTOR.equals(actualVector));
     }
 
+    @Test
+    public void reflectPointAgainstLineTest(){
+        IPoint point = new Point(21, 3);
+        ILine line = new Line(new Point(0,0), new Point(5, 5));
+        final IPoint EXPECTED_POINT = MathHelper.unmodifiablePoint(3, 21);
+        IPoint actualPoint = MathHelper.reflectPointAgainstLine(point, line);
+        assertEquals(EXPECTED_POINT, actualPoint);
+    }
+
+
+    @Test
+    public void reflectPointAgainstLineAdditionalTest(){
+        IPoint point = new Point(-4, 1);
+        ILine line = new Line(new Point(0,0), new Point(-5, 5));
+        final IPoint EXPECTED_POINT = MathHelper.unmodifiablePoint(-1, 4);
+        IPoint actualPoint = MathHelper.reflectPointAgainstLine(point, line);
+        assertEquals(EXPECTED_POINT, actualPoint);
+    }
+
+    @Test
+    public void reflectVectorAgainstLineTest(){
+        IVector vector = new Vector(1, 1);
+        ILine line = new Line(new Point(0, 0), new Point(1, 0));
+        IVector actualReflectedVector = MathHelper.reflectVectorAgainstLine(vector, line);
+        System.out.println(actualReflectedVector);
+    }
 
 }

@@ -41,8 +41,8 @@ public class Vector implements IVector{
 	}
 
     @Override
-	public Vector reflect(IVector a){
-        return MathHelper.reflect(a , this);
+	public IVector reflectAgainst(ILine line){
+        return MathHelper.reflectVectorAgainstLine(this, line);
 	}
 
     @Override
@@ -101,5 +101,11 @@ public class Vector implements IVector{
     public void add(IVector a){
        x += a.getX();
        y += a.getY();
+    }
+
+    @Override
+    public void reverse(){
+        x = -x;
+        y = -y;
     }
 }

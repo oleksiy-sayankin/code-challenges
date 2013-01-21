@@ -5,4 +5,5 @@ package com.javasensei.portfolio.balls.math;
  */
 public interface ILine  extends IEuclid{
     LineCoef coef();
+    IVector toVector();
 }

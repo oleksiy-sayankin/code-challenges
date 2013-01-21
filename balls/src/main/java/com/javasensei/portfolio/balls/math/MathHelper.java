@@ -46,7 +46,7 @@ public final class MathHelper {
         return (coef.a * x + coef.b * y + coef.c) / (coef.a * coef.a + coef.b * coef.b);
     }
 
-    public static Vector orthogonal(IVector vector){
+    public static IVector orthogonal(IVector vector){
         double x = vector.getX();
         double y = vector.getY();
         double ortX;
@@ -64,15 +64,27 @@ public final class MathHelper {
         return new Vector(0,0);
     }
 
-    public static Vector reflect(IVector a, IVector b){
-        double cosAlpha = MathHelper.cos(b, a);
-        double alpha = Math.acos(cosAlpha);
-        double newAlpha = -2d * alpha;
-        double sinNewAlpha = Math.sin(newAlpha);
-        double cosNewAlpha = Math.cos(newAlpha);
-        double x1 = b.getX() * cosNewAlpha - b.getY() * sinNewAlpha;
-        double y1 = b.getX() * sinNewAlpha + b.getY() * cosNewAlpha;
-        return new Vector(x1, y1);
+    public static ILine orthogonal(ILine line, IPoint point){
+        IVector vector = line.toVector();
+        IVector orthogonalVector = orthogonal(vector);
+        return new Line(point, orthogonalVector);
+    }
+
+    public static IPoint reflectPointAgainstLine(IPoint point, ILine line){
+        ILine orthogonalLine = orthogonal(line, point);
+        IPoint intersectionPoint = intersection(line, orthogonalLine);
+        IVector direction = new Vector(point, intersectionPoint);
+        IPoint resultPoint = new Point(intersectionPoint);
+        resultPoint.translateInDirection(direction);
+        return resultPoint;
+    }
+
+
+    public static IVector reflectVectorAgainstLine(IVector a, ILine line){
+        IPoint point = new Point(a.getX(), a.getY());
+        ILine translatedLine = new Line(new Point(0, 0), line.toVector());
+        IPoint reflectedPoint = reflectPointAgainstLine(point, translatedLine);
+        return new Vector(reflectedPoint.getX(), reflectedPoint.getY());
     }
 
     public static double distanceBetween(IPoint point, ISegment segment){

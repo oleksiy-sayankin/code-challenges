@@ -23,7 +23,8 @@ public class Line implements ILine {
 
     @Override
     public void translateInDirection(IVector vector) {
-
+        point1.translateInDirection(vector);
+        point2.translateInDirection(vector);
     }
 
     @Override
@@ -41,7 +42,8 @@ public class Line implements ILine {
 			
 
 
-    public Vector toVector(){
+    public IVector toVector(){
 		return new Vector(point2.getX() - point1.getX(), point2.getY() - point1.getY());
 	}
+
 }

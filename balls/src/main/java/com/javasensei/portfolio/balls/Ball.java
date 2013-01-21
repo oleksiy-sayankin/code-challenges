@@ -18,7 +18,7 @@ public class Ball implements IBallSubject {
 
     public Ball(BallContainer aBallContainer) {
         ballContainer = aBallContainer;
-        coord = randomPointIn(ballContainer);
+        coord = new Point(ballContainer.getWidth() / 2, ballContainer.getHeight() / 2);
         velocity = randomVelocity();
         ballObservers = new ArrayList<IBallObserver>();
     }
@@ -49,7 +49,7 @@ public class Ball implements IBallSubject {
         if (distance > velocity.module()) {
             coord.translateInDirection(velocity);
         } else {
-            velocity = velocity.reflect(segment.toVector());
+            velocity = velocity.reflectAgainst(segment.toLine());
             move();
         }
         notifyObservers();
