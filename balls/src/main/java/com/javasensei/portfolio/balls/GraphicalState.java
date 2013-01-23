@@ -1,17 +1,17 @@
 package com.javasensei.portfolio.balls;
 
+import com.javasensei.portfolio.balls.graphics.CanvasPoint;
+
 /**
  * @author oleksiy sayankin
  */
 
 public final class GraphicalState {
-	public final int x;
-	public final int y;
+    public final CanvasPoint point;
 	public final int size;
 
-	public GraphicalState(int aX, int aY, int aSize) {
-		x = aX;
-		y = aY;
+	public GraphicalState(CanvasPoint canvasPoint, int aSize) {
+        point = canvasPoint;
 		size = aSize;
 	}
 }

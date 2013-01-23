@@ -3,7 +3,7 @@ package com.javasensei.portfolio.balls.math;
 /**
  * @author asayankin
  */
-public class UnmodifiableVector extends Vector{
+public final class UnmodifiableVector extends Vector{
     public UnmodifiableVector(IPoint point1, IPoint point2) {
         super(point1, point2);
     }

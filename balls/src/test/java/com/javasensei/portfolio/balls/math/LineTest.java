@@ -1,8 +1,5 @@
 package com.javasensei.portfolio.balls.math;
 
-import com.javasensei.portfolio.balls.math.Line;
-import com.javasensei.portfolio.balls.math.Point;
-import com.javasensei.portfolio.balls.math.Vector;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;

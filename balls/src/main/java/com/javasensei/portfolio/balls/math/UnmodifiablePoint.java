@@ -3,7 +3,7 @@ package com.javasensei.portfolio.balls.math;
 /**
  * @author asayankin
  */
-public class UnmodifiablePoint extends Point{
+public final class UnmodifiablePoint extends Point{
     public UnmodifiablePoint(double aX, double aY) {
         super(aX, aY);
     }

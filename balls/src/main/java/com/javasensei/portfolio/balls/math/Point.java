@@ -68,8 +68,15 @@ public class Point implements  IPoint {
         return new Point(x, y);
     }
 
+    @Override
     public void translateInDirection(IVector vector){
         x += vector.getX();
         y += vector.getY();
+    }
+
+    @Override
+    public void scale(double coef) {
+        x *= coef;
+        y *= coef;
     }
 }

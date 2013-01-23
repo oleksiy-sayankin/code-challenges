@@ -35,6 +35,10 @@ public final class MathHelper {
         return cos;
     }
 
+    public static double signedArea(IVector a, IVector b){
+        return det(a.getX(), a.getY(), b.getX(), b.getY());
+    }
+
     public static double distanceBetween(IPoint a, IPoint b){
         return Math.sqrt((a.getX() - b.getX()) * (a.getX() - b.getX()) + (a.getY() - b.getY()) * (a.getY() - b.getY()));
     }
@@ -169,6 +173,20 @@ public final class MathHelper {
     public static boolean equalsZero(double value){
         return Math.abs(value) < Constants.Common.ERROR;
     }
+
+    public static ISegment nearestSegment(List<ISegment> segments, IPoint point){
+        ISegment result  = null;
+        double minDistance = Double.MAX_VALUE;
+        for (ISegment segment : segments) {
+                double newDistance = segment.distanceTo(point);
+                if (newDistance < minDistance) {
+                    minDistance = newDistance;
+                    result = segment;
+                }
+        }
+        return result;
+    }
+
 
     public static ISegment nearestSegmentInDirection(List<ISegment> segments, IPoint point, IVector vector){
         ISegment result  = null;

@@ -38,6 +38,12 @@ public class Segment implements ISegment {
     }
 
     @Override
+    public void scale(double coef) {
+        point1.scale(coef);
+        point2.scale(coef);
+    }
+
+    @Override
 	public boolean equals(Object o){
         if(o instanceof Segment){
             Segment segment = (Segment)o;

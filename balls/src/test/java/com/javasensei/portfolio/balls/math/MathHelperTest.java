@@ -151,26 +151,11 @@ public class MathHelperTest {
         Point point = new Point(401.6420323796443, 78.51515990744261);
         Vector vector = new Vector(0.22980607359851407, 0.5698514120067321);
 
-        Point actualIntersectionPoint0 = MathHelper.intersection(new Line(point, vector), sides.get(0).toLine());
-        Point actualIntersectionPoint1 = MathHelper.intersection(new Line(point, vector), sides.get(1).toLine());
         Point actualIntersectionPoint2 = MathHelper.intersection(new Line(point, vector), sides.get(2).toLine());
-        Point actualIntersectionPoint3 = MathHelper.intersection(new Line(point, vector), sides.get(3).toLine());
-
-        System.out.println(actualIntersectionPoint0);
-        System.out.println(actualIntersectionPoint1);
-        System.out.println(actualIntersectionPoint2);
-        System.out.println(actualIntersectionPoint3);
 
         vector.normalize();
         Vector direction = new Vector(point, actualIntersectionPoint2);
         direction.normalize();
-
-        System.out.println(direction);
-        System.out.println(vector);
-
-        System.out.println(MathHelper.isSemidirect(direction, vector));
-        System.out.println(MathHelper.scalarProduct(direction, vector));
-
 
         final IPoint EXPECTED_INTERSECTION_POINT = MathHelper.unmodifiablePoint(509.51162707334277d, 346);
         assertEquals(EXPECTED_INTERSECTION_POINT, actualIntersectionPoint2);
@@ -301,7 +286,14 @@ public class MathHelperTest {
         IVector vector = new Vector(1, 1);
         ILine line = new Line(new Point(0, 0), new Point(1, 0));
         IVector actualReflectedVector = MathHelper.reflectVectorAgainstLine(vector, line);
-        System.out.println(actualReflectedVector);
     }
 
+    @Test
+    public void signedAreaTest(){
+        IVector a = new Vector(0, 1);
+        IVector b = new Vector(1, 0);
+        Double EXPECTED_SIGNED_AREA = -1d;
+        Double actualSignedArea = MathHelper.signedArea(a, b);
+        assertEquals(EXPECTED_SIGNED_AREA, actualSignedArea);
+    }
 }

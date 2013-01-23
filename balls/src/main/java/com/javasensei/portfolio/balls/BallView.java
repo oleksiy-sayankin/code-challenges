@@ -26,20 +26,13 @@ public class BallView implements IBallObserver {
 
     private void draw() {
         if (currentState != null) {
-            GraphicalState graphicalState = transformToGraphicalState(currentState);
-            graphics.clearRect(graphicalState.x, graphicalState.y, graphicalState.size, graphicalState.size);
+            GraphicalState graphicalState = GraphicalHelper.transform(currentState);
+            graphics.clearRect(graphicalState.point.x, graphicalState.point.y, graphicalState.size, graphicalState.size);
         }
-        GraphicalState newViewState = transformToGraphicalState(newState);
+        GraphicalState newViewState = GraphicalHelper.transform(newState);
         graphics.setColor(Color.BLACK);
-        graphics.fillOval(newViewState.x, newViewState.y, newViewState.size, newViewState.size);
+        graphics.fillOval(newViewState.point.x, newViewState.point.y, newViewState.size, newViewState.size);
     }
 
 
-	private static GraphicalState transformToGraphicalState(BallState ballState){
-		int x = (int) ballState.x + Constants.Window.WIN_MARGIN;
-		int y = (int) ballState.y + Constants.Window.WIN_HEADER + Constants.Window.WIN_MARGIN;
-		int size = ballState.size;
-		return new GraphicalState(x, y, size);
-	}
-	
 }

@@ -3,7 +3,7 @@ package com.javasensei.portfolio.balls.math;
 /**
  * @author asayankin
  */
-public class UnmodifiableSegment extends Segment{
+public final class UnmodifiableSegment extends Segment{
 
     public UnmodifiableSegment(IPoint aPoint1, IPoint aPoint2) {
         super(MathHelper.unmodifiablePoint(aPoint1), MathHelper.unmodifiablePoint(aPoint2));

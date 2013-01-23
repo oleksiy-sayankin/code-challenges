@@ -33,6 +33,12 @@ public class Line implements ILine {
 	}
 
     @Override
+    public void scale(double coef) {
+        point1.scale(coef);
+        point2.scale(coef);
+    }
+
+    @Override
     public LineCoef coef(){
 		double a = point1.getY() - point2.getY();
 		double b = point2.getX() - point1.getX();

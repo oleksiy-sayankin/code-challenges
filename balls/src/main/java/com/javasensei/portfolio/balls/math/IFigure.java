@@ -1,10 +1,11 @@
 package com.javasensei.portfolio.balls.math;
 
 /**
- * @author ashvayka
+ * @author asayankin
  */
-public interface IEuclid {
+public interface IFigure {
     boolean has(IPoint point);
     double distanceTo(IPoint point);
     void translateInDirection(IVector vector);
+    void scale(double coef);
 }

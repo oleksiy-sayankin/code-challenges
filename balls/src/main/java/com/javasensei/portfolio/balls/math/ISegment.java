@@ -3,7 +3,7 @@ package com.javasensei.portfolio.balls.math;
 /**
  * @author asayankin
  */
-public interface ISegment extends IEuclid{
+public interface ISegment extends IFigure {
     double module();
     IPoint getPoint1();
     IPoint getPoint2();
