@@ -1,54 +1,56 @@
-package com.javasensei.portfolio.balls;
+package com.javasensei.portfolio.balls.physics;
 
 /**
  * @author oleksiy sayankin
  */
 
+import com.javasensei.portfolio.balls.*;
 import com.javasensei.portfolio.balls.graphics.CanvasPolygon;
+import com.javasensei.portfolio.balls.graphics.CanvasRectangle;
 import com.javasensei.portfolio.balls.math.*;
+import com.javasensei.portfolio.balls.physics.Ball;
 
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BallContainer implements Runnable {
+public class Container implements Runnable, IContainer {
     private double width;
     private double height;
-    private List<Ball> balls;
+    private List<IBall> balls;
     private IPolygon sides;
-    private final Graphics graphics;
     private boolean shouldStopThread = false;
+    private IContainerObserver containerObserver;
 
-    public BallContainer(Graphics aGraphics) {
-        width = Constants.Common.CONTAINER_WIDTH;
-        height = Constants.Common.CONTAINER_HEIGHT;
-        graphics = aGraphics;
-        balls = new ArrayList<Ball>();
+    public Container(IContainerObserver aContainerObserver) {
+        containerObserver = aContainerObserver;
         sides = initRectanglePolygon();
+        width = sides.width();
+        height = sides.height();
+        balls = new ArrayList<IBall>();
     }
 
+    @Override
     public double getWidth() {
         return width;
     }
 
+    @Override
     public double getHeight() {
         return height;
     }
 
+    @Override
     public List<ISegment> getSides() {
         return sides.toSegmentsClockwise();
     }
 
     public void addBall() {
-        Ball newBall = new Ball(this);
-        IBallObserver ballView = new BallView(graphics);
-        newBall.registerObserver(ballView);
-        balls.add(newBall);
-
+        balls.add(new Ball(this));
     }
 
     private void moveAllBalls() {
-        for (Ball ball : balls) {
+        for (IBall ball : balls) {
             ball.move();
         }
     }
@@ -57,20 +59,12 @@ public class BallContainer implements Runnable {
     public void run() {
         while (!shouldStopThread) {
             moveAllBalls();
+            containerObserver.update(new ContainerState(balls, sides));
         }
     }
 
     public void stop(){
         shouldStopThread = true;
-    }
-
-    public void clear(){
-        graphics.clearRect(Constants.Window.WIN_MARGIN, Constants.Window.HEADER + Constants.Window.WIN_MARGIN, (int) width, (int) height);
-    }
-
-    public void draw(){
-        CanvasPolygon canvasPolygon = GraphicalHelper.transform(sides);
-        graphics.drawPolygon(canvasPolygon.xPoints, canvasPolygon.yPoints, canvasPolygon.n);
     }
 
     private static IPolygon initRectanglePolygon(){
@@ -81,4 +75,6 @@ public class BallContainer implements Runnable {
         rect.addPoint(new Point(Constants.Common.CONTAINER_WIDTH, 0));
         return rect;
     }
+
+
 }

@@ -1,4 +1,4 @@
-package com.javasensei.portfolio.balls;
+package com.javasensei.portfolio.balls.graphics;
 
 import com.javasensei.portfolio.balls.graphics.CanvasPoint;
 
@@ -6,11 +6,11 @@ import com.javasensei.portfolio.balls.graphics.CanvasPoint;
  * @author oleksiy sayankin
  */
 
-public final class GraphicalState {
+public final class CanvasBall {
     public final CanvasPoint point;
 	public final int size;
 
-	public GraphicalState(CanvasPoint canvasPoint, int aSize) {
+	public CanvasBall(CanvasPoint canvasPoint, int aSize) {
         point = canvasPoint;
 		size = aSize;
 	}

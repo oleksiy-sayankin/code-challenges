@@ -1,4 +1,4 @@
-package com.javasensei.portfolio.balls;
+package com.javasensei.portfolio.balls.physics;
 
 /**
  * @author oleksiy sayankin

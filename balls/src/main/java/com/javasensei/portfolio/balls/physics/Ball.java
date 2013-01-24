@@ -1,47 +1,30 @@
-package com.javasensei.portfolio.balls;
+package com.javasensei.portfolio.balls.physics;
 
 /**
  * @author oleksiy sayankin
  */
 
+import com.javasensei.portfolio.balls.*;
 import com.javasensei.portfolio.balls.math.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Ball implements IBallSubject {
+public class Ball implements IBall{
     private IPoint coord;
     private IVector velocity;
-    private final BallContainer ballContainer;
+    private final IContainer ballContainer;
     private int size = 4;
-    private List<IBallObserver> ballObservers;
 
-    public Ball(BallContainer aBallContainer) {
+
+    public Ball(IContainer aBallContainer) {
         ballContainer = aBallContainer;
         coord = new Point(ballContainer.getWidth() / 2, ballContainer.getHeight() / 2);
         velocity = randomVelocity();
-        ballObservers = new ArrayList<IBallObserver>();
-    }
 
-
-    @Override
-    public void registerObserver(IBallObserver ballObserver) {
-        ballObservers.add(ballObserver);
     }
 
     @Override
-    public void removeObserver(IBallObserver ballObserver) {
-        ballObservers.remove(ballObserver);
-    }
-
-
-    @Override
-    public void notifyObservers() {
-        for (IBallObserver ballObserver : ballObservers) {
-            ballObserver.update(new BallState(coord, size));
-        }
-    }
-
     public void move() {
         ISegment segment = MathHelper.nearestSegmentInDirection(ballContainer.getSides(), coord, velocity);
         double distance  = MathHelper.distanceBetween(coord, segment);
@@ -52,7 +35,11 @@ public class Ball implements IBallSubject {
             velocity = velocity.reflectAgainst(segment.toLine());
             move();
         }
-        notifyObservers();
+    }
+
+    @Override
+    public BallState state(){
+        return new BallState(coord, size);
     }
 
     private static IVector randomVelocity() {
@@ -65,9 +52,9 @@ public class Ball implements IBallSubject {
         return  velocity;
     }
 
-    private static IPoint randomPointIn(BallContainer aBallContainer) {
-        final double MAX_X = aBallContainer.getWidth();
-        final double MAX_Y = aBallContainer.getHeight();
+    private static IPoint randomPointIn(Container aContainer) {
+        final double MAX_X = aContainer.getWidth();
+        final double MAX_Y = aContainer.getHeight();
         double x = Math.random() * MAX_X;
         double y = Math.random() * MAX_Y;
         return new Point(x, y);

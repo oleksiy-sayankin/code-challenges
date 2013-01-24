@@ -1,8 +1,11 @@
-package com.javasensei.portfolio.balls;
+package com.javasensei.portfolio.balls.gui;
 
 /**
  * @author oleksiy sayankin
  */
+
+import com.javasensei.portfolio.balls.ContainerView;
+import com.javasensei.portfolio.balls.physics.Container;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,7 +20,7 @@ public class MainWindow extends JFrame {
     private JButton exitJButton;
     private JButton startJButton;
     private JButton stopJButton;
-    private BallContainer ballContainer;
+    private Container container;
     private final static MainWindow instance = new MainWindow();
     private boolean movementIsGoingOn = false;
 
@@ -32,12 +35,17 @@ public class MainWindow extends JFrame {
         add(buildExitJButton());
         add(buildStartJButtonButton());
         add(buildStopJButtonButton());
-
+        this.addComponentListener(new ResizeAdapter());
     }
 
 
     public void startMainWindow() {
         setVisible(true);
+    }
+
+    @Override
+    public void validate(){
+        super.validate();
     }
 
     private JButton buildExitJButton() {
@@ -52,7 +60,6 @@ public class MainWindow extends JFrame {
         });
         return exitJButton;
     }
-
 
     private JButton buildStartJButtonButton() {
         startJButton = new JButton();
@@ -71,7 +78,6 @@ public class MainWindow extends JFrame {
         });
         return startJButton;
     }
-
 
     private JButton buildStopJButtonButton() {
         stopJButton = new JButton();
@@ -94,21 +100,19 @@ public class MainWindow extends JFrame {
 
     private void startMovement() {
         initBallContainer();
-        new Thread(ballContainer).start();
+        new Thread(container).start();
     }
 
     private void initBallContainer() {
-        ballContainer = new BallContainer(getGraphics());
-        ballContainer.clear();
-        ballContainer.draw();
+        container = new Container(new ContainerView(getGraphics()));
         for (int i = 0; i < 1000; i++) {
-            ballContainer.addBall();
+            container.addBall();
         }
     }
 
     private void stopMovement() {
-        if (ballContainer != null) {
-            ballContainer.stop();
+        if (container != null) {
+            container.stop();
         }
     }
 }

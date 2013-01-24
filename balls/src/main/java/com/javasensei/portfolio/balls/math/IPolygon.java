@@ -10,4 +10,7 @@ public interface IPolygon extends IFigure {
     void addPoint(IPoint point);
     void stretchInDirection(IVector direction);
     List<IPoint> points();
+    double width();
+    double height();
+    IRectangle bounds();
 }

@@ -1,5 +1,7 @@
 package com.javasensei.portfolio.balls;
 
+import com.javasensei.portfolio.balls.gui.MainWindow;
+
 /**
  * @author oleksiy sayankin
  */

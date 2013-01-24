@@ -220,6 +220,15 @@ public final class MathHelper {
         return new UnmodifiableVector(vector);
     }
 
+
+    public static IRectangle unmodifiableRectangle(IRectangle rectangle){
+        return new UnmodifiableRectangle(rectangle);
+    }
+
+    public static IPolygon unmodifiablePolygon(IPolygon polygon){
+        return new UnmodifiablePolygon(polygon);
+    }
+
     public static boolean isCollinear(IVector a, IVector b){
         if(a.isNull() || b.isNull()){
             return true;

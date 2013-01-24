@@ -1,7 +1,6 @@
 package com.javasensei.portfolio.balls.math;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import static com.javasensei.portfolio.balls.math.MathHelper.unmodifiableSegment;
@@ -22,11 +21,6 @@ public class Polygon implements IPolygon{
         for (IPoint point : polygon.points()){
             points.add(new Point(point));
         }
-    }
-
-
-    public Polygon(IPoint ...pointsArray){
-        points = Arrays.asList(pointsArray);
     }
 
     @Override
@@ -82,8 +76,8 @@ public class Polygon implements IPolygon{
     public void stretchInDirection(IVector direction){
         double rightBound = rightBound();
         double leftBound = leftBound();
-        double topBound = topBound();
-        double bottomBound = bottomBound();
+        double topBound = upBound();
+        double bottomBound = downBound();
         double width = width();
         double height = height();
         double dX = direction.getX();
@@ -102,13 +96,39 @@ public class Polygon implements IPolygon{
          return MathHelper.signedArea(a, new Vector(point.getX(), point.getY())) < 0;
     }
 
+    @Override
     public double width(){
         return rightBound() - leftBound();
     }
 
+    @Override
     public double height(){
-        return topBound() - bottomBound();
+        return upBound() - downBound();
     }
+
+    @Override
+    public IRectangle bounds(){
+        return MathHelper.unmodifiableRectangle(new Rectangle(leftBound(), rightBound(), upBound(), downBound()));
+    }
+
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        int size = points.size();
+        for (int i = 0; i <= size - 2; i++){
+            sb.append(points.get(i));
+            sb.append(", ");
+        }
+        sb.append(points.get(size - 1));
+        sb.append("}");
+        return sb.toString();
+    }
+
+    protected void setPoints(List<IPoint> newPoints){
+        points = newPoints;
+    }
+
 
     private double leftBound(){
         double leftBound = Double.MAX_VALUE;
@@ -130,7 +150,7 @@ public class Polygon implements IPolygon{
         return rightBound;
     }
 
-    private double topBound(){
+    private double upBound(){
         double topBound = -Double.MAX_VALUE;
         for (IPoint point : points){
             if(point.getY() > topBound) {
@@ -140,7 +160,7 @@ public class Polygon implements IPolygon{
         return topBound;
     }
 
-    private double bottomBound(){
+    private double downBound(){
         double bottomBound = Double.MAX_VALUE;
         for (IPoint point : points){
             if(point.getY() < bottomBound) {
@@ -148,19 +168,5 @@ public class Polygon implements IPolygon{
             }
         }
         return bottomBound;
-    }
-
-    @Override
-    public String toString(){
-        StringBuilder sb = new StringBuilder();
-        sb.append("{");
-        int size = points.size();
-        for (int i = 0; i <= size - 2; i++){
-            sb.append(points.get(i));
-            sb.append(", ");
-        }
-        sb.append(points.get(size - 1));
-        sb.append("}");
-        return sb.toString();
     }
 }
