@@ -52,4 +52,14 @@ public class Line implements ILine {
 		return new Vector(point2.getX() - point1.getX(), point2.getY() - point1.getY());
 	}
 
+    @Override
+    public IPoint point1() {
+        return MathHelper.unmodifiablePoint(point1);
+    }
+
+    @Override
+    public IPoint point2() {
+        return MathHelper.unmodifiablePoint(point2);
+    }
+
 }

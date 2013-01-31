@@ -1,6 +1,6 @@
 package com.javasensei.portfolio.balls.math;
 
-public class LineCoef {
+public final class LineCoef {
 	public final double a;
 	public final double b;
 	public final double c;

@@ -105,7 +105,7 @@ public class PolygonTest {
         polygon.addPoint(new Point(0, 0));
         polygon.addPoint(new Point(2, 6));
         polygon.addPoint(new Point(4, 0));
-        polygon.stretchInDirection(new Vector(1, 0));
+        polygon.stretch(new Point(4, 0), new Vector(1, 0));
         assertTrue(polygon.has(new Point(4.51, 0.01)));
     }
 

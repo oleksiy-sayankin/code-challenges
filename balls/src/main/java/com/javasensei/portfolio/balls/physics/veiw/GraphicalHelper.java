@@ -1,5 +1,6 @@
-package com.javasensei.portfolio.balls;
+package com.javasensei.portfolio.balls.physics.veiw;
 
+import com.javasensei.portfolio.balls.Constants;
 import com.javasensei.portfolio.balls.graphics.CanvasBall;
 import com.javasensei.portfolio.balls.graphics.CanvasPoint;
 import com.javasensei.portfolio.balls.graphics.CanvasPolygon;
@@ -7,15 +8,15 @@ import com.javasensei.portfolio.balls.graphics.CanvasRectangle;
 import com.javasensei.portfolio.balls.math.IPoint;
 import com.javasensei.portfolio.balls.math.IPolygon;
 import com.javasensei.portfolio.balls.math.IRectangle;
-import com.javasensei.portfolio.balls.physics.BallState;
+import com.javasensei.portfolio.balls.physics.state.BallState;
 
 /**
  * @author asayankin
  */
 public final class  GraphicalHelper {
     public static CanvasPoint transform(IPoint point){
-        int x = (int) point.getX() + Constants.Window.WIN_MARGIN;
-        int y = (int) point.getY() + Constants.Window.HEADER + Constants.Window.WIN_MARGIN;
+        int x = (int) point.getX() + Constants.Panel.MARGIN;
+        int y = (int) point.getY() + Constants.Panel.MARGIN;
         return new CanvasPoint(x, y);
     }
 
@@ -29,7 +30,7 @@ public final class  GraphicalHelper {
     }
 
     public static CanvasRectangle transform(IRectangle rectangle){
-        CanvasPoint point = transform(rectangle.points().get(0));
+        CanvasPoint point = transform(rectangle.topLeftPoint());
         int width = (int) rectangle.width();
         int height = (int) rectangle.height();
         return new CanvasRectangle(point, width, height);

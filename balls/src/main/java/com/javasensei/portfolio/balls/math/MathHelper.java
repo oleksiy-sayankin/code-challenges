@@ -10,47 +10,49 @@ import java.util.List;
 public final class MathHelper {
     private MathHelper(){}
 
-    public static double scalarProduct(IVector a, IVector b){
+    public static double scalarProduct(final IVector a, final IVector b){
         return a.getX()*b.getX() + a.getY()*b.getY();
     }
 
 
-    public static double module(IVector a){
+    public static double module(final IVector a){
+        assert(scalarProduct(a, a) >= 0);
         return Math.sqrt(scalarProduct(a, a));
     }
 
-    public static double module(ISegment a){
+    public static double module(final ISegment a){
         double deltaX = a.getPoint2X() - a.getPoint1X();
         double deltaY = a.getPoint2Y() - a.getPoint1Y();
         return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
     }
 
-    public static double cos(IVector a, IVector b){
+    public static double cos(final IVector a, final IVector b){
         double moduleA = a.module();
         double moduleB = b.module();
         double cos = 0;
         if (!equalsZero(moduleA) && !equalsZero(moduleB)){
             cos = scalarProduct(a, b) / (moduleA * moduleB);
         }
+        assert (cos >= -1 && cos <= 1);
         return cos;
     }
 
-    public static double signedArea(IVector a, IVector b){
+    public static double signedArea(final IVector a, final IVector b){
         return det(a.getX(), a.getY(), b.getX(), b.getY());
     }
 
-    public static double distanceBetween(IPoint a, IPoint b){
+    public static double distanceBetween(final IPoint a, final IPoint b){
         return Math.sqrt((a.getX() - b.getX()) * (a.getX() - b.getX()) + (a.getY() - b.getY()) * (a.getY() - b.getY()));
     }
 
-    public static double distanceBetween(IPoint point, ILine line){
+    public static double distanceBetween(final IPoint point, final ILine line){
         LineCoef coef = line.coef();
         double x = point.getX();
         double y = point.getY();
         return (coef.a * x + coef.b * y + coef.c) / (coef.a * coef.a + coef.b * coef.b);
     }
 
-    public static IVector orthogonal(IVector vector){
+    public static IVector orthogonal(final IVector vector){
         double x = vector.getX();
         double y = vector.getY();
         double ortX;
@@ -58,43 +60,43 @@ public final class MathHelper {
         if (!equalsZero(x)){
             ortY = 1;
             ortX = - (y * ortY) / x;
-            return new Vector(ortX, ortY);
+            return unmodifiableVector(new Vector(ortX, ortY));
         }
         if (!equalsZero(y)){
             ortX = 1;
             ortY = - (x * ortX) / y;
-            return new Vector(ortX, ortY);
+            return unmodifiableVector(new Vector(ortX, ortY));
         }
-        return new Vector(0,0);
+        return unmodifiableVector(new Vector(0,0));
     }
 
-    public static ILine orthogonal(ILine line, IPoint point){
+    public static ILine orthogonal(final ILine line, final IPoint point){
         IVector vector = line.toVector();
         IVector orthogonalVector = orthogonal(vector);
-        return new Line(point, orthogonalVector);
+        return unmodifiableLine(new Line(point, orthogonalVector));
     }
 
-    public static IPoint reflectPointAgainstLine(IPoint point, ILine line){
+    public static IPoint reflectPointAgainstLine(final IPoint point, final ILine line){
         ILine orthogonalLine = orthogonal(line, point);
         IPoint intersectionPoint = intersection(line, orthogonalLine);
         IVector direction = new Vector(point, intersectionPoint);
         IPoint resultPoint = new Point(intersectionPoint);
         resultPoint.translateInDirection(direction);
-        return resultPoint;
+        return unmodifiablePoint(resultPoint);
     }
 
 
-    public static IVector reflectVectorAgainstLine(IVector a, ILine line){
+    public static IVector reflectVectorAgainstLine(final IVector a, final ILine line){
         IPoint point = new Point(a.getX(), a.getY());
         ILine translatedLine = new Line(new Point(0, 0), line.toVector());
         IPoint reflectedPoint = reflectPointAgainstLine(point, translatedLine);
-        return new Vector(reflectedPoint.getX(), reflectedPoint.getY());
+        return unmodifiableVector(new Vector(reflectedPoint.getX(), reflectedPoint.getY()));
     }
 
-    public static double distanceBetween(IPoint point, ISegment segment){
+    public static double distanceBetween(final IPoint point, final ISegment segment){
         IVector orthogonalVector = orthogonal(segment.toVector());
         Line  orthogonalLine = new Line(point, orthogonalVector);
-        Point intersectionPoint = intersection(orthogonalLine, segment.toLine());
+        IPoint intersectionPoint = intersection(orthogonalLine, segment.toLine());
         IPoint point1 = segment.getPoint1();
         IPoint point2 = segment.getPoint2();
 
@@ -114,7 +116,7 @@ public final class MathHelper {
         return a1 * b2 - a2 * b1;
     }
 
-    public static boolean isIntersection(ILine firstLine, ILine secondLine){
+    public static boolean isIntersection(final ILine firstLine, final ILine secondLine){
         LineCoef coef1 = firstLine.coef();
         LineCoef coef2 = secondLine.coef();
         double a1 = coef1.a;
@@ -125,7 +127,7 @@ public final class MathHelper {
         return !equalsZero(det);
     }
 
-    public static Point intersection(ILine firstLine, ILine secondLine) {
+    public static IPoint intersection(final ILine firstLine, final ILine secondLine) {
         Point result = null;
         LineCoef coef1 = firstLine.coef();
         LineCoef coef2 = secondLine.coef();
@@ -144,10 +146,10 @@ public final class MathHelper {
             double y = detY / det;
             result = new Point(x, y);
         }
-        return result;
+        return unmodifiablePoint(result);
     }
 
-    public static IPoint intersection(ISegment a, ISegment b) {
+    public static IPoint intersection(final ISegment a, final ISegment b) {
         ILine lineA = a.toLine();
         ILine lineB = b.toLine();
         if (isIntersection(lineA, lineB)) {
@@ -159,10 +161,10 @@ public final class MathHelper {
         return null;
     }
 
-    public static Point intersection(ILine lineA, ISegment segment) {
+    public static IPoint intersection(final ILine lineA, final ISegment segment) {
         ILine lineB = segment.toLine();
         if (isIntersection(lineA, lineB)) {
-            Point point = intersection(lineA, lineB);
+            IPoint point = intersection(lineA, lineB);
             if (segment.has(point)) {
                 return point;
             }
@@ -174,7 +176,7 @@ public final class MathHelper {
         return Math.abs(value) < Constants.Common.ERROR;
     }
 
-    public static ISegment nearestSegment(List<ISegment> segments, IPoint point){
+    public static ISegment nearestSegment(final List<ISegment> segments, final IPoint point){
         ISegment result  = null;
         double minDistance = Double.MAX_VALUE;
         for (ISegment segment : segments) {
@@ -184,15 +186,15 @@ public final class MathHelper {
                     result = segment;
                 }
         }
-        return result;
+        return unmodifiableSegment(result);
     }
 
 
-    public static ISegment nearestSegmentInDirection(List<ISegment> segments, IPoint point, IVector vector){
+    public static ISegment nearestSegmentInDirection(final List<ISegment> segments, final IPoint point, final IVector vector){
         ISegment result  = null;
         double minDistance = Double.MAX_VALUE;
         for (ISegment segment : segments) {
-            Point intersectionPoint = intersection(vector.toLine(point), segment);
+            IPoint intersectionPoint = intersection(vector.toLine(point), segment);
             if (intersectionPoint != null && vector.isSemidirect(new Vector(point, intersectionPoint))) {
                 double newDistance = point.distanceTo(intersectionPoint);
                 if (newDistance < minDistance) {
@@ -201,7 +203,14 @@ public final class MathHelper {
                 }
             }
         }
-        return result;
+
+        if(result == null){
+            System.out.println("###@@@ coord = " + point);
+            System.out.println("###@@@ velocity = " + vector);
+            System.out.println("###@@@ sides = " + segments);
+        }
+
+        return unmodifiableSegment(result);
     }
 
     public static IPoint unmodifiablePoint(IPoint point){
@@ -212,35 +221,39 @@ public final class MathHelper {
         return new UnmodifiablePoint(x, y);
     }
 
-    public static ISegment unmodifiableSegment(ISegment segment){
+    public static ISegment unmodifiableSegment(final ISegment segment){
         return new UnmodifiableSegment(segment);
     }
 
-    public static IVector unmodifiableVector(IVector vector){
+    public static IVector unmodifiableVector(final IVector vector){
         return new UnmodifiableVector(vector);
     }
 
 
-    public static IRectangle unmodifiableRectangle(IRectangle rectangle){
+    public static IRectangle unmodifiableRectangle(final IRectangle rectangle){
         return new UnmodifiableRectangle(rectangle);
     }
 
-    public static IPolygon unmodifiablePolygon(IPolygon polygon){
+    public static IPolygon unmodifiablePolygon(final IPolygon polygon){
         return new UnmodifiablePolygon(polygon);
     }
 
-    public static boolean isCollinear(IVector a, IVector b){
+    public static ILine unmodifiableLine(final ILine line){
+         return new UnmodifiableLine(line);
+    }
+
+    public static boolean isCollinear(final IVector a, final IVector b){
         if(a.isNull() || b.isNull()){
             return true;
         }
         return !isIntersection(a.toLine(), b.toLine());
     }
 
-    public static boolean isSemidirect(IVector a, IVector b){
+    public static boolean isSemidirect(final IVector a, final IVector b){
         return isCollinear(a, b) && scalarProduct(a, b) > 0;
     }
 
-    public static IVector sum(IVector a, IVector b){
-        return new Vector(a.getX() + b.getX(), a.getY() + b.getY());
+    public static IVector sum(final IVector a, final IVector b){
+        return unmodifiableVector(new Vector(a.getX() + b.getX(), a.getY() + b.getY()));
     }
 }

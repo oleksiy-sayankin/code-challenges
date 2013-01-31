@@ -73,20 +73,32 @@ public class Polygon implements IPolygon{
     }
 
     @Override
-    public void stretchInDirection(IVector direction){
+    public void stretch(IPoint stretchPoint, IVector direction){
         double rightBound = rightBound();
         double leftBound = leftBound();
-        double topBound = upBound();
-        double bottomBound = downBound();
-        double width = width();
-        double height = height();
+        double upBound = upBound();
+        double downBound = downBound();
         double dX = direction.getX();
         double dY = direction.getY();
+        double stretchPointX = stretchPoint.getX();
+        double stretchPointY = stretchPoint.getY();
         for (IPoint point : points){
             double x = point.getX();
             double y = point.getY();
-            double coefX = dX > 0 ? (x - leftBound) / width : (rightBound - x) / width;
-            double coefY = dY > 0 ? (y - bottomBound) / height : (topBound - y) / height;
+            double coefX = 1;
+            double coefY = 1;
+            if(stretchPointX >= rightBound){
+                coefX = (x - leftBound) / (stretchPointX - leftBound);
+            }
+            if(stretchPointX <= leftBound){
+                coefX = (rightBound - x) / (rightBound - stretchPointX);
+            }
+            if(stretchPointY >= upBound){
+                coefY = (y - downBound) / (stretchPointY - downBound);
+            }
+            if(stretchPointY <= downBound){
+                coefY = (upBound - y) / (upBound - stretchPointY);
+            }
             IVector vector = new Vector(dX * coefX, dY * coefY);
             point.translateInDirection(vector);
         }
@@ -98,11 +110,13 @@ public class Polygon implements IPolygon{
 
     @Override
     public double width(){
+        assert(rightBound() - leftBound() >= 0);
         return rightBound() - leftBound();
     }
 
     @Override
     public double height(){
+        assert(upBound() - downBound() >= 0);
         return upBound() - downBound();
     }
 
@@ -130,7 +144,8 @@ public class Polygon implements IPolygon{
     }
 
 
-    private double leftBound(){
+    @Override
+    public double leftBound(){
         double leftBound = Double.MAX_VALUE;
         for (IPoint point : points){
             if(point.getX() < leftBound) {
@@ -140,7 +155,8 @@ public class Polygon implements IPolygon{
         return leftBound;
     }
 
-    private double rightBound(){
+    @Override
+    public double rightBound(){
         double rightBound = -Double.MAX_VALUE;
         for (IPoint point : points){
             if(point.getX() > rightBound) {
@@ -150,23 +166,25 @@ public class Polygon implements IPolygon{
         return rightBound;
     }
 
-    private double upBound(){
-        double topBound = -Double.MAX_VALUE;
+    @Override
+    public double upBound(){
+        double upBound = -Double.MAX_VALUE;
         for (IPoint point : points){
-            if(point.getY() > topBound) {
-                topBound = point.getY();
+            if(point.getY() > upBound) {
+                upBound = point.getY();
             }
         }
-        return topBound;
+        return upBound;
     }
 
-    private double downBound(){
-        double bottomBound = Double.MAX_VALUE;
+    @Override
+    public double downBound(){
+        double downBound = Double.MAX_VALUE;
         for (IPoint point : points){
-            if(point.getY() < bottomBound) {
-                bottomBound = point.getY();
+            if(point.getY() < downBound) {
+                downBound = point.getY();
             }
         }
-        return bottomBound;
+        return downBound;
     }
 }

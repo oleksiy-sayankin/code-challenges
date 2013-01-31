@@ -1,9 +1,5 @@
 package com.javasensei.portfolio.balls.math;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 /**
  * @author asayankin
  */
@@ -37,7 +33,7 @@ public final class UnmodifiableRectangle extends Rectangle{
     }
 
     @Override
-    public void stretchInDirection(IVector direction){
+    public void stretch(IPoint stretchPoint, IVector direction){
         //nothing to do
     }
 }

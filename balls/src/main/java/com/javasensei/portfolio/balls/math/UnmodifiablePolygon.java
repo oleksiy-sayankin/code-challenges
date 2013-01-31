@@ -23,7 +23,7 @@ public final class UnmodifiablePolygon extends Polygon{
     }
 
     @Override
-    public void stretchInDirection(IVector direction){
+    public void stretch(IPoint stretchPoint, IVector direction){
         //nothing to do
     }
 }

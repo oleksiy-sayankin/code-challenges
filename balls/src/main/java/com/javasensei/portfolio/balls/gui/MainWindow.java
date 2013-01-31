@@ -4,14 +4,14 @@ package com.javasensei.portfolio.balls.gui;
  * @author oleksiy sayankin
  */
 
-import com.javasensei.portfolio.balls.ContainerView;
-import com.javasensei.portfolio.balls.physics.Container;
+import com.javasensei.portfolio.balls.Constants;
 
+
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.*;
 
 import static com.javasensei.portfolio.balls.Constants.*;
 
@@ -20,7 +20,8 @@ public class MainWindow extends JFrame {
     private JButton exitJButton;
     private JButton startJButton;
     private JButton stopJButton;
-    private Container container;
+    private BallPanel ballPanel;
+    private JPanel buttonPanel;
     private final static MainWindow instance = new MainWindow();
     private boolean movementIsGoingOn = false;
 
@@ -30,12 +31,10 @@ public class MainWindow extends JFrame {
 
     private MainWindow() {
         super();
-        setSize(Window.WIDTH, Window.HEIGHT);
-        getContentPane().setLayout(null);
-        add(buildExitJButton());
-        add(buildStartJButtonButton());
-        add(buildStopJButtonButton());
-        this.addComponentListener(new ResizeAdapter());
+        setSize(Constants.Window.WIDTH, Constants.Window.HEIGHT);
+        setLayout(new BorderLayout());
+        add(buildJPanel(), BorderLayout.SOUTH);
+        add(buildBallPanel(), BorderLayout.CENTER);
     }
 
 
@@ -46,11 +45,32 @@ public class MainWindow extends JFrame {
     @Override
     public void validate(){
         super.validate();
+
+//        for(long i = 1; i <= 999999; i++){
+//            Math.random();
+//        }
+//        try{
+//            //do what you want to do before sleeping
+//            Thread.currentThread().sleep(100);//sleep for 1000 ms
+//            //do what you want to do after sleeptig
+//        }
+//         catch (InterruptedException e) {
+//            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+//        }
+        ballPanel.refresh();
+    }
+
+    private JPanel buildJPanel(){
+        buttonPanel = new JPanel(new FlowLayout());
+        buttonPanel.add(buildStartJButtonButton());
+        buttonPanel.add(buildStopJButtonButton());
+        buttonPanel.add(buildExitJButton());
+        return buttonPanel;
     }
 
     private JButton buildExitJButton() {
         exitJButton = new JButton();
-        exitJButton.setBounds(Window.MARGIN, Window.DIVIDER, Button.WIDTH, Button.HEIGHT);
+        exitJButton.setBounds(Constants.Window.MARGIN, Constants.Window.DIVIDER, Constants.Button.WIDTH, Constants.Button.HEIGHT);
         exitJButton.setText(Strings.EXIT);
         exitJButton.addActionListener(new ActionListener() {
             @Override
@@ -63,13 +83,14 @@ public class MainWindow extends JFrame {
 
     private JButton buildStartJButtonButton() {
         startJButton = new JButton();
-        startJButton.setBounds(3 * Window.MARGIN + Button.WIDTH, Window.DIVIDER, Button.WIDTH, Button.HEIGHT);
+        startJButton.setBounds(3 * Constants.Window.MARGIN + Constants.Button.WIDTH, Constants.Window.DIVIDER, Constants.Button.WIDTH, Constants.Button.HEIGHT);
         startJButton.setText(Strings.START);
         startJButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(!movementIsGoingOn){
-                    startMovement();
+                    ballPanel.initBallContainer();
+                    ballPanel.startMovement();
                     stopJButton.setEnabled(true);
                     startJButton.setEnabled(false);
                     movementIsGoingOn = true;
@@ -81,13 +102,13 @@ public class MainWindow extends JFrame {
 
     private JButton buildStopJButtonButton() {
         stopJButton = new JButton();
-        stopJButton.setBounds(5 * Window.MARGIN + 2 * Button.WIDTH, Window.DIVIDER, Button.WIDTH, Button.HEIGHT);
+        stopJButton.setBounds(5 * Constants.Window.MARGIN + 2 * Constants.Button.WIDTH, Constants.Window.DIVIDER, Constants.Button.WIDTH, Constants.Button.HEIGHT);
         stopJButton.setText(Strings.STOP);
         stopJButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(movementIsGoingOn){
-                    stopMovement();
+                    ballPanel.stopMovement();
                     movementIsGoingOn = false;
                     stopJButton.setEnabled(false);
                     startJButton.setEnabled(true);
@@ -98,21 +119,8 @@ public class MainWindow extends JFrame {
         return stopJButton;
     }
 
-    private void startMovement() {
-        initBallContainer();
-        new Thread(container).start();
-    }
-
-    private void initBallContainer() {
-        container = new Container(new ContainerView(getGraphics()));
-        for (int i = 0; i < 1000; i++) {
-            container.addBall();
-        }
-    }
-
-    private void stopMovement() {
-        if (container != null) {
-            container.stop();
-        }
+    private BallPanel buildBallPanel(){
+        ballPanel = new BallPanel();
+        return ballPanel;
     }
 }

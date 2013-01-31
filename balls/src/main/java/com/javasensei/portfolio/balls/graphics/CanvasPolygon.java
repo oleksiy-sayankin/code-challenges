@@ -1,6 +1,6 @@
 package com.javasensei.portfolio.balls.graphics;
 
-import com.javasensei.portfolio.balls.GraphicalHelper;
+import com.javasensei.portfolio.balls.physics.veiw.GraphicalHelper;
 import com.javasensei.portfolio.balls.math.IPoint;
 import com.javasensei.portfolio.balls.math.IPolygon;
 import com.javasensei.portfolio.balls.math.Polygon;
@@ -17,10 +17,7 @@ public final class CanvasPolygon {
     public final int n;
 
     public CanvasPolygon(IPolygon polygon){
-        IPolygon scaledPolygon = new Polygon(polygon);
-        scaledPolygon.scale(1.02);
-        scaledPolygon.translateInDirection(new Vector(-1, -1));
-        List<IPoint> points = scaledPolygon.points();
+        List<IPoint> points = polygon.points();
         n = points.size();
         xPoints = new int[n];
         yPoints = new int[n];
@@ -31,5 +28,25 @@ public final class CanvasPolygon {
             yPoints[i] = canvasPoint.y;
             i++;
         }
+    }
+
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i = 0; i <= n - 2; i++){
+            sb.append("(");
+            sb.append(xPoints[i]);
+            sb.append(", ");
+            sb.append(yPoints[i]);
+            sb.append("), ");
+        }
+        sb.append("(");
+        sb.append(xPoints[n - 1]);
+        sb.append(", ");
+        sb.append(yPoints[n - 1]);
+        sb.append(")");
+        sb.append("]");
+        return sb.toString();
     }
 }
