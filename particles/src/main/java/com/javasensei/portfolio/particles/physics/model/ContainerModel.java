@@ -18,7 +18,7 @@ public class ContainerModel implements Runnable, IContainerModel {
     private final IBoundModel bounds;
     private boolean shouldStopThread = false;
     private IContainerObserver containerObserver;
-    private Lock ParticlesAndBounds = new ReentrantLock();
+    private Lock particlesAndBounds = new ReentrantLock();
 
     public ContainerModel(IContainerObserver aContainerObserver, MathDimension dimension) {
         containerObserver = aContainerObserver;
@@ -37,13 +37,13 @@ public class ContainerModel implements Runnable, IContainerModel {
         double dX = newDimension.width - currentDimension.width;
         double dY = newDimension.height - currentDimension.height;
         IVector direction = MathHelper.unmodifiableVector(dX, dY);
-        ParticlesAndBounds.lock();
+        particlesAndBounds.lock();
         try {
             IPoint point = bounds.bounds().bottomRightPoint();
             particles.stretch(point, direction);
             bounds.stretch(point, direction);
         } finally {
-            ParticlesAndBounds.unlock();
+            particlesAndBounds.unlock();
         }
         currentDimension = newDimension;
     }
@@ -62,11 +62,11 @@ public class ContainerModel implements Runnable, IContainerModel {
     @Override
     public void run() {
         while (!shouldStopThread) {
-            ParticlesAndBounds.lock();
+            particlesAndBounds.lock();
             try {
                 particles.moveAll();
             } finally {
-                ParticlesAndBounds.unlock();
+                particlesAndBounds.unlock();
             }
             containerObserver.update(new ContainerState(particles, bounds));
         }

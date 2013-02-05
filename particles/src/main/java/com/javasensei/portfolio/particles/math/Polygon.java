@@ -8,7 +8,7 @@ import static com.javasensei.portfolio.particles.math.MathHelper.unmodifiableSeg
 import static com.javasensei.portfolio.particles.math.MathHelper.unmodifiablePoint;
 
 /**
- * @author asayankin
+ * @author oleksiy sayankin
  */
 public class Polygon implements IPolygon {
     private List<IPoint> points;
@@ -140,14 +140,14 @@ public class Polygon implements IPolygon {
 
     @Override
     public double area() {
-        if(pointsCount() <= 2){
+        if (pointsCount() <= 2) {
             return 0;
         }
-        double  area = 0;
+        double area = 0;
         List<ISegment> segments = this.toSegmentsClockwise();
-        for(ISegment segment : segments){
+        for (ISegment segment : segments) {
             double h = segment.getPoint2().getX() - segment.getPoint1().getX();
-            if(MathHelper.equalsZero(h)){
+            if (MathHelper.equalsZero(h)) {
                 continue;
             }
             double a = segment.getPoint1().getY();
@@ -226,22 +226,24 @@ public class Polygon implements IPolygon {
     }
 
     @Override
-    public boolean equals(Object other){
-        if(other == null) return false;
-        if(!(other instanceof IPolygon)){
+    public boolean equals(Object other) {
+        if (other == null) {
             return false;
         }
-        IPolygon otherPolygon = (IPolygon)other;
-        if(this.pointsCount() != otherPolygon.pointsCount()) {
+        if (!(other instanceof IPolygon)) {
+            return false;
+        }
+        IPolygon otherPolygon = (IPolygon) other;
+        if (this.pointsCount() != otherPolygon.pointsCount()) {
             return false;
         }
         return this.points().equals(otherPolygon.points());
     }
 
     @Override
-    public int hashCode(){
+    public int hashCode() {
         int result = 0;
-        for(IPoint point : points){
+        for (IPoint point : points) {
             result += point.hashCode();
         }
         return result;

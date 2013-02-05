@@ -25,7 +25,7 @@ public class ParticleModel implements IParticleModel {
     @Override
     public void move() {
         ISegment segment = MathHelper.nearestSegmentInDirection(particleContainer.getSides().toSegmentsClockwise(), coord, velocity);
-        double distance  =  MathHelper.distanceBetween(coord, segment);
+        double distance = MathHelper.distanceBetween(coord, segment);
         if (distance > velocity.module()) {
             coord.translateInDirection(velocity);
         } else {
@@ -35,7 +35,7 @@ public class ParticleModel implements IParticleModel {
     }
 
     @Override
-    public ParticleState state(){
+    public ParticleState state() {
         return new ParticleState(coord, size);
     }
 
@@ -59,17 +59,10 @@ public class ParticleModel implements IParticleModel {
         double x = Math.random() * 2d - 1;
         double y = Math.random() * 2d - 1;
         double module = Math.random() * Constants.Common.MAX_VELOCITY;
-        IVector velocity = new  Vector(x, y);
+        IVector velocity = new Vector(x, y);
         velocity.normalize();
         velocity.mult(module);
-        return  velocity;
+        return velocity;
     }
 
-    private static IPoint randomPointIn(ContainerModel aContainerModel) {
-        final double MAX_X = aContainerModel.getDimension().width;
-        final double MAX_Y = aContainerModel.getDimension().height;
-        double x = Math.random() * MAX_X;
-        double y = Math.random() * MAX_Y;
-        return new Point(x, y);
-    }
 }

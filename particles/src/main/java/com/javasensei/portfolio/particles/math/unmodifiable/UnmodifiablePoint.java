@@ -5,7 +5,7 @@ import com.javasensei.portfolio.particles.math.IVector;
 import com.javasensei.portfolio.particles.math.Point;
 
 /**
- * @author asayankin
+ * @author oleksiy sayankin
  */
 public final class UnmodifiablePoint extends Point {
     public UnmodifiablePoint(double aX, double aY) {
@@ -17,7 +17,7 @@ public final class UnmodifiablePoint extends Point {
     }
 
     @Override
-    public void translateInDirection(IVector vector){
+    public void translateInDirection(IVector vector) {
         // nothing to do
     }
 

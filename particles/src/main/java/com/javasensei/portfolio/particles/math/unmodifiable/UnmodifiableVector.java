@@ -5,7 +5,7 @@ import com.javasensei.portfolio.particles.math.IVector;
 import com.javasensei.portfolio.particles.math.Vector;
 
 /**
- * @author asayankin
+ * @author oleksiy sayankin
  */
 public final class UnmodifiableVector extends Vector {
     public UnmodifiableVector(IPoint point1, IPoint point2) {
@@ -22,22 +22,22 @@ public final class UnmodifiableVector extends Vector {
 
 
     @Override
-    public void setXY(double x, double y){
+    public void setXY(double x, double y) {
         //nothing to do
     }
 
     @Override
-    public void normalize(){
+    public void normalize() {
         //nothing to do
     }
 
     @Override
-    public void mult(double a){
+    public void mult(double a) {
         //nothing to do
     }
 
     @Override
-    public void add(IVector a){
+    public void add(IVector a) {
         //nothing to do
     }
 }

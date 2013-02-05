@@ -11,20 +11,20 @@ public class Segment implements ISegment {
         point2 = aPoint2.copy();
     }
 
-    public Segment(double x1, double y1, double x2, double y2){
-       this(new Point(x1, y1), new Point(x2, y2));
+    public Segment(double x1, double y1, double x2, double y2) {
+        this(new Point(x1, y1), new Point(x2, y2));
     }
 
-	@Override
-	public String toString(){
-		return "{" + point1 + ", " + point2 + "}";
-	}
+    @Override
+    public String toString() {
+        return "{" + point1 + ", " + point2 + "}";
+    }
 
 
-	@Override
-	public boolean has(IPoint point){
-		return distanceTo(point) < Common.ERROR;
-	}
+    @Override
+    public boolean has(IPoint point) {
+        return distanceTo(point) < Common.ERROR;
+    }
 
     @Override
     public double distanceTo(IPoint point) {
@@ -44,28 +44,28 @@ public class Segment implements ISegment {
     }
 
     @Override
-	public boolean equals(Object o){
-        if(o instanceof Segment){
-            Segment segment = (Segment)o;
+    public boolean equals(Object o) {
+        if (o instanceof Segment) {
+            Segment segment = (Segment) o;
             boolean isStartEquals = Math.abs(point1.getX() - segment.getPoint1X()) < Common.ERROR && Math.abs(point1.getY() - segment.getPoint1Y()) < Common.ERROR;
             boolean isEndEquals = Math.abs(point2.getX() - segment.getPoint2X()) < Common.ERROR && Math.abs(point2.getY() - segment.getPoint2Y()) < Common.ERROR;
             return isStartEquals && isEndEquals;
         }
         return false;
-	}
-	
-	@Override
-	public int hashCode(){
-		return (int)point1.getX() + (int)point1.getY() + (int)point2.getX() + (int)point2.getY();
-	}
+    }
 
     @Override
-    public IPoint getPoint1(){
+    public int hashCode() {
+        return (int) point1.getX() + (int) point1.getY() + (int) point2.getX() + (int) point2.getY();
+    }
+
+    @Override
+    public IPoint getPoint1() {
         return MathHelper.unmodifiablePoint(point1);
     }
 
     @Override
-    public IPoint getPoint2(){
+    public IPoint getPoint2() {
         return MathHelper.unmodifiablePoint(point2);
     }
 
@@ -90,16 +90,16 @@ public class Segment implements ISegment {
     }
 
     @Override
-    public ILine toLine(){
+    public ILine toLine() {
         return MathHelper.unmodifiableLine(point1, point2);
     }
 
-    public IVector toVector(){
+    public IVector toVector() {
         return MathHelper.unmodifiableVector(point2.getX() - point1.getX(), point2.getY() - point1.getY());
     }
 
     @Override
-    public double module(){
+    public double module() {
         return MathHelper.module(this);
     }
 }

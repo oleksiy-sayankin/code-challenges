@@ -3,7 +3,7 @@ package com.javasensei.portfolio.particles.math.unmodifiable;
 import com.javasensei.portfolio.particles.math.*;
 
 /**
- * @author asayankin
+ * @author oleksiy sayankin
  */
 public final class UnmodifiableRectangle extends Rectangle {
     public UnmodifiableRectangle(IPoint point1, IPoint point2) {
@@ -15,7 +15,7 @@ public final class UnmodifiableRectangle extends Rectangle {
 
     }
 
-    public UnmodifiableRectangle(double leftBound, double rightBound, double upBound, double downBound){
+    public UnmodifiableRectangle(double leftBound, double rightBound, double upBound, double downBound) {
         super(MathHelper.unmodifiablePoint(new Point(leftBound, downBound)), MathHelper.unmodifiablePoint(new Point(rightBound, upBound)));
     }
 
@@ -30,12 +30,12 @@ public final class UnmodifiableRectangle extends Rectangle {
     }
 
     @Override
-    public void addPoint(IPoint point){
+    public void addPoint(IPoint point) {
         //nothing to do
     }
 
     @Override
-    public void stretch(IPoint stretchPoint, IVector direction){
+    public void stretch(IPoint stretchPoint, IVector direction) {
         //nothing to do
     }
 }

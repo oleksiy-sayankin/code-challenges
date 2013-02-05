@@ -3,7 +3,7 @@ package com.javasensei.portfolio.particles.math.unmodifiable;
 import com.javasensei.portfolio.particles.math.*;
 
 /**
- * @author asayankin
+ * @author oleksiy sayankin
  */
 public final class UnmodifiableLine extends Line {
     public UnmodifiableLine(IPoint aPoint1, IPoint aPoint2) {
@@ -14,7 +14,7 @@ public final class UnmodifiableLine extends Line {
         super(MathHelper.unmodifiablePoint(point), MathHelper.unmodifiablePoint(new Point(point.getX() + vector.getX(), point.getY() + vector.getY())));
     }
 
-    public UnmodifiableLine(ILine line){
+    public UnmodifiableLine(ILine line) {
         super(line.point1(), line.point2());
     }
 

@@ -2,13 +2,15 @@ package com.javasensei.portfolio.particles.math;
 
 import com.javasensei.portfolio.particles.Constants;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
+
 /**
- * @author asayankin
+ * @author oleksiy sayankin
  */
 public class PolygonTest {
     @Test
-    public void hasTrueForTriangleTest(){
+    public void hasTrueForTriangleTest() {
         IPolygon polygon = new Polygon();
         polygon.addPoint(new Point(0, 0));
         polygon.addPoint(new Point(1.5, 3));
@@ -17,7 +19,7 @@ public class PolygonTest {
     }
 
     @Test
-    public void hasFalseForTriangleTest(){
+    public void hasFalseForTriangleTest() {
         IPolygon polygon = new Polygon();
         polygon.addPoint(new Point(0, 0));
         polygon.addPoint(new Point(1.5, 3));
@@ -26,7 +28,7 @@ public class PolygonTest {
     }
 
     @Test
-    public void hasTrueForRectangleTest(){
+    public void hasTrueForRectangleTest() {
         IPolygon polygon = new Polygon();
         polygon.addPoint(new Point(0, 0));
         polygon.addPoint(new Point(0, 3));
@@ -36,7 +38,7 @@ public class PolygonTest {
     }
 
     @Test
-    public void hasFalseForRectangleTest(){
+    public void hasFalseForRectangleTest() {
         IPolygon polygon = new Polygon();
         polygon.addPoint(new Point(0, 0));
         polygon.addPoint(new Point(0, 3));
@@ -46,7 +48,7 @@ public class PolygonTest {
     }
 
     @Test
-    public void hasTrueForComplexFigureTest(){
+    public void hasTrueForComplexFigureTest() {
         IPolygon polygon = new Polygon();
         polygon.addPoint(new Point(0, 0));
         polygon.addPoint(new Point(0, 6));
@@ -71,7 +73,7 @@ public class PolygonTest {
     }
 
     @Test
-    public void hasFalseForComplexFigureTest(){
+    public void hasFalseForComplexFigureTest() {
         IPolygon polygon = new Polygon();
         polygon.addPoint(new Point(0, 0));
         polygon.addPoint(new Point(0, 6));
@@ -101,7 +103,7 @@ public class PolygonTest {
     }
 
     @Test
-    public void stretchInDirectionTest(){
+    public void stretchInDirectionTest() {
         IPolygon polygon = new Polygon();
         polygon.addPoint(new Point(0, 0));
         polygon.addPoint(new Point(2, 6));
@@ -112,7 +114,7 @@ public class PolygonTest {
 
 
     @Test
-    public void areaTest(){
+    public void areaTest() {
         IPolygon polygon = new Polygon();
         polygon.addPoint(new Point(0, 0));
         polygon.addPoint(new Point(0, 6));

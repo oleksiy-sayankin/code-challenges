@@ -15,18 +15,18 @@ import javax.swing.*;
 
 import static com.javasensei.portfolio.particles.Constants.*;
 
-public class MainWindow extends JFrame {
+public final class MainWindow extends JFrame {
 
     private JButton exitJButton;
     private JButton startJButton;
     private JButton stopJButton;
     private ParticlePanel particlePanel;
     private JPanel buttonPanel;
-    private final static MainWindow instance = new MainWindow();
+    private final static MainWindow INSTANCE = new MainWindow();
     private boolean movementIsGoingOn = false;
 
     public static MainWindow getInstance() {
-        return instance;
+        return INSTANCE;
     }
 
     private MainWindow() {
@@ -43,12 +43,12 @@ public class MainWindow extends JFrame {
     }
 
     @Override
-    public void validate(){
+    public void validate() {
         super.validate();
         particlePanel.refresh();
     }
 
-    private JPanel buildJPanel(){
+    private JPanel buildJPanel() {
         buttonPanel = new JPanel(new FlowLayout());
         buttonPanel.add(buildStartJButtonButton());
         buttonPanel.add(buildStopJButtonButton());
@@ -58,7 +58,6 @@ public class MainWindow extends JFrame {
 
     private JButton buildExitJButton() {
         exitJButton = new JButton();
-        exitJButton.setBounds(Constants.Window.MARGIN, Constants.Window.DIVIDER, Constants.Button.WIDTH, Constants.Button.HEIGHT);
         exitJButton.setText(Strings.EXIT);
         exitJButton.addActionListener(new ActionListener() {
             @Override
@@ -71,12 +70,11 @@ public class MainWindow extends JFrame {
 
     private JButton buildStartJButtonButton() {
         startJButton = new JButton();
-        startJButton.setBounds(3 * Constants.Window.MARGIN + Constants.Button.WIDTH, Constants.Window.DIVIDER, Constants.Button.WIDTH, Constants.Button.HEIGHT);
         startJButton.setText(Strings.START);
         startJButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(!movementIsGoingOn){
+                if (!movementIsGoingOn) {
                     particlePanel.initParticleContainer();
                     particlePanel.startMovement();
                     stopJButton.setEnabled(true);
@@ -90,12 +88,11 @@ public class MainWindow extends JFrame {
 
     private JButton buildStopJButtonButton() {
         stopJButton = new JButton();
-        stopJButton.setBounds(5 * Constants.Window.MARGIN + 2 * Constants.Button.WIDTH, Constants.Window.DIVIDER, Constants.Button.WIDTH, Constants.Button.HEIGHT);
         stopJButton.setText(Strings.STOP);
         stopJButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(movementIsGoingOn){
+                if (movementIsGoingOn) {
                     particlePanel.stopMovement();
                     movementIsGoingOn = false;
                     stopJButton.setEnabled(false);
@@ -107,7 +104,7 @@ public class MainWindow extends JFrame {
         return stopJButton;
     }
 
-    private ParticlePanel buildParticlePanel(){
+    private ParticlePanel buildParticlePanel() {
         particlePanel = new ParticlePanel();
         return particlePanel;
     }

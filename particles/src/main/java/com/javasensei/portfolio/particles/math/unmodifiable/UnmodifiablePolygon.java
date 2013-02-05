@@ -6,12 +6,13 @@ import com.javasensei.portfolio.particles.math.IVector;
 import com.javasensei.portfolio.particles.math.Polygon;
 
 /**
- * @author asayankin
+ * @author oleksiy sayankin
  */
 public final class UnmodifiablePolygon extends Polygon {
-    public UnmodifiablePolygon(IPolygon polygon){
+    public UnmodifiablePolygon(IPolygon polygon) {
         setPoints(polygon.points());
     }
+
     @Override
     public void translateInDirection(IVector vector) {
         //nothing to do
@@ -23,12 +24,12 @@ public final class UnmodifiablePolygon extends Polygon {
     }
 
     @Override
-    public void addPoint(IPoint point){
+    public void addPoint(IPoint point) {
         //nothing to do
     }
 
     @Override
-    public void stretch(IPoint stretchPoint, IVector direction){
+    public void stretch(IPoint stretchPoint, IVector direction) {
         //nothing to do
     }
 }

@@ -2,56 +2,55 @@ package com.javasensei.portfolio.particles.math;
 
 import com.javasensei.portfolio.particles.Constants;
 
-public class Point implements  IPoint {
-	private double x;
-	private double y;
+public class Point implements IPoint {
+    private double x;
+    private double y;
 
-	public Point(double aX, double aY){
-		x = aX;
-		y = aY;		
-	}
+    public Point(double aX, double aY) {
+        x = aX;
+        y = aY;
+    }
 
-    public Point(IPoint point){
+    public Point(IPoint point) {
         x = point.getX();
         y = point.getY();
     }
 
+    @Override
+    public double getX() {
+        return x;
+    }
 
     @Override
-	public double getX(){
-		return x;
-	}
+    public double getY() {
+        return y;
+    }
 
     @Override
-	public double getY(){
-		return y;
-	}
+    public double distanceTo(IPoint p) {
+        return MathHelper.distanceBetween(this, p);
+    }
 
     @Override
-	public double distanceTo(IPoint p){
-		return MathHelper.distanceBetween(this, p);
-	} 
+    public String toString() {
+        return "[" + x + ", " + y + "]";
+    }
 
     @Override
-	public String toString(){
-		return "[" + x + ", " + y + "]";
-	}
-	
-	@Override
-	public boolean equals(Object o){
-        if(o instanceof Point){
-            Point point = (Point)o;
+    public boolean equals(Object o) {
+        if (o instanceof Point) {
+            Point point = (Point) o;
             return has(point);
         }
         return false;
-	}
-	
-	@Override
-	public int hashCode(){
-		int ix = (int)Math.round(x);
-		int iy = (int)Math.round(y);
-		return ix * ix + iy;
-	}
+    }
+
+    @Override
+    public int hashCode() {
+        int ix = (int) Math.round(x);
+        int iy = (int) Math.round(y);
+        return ix * ix + iy;
+    }
 
     @Override
     public boolean has(IPoint point) {
@@ -59,12 +58,12 @@ public class Point implements  IPoint {
     }
 
     @Override
-    public IPoint copy(){
+    public IPoint copy() {
         return new Point(x, y);
     }
 
     @Override
-    public void translateInDirection(IVector vector){
+    public void translateInDirection(IVector vector) {
         x += vector.getX();
         y += vector.getY();
     }

@@ -7,20 +7,20 @@ import com.javasensei.portfolio.particles.math.IPolygon;
 import java.util.List;
 
 /**
- * @author asayankin
+ * @author oleksiy sayankin
  */
 public final class CanvasPolygon {
     public final int xPoints[];
     public final int yPoints[];
     public final int n;
 
-    public CanvasPolygon(IPolygon polygon){
+    public CanvasPolygon(IPolygon polygon) {
         List<IPoint> points = polygon.points();
         n = points.size();
         xPoints = new int[n];
         yPoints = new int[n];
         int i = 0;
-        for(IPoint point : points){
+        for (IPoint point : points) {
             CanvasPoint canvasPoint = GraphicalHelper.transform(point);
             xPoints[i] = canvasPoint.x;
             yPoints[i] = canvasPoint.y;
@@ -29,10 +29,10 @@ public final class CanvasPolygon {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("[");
-        for (int i = 0; i <= n - 2; i++){
+        for (int i = 0; i <= n - 2; i++) {
             sb.append("(");
             sb.append(xPoints[i]);
             sb.append(", ");

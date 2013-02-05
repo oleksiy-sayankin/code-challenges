@@ -8,9 +8,9 @@ import com.javasensei.portfolio.particles.physics.model.ContainerModel;
 import javax.swing.*;
 
 /**
- * @author asayankin
+ * @author oleksiy sayankin
  */
-public class ParticlePanel extends JPanel{
+public class ParticlePanel extends JPanel {
     private ContainerModel containerModel;
     private ContainerView containerView;
 
@@ -30,18 +30,18 @@ public class ParticlePanel extends JPanel{
         }
     }
 
-    public void refresh(){
-        if(containerModel != null && containerView != null){
+    public void refresh() {
+        if (containerModel != null && containerView != null) {
             containerModel.setDimension(currentPanelDimension());
             containerView.setGraphics(getGraphics());
         }
     }
 
-    private MathDimension currentPanelDimension(){
+    private MathDimension currentPanelDimension() {
         double newWidth = getWidth() - Constants.Panel.MARGIN * 2;
         double newHeight = getHeight() - Constants.Panel.MARGIN * 2;
         newWidth = newWidth > Constants.Common.CONTAINER_MIN_WIDTH ? newWidth : Constants.Common.CONTAINER_MIN_WIDTH;
-        newHeight = newHeight > Constants.Common.CONTAINER_MIN_HEIGHT  ? newHeight : Constants.Common.CONTAINER_MIN_HEIGHT;
+        newHeight = newHeight > Constants.Common.CONTAINER_MIN_HEIGHT ? newHeight : Constants.Common.CONTAINER_MIN_HEIGHT;
         return new MathDimension(newWidth, newHeight);
     }
 }

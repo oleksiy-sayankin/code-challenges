@@ -1,15 +1,15 @@
 package com.javasensei.portfolio.particles.math;
 
 /**
- * @author asayankin
+ * @author oleksiy sayankin
  */
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Rectangle extends Polygon implements IRectangle{
-    public Rectangle(IPoint point1, IPoint point2){
+public class Rectangle extends Polygon implements IRectangle {
+    public Rectangle(IPoint point1, IPoint point2) {
         List<IPoint> rectanglePoints = new ArrayList<IPoint>();
         rectanglePoints.add(point1.copy());
         rectanglePoints.add(new Point(point1.getX(), point2.getY()));
@@ -18,7 +18,7 @@ public class Rectangle extends Polygon implements IRectangle{
         setPoints(Collections.unmodifiableList(rectanglePoints));
     }
 
-    public Rectangle(double leftBound, double rightBound, double downBound, double upBound){
+    public Rectangle(double leftBound, double rightBound, double downBound, double upBound) {
         List<IPoint> rectanglePoints = new ArrayList<IPoint>();
         rectanglePoints.add(new Point(leftBound, downBound));
         rectanglePoints.add(new Point(leftBound, upBound));
@@ -28,7 +28,7 @@ public class Rectangle extends Polygon implements IRectangle{
     }
 
     @Override
-    public IRectangle bounds(){
+    public IRectangle bounds() {
         return this;
     }
 

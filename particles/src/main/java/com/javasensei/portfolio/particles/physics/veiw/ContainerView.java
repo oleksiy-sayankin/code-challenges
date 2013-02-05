@@ -9,7 +9,7 @@ import com.javasensei.portfolio.particles.physics.state.ContainerState;
 import java.awt.*;
 
 /**
- * @author asayankin
+ * @author oleksiy sayankin
  */
 public class ContainerView implements IContainerObserver {
     private Graphics graphics;
@@ -20,8 +20,8 @@ public class ContainerView implements IContainerObserver {
         graphics = aGraphics;
     }
 
-    public void setGraphics(Graphics newGraphics){
-       graphics = newGraphics;
+    public void setGraphics(Graphics newGraphics) {
+        graphics = newGraphics;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class ContainerView implements IContainerObserver {
     }
 
     private void drawBounds() {
-        if(newState != null){
+        if (newState != null) {
             CanvasPolygon newCanvasPolygon = GraphicalHelper.transform(newState.bounds.sides);
             graphics.setColor(Color.BLACK);
             graphics.drawPolygon(newCanvasPolygon.xPoints, newCanvasPolygon.yPoints, newCanvasPolygon.n);

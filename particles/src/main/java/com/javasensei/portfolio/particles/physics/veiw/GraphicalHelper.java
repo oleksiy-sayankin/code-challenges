@@ -11,25 +11,29 @@ import com.javasensei.portfolio.particles.math.IRectangle;
 import com.javasensei.portfolio.particles.physics.state.ParticleState;
 
 /**
- * @author asayankin
+ * @author oleksiy sayankin
  */
-public final class  GraphicalHelper {
-    public static CanvasPoint transform(IPoint point){
+public final class GraphicalHelper {
+
+    private GraphicalHelper(){}
+
+    public static CanvasPoint transform(IPoint point) {
         int x = (int) point.getX() + Constants.Panel.MARGIN;
         int y = (int) point.getY() + Constants.Panel.MARGIN;
         return new CanvasPoint(x, y);
     }
 
-    public static CanvasParticle transform(ParticleState particleState){
+    public static CanvasParticle transform(ParticleState particleState) {
         CanvasPoint canvasPoint = transform(particleState.point);
         int size = particleState.size;
         return new CanvasParticle(canvasPoint, size);
     }
-    public static CanvasPolygon transform(IPolygon polygon){
+
+    public static CanvasPolygon transform(IPolygon polygon) {
         return new CanvasPolygon(polygon);
     }
 
-    public static CanvasRectangle transform(IRectangle rectangle){
+    public static CanvasRectangle transform(IRectangle rectangle) {
         CanvasPoint point = transform(rectangle.topLeftPoint());
         int width = (int) rectangle.width();
         int height = (int) rectangle.height();

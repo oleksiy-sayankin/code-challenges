@@ -3,7 +3,7 @@ package com.javasensei.portfolio.particles.math.unmodifiable;
 import com.javasensei.portfolio.particles.math.*;
 
 /**
- * @author asayankin
+ * @author oleksiy sayankin
  */
 public final class UnmodifiableSegment extends Segment {
 
@@ -16,7 +16,7 @@ public final class UnmodifiableSegment extends Segment {
     }
 
     public UnmodifiableSegment(ISegment segment) {
-        super(MathHelper.unmodifiablePoint(segment.getPoint1()),  MathHelper.unmodifiablePoint(segment.getPoint2()));
+        super(MathHelper.unmodifiablePoint(segment.getPoint1()), MathHelper.unmodifiablePoint(segment.getPoint2()));
     }
 
 }

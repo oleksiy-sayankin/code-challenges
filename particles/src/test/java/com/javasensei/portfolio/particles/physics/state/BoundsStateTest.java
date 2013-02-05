@@ -6,11 +6,11 @@ import com.javasensei.portfolio.particles.math.Polygon;
 import org.junit.Test;
 
 /**
- * @author asayankin
+ * @author oleksiy sayankin
  */
 public class BoundsStateTest {
     @Test
-    public void toStringTest(){
+    public void toStringTest() {
         IPolygon polygon = new Polygon();
         polygon.addPoint(new Point(0, 0));
         polygon.addPoint(new Point(0, 10));

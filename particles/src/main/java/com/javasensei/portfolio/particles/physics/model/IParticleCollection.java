@@ -4,9 +4,9 @@ import com.javasensei.portfolio.particles.math.IPoint;
 import com.javasensei.portfolio.particles.math.IVector;
 
 /**
- * @author asayankin
+ * @author oleksiy sayankin
  */
-public interface IParticleCollection<E extends IParticleModel> extends Iterable<E>{
+public interface IParticleCollection<E extends IParticleModel> extends Iterable<E> {
     void stretch(IPoint stretchPoint, IVector direction);
     public void addParticles(int count);
     void moveAll();

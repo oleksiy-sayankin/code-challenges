@@ -3,13 +3,13 @@ package com.javasensei.portfolio.particles.math;
 import com.javasensei.portfolio.particles.Constants;
 
 public class Line implements ILine {
-	private IPoint point1;
-	private IPoint point2;
+    private IPoint point1;
+    private IPoint point2;
 
-	public Line(IPoint aPoint1, IPoint aPoint2) {
-		point1 = aPoint1;
-		point2 = aPoint2;
-	}
+    public Line(IPoint aPoint1, IPoint aPoint2) {
+        point1 = aPoint1;
+        point2 = aPoint2;
+    }
 
     public Line(IPoint point, IVector vector) {
         point1 = point;
@@ -17,7 +17,7 @@ public class Line implements ILine {
     }
 
     @Override
-    public double distanceTo(IPoint point){
+    public double distanceTo(IPoint point) {
         return MathHelper.distanceBetween(point, this);
     }
 
@@ -28,9 +28,9 @@ public class Line implements ILine {
     }
 
     @Override
-    public boolean has(IPoint point){
-		return distanceTo(point) < Constants.Common.ERROR;
-	}
+    public boolean has(IPoint point) {
+        return distanceTo(point) < Constants.Common.ERROR;
+    }
 
     @Override
     public void scale(double coef) {
@@ -39,18 +39,17 @@ public class Line implements ILine {
     }
 
     @Override
-    public LineCoef coef(){
-		double a = point1.getY() - point2.getY();
-		double b = point2.getX() - point1.getX();
-		double c = point1.getX() * point2.getY() - point2.getX() * point1.getY();		
-		return new LineCoef(a, b, c);
-	}
-			
+    public LineCoef coef() {
+        double a = point1.getY() - point2.getY();
+        double b = point2.getX() - point1.getX();
+        double c = point1.getX() * point2.getY() - point2.getX() * point1.getY();
+        return new LineCoef(a, b, c);
+    }
 
 
-    public IVector toVector(){
-		return MathHelper.unmodifiableVector(point2.getX() - point1.getX(), point2.getY() - point1.getY());
-	}
+    public IVector toVector() {
+        return MathHelper.unmodifiableVector(point2.getX() - point1.getX(), point2.getY() - point1.getY());
+    }
 
     @Override
     public IPoint point1() {
@@ -63,7 +62,7 @@ public class Line implements ILine {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "{" + point1 + ", " + point2 + "}";
     }
 

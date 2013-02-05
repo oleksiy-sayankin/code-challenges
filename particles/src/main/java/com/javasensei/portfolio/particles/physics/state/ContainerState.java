@@ -7,15 +7,17 @@ import com.javasensei.portfolio.particles.physics.model.IBoundModel;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 /**
- * @author asayankin
+ * @author oleksiy sayankin
  */
 public final class ContainerState {
     public final List<ParticleState> particles;
     public final BoundsState bounds;
-    public ContainerState(IParticleCollection<IParticleModel> aParticles, IBoundModel boundModel){
+
+    public ContainerState(IParticleCollection<IParticleModel> aParticles, IBoundModel boundModel) {
         List<ParticleState> bs = new ArrayList<ParticleState>();
-        for(IParticleModel particle : aParticles){
+        for (IParticleModel particle : aParticles) {
             bs.add(particle.state());
         }
         particles = Collections.unmodifiableList(bs);
@@ -23,16 +25,16 @@ public final class ContainerState {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("[ bounds = ");
         sb.append(bounds);
         sb.append(", particles = ");
         boolean first = true;
-        for(ParticleState particleState : particles){
-            if(first){
+        for (ParticleState particleState : particles) {
+            if (first) {
                 first = false;
-            }else {
+            } else {
                 sb.append(", ");
             }
             sb.append(particleState);

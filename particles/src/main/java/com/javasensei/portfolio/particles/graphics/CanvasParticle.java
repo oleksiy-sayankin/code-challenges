@@ -6,10 +6,10 @@ package com.javasensei.portfolio.particles.graphics;
 
 public final class CanvasParticle {
     public final CanvasPoint point;
-	public final int size;
+    public final int size;
 
-	public CanvasParticle(CanvasPoint canvasPoint, int aSize) {
+    public CanvasParticle(CanvasPoint canvasPoint, int aSize) {
         point = canvasPoint;
-		size = aSize;
-	}
+        size = aSize;
+    }
 }

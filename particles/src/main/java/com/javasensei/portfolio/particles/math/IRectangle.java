@@ -1,11 +1,14 @@
 package com.javasensei.portfolio.particles.math;
 
 /**
- * @author asayankin
+ * @author oleksiy sayankin
  */
-public interface IRectangle extends IPolygon{
+public interface IRectangle extends IPolygon {
     IPoint bottomLeftPoint();
+
     IPoint bottomRightPoint();
+
     IPoint topLeftPoint();
+
     IPoint topRightPoint();
 }

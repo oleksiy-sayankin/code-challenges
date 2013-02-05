@@ -9,7 +9,7 @@ import com.javasensei.portfolio.particles.math.MathHelper;
 
 public final class ParticleState {
     public final IPoint point;
-	public final int size;
+    public final int size;
 
     public ParticleState(IPoint coord, int aSize) {
         point = MathHelper.unmodifiablePoint(coord);
@@ -17,7 +17,7 @@ public final class ParticleState {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return point.toString();
     }
 }

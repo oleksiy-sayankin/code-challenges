@@ -10,33 +10,33 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * @author asayankin
+ * @author oleksiy sayankin
  */
 public class ParticleCollection<E extends IParticleModel> implements IParticleCollection<E> {
     private final List<IParticleModel> particles;
     private final IContainerModel containerModel;
 
-    public ParticleCollection(IContainerModel aContainerModel){
+    public ParticleCollection(IContainerModel aContainerModel) {
         particles = new ArrayList<IParticleModel>();
         containerModel = aContainerModel;
     }
 
     @Override
     public void moveAll() {
-            for (IParticleModel particle : particles) {
-                particle.move();
+        for (IParticleModel particle : particles) {
+            particle.move();
         }
     }
 
     @Override
-    public void addParticles(int count){
-        for (int i = 0; i < count - 1; i++) {
+    public void addParticles(int count) {
+        for (int i = 0; i <= count - 1; i++) {
             particles.add(new ParticleModel(containerModel));
         }
     }
 
     @Override
-    public  void stretch(IPoint stretchPoint, IVector direction) {
+    public void stretch(IPoint stretchPoint, IVector direction) {
         IPolygon sides = containerModel.getSides();
         double rightBound = sides.rightBound();
         double leftBound = sides.leftBound();
@@ -46,21 +46,21 @@ public class ParticleCollection<E extends IParticleModel> implements IParticleCo
         double dY = direction.getY();
         double stretchPointX = stretchPoint.getX();
         double stretchPointY = stretchPoint.getY();
-        for (IParticleModel particle : particles){
+        for (IParticleModel particle : particles) {
             double x = particle.getX();
             double y = particle.getY();
             double coefX = 1;
             double coefY = 1;
-            if(stretchPointX >= rightBound){
+            if (stretchPointX >= rightBound) {
                 coefX = (x - leftBound) / (stretchPointX - leftBound);
             }
-            if(stretchPointX <= leftBound){
+            if (stretchPointX <= leftBound) {
                 coefX = (rightBound - x) / (rightBound - stretchPointX);
             }
-            if(stretchPointY >= upBound){
+            if (stretchPointY >= upBound) {
                 coefY = (y - downBound) / (stretchPointY - downBound);
             }
-            if(stretchPointY <= downBound){
+            if (stretchPointY <= downBound) {
                 coefY = (upBound - y) / (upBound - stretchPointY);
             }
             IVector vector = new Vector(dX * coefX, dY * coefY);

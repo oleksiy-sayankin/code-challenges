@@ -4,10 +4,12 @@ import com.javasensei.portfolio.particles.math.MathDimension;
 import com.javasensei.portfolio.particles.math.IPolygon;
 
 /**
- * @author asayankin
+ * @author oleksiy sayankin
  */
 public interface IContainerModel {
-    public void setDimension(MathDimension newDimension);
-    public MathDimension getDimension();
+    void setDimension(MathDimension newDimension);
+
+    MathDimension getDimension();
+
     IPolygon getSides();
 }

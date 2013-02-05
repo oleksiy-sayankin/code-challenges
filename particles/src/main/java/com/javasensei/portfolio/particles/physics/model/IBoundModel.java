@@ -7,13 +7,14 @@ import com.javasensei.portfolio.particles.math.IVector;
 import com.javasensei.portfolio.particles.physics.state.BoundsState;
 
 /**
- * @author asayankin
+ * @author oleksiy sayankin
  */
 public interface IBoundModel {
     IRectangle bounds();
+
     void stretch(IPoint stretchPoint, IVector direction);
+
     IPolygon getSides();
-    double width();
-    double height();
+
     BoundsState state();
 }

@@ -4,12 +4,12 @@ import com.javasensei.portfolio.particles.math.*;
 import com.javasensei.portfolio.particles.physics.state.BoundsState;
 
 /**
- * @author asayankin
+ * @author oleksiy sayankin
  */
-public class BoundModel implements IBoundModel{
+public class BoundModel implements IBoundModel {
     private final IPolygon sides;
 
-    BoundModel(MathDimension dimension){
+    BoundModel(MathDimension dimension) {
         sides = initRectanglePolygon(dimension);
     }
 
@@ -26,16 +26,6 @@ public class BoundModel implements IBoundModel{
     @Override
     public IPolygon getSides() {
         return MathHelper.unmodifiablePolygon(sides);
-    }
-
-    @Override
-    public double width() {
-        return sides.width();
-    }
-
-    @Override
-    public double height() {
-        return sides.height();
     }
 
     @Override
