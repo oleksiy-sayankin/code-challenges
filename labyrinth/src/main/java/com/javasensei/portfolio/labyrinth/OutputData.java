@@ -18,7 +18,7 @@ public class OutputData {
     public void write(Writer writer) throws IOException {
         try{
         if(path.isEmpty()){
-            writer.write("NO EXIT");
+            writer.write(Constant.NO_EXIT);
         }else{
             writer.write(path.toDirectionsString());
         }

@@ -73,24 +73,24 @@ public class Labyrinth {
     public Set<Coord> exits() {
         Set<Coord> exits = new HashSet<Coord>();
         for (int i = 0; i <= height - 1; i++) {
-            Coord upSide = new Coord(i, 0);
-            Coord downSide = new Coord(i, width - 1);
-            if (isEmpty(upSide)) {
-                exits.add(upSide);
-            }
-            if (isEmpty(downSide)) {
-                exits.add(downSide);
-            }
-        }
-
-        for (int j = 0; j <= width - 1; j++) {
-            Coord leftSide = new Coord(0, j);
-            Coord rightSide = new Coord(height - 1, j);
+            Coord leftSide = new Coord(i, 0);
+            Coord rightSide = new Coord(i, width - 1);
             if (isEmpty(leftSide)) {
                 exits.add(leftSide);
             }
             if (isEmpty(rightSide)) {
                 exits.add(rightSide);
+            }
+        }
+
+        for (int j = 0; j <= width - 1; j++) {
+            Coord upSide = new Coord(0, j);
+            Coord downSide = new Coord(height - 1, j);
+            if (isEmpty(upSide)) {
+                exits.add(upSide);
+            }
+            if (isEmpty(downSide)) {
+                exits.add(downSide);
             }
         }
 
