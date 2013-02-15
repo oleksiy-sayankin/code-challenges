@@ -2,8 +2,6 @@ package com.javasensei.portfolio.labyrinth;
 
 import org.junit.Test;
 import org.junit.Assert;
-
-import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 /**
@@ -14,7 +12,7 @@ public class InputDataTest {
     @Test
     public void readTest() throws Exception {
 
-        InputData.getInstance().read(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("data001.in"))));
+        InputData.getInstance().read(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("data001.in")));
         Labyrinth expectedLabyrinth = new Labyrinth(13, 10);
         expectedLabyrinth.addRow(0, "1111111111");
         expectedLabyrinth.addRow(1, "1000010000");
