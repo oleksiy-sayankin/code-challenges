@@ -8,4 +8,8 @@ public class CircleSegment {
         this.start = start;
         this.end = end;
     }
+
+    public void normalize(){
+
+    }
 }

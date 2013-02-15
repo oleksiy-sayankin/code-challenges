@@ -11,6 +11,13 @@ public class InputData {
     private List<Circle> circles = new ArrayList<Circle>();
     private Coord initPos;
 
+    private static InputData instance = new InputData();
+    private InputData(){}
+
+    public static InputData getInstance(){
+        return instance;
+    }
+
     public Coord getInitPos(){
         return initPos;
     }

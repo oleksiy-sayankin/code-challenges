@@ -27,4 +27,24 @@ public class Circle {
         coord.setY(y);
         this.r = r;
     }
+
+    @Override
+    public String toString(){
+        return "{" + coord + ", r = " + r + "}";
+    }
+
+    @Override
+    public boolean equals(Object other){
+        if(other == null){
+            return false;
+        }
+        if(!(other instanceof  Circle)){
+            return false;
+        }
+        if(other == this){
+            return true;
+        }
+        Circle otherCircle = (Circle)other;
+        return this.coord.equals(otherCircle.coord) && MathHelper.equalsZero(this.r - otherCircle.r);
+    }
 }
