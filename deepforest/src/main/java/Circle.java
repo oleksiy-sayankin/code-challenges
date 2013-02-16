@@ -28,6 +28,10 @@ public class Circle {
         this.r = r;
     }
 
+    public Coord center(){
+        return coord;
+    }
+
     @Override
     public String toString(){
         return "{" + coord + ", r = " + r + "}";
