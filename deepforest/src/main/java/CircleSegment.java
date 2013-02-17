@@ -41,6 +41,10 @@ public class CircleSegment {
         return end;
     }
 
+    public double midPoint(){
+        return (start + end) /2d;
+    }
+
     @Override
     public boolean equals(Object other){
         if(other == null){
