@@ -1,3 +1,5 @@
+package com.javasensei.portfolio.deepforest;
+
 import java.io.BufferedReader;
 import java.io.Reader;
 import java.util.ArrayList;
@@ -10,13 +12,6 @@ import java.util.List;
 public class InputData {
     private List<Circle> circles = new ArrayList<Circle>();
     private Coord initPos;
-
-    private static InputData instance = new InputData();
-    private InputData(){}
-
-    public static InputData getInstance(){
-        return instance;
-    }
 
     public Coord getInitPos(){
         return initPos;

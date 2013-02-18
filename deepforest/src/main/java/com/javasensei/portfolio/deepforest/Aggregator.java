@@ -1,3 +1,5 @@
+package com.javasensei.portfolio.deepforest;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

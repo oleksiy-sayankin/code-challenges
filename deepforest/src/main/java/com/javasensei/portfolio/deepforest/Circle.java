@@ -1,3 +1,5 @@
+package com.javasensei.portfolio.deepforest;
+
 /**
  * @author oleksiy sayankin
  */

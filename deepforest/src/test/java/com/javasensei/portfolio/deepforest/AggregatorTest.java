@@ -1,3 +1,7 @@
+package com.javasensei.portfolio.deepforest;
+
+import com.javasensei.portfolio.deepforest.Aggregator;
+import com.javasensei.portfolio.deepforest.CircleSegment;
 import org.junit.Test;
 import org.junit.Assert;
 

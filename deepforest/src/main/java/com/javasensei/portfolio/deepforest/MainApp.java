@@ -1,7 +1,9 @@
+package com.javasensei.portfolio.deepforest;
+
 /**
- * Hello world!
- *
+ * @author oleksiy sayankin
  */
+
 public class MainApp
 {
     public static void main( String[] args )

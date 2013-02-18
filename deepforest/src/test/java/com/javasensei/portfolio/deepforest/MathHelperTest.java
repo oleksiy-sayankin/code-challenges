@@ -1,3 +1,9 @@
+package com.javasensei.portfolio.deepforest;
+
+import com.javasensei.portfolio.deepforest.Circle;
+import com.javasensei.portfolio.deepforest.CircleSegment;
+import com.javasensei.portfolio.deepforest.Coord;
+import com.javasensei.portfolio.deepforest.MathHelper;
 import org.junit.Test;
 import org.junit.Assert;
 
@@ -33,7 +39,19 @@ public class MathHelperTest {
     }
 
     @Test
-    public void shadowCoplexTest(){
+    public void shadowComplexTest(){
+        double radius = 2;
+        double x = -2;
+        double y = 2;
+        Circle circle = new Circle(new Coord(x, y), radius);
+        Coord coord = new Coord(0, 0);
+        CircleSegment expectedSegment = new CircleSegment( Math.PI / 2,   Math.PI);
+        CircleSegment actualSegment = MathHelper.shadow(circle, coord);
+        Assert.assertEquals(expectedSegment, actualSegment);
+    }
+
+    @Test
+    public void shadowComplex2Test(){
         double radius = 7;
         double h = radius / Math.sin(Math.PI / 12);
         double x = h * Math.sin(Math.PI / 4);
@@ -41,6 +59,30 @@ public class MathHelperTest {
         Circle circle = new Circle(new Coord(x, y), radius);
         Coord coord = new Coord(0, 0);
         CircleSegment expectedSegment = new CircleSegment((2 * Math.PI / 12) * 10,  (2 * Math.PI / 12) * 11);
+        CircleSegment actualSegment = MathHelper.shadow(circle, coord);
+        Assert.assertEquals(expectedSegment, actualSegment);
+    }
+
+    @Test
+    public void shadowComplex3Test(){
+        double radius = 2;
+        double x = 2;
+        double y = 2;
+        Circle circle = new Circle(new Coord(x, y), radius);
+        Coord coord = new Coord(0, 0);
+        CircleSegment expectedSegment = new CircleSegment( 0,   Math.PI / 2);
+        CircleSegment actualSegment = MathHelper.shadow(circle, coord);
+        Assert.assertEquals(expectedSegment, actualSegment);
+    }
+
+    @Test
+    public void shadowComplex4Test(){
+        double radius = 2;
+        double x = 8;
+        double y = 19;
+        Circle circle = new Circle(new Coord(x, y), radius);
+        Coord coord = new Coord(10, 17);
+        CircleSegment expectedSegment = new CircleSegment(Math.PI / 2 ,   Math.PI);
         CircleSegment actualSegment = MathHelper.shadow(circle, coord);
         Assert.assertEquals(expectedSegment, actualSegment);
     }
