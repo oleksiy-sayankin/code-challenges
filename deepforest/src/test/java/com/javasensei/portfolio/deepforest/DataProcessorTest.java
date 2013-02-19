@@ -65,4 +65,19 @@ public class DataProcessorTest{
         OutputData actualOutputData = Util.read(new FileReader(result));
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
+
+    @Test
+    public void exitExistComplex2Test() throws Exception {
+        String output = "i005.out";
+        File result = new File(outputDir, output);
+        String input = "i005.in";
+        DataProcessor.process(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input))),
+                new BufferedWriter(new FileWriter(result)));
+        OutputData expectedOutputData = new OutputData();
+        expectedOutputData.setForestIsDeep(false);
+        expectedOutputData.setExit(new Coord(58.098987149150446, 88.45119301206995));
+        OutputData actualOutputData = Util.read(new FileReader(result));
+        Assert.assertEquals(expectedOutputData, actualOutputData);
+    }
+
 }
