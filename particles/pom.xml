@@ -22,6 +22,14 @@
     </repositories>
 
     <dependencies>
+        <!--Main dependency -->
+        <dependency>
+            <groupId>com.javasensei.portfolio.math</groupId>
+            <artifactId>math</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!--Other dependency  -->
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>

@@ -18,7 +18,6 @@ public final class Constants {
     }
 
     public static class Common {
-        public static final double ERROR = 0.000001d;
         public static final double MAX_VELOCITY = 5d;
         public static final double CONTAINER_MIN_WIDTH = 10;
         public static final double CONTAINER_MIN_HEIGHT = 10;

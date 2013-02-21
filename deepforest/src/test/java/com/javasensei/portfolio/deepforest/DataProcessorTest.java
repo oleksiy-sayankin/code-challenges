@@ -143,7 +143,7 @@ public class DataProcessorTest{
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
-    @Test
+    @Test @Ignore
     public void test03() throws Exception {
         String output = "Answer03.txt";
         File result = new File(outputDir, output);
