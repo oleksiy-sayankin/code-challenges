@@ -18,16 +18,18 @@ public class CircleSegment {
     public void normalize(){
         start = MathHelper.normalize(start);
         end = MathHelper.normalize(end);
-        if(start > end){
-            end += 2 * Math.PI;
-        }
+    }
+
+    public void shiftOver2PI(){
+        start += 2 * Math.PI;
+        end += 2 * Math.PI;
     }
 
     public boolean contains(double angle){
-        double normalizedAngle = MathHelper.normalize(angle);
-        double normalizedThisStart = MathHelper.normalize(this.start);
-        double normalizedThisEnd = MathHelper.normalize(this.end);
-        return normalizedAngle >= normalizedThisStart && normalizedAngle <= normalizedThisEnd;
+        if(start < end){
+            return angle >= start && angle <= end;
+        }
+        return angle >= start && angle <= end + 2 * Math.PI;
     }
 
     @Override
@@ -44,7 +46,10 @@ public class CircleSegment {
     }
 
     public double midPoint(){
-        return (start + end) /2d;
+        if(start < end){
+            return (start + end) /2d;
+        }
+        return (start + end + 2 * Math.PI) /2d;
     }
 
     @Override

@@ -28,9 +28,9 @@ public class InputData {
             throw new Exception("Illegal argument (circlesCount = " + circlesCount + ")! Circles count must be positive or zero.");
         }
         String secondLine = br.readLine();
-        double xPos = Double.valueOf(secondLine);
-        String thirdLine = br.readLine();
-        double yPos = Double.valueOf(thirdLine);
+        String[] pos = secondLine.split(" ");
+        double xPos = Double.valueOf(pos[0]);
+        double yPos = Double.valueOf(pos[1]);
         initPos = new Coord(xPos, yPos);
         for(int i = 0; i <= circlesCount - 1; i++){
             String line = br.readLine();

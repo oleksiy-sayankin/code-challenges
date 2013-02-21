@@ -46,10 +46,7 @@ public class OutputData {
             return  true;
         }
         OutputData otherOutputData = (OutputData)other;
-        if(forestIsDeep){
-            return this.forestIsDeep == otherOutputData.forestIsDeep;
-        }
-        return exit!= null && this.exit.equals(otherOutputData.exit);
+        return this.forestIsDeep == otherOutputData.forestIsDeep;
     }
 
     @Override

@@ -34,6 +34,22 @@ public class Aggregator {
         return result;
     }
 
+
+    @Override
+    public String toString(){
+        StringBuffer sb = new StringBuffer();
+        boolean first = true;
+        for(CircleSegment segment : segments){
+            if(first){
+                first = false;
+            } else {
+                sb.append("\n");
+            }
+            sb.append(segment);
+        }
+        return sb.toString();
+    }
+
     private void addSegmentIfAllowed(List<CircleSegment> result, double start, double end) {
         double midpoint;
         midpoint = (start + end) / 2;

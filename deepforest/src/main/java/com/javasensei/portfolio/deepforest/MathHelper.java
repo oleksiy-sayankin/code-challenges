@@ -33,22 +33,25 @@ public final class MathHelper {
         }
         double x = circle.center().x() - coord.x();
         double y = circle.center().y() - coord.y();
-        double a = Math.abs(x);
+        double a = Math.abs(y);
         double sinAlpha = a / h;
         double sinDelta = circle.getR() / h;
-        double quoter = 0;
+        double alpha = 0;
+        if(x > 0 && y > 0 ){
+            alpha = Math.asin(sinAlpha);
+        }
         if(x < 0 && y > 0 ){
-            quoter = Math.PI / 2;
+            alpha = Math.PI - Math.asin(sinAlpha);
         }
         if(x < 0 && y < 0 ){
-            quoter = Math.PI;
+            alpha = Math.PI + Math.asin(sinAlpha);
         }
         if(x > 0 && y < 0 ){
-            quoter = 3 * Math.PI / 2;
+            alpha = 2 * Math.PI - Math.asin(sinAlpha);
         }
-        double alpha = Math.asin(sinAlpha) + quoter;
         double delta = Math.asin(sinDelta);
         assert (delta >= 0);
+        assert (alpha >= 0);
         CircleSegment result  = new CircleSegment(alpha - delta, alpha + delta);
         result.normalize();
         return result;
