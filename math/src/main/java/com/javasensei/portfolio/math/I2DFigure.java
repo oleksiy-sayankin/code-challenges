@@ -1,7 +1,7 @@
 package com.javasensei.portfolio.math;
 
 /**
- * @author ashvayka
+ * @author oleksiy sayankin
  */
 public interface I2DFigure extends IFigure {
     double width();
