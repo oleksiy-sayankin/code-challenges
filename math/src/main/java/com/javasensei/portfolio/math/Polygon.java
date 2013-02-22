@@ -1,11 +1,11 @@
-package com.javasensei.portfolio.particles.math;
+package com.javasensei.portfolio.math;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static com.javasensei.portfolio.particles.math.MathHelper.unmodifiableSegment;
-import static com.javasensei.portfolio.particles.math.MathHelper.unmodifiablePoint;
+import static com.javasensei.portfolio.math.MathHelper.unmodifiableSegment;
+import static com.javasensei.portfolio.math.MathHelper.unmodifiablePoint;
 
 /**
  * @author oleksiy sayankin

@@ -1,6 +1,6 @@
-package com.javasensei.portfolio.particles.math.unmodifiable;
+package com.javasensei.portfolio.math.unmodifiable;
 
-import com.javasensei.portfolio.particles.math.*;
+import com.javasensei.portfolio.math.*;
 
 /**
  * @author oleksiy sayankin

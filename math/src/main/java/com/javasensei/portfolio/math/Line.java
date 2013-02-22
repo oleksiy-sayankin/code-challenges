@@ -1,4 +1,4 @@
-package com.javasensei.portfolio.particles.math;
+package com.javasensei.portfolio.math;
 
 public class Line implements ILine {
     private IPoint point1;

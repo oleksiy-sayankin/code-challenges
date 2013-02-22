@@ -1,9 +1,9 @@
-package com.javasensei.portfolio.particles.math.unmodifiable;
+package com.javasensei.portfolio.math.unmodifiable;
 
-import com.javasensei.portfolio.particles.math.IPoint;
-import com.javasensei.portfolio.particles.math.IPolygon;
-import com.javasensei.portfolio.particles.math.IVector;
-import com.javasensei.portfolio.particles.math.Polygon;
+import com.javasensei.portfolio.math.IPoint;
+import com.javasensei.portfolio.math.IPolygon;
+import com.javasensei.portfolio.math.IVector;
+import com.javasensei.portfolio.math.Polygon;
 
 /**
  * @author oleksiy sayankin

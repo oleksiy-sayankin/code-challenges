@@ -1,8 +1,8 @@
-package com.javasensei.portfolio.particles.math.unmodifiable;
+package com.javasensei.portfolio.math.unmodifiable;
 
-import com.javasensei.portfolio.particles.math.IPoint;
-import com.javasensei.portfolio.particles.math.IVector;
-import com.javasensei.portfolio.particles.math.Point;
+import com.javasensei.portfolio.math.IPoint;
+import com.javasensei.portfolio.math.IVector;
+import com.javasensei.portfolio.math.Point;
 
 /**
  * @author oleksiy sayankin

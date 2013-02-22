@@ -1,4 +1,4 @@
-package com.javasensei.portfolio.particles.math;
+package com.javasensei.portfolio.math;
 
 import org.junit.Test;
 

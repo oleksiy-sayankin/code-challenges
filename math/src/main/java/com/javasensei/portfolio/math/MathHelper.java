@@ -1,6 +1,6 @@
-package com.javasensei.portfolio.particles.math;
+package com.javasensei.portfolio.math;
 
-import com.javasensei.portfolio.particles.math.unmodifiable.*;
+import com.javasensei.portfolio.math.unmodifiable.*;
 
 import java.util.List;
 
