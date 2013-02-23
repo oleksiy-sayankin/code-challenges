@@ -1,7 +1,7 @@
 package com.javasensei.portfolio.particles.gui;
 
 import com.javasensei.portfolio.particles.Constants;
-import com.javasensei.portfolio.particles.math.MathDimension;
+import com.javasensei.portfolio.math.MathDimension;
 import com.javasensei.portfolio.particles.physics.veiw.ContainerView;
 import com.javasensei.portfolio.particles.physics.model.ContainerModel;
 

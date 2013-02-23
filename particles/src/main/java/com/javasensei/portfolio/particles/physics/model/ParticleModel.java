@@ -5,7 +5,7 @@ package com.javasensei.portfolio.particles.physics.model;
  */
 
 import com.javasensei.portfolio.particles.*;
-import com.javasensei.portfolio.particles.math.*;
+import com.javasensei.portfolio.math.*;
 import com.javasensei.portfolio.particles.physics.state.ParticleState;
 
 public class ParticleModel implements IParticleModel {

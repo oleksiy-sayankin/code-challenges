@@ -1,7 +1,7 @@
 package com.javasensei.portfolio.particles.physics.model;
 
-import com.javasensei.portfolio.particles.math.IPoint;
-import com.javasensei.portfolio.particles.math.IVector;
+import com.javasensei.portfolio.math.IPoint;
+import com.javasensei.portfolio.math.IVector;
 
 /**
  * @author oleksiy sayankin

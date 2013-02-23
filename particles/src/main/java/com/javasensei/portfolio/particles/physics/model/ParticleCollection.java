@@ -1,9 +1,9 @@
 package com.javasensei.portfolio.particles.physics.model;
 
-import com.javasensei.portfolio.particles.math.IPoint;
-import com.javasensei.portfolio.particles.math.IPolygon;
-import com.javasensei.portfolio.particles.math.IVector;
-import com.javasensei.portfolio.particles.math.Vector;
+import com.javasensei.portfolio.math.IPoint;
+import com.javasensei.portfolio.math.IPolygon;
+import com.javasensei.portfolio.math.IVector;
+import com.javasensei.portfolio.math.Vector;
 
 import java.util.ArrayList;
 import java.util.Iterator;
