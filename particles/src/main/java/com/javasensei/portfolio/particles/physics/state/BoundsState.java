@@ -1,7 +1,7 @@
 package com.javasensei.portfolio.particles.physics.state;
 
-import com.javasensei.portfolio.particles.math.IPolygon;
-import com.javasensei.portfolio.particles.math.MathHelper;
+import com.javasensei.portfolio.math.IPolygon;
+import com.javasensei.portfolio.math.MathHelper;
 
 /**
  * @author oleksiy sayankin

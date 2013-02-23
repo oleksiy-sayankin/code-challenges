@@ -4,8 +4,8 @@ package com.javasensei.portfolio.particles.physics.state;
  * @author oleksiy sayankin
  */
 
-import com.javasensei.portfolio.particles.math.IPoint;
-import com.javasensei.portfolio.particles.math.MathHelper;
+import com.javasensei.portfolio.math.IPoint;
+import com.javasensei.portfolio.math.MathHelper;
 
 public final class ParticleState {
     public final IPoint point;

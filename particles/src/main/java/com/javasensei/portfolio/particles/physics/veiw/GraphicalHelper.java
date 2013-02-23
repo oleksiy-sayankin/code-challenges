@@ -5,9 +5,9 @@ import com.javasensei.portfolio.particles.graphics.CanvasParticle;
 import com.javasensei.portfolio.particles.graphics.CanvasPoint;
 import com.javasensei.portfolio.particles.graphics.CanvasPolygon;
 import com.javasensei.portfolio.particles.graphics.CanvasRectangle;
-import com.javasensei.portfolio.particles.math.IPoint;
-import com.javasensei.portfolio.particles.math.IPolygon;
-import com.javasensei.portfolio.particles.math.IRectangle;
+import com.javasensei.portfolio.math.IPoint;
+import com.javasensei.portfolio.math.IPolygon;
+import com.javasensei.portfolio.math.IRectangle;
 import com.javasensei.portfolio.particles.physics.state.ParticleState;
 
 /**

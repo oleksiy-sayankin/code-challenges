@@ -1,8 +1,8 @@
 package com.javasensei.portfolio.particles.physics.state;
 
-import com.javasensei.portfolio.particles.math.IPolygon;
-import com.javasensei.portfolio.particles.math.Point;
-import com.javasensei.portfolio.particles.math.Polygon;
+import com.javasensei.portfolio.math.IPolygon;
+import com.javasensei.portfolio.math.Point;
+import com.javasensei.portfolio.math.Polygon;
 import org.junit.Test;
 
 /**

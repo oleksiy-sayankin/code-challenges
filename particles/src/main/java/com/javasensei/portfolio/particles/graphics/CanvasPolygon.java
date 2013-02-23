@@ -1,8 +1,8 @@
 package com.javasensei.portfolio.particles.graphics;
 
 import com.javasensei.portfolio.particles.physics.veiw.GraphicalHelper;
-import com.javasensei.portfolio.particles.math.IPoint;
-import com.javasensei.portfolio.particles.math.IPolygon;
+import com.javasensei.portfolio.math.IPoint;
+import com.javasensei.portfolio.math.IPolygon;
 
 import java.util.List;
 

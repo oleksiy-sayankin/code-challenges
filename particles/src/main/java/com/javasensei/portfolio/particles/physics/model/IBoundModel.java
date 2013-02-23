@@ -1,9 +1,9 @@
 package com.javasensei.portfolio.particles.physics.model;
 
-import com.javasensei.portfolio.particles.math.IPoint;
-import com.javasensei.portfolio.particles.math.IPolygon;
-import com.javasensei.portfolio.particles.math.IRectangle;
-import com.javasensei.portfolio.particles.math.IVector;
+import com.javasensei.portfolio.math.IPoint;
+import com.javasensei.portfolio.math.IPolygon;
+import com.javasensei.portfolio.math.IRectangle;
+import com.javasensei.portfolio.math.IVector;
 import com.javasensei.portfolio.particles.physics.state.BoundsState;
 
 /**
