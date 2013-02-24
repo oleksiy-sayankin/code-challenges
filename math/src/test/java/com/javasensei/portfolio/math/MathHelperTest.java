@@ -20,13 +20,7 @@ public class MathHelperTest {
         assertEquals(EXPECTED_SCALAR_PRODUCT, actualScalarProduct);
     }
 
-    @Test
-    public void moduleTest() {
-        IVector a = new Vector(3, 4);
-        final Double EXPECTED_MODULE = 5d;
-        Double actualModule = MathHelper.module(a);
-        assertEquals(EXPECTED_MODULE, actualModule);
-    }
+
 
     @Test
     public void cosTest() {
@@ -37,23 +31,8 @@ public class MathHelperTest {
         assertEquals(EXPECTED_COS, actualCos);
     }
 
-    @Test
-    public void distanceBetweenPointsTest() {
-        IPoint a = new Point(3, 2);
-        IPoint b = new Point(7, 5);
-        final Double EXPECTED_DISTANCE = 5d;
-        Double actualDistance = MathHelper.distanceBetween(a, b);
-        assertEquals(EXPECTED_DISTANCE, actualDistance);
-    }
 
-    @Test
-    public void distanceBetweenPointAndLineTest() {
-        IPoint point = new Point(1, 1);
-        ILine line = new Line(new Point(0, 1), new Point(1, 0));
-        final Double EXPECTED_DISTANCE = 0.5d;
-        Double actualDistance = MathHelper.distanceBetween(point, line);
-        assertEquals(EXPECTED_DISTANCE, actualDistance);
-    }
+
 
     @Test
     public void detTest() {
@@ -89,7 +68,7 @@ public class MathHelperTest {
     public void intersectionBetweenLineAndLineTrueTest() {
         ILine lineA = new Line(new Point(0, 1), new Point(1, 0));
         ILine lineB = new Line(new Point(0, 0), new Point(1, 1));
-        final IPoint EXPECTED_INTERSECTION_POINT = MathHelper.unmodifiablePoint(0.5d, 0.5d);
+        final IPoint EXPECTED_INTERSECTION_POINT = Primitives.unmodifiablePoint(0.5d, 0.5d);
         IPoint actualIntersectionPoint = MathHelper.intersection(lineA, lineB);
         assertEquals(EXPECTED_INTERSECTION_POINT, actualIntersectionPoint);
     }
@@ -115,7 +94,7 @@ public class MathHelperTest {
     public void intersectionBetweenSegmentAndSegmentTrueTest() {
         ISegment segmentA = new Segment(new Point(2, 3), new Point(3, 2));
         ISegment segmentB = new Segment(new Point(0, 0), new Point(4, 4));
-        final IPoint EXPECTED_INTERSECTION_POINT = MathHelper.unmodifiablePoint(2.5d, 2.5d);
+        final IPoint EXPECTED_INTERSECTION_POINT = Primitives.unmodifiablePoint(2.5d, 2.5d);
         IPoint actualIntersectionPoint = MathHelper.intersection(segmentA, segmentB);
         assertEquals(EXPECTED_INTERSECTION_POINT, actualIntersectionPoint);
     }
@@ -134,7 +113,7 @@ public class MathHelperTest {
         ISegment segment = new Segment(new Point(0.1d, 0.1d), new Point(1.1d, 1.1d));
         ILine line = new Line(new Point(0, 1), new Point(1, 0));
         IPoint actualIntersectionPoint = MathHelper.intersection(line, segment);
-        final IPoint EXPECTED_INTERSECTION_POINT = MathHelper.unmodifiablePoint(0.5d, 0.5d);
+        final IPoint EXPECTED_INTERSECTION_POINT = Primitives.unmodifiablePoint(0.5d, 0.5d);
         assertEquals(EXPECTED_INTERSECTION_POINT, actualIntersectionPoint);
     }
 
@@ -156,54 +135,12 @@ public class MathHelperTest {
         IVector direction = new Vector(point, actualIntersectionPoint2);
         direction.normalize();
 
-        final IPoint EXPECTED_INTERSECTION_POINT = MathHelper.unmodifiablePoint(509.51162707334277d, 346);
+        final IPoint EXPECTED_INTERSECTION_POINT = Primitives.unmodifiablePoint(509.51162707334277d, 346);
         assertEquals(EXPECTED_INTERSECTION_POINT, actualIntersectionPoint2);
     }
 
-    @Test
-    public void isCollinearTrueTest() {
-        IVector a = new Vector(1, 3);
-        IVector b = new Vector(3, 9);
-        IVector c = new Vector(new Point(5, 15), new Point(6, 18));
-        IVector d = new Vector(0, 0);
-        IVector e = new Vector(0, 0);
-        assertTrue(MathHelper.isCollinear(a, b));
-        assertTrue(MathHelper.isCollinear(b, c));
-        assertTrue(MathHelper.isCollinear(a, c));
-        assertTrue(MathHelper.isCollinear(d, c));
-        assertTrue(MathHelper.isCollinear(d, e));
-    }
-
-    @Test
-    public void isCollinearFalseTest() {
-        IVector a = new Vector(2, 3);
-        IVector b = new Vector(5, 9);
-        IVector c = new Vector(new Point(1, 15), new Point(8, 18));
-        assertFalse(MathHelper.isCollinear(a, b));
-        assertFalse(MathHelper.isCollinear(b, c));
-        assertFalse(MathHelper.isCollinear(a, c));
-    }
 
 
-    @Test
-    public void isSemidirectTrueTest() {
-        IVector a = new Vector(2, 3);
-        IVector b = new Vector(200, 300);
-        IVector c = new Vector(new Point(-6, -9), new Point(10, 15));
-        assertTrue(MathHelper.isSemidirect(a, b));
-        assertTrue(MathHelper.isSemidirect(b, c));
-        assertTrue(MathHelper.isSemidirect(a, c));
-    }
-
-    @Test
-    public void isSemidirectFalseTest() {
-        IVector a = new Vector(21, 3);
-        IVector b = new Vector(201, 300);
-        IVector c = new Vector(new Point(-7, -9), new Point(10, 15));
-        assertFalse(MathHelper.isSemidirect(a, b));
-        assertFalse(MathHelper.isSemidirect(b, c));
-        assertFalse(MathHelper.isSemidirect(a, c));
-    }
 
     @Test
     public void nearestSegmentInDirectionTest() {
@@ -217,7 +154,7 @@ public class MathHelperTest {
         Point point = new Point(401.6420323796443, 78.51515990744261);
         Vector vector = new Vector(0.22980607359851407, 0.5698514120067321);
 
-        final ISegment EXPECTED_SEGMENT = MathHelper.unmodifiableSegment(new Segment(width, height, 0, height));
+        final ISegment EXPECTED_SEGMENT = Primitives.unmodifiableSegment(new Segment(width, height, 0, height));
         ISegment actualSegment = MathHelper.nearestSegmentInDirection(sides, point, vector);
         assertEquals(EXPECTED_SEGMENT, actualSegment);
 
@@ -235,7 +172,7 @@ public class MathHelperTest {
         IPoint point = new Point(4, 4);
         IVector vector = new Vector(1, 1);
 
-        final ISegment EXPECTED_SEGMENT = MathHelper.unmodifiableSegment(new Segment(width, 0, width, width));
+        final ISegment EXPECTED_SEGMENT = Primitives.unmodifiableSegment(new Segment(width, 0, width, width));
         ISegment actualSegment = MathHelper.nearestSegmentInDirection(sides, point, vector);
         assertEquals(EXPECTED_SEGMENT, actualSegment);
 
@@ -262,31 +199,9 @@ public class MathHelperTest {
         assertFalse(EXPECTED_VECTOR.equals(actualVector));
     }
 
-    @Test
-    public void reflectPointAgainstLineTest() {
-        IPoint point = new Point(21, 3);
-        ILine line = new Line(new Point(0, 0), new Point(5, 5));
-        final IPoint EXPECTED_POINT = MathHelper.unmodifiablePoint(3, 21);
-        IPoint actualPoint = MathHelper.reflectPointAgainstLine(point, line);
-        assertEquals(EXPECTED_POINT, actualPoint);
-    }
 
 
-    @Test
-    public void reflectPointAgainstLineAdditionalTest() {
-        IPoint point = new Point(-4, 1);
-        ILine line = new Line(new Point(0, 0), new Point(-5, 5));
-        final IPoint EXPECTED_POINT = MathHelper.unmodifiablePoint(-1, 4);
-        IPoint actualPoint = MathHelper.reflectPointAgainstLine(point, line);
-        assertEquals(EXPECTED_POINT, actualPoint);
-    }
 
-    @Test
-    public void reflectVectorAgainstLineTest() {
-        IVector vector = new Vector(1, 1);
-        ILine line = new Line(new Point(0, 0), new Point(1, 0));
-        IVector actualReflectedVector = MathHelper.reflectVectorAgainstLine(vector, line);
-    }
 
     @Test
     public void signedAreaTest() {

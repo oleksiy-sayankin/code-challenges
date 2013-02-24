@@ -1,5 +1,12 @@
 package com.javasensei.portfolio.math;
 
+import static com.javasensei.portfolio.math.MathHelper.orthogonal;
+import static com.javasensei.portfolio.math.MathHelper.intersection;
+
+/**
+ * @author oleksiy sayankin
+ */
+
 public class Point implements IPoint {
     private double x;
     private double y;
@@ -26,7 +33,7 @@ public class Point implements IPoint {
 
     @Override
     public double distanceTo(IPoint p) {
-        return MathHelper.distanceBetween(this, p);
+        return Math.sqrt((this.getX() - p.getX()) * (this.getX() - p.getX()) + (this.getY() - p.getY()) * (this.getY() - p.getY()));
     }
 
     @Override
@@ -59,6 +66,15 @@ public class Point implements IPoint {
     public IPoint copy() {
         return new Point(x, y);
     }
+
+    @Override
+    public IPoint reflectAgainst(ILine line) {
+        ILine orthogonalLine = orthogonal(line, this);
+        IPoint intersectionPoint = intersection(line, orthogonalLine);
+        IVector direction = new Vector(this, intersectionPoint);
+        IPoint resultPoint = new Point(intersectionPoint);
+        resultPoint.translateInDirection(direction);
+        return Primitives.unmodifiablePoint(resultPoint);    }
 
     @Override
     public void translateInDirection(IVector vector) {

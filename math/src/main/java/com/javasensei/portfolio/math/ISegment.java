@@ -5,20 +5,12 @@ package com.javasensei.portfolio.math;
  */
 public interface ISegment extends IFigure {
     double module();
-
-    IPoint getPoint1();
-
-    IPoint getPoint2();
-
+    IPoint getStartPoint();
+    IPoint getEndPoint();
     double getPoint1X();
-
     double getPoint1Y();
-
     double getPoint2X();
-
     double getPoint2Y();
-
     ILine toLine();
-
     IVector toVector();
 }

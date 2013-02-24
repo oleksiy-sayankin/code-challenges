@@ -36,7 +36,7 @@ public class ContainerModel implements Runnable, IContainerModel {
         }
         double dX = newDimension.width - currentDimension.width;
         double dY = newDimension.height - currentDimension.height;
-        IVector direction = MathHelper.unmodifiableVector(dX, dY);
+        IVector direction = Primitives.unmodifiableVector(dX, dY);
         particlesAndBounds.lock();
         try {
             IPoint point = bounds.bounds().bottomRightPoint();

@@ -5,8 +5,7 @@ package com.javasensei.portfolio.math;
  */
 public interface IPoint extends IFigure {
     double getX();
-
     double getY();
-
     IPoint copy();
+    IPoint reflectAgainst(ILine line);
 }

@@ -25,7 +25,7 @@ public class ParticleModel implements IParticleModel {
     @Override
     public void move() {
         ISegment segment = MathHelper.nearestSegmentInDirection(particleContainer.getSides().toSegmentsClockwise(), coord, velocity);
-        double distance = MathHelper.distanceBetween(coord, segment);
+        double distance = segment.distanceTo(coord);
         if (distance > velocity.module()) {
             coord.translateInDirection(velocity);
         } else {

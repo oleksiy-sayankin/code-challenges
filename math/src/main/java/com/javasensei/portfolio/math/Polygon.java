@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static com.javasensei.portfolio.math.MathHelper.unmodifiableSegment;
-import static com.javasensei.portfolio.math.MathHelper.unmodifiablePoint;
+import static com.javasensei.portfolio.math.Primitives.unmodifiableSegment;
+import static com.javasensei.portfolio.math.Primitives.unmodifiableRectangle;
+import static com.javasensei.portfolio.math.MathHelper.nearestSegment;
+import static com.javasensei.portfolio.math.MathHelper.signedArea;
+import static com.javasensei.portfolio.math.MathHelper.equalsZero;
 
 /**
  * @author oleksiy sayankin
@@ -31,7 +34,7 @@ public class Polygon implements IPolygon {
 
     @Override
     public boolean contains(IPoint point) {
-        ISegment segment = MathHelper.nearestSegment(toSegmentsClockwise(), point);
+        ISegment segment = nearestSegment(toSegmentsClockwise(), point);
         return isOnTheRightSide(segment.toVector(), new Point(point.getX() - segment.getPoint1X(), point.getY() - segment.getPoint1Y()));
     }
 
@@ -40,7 +43,7 @@ public class Polygon implements IPolygon {
         if(points.isEmpty()){
             return Double.NaN;
         }
-        return MathHelper.nearestSegment(toSegmentsClockwise(), point).distanceTo(point);
+        return nearestSegment(toSegmentsClockwise(), point).distanceTo(point);
     }
 
     @Override
@@ -76,7 +79,7 @@ public class Polygon implements IPolygon {
     public List<IPoint> points() {
         List<IPoint> unmodifiablePoints = new ArrayList<IPoint>();
         for (IPoint point : points) {
-            unmodifiablePoints.add(unmodifiablePoint(point));
+            unmodifiablePoints.add(Primitives.unmodifiablePoint(point));
         }
         return Collections.unmodifiableList(unmodifiablePoints);
     }
@@ -116,7 +119,7 @@ public class Polygon implements IPolygon {
     }
 
     private static boolean isOnTheRightSide(IVector a, IPoint point) {
-        return MathHelper.signedArea(a, new Vector(point)) < 0;
+        return signedArea(a, new Vector(point)) < 0;
     }
 
     @Override
@@ -138,7 +141,7 @@ public class Polygon implements IPolygon {
 
     @Override
     public IRectangle bounds() {
-        return MathHelper.unmodifiableRectangle(new Rectangle(leftBound(), rightBound(), upBound(), downBound()));
+        return unmodifiableRectangle(new Rectangle(leftBound(), rightBound(), upBound(), downBound()));
     }
 
     @Override
@@ -154,12 +157,12 @@ public class Polygon implements IPolygon {
         double area = 0;
         List<ISegment> segments = this.toSegmentsClockwise();
         for (ISegment segment : segments) {
-            double h = segment.getPoint2().getX() - segment.getPoint1().getX();
-            if (MathHelper.equalsZero(h)) {
+            double h = segment.getEndPoint().getX() - segment.getStartPoint().getX();
+            if (equalsZero(h)) {
                 continue;
             }
-            double a = segment.getPoint1().getY();
-            double b = segment.getPoint2().getY();
+            double a = segment.getStartPoint().getY();
+            double b = segment.getEndPoint().getY();
             double trapezoidArea = (a + b) * h / 2;
             area += trapezoidArea;
         }

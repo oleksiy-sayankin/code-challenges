@@ -1,5 +1,11 @@
 package com.javasensei.portfolio.math;
 
+import static com.javasensei.portfolio.math.MathHelper.scalarProduct;
+import static com.javasensei.portfolio.math.MathHelper.isIntersection;
+
+/**
+ * @author oleksiy sayankin
+ */
 
 public class Vector implements IVector {
     private double x;
@@ -46,19 +52,30 @@ public class Vector implements IVector {
 
     @Override
     public double module() {
-        return MathHelper.module(this);
+        assert (scalarProduct(this, this) >= 0);
+        return Math.sqrt(scalarProduct(this, this));
     }
 
     @Override
     public IVector reflectAgainst(ILine line) {
-        return MathHelper.reflectVectorAgainstLine(this, line);
+        IPoint point = new Point(x, y);
+        ILine translatedLine = new Line(new Point(0, 0), line.toVector());
+        IPoint reflectedPoint = point.reflectAgainst(translatedLine);
+        return Primitives.unmodifiableVector(new Vector(reflectedPoint.getX(), reflectedPoint.getY()));
     }
 
     @Override
     public boolean isSemidirect(IVector vector) {
-        return MathHelper.isSemidirect(this, vector);
+        return isCollinear(vector) && scalarProduct(this, vector) > 0;
     }
 
+    @Override
+    public  boolean isCollinear(IVector otherVector) {
+        if (this.isNull() || otherVector.isNull()) {
+            return true;
+        }
+        return !isIntersection(this.toLine(), otherVector.toLine());
+    }
 
     @Override
     public boolean equals(Object o) {

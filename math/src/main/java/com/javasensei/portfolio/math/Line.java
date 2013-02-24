@@ -1,5 +1,12 @@
 package com.javasensei.portfolio.math;
 
+import static com.javasensei.portfolio.math.Primitives.unmodifiableVector;
+import static com.javasensei.portfolio.math.Primitives.unmodifiablePoint;
+
+/**
+ * @author oleksiy sayankin
+ */
+
 public class Line implements ILine {
     private IPoint point1;
     private IPoint point2;
@@ -16,7 +23,10 @@ public class Line implements ILine {
 
     @Override
     public double distanceTo(IPoint point) {
-        return MathHelper.distanceBetween(point, this);
+        LineCoef coef = coef();
+        double x = point.getX();
+        double y = point.getY();
+        return (coef.a * x + coef.b * y + coef.c) / (coef.a * coef.a + coef.b * coef.b);
     }
 
     @Override
@@ -46,22 +56,21 @@ public class Line implements ILine {
 
 
     public IVector toVector() {
-        return MathHelper.unmodifiableVector(point2.getX() - point1.getX(), point2.getY() - point1.getY());
+        return Primitives.unmodifiableVector(point2.getX() - point1.getX(), point2.getY() - point1.getY());
     }
 
     @Override
     public IPoint point1() {
-        return MathHelper.unmodifiablePoint(point1);
+        return Primitives.unmodifiablePoint(point1);
     }
 
     @Override
     public IPoint point2() {
-        return MathHelper.unmodifiablePoint(point2);
+        return Primitives.unmodifiablePoint(point2);
     }
 
     @Override
     public String toString() {
         return "{" + point1 + ", " + point2 + "}";
     }
-
 }

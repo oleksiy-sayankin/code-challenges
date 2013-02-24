@@ -12,6 +12,7 @@ public interface IVector {
     void reverse();
     boolean isNull();
     boolean isSemidirect(IVector vector);
+    boolean isCollinear(IVector vector);
     IVector reflectAgainst(ILine a);
     double module();
     ILine toLine(IPoint point);

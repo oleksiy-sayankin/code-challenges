@@ -1,5 +1,9 @@
 package com.javasensei.portfolio.math;
 
+/**
+ * @author oleksiy sayankin
+ */
+
 public final class LineCoef {
     public final double a;
     public final double b;

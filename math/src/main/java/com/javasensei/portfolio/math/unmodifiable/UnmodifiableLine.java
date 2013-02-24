@@ -7,11 +7,11 @@ import com.javasensei.portfolio.math.*;
  */
 public final class UnmodifiableLine extends Line {
     public UnmodifiableLine(IPoint aPoint1, IPoint aPoint2) {
-        super(MathHelper.unmodifiablePoint(aPoint1), MathHelper.unmodifiablePoint(aPoint2));
+        super(Primitives.unmodifiablePoint(aPoint1), Primitives.unmodifiablePoint(aPoint2));
     }
 
     public UnmodifiableLine(IPoint point, IVector vector) {
-        super(MathHelper.unmodifiablePoint(point), MathHelper.unmodifiablePoint(new Point(point.getX() + vector.getX(), point.getY() + vector.getY())));
+        super(Primitives.unmodifiablePoint(point), Primitives.unmodifiablePoint(new Point(point.getX() + vector.getX(), point.getY() + vector.getY())));
     }
 
     public UnmodifiableLine(ILine line) {

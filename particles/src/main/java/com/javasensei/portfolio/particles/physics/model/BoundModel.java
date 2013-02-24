@@ -25,7 +25,7 @@ public class BoundModel implements IBoundModel {
 
     @Override
     public IPolygon getSides() {
-        return MathHelper.unmodifiablePolygon(sides);
+        return Primitives.unmodifiablePolygon(sides);
     }
 
     @Override
