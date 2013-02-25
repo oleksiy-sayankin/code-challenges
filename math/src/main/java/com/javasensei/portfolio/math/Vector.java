@@ -2,6 +2,7 @@ package com.javasensei.portfolio.math;
 
 import static com.javasensei.portfolio.math.MathHelper.scalarProduct;
 import static com.javasensei.portfolio.math.MathHelper.isIntersection;
+import static com.javasensei.portfolio.math.MathHelper.equalsZero;
 
 /**
  * @author oleksiy sayankin
@@ -57,12 +58,50 @@ public class Vector implements IVector {
     }
 
     @Override
+    public double angle() {
+        if (this.isNull()){
+            return 0;
+        }
+        double sinAlpha = Math.abs(y) / this.module();
+        double alpha = 0;
+        if(x > 0 && y > 0 ){
+            alpha = Math.asin(sinAlpha);
+        }
+        if(x < 0 && y > 0 ){
+            alpha = Math.PI - Math.asin(sinAlpha);
+        }
+        if(x < 0 && y < 0 ){
+            alpha = Math.PI + Math.asin(sinAlpha);
+        }
+        if(x > 0 && y < 0 ){
+            alpha = 2 * Math.PI - Math.asin(sinAlpha);
+        }
+        return alpha;
+    }
+
+    @Override
     public IVector reflectAgainst(ILine line) {
         IPoint point = new Point(x, y);
         ILine translatedLine = new Line(new Point(0, 0), line.toVector());
         IPoint reflectedPoint = point.reflectAgainst(translatedLine);
         return Primitives.unmodifiableVector(new Vector(reflectedPoint.getX(), reflectedPoint.getY()));
     }
+
+    @Override
+    public IVector orthogonal() {
+        double ortX;
+        double ortY;
+        if (!equalsZero(x)) {
+            ortY = 1;
+            ortX = -(y * ortY) / x;
+            return Primitives.unmodifiableVector(new Vector(ortX, ortY));
+        }
+        if (!equalsZero(y)) {
+            ortX = 1;
+            ortY = -(x * ortX) / y;
+            return Primitives.unmodifiableVector(new Vector(ortX, ortY));
+        }
+        return Primitives.unmodifiableVector(new Vector(0, 0));    }
 
     @Override
     public boolean isSemidirect(IVector vector) {
@@ -133,5 +172,14 @@ public class Vector implements IVector {
     public void reverse() {
         x = -x;
         y = -y;
+    }
+
+    @Override
+    public void rotate(double angleDelta) {
+        double startAngel = this.angle();
+        double destinationAngle = startAngel + angleDelta;
+        double module = module();
+        x = Math.cos(destinationAngle) * module;
+        y = Math.sin(destinationAngle) * module;
     }
 }

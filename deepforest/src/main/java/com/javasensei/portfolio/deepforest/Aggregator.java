@@ -1,5 +1,9 @@
 package com.javasensei.portfolio.deepforest;
 
+import com.javasensei.portfolio.math.Arc;
+import com.javasensei.portfolio.math.IArc;
+import com.javasensei.portfolio.math.MathHelper;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -7,30 +11,38 @@ import java.util.List;
  @author oleksiy sayankin
  */
 public class Aggregator {
-    private List<CircleSegment> segments = new ArrayList<CircleSegment>();
+    private List<IArc> arcs = new ArrayList<IArc>();
 
-    public void add(CircleSegment segment){
-        CircleSegment normalizedSegment = new CircleSegment(segment);
-        normalizedSegment.normalize();
-        segments.add(normalizedSegment);
+    public void add(Arc arc){
+        Arc normalizedArc = new Arc(arc);
+        normalizedArc.normalize();
+        arcs.add(normalizedArc);
     }
 
-    public List<CircleSegment> freeSegments(){
-        if(segments.isEmpty()){
+    public List<IArc> freeArcs(){
+        if(arcs.isEmpty()){
             return null;
         }
-        List<CircleSegment> result = new ArrayList<CircleSegment>();
-        double[] allPoints = allPoints();
+        List<IArc> result = new ArrayList<IArc>();
+        double[] allAngles = allAngles();
         double start;
         double end;
-        for(int i = 0; i <= allPoints.length - 2; i++){
-            start = allPoints[i];
-            end = allPoints[i + 1];
-            addSegmentIfAllowed(result, start, end);
+        double midAngle;
+        for(int i = 0; i <= allAngles.length - 2; i++){
+            start = allAngles[i];
+            end = allAngles[i + 1];
+            midAngle = (start + end) / 2;
+            if(isFreeAngle(midAngle)){
+                result.add(new Arc(start, end));
+            }
         }
-        start = allPoints[allPoints.length - 1];
-        end = allPoints[0] + 2 * Math.PI;
-        addSegmentIfAllowed(result, start, end);
+        start = allAngles[allAngles.length - 1];
+        end = allAngles[0] + 2 * Math.PI;
+        midAngle = (start + end) / 2;
+
+        if(isFreeAngle(midAngle)){
+            result.add(new Arc(start, end));
+        }
         return result;
     }
 
@@ -39,42 +51,33 @@ public class Aggregator {
     public String toString(){
         StringBuffer sb = new StringBuffer();
         boolean first = true;
-        for(CircleSegment segment : segments){
+        for(IArc arc : arcs){
             if(first){
                 first = false;
             } else {
                 sb.append("\n");
             }
-            sb.append(segment);
+            sb.append(arc);
         }
         return sb.toString();
     }
 
-    private void addSegmentIfAllowed(List<CircleSegment> result, double start, double end) {
-        double midpoint;
-        midpoint = (start + end) / 2;
-        if(isFreePoint(midpoint)){
-            result.add(new CircleSegment(start, end));
-        }
-    }
-
-
-    private double[] allPoints(){
-        double[] result = new double[segments.size() * 2];
+    private double[] allAngles(){
+        double[] allAngles = new double[arcs.size() * 2];
         int i = 0;
-        for(CircleSegment segment : segments){
-            result[i] = segment.getStart();
+        for(IArc arc : arcs){
+            allAngles[i] = arc.startAngle();
             i++;
-            result[i] = segment.getEnd();
+            allAngles[i] = arc.endAngle();
             i++;
         }
-        Arrays.sort(result);
-        return result;
+        Arrays.sort(allAngles);
+        return allAngles;
     }
 
-    private boolean isFreePoint(double point){
-        for(CircleSegment segment : segments){
-            if(segment.contains(point)) return false;
+    private boolean isFreeAngle(double angle){
+        for(IArc arc : arcs){
+            if(arc.containsAngle(angle)) return false;
         }
         return true;
     }

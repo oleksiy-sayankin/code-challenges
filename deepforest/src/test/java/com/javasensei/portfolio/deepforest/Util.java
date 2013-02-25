@@ -1,5 +1,7 @@
 package com.javasensei.portfolio.deepforest;
 
+import com.javasensei.portfolio.math.Point;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -48,7 +50,7 @@ public final class Util {
                 String[] values = secondLine.split(" ");
                 double x = Double.valueOf(values[0]);
                 double y = Double.valueOf(values[1]);
-                outputData.setExit(new Coord(x, y));
+                outputData.setExit(new Point(x, y));
             }
         }   finally {
             br.close();

@@ -1,8 +1,9 @@
 package com.javasensei.portfolio.deepforest;
 
-import com.javasensei.portfolio.deepforest.Circle;
-import com.javasensei.portfolio.deepforest.Coord;
-import com.javasensei.portfolio.deepforest.InputData;
+import com.javasensei.portfolio.math.Circle;
+import com.javasensei.portfolio.math.ICircle;
+import com.javasensei.portfolio.math.IPoint;
+import com.javasensei.portfolio.math.Point;
 import org.junit.Test;
 import org.junit.Assert;
 
@@ -19,15 +20,15 @@ public class InputDataTest {
         String input = "i002.in";
         InputData inputData = new InputData();
         inputData.read(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input)));
-        Coord expectedCoord = new Coord(0, 0);
-        Coord actualCoord = inputData.getInitPos();
-        List<Circle> actualList = inputData.getCircles();
-        List<Circle> expectedList = new ArrayList<Circle>();
-        expectedList.add(new Circle(new Coord(-2, 2), 2));
-        expectedList.add(new Circle(new Coord(-2, -2), 2));
-        expectedList.add(new Circle(new Coord(2, -2), 2));
-        expectedList.add(new Circle(new Coord(2, 2), 2));
+        IPoint expectedPoint = new Point(0, 0);
+        IPoint actualPoint = inputData.getInitPos();
+        List<ICircle> actualList = inputData.getCircles();
+        List<ICircle> expectedList = new ArrayList<ICircle>();
+        expectedList.add(new Circle(new Point(-2, 2), 2));
+        expectedList.add(new Circle(new Point(-2, -2), 2));
+        expectedList.add(new Circle(new Point(2, -2), 2));
+        expectedList.add(new Circle(new Point(2, 2), 2));
         Assert.assertEquals(expectedList, actualList);
-        Assert.assertEquals(expectedCoord, actualCoord);
+        Assert.assertEquals(expectedPoint, actualPoint);
     }
 }

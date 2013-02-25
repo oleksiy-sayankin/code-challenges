@@ -1,5 +1,7 @@
 package com.javasensei.portfolio.deepforest;
 
+import com.javasensei.portfolio.math.IPoint;
+
 import java.io.IOException;
 import java.io.Writer;
 
@@ -8,7 +10,7 @@ import java.io.Writer;
  */
 public class OutputData {
     private boolean forestIsDeep;
-    private Coord exit;
+    private IPoint exit;
 
 
 
@@ -19,7 +21,7 @@ public class OutputData {
             }else{
                 writer.write(Constants.NO);
                 writer.write("\n");
-                writer.write(exit.x() + " " + exit.y());
+                writer.write(exit.getX() + " " + exit.getY());
             }
             writer.flush();
         }finally {
@@ -30,7 +32,7 @@ public class OutputData {
         this.forestIsDeep = forestIsDeep;
     }
 
-    public void setExit(Coord exit){
+    public void setExit(IPoint exit){
        this.exit = exit;
     }
 

@@ -31,30 +31,6 @@ public final class MathHelper {
         return det(a.getX(), a.getY(), b.getX(), b.getY());
     }
 
-    public static IVector orthogonal(final IVector vector) {
-        double x = vector.getX();
-        double y = vector.getY();
-        double ortX;
-        double ortY;
-        if (!equalsZero(x)) {
-            ortY = 1;
-            ortX = -(y * ortY) / x;
-            return Primitives.unmodifiableVector(new Vector(ortX, ortY));
-        }
-        if (!equalsZero(y)) {
-            ortX = 1;
-            ortY = -(x * ortX) / y;
-            return Primitives.unmodifiableVector(new Vector(ortX, ortY));
-        }
-        return Primitives.unmodifiableVector(new Vector(0, 0));
-    }
-
-    public static ILine orthogonal(final ILine line, final IPoint point) {
-        IVector vector = line.toVector();
-        IVector orthogonalVector = orthogonal(vector);
-        return Primitives.unmodifiableLine(new Line(point, orthogonalVector));
-    }
-
     public static double det(double a1, double a2, double b1, double b2) {
         return a1 * b2 - a2 * b1;
     }
@@ -149,4 +125,59 @@ public final class MathHelper {
 
         return Primitives.unmodifiableSegment(result);
     }
+
+    public static double normalize(double angle){
+        double result = angle;
+        while (result < 0){
+            result += 2 * Math.PI;
+        }
+        while (result > 2 * Math.PI){
+            result -= 2 * Math.PI;
+        }
+        return result;
+    }
+
+    public static Arc shadow(final ICircle circle, final IPoint point){
+        double h = circle.getCenter().distanceTo(point);
+        if (MathHelper.equalsZero(h)){
+            return null;
+        }
+        double x = circle.getCenter().getX() - point.getX();
+        double y = circle.getCenter().getY() - point.getY();
+        double a = Math.abs(y);
+        double sinAlpha = a / h;
+        double sinDelta = circle.getRadius() / h;
+        double alpha = 0;
+        if(x > 0 && y > 0 ){
+            alpha = Math.asin(sinAlpha);
+        }
+        if(x < 0 && y > 0 ){
+            alpha = Math.PI - Math.asin(sinAlpha);
+        }
+        if(x < 0 && y < 0 ){
+            alpha = Math.PI + Math.asin(sinAlpha);
+        }
+        if(x > 0 && y < 0 ){
+            alpha = 2 * Math.PI - Math.asin(sinAlpha);
+        }
+        double delta = Math.asin(sinDelta);
+        assert (delta >= 0);
+        assert (alpha >= 0);
+        Arc result  = new Arc(alpha - delta, alpha + delta);
+        result.normalize();
+        return result;
+    }
+
+    public static Circle minCircleContainingAll(final List<ICircle> circles, final IPoint point){
+        double minRadius  = 0;
+        for(ICircle circle : circles){
+            double newRadius = circle.getCenter().distanceTo(point) + circle.getRadius();
+            if(newRadius > minRadius){
+                minRadius = newRadius;
+            }
+        }
+        assert(minRadius >= 0);
+        return new Circle(point, minRadius);
+    }
+
 }

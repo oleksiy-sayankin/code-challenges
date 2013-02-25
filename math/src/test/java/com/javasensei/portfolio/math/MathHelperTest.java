@@ -1,5 +1,6 @@
 package com.javasensei.portfolio.math;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -178,30 +179,6 @@ public class MathHelperTest {
 
     }
 
-    @Test
-    public void orthogonalTrueTest() {
-        IVector a = new Vector(3, 2);
-        IVector EXPECTED_VECTOR = new Vector(-4, 6);
-        IVector orthogonalVector = MathHelper.orthogonal(a);
-        EXPECTED_VECTOR.normalize();
-        IVector actualVector = new Vector(orthogonalVector);
-        actualVector.normalize();
-        assertEquals(EXPECTED_VECTOR, actualVector);
-    }
-
-    @Test
-    public void orthogonalFalseTest() {
-        IVector a = new Vector(1, 2);
-        IVector EXPECTED_VECTOR = new Vector(-2, 3);
-        IVector actualVector = MathHelper.orthogonal(a);
-        EXPECTED_VECTOR.normalize();
-        actualVector.normalize();
-        assertFalse(EXPECTED_VECTOR.equals(actualVector));
-    }
-
-
-
-
 
     @Test
     public void signedAreaTest() {
@@ -224,5 +201,79 @@ public class MathHelperTest {
         ISegment actualSegment = MathHelper.nearestSegmentInDirection(sides.toSegmentsClockwise(), coord, velocity);
         ISegment EXPECTED_SEGMENT = new Segment(new Point(0, 366), new Point(1019, 366));
         assertEquals(EXPECTED_SEGMENT, actualSegment);
+    }
+
+    @Test
+    public void minCircleContainingAllTest(){
+        List<ICircle> circles = new ArrayList<ICircle>();
+        double radius = 3d;
+        double offset = 4;
+        circles.add(new Circle(new Point(offset, offset), radius));
+        circles.add(new Circle(new Point(offset, -offset), radius));
+        circles.add(new Circle(new Point(-offset, -offset), radius));
+        circles.add(new Circle(new Point(-offset, offset), radius));
+        Point center = new Point(0, 0);
+        double expectedRadius = Math.sqrt(offset * offset +  offset * offset) + radius;
+        Circle expectedCircle = new Circle(center, expectedRadius);
+        Circle actualCircle = MathHelper.minCircleContainingAll(circles, center);
+        Assert.assertEquals(expectedCircle, actualCircle);
+    }
+
+    @Test
+    public void shadowTest(){
+        Circle circle = new Circle(new Point(5, 5), 5);
+        Point point = new Point(0, 0);
+        IArc expectedSegment = new Arc(0, Math.PI / 2);
+        IArc actualSegment = MathHelper.shadow(circle, point);
+        Assert.assertEquals(expectedSegment, actualSegment);
+    }
+
+    @Test
+    public void shadowComplexTest(){
+        double radius = 2;
+        double x = -2;
+        double y = 2;
+        ICircle circle = new Circle(new Point(x, y), radius);
+        IPoint point = new Point(0, 0);
+        IArc expectedSegment = new Arc( Math.PI / 2,   Math.PI);
+        IArc actualSegment = MathHelper.shadow(circle, point);
+        Assert.assertEquals(expectedSegment, actualSegment);
+    }
+
+    @Test
+    public void shadowComplex2Test(){
+        double radius = 7;
+        double h = radius / Math.sin(Math.PI / 12);
+        double x = h * Math.sin(Math.PI / 4);
+        double y = - h * Math.sin(Math.PI / 4);
+        ICircle circle = new Circle(new Point(x, y), radius);
+        IPoint point = new Point(0, 0);
+        IArc expectedSegment = new Arc((2 * Math.PI / 12) * 10,  (2 * Math.PI / 12) * 11);
+        IArc actualSegment = MathHelper.shadow(circle, point);
+        Assert.assertEquals(expectedSegment, actualSegment);
+    }
+
+    @Test
+    public void shadowComplex3Test(){
+        double radius = 2;
+        double x = 2;
+        double y = 2;
+        ICircle circle = new Circle(new Point(x, y), radius);
+        IPoint point = new Point(0, 0);
+        IArc expectedSegment = new Arc( 0,   Math.PI / 2);
+        IArc actualSegment = MathHelper.shadow(circle, point);
+        Assert.assertEquals(expectedSegment, actualSegment);
+    }
+
+    @Test
+    public void shadowComplex4Test(){
+        double radius = 2;
+        double x = 8;
+        double y = 19;
+        ICircle circle = new Circle(new Point(x, y), radius);
+        IPoint point = new Point(10, 17);
+        IArc expectedSegment = new Arc(Math.PI / 2 ,   Math.PI);
+        IArc actualSegment = MathHelper.shadow(circle, point);
+        Assert.assertEquals(expectedSegment, actualSegment);
     }
 }

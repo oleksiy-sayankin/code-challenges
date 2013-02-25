@@ -1,6 +1,5 @@
 package com.javasensei.portfolio.math;
 
-import static com.javasensei.portfolio.math.MathHelper.orthogonal;
 import static com.javasensei.portfolio.math.MathHelper.intersection;
 
 /**
@@ -69,7 +68,7 @@ public class Point implements IPoint {
 
     @Override
     public IPoint reflectAgainst(ILine line) {
-        ILine orthogonalLine = orthogonal(line, this);
+        ILine orthogonalLine = line.orthogonal(this);
         IPoint intersectionPoint = intersection(line, orthogonalLine);
         IVector direction = new Vector(this, intersectionPoint);
         IPoint resultPoint = new Point(intersectionPoint);

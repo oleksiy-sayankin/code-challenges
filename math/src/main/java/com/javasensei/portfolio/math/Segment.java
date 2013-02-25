@@ -1,6 +1,5 @@
 package com.javasensei.portfolio.math;
 
-import static com.javasensei.portfolio.math.MathHelper.orthogonal;
 import static com.javasensei.portfolio.math.MathHelper.equalsZero;
 import static com.javasensei.portfolio.math.MathHelper.intersection;
 
@@ -39,7 +38,7 @@ public class Segment implements ISegment {
             return 0;
         }
 
-        IVector orthogonalVector = orthogonal(this.toVector());
+        IVector orthogonalVector = this.toVector().orthogonal();
         Line orthogonalLine = new Line(point, orthogonalVector);
         IPoint intersectionPoint = intersection(orthogonalLine, this.toLine());
 

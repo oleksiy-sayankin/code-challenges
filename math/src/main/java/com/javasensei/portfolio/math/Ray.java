@@ -1,9 +1,5 @@
 package com.javasensei.portfolio.math;
 
-import static com.javasensei.portfolio.math.Primitives.unmodifiablePoint;
-import static com.javasensei.portfolio.math.Primitives.unmodifiableVector;
-import static com.javasensei.portfolio.math.Primitives.unmodifiableLine;
-import static com.javasensei.portfolio.math.MathHelper.orthogonal;
 import static com.javasensei.portfolio.math.MathHelper.intersection;
 
 /**
@@ -55,7 +51,7 @@ public class Ray implements IRay{
             }
             return rayStartPoint.distanceTo(otherPoint);
         }
-        ILine orthogonalLine = orthogonal(rayLine, otherPoint);
+        ILine orthogonalLine = rayLine.orthogonal(otherPoint);
         IPoint intersectionPoint = intersection(rayLine, orthogonalLine);
         if(new Vector(rayStartPoint, intersectionPoint).isSemidirect(rayVector)){
             return otherPoint.distanceTo(intersectionPoint);

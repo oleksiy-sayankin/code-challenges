@@ -1,5 +1,6 @@
 package com.javasensei.portfolio.deepforest;
 
+import com.javasensei.portfolio.math.Point;
 import org.junit.*;
 
 import java.io.*;
@@ -45,7 +46,7 @@ public class DataProcessorTest{
                 new BufferedWriter(new FileWriter(result)));
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(false);
-        expectedOutputData.setExit(new Coord(70.71067811865477, 70.71067811865477));
+        expectedOutputData.setExit(new Point(70.71067811865477, 70.71067811865477));
         OutputData actualOutputData = Util.read(new FileReader(result));
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }

@@ -8,4 +8,5 @@ public interface ILine extends IFigure {
     IVector toVector();
     IPoint point1();
     IPoint point2();
+    ILine orthogonal(IPoint point);
 }

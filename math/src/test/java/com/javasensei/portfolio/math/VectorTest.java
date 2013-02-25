@@ -96,4 +96,25 @@ public class VectorTest {
         IVector expectedReflectedVector =  new Vector(1, -1);
         assertEquals(expectedReflectedVector, actualReflectedVector);
     }
+
+    @Test
+    public void orthogonalTrueTest() {
+        IVector a = new Vector(3, 2);
+        IVector EXPECTED_VECTOR = new Vector(-4, 6);
+        IVector orthogonalVector = a.orthogonal();
+        EXPECTED_VECTOR.normalize();
+        IVector actualVector = new Vector(orthogonalVector);
+        actualVector.normalize();
+        assertEquals(EXPECTED_VECTOR, actualVector);
+    }
+
+    @Test
+    public void orthogonalFalseTest() {
+        IVector a = new Vector(1, 2);
+        IVector EXPECTED_VECTOR = new Vector(-2, 3);
+        IVector actualVector = a.orthogonal();
+        EXPECTED_VECTOR.normalize();
+        actualVector.normalize();
+        assertFalse(EXPECTED_VECTOR.equals(actualVector));
+    }
 }

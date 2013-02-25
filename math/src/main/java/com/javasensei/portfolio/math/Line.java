@@ -70,6 +70,12 @@ public class Line implements ILine {
     }
 
     @Override
+    public ILine orthogonal(IPoint point) {
+        IVector orthogonalVector = this.toVector().orthogonal();
+        return Primitives.unmodifiableLine(new Line(point, orthogonalVector));
+    }
+
+    @Override
     public String toString() {
         return "{" + point1 + ", " + point2 + "}";
     }

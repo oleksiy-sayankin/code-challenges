@@ -1,5 +1,7 @@
 package com.javasensei.portfolio.deepforest;
 
+import com.javasensei.portfolio.math.*;
+
 import java.io.Reader;
 import java.io.Writer;
 import java.util.List;
@@ -12,22 +14,22 @@ public class DataProcessor {
     public static void process(Reader inputFileReader, Writer outputFileWriter) throws Exception {
         InputData inputData = new InputData();
         inputData.read(inputFileReader);
-        List<Circle> circles =  inputData.getCircles();
-        Coord initPos = inputData.getInitPos();
+        List<ICircle> circles =  inputData.getCircles();
+        IPoint initPos = inputData.getInitPos();
         Aggregator agg = new Aggregator();
-        for(Circle circle : circles){
+        for(ICircle circle : circles){
             agg.add(MathHelper.shadow(circle, initPos));
         }
-        List<CircleSegment> freeSegments = agg.freeSegments();
+        List<IArc> freeSegments = agg.freeArcs();
         OutputData outputData = new OutputData();
         if(freeSegments.isEmpty()){
             outputData.setForestIsDeep(true);
         }else {
             outputData.setForestIsDeep(false);
-            double alpha = freeSegments.get(0).midPoint();
-            double x = Constants.DEFAULT_RADIUS * Math.cos(alpha) + initPos.x();
-            double y = Constants.DEFAULT_RADIUS * Math.sin(alpha) + initPos.y();
-            Coord result =  new Coord(x, y);
+            double alpha = freeSegments.get(0).midAngle();
+            double x = Constants.DEFAULT_RADIUS * Math.cos(alpha) + initPos.getX();
+            double y = Constants.DEFAULT_RADIUS * Math.sin(alpha) + initPos.getY();
+            IPoint result =  new Point(x, y);
             outputData.setExit(result);
         }
         outputData.write(outputFileWriter);
