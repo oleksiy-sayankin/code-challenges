@@ -104,6 +104,32 @@ public class Circle implements ICircle{
     }
 
     @Override
+    public Set<IPoint> intersection(ISegment segment) {
+        ILine line = segment.toLine();
+        Set<IPoint> intersectionPoints = new HashSet<IPoint>();
+        Set<IPoint> lineIntersectionPoints = intersection(line);
+        for(IPoint point : lineIntersectionPoints){
+            if(segment.has(point)){
+                intersectionPoints.add(point);
+            }
+        }
+        return intersectionPoints;
+    }
+
+    @Override
+    public Set<IPoint> intersection(IRay ray) {
+        ILine line = ray.toLine();
+        Set<IPoint> intersectionPoints = new HashSet<IPoint>();
+        Set<IPoint> lineIntersectionPoints = intersection(line);
+        for(IPoint point : lineIntersectionPoints){
+            if(ray.has(point)){
+                intersectionPoints.add(point);
+            }
+        }
+        return intersectionPoints;
+    }
+
+    @Override
     public IPoint getCenter(){
         return center;
     }
