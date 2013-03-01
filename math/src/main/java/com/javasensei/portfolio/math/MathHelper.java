@@ -35,62 +35,6 @@ public final class MathHelper {
         return a1 * b2 - a2 * b1;
     }
 
-    public static boolean isIntersection(final ILine firstLine, final ILine secondLine) {
-        LineCoef coef1 = firstLine.coef();
-        LineCoef coef2 = secondLine.coef();
-        double a1 = coef1.a;
-        double b1 = coef1.b;
-        double a2 = coef2.a;
-        double b2 = coef2.b;
-        double det = det(a1, a2, b1, b2);
-        return !equalsZero(det);
-    }
-
-    public static IPoint intersection(final ILine firstLine, final ILine secondLine) {
-        Point result = null;
-        LineCoef coef1 = firstLine.coef();
-        LineCoef coef2 = secondLine.coef();
-        double a2 = coef1.a;
-        double b2 = coef1.b;
-        double c2 = coef1.c;
-        double a1 = coef2.a;
-        double b1 = coef2.b;
-        double c1 = coef2.c;
-        double det = det(a1, a2, b1, b2);
-
-        if (!equalsZero(det)) {
-            double detX = -det(c1, c2, b1, b2);
-            double detY = -det(a1, a2, c1, c2);
-            double x = detX / det;
-            double y = detY / det;
-            result = new Point(x, y);
-        }
-        return Primitives.unmodifiablePoint(result);
-    }
-
-    public static IPoint intersection(final ISegment a, final ISegment b) {
-        ILine lineA = a.toLine();
-        ILine lineB = b.toLine();
-        if (isIntersection(lineA, lineB)) {
-            IPoint point = intersection(lineA, lineB);
-            if (a.has(point) && b.has(point)) {
-                return point;
-            }
-        }
-        return null;
-    }
-
-    public static IPoint intersection(final ILine lineA, final ISegment segment) {
-        ILine lineB = segment.toLine();
-        if (isIntersection(lineA, lineB)) {
-            IPoint point = intersection(lineA, lineB);
-            if (segment.has(point)) {
-                return point;
-            }
-        }
-        return null;
-    }
-
     public static boolean equalsZero(double value) {
         return Math.abs(value) < MathConstants.ERROR;
     }
@@ -113,7 +57,7 @@ public final class MathHelper {
         ISegment result = null;
         double minDistance = Double.MAX_VALUE;
         for (ISegment segment : segments) {
-            IPoint intersectionPoint = intersection(vector.toLine(point), segment);
+            IPoint intersectionPoint = vector.toLine(point).intersection(segment);
             if (intersectionPoint != null && vector.isSemidirect(new Vector(point, intersectionPoint))) {
                 double newDistance = point.distanceTo(intersectionPoint);
                 if (newDistance < minDistance) {
@@ -137,9 +81,9 @@ public final class MathHelper {
         return result;
     }
 
-    public static Arc shadow(final ICircle circle, final IPoint point){
+    public static IArc shadow(final ICircle circle, final IPoint point){
         double h = circle.getCenter().distanceTo(point);
-        if (MathHelper.equalsZero(h)){
+        if (MathHelper.equalsZero(h) || h <= circle.getRadius()){
             return null;
         }
         double x = circle.getCenter().getX() - point.getX();
@@ -163,7 +107,7 @@ public final class MathHelper {
         double delta = Math.asin(sinDelta);
         assert (delta >= 0);
         assert (alpha >= 0);
-        Arc result  = new Arc(alpha - delta, alpha + delta);
+        IArc result  = new Arc(alpha - delta, alpha + delta);
         result.normalize();
         return result;
     }

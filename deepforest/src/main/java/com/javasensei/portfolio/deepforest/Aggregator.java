@@ -2,7 +2,6 @@ package com.javasensei.portfolio.deepforest;
 
 import com.javasensei.portfolio.math.Arc;
 import com.javasensei.portfolio.math.IArc;
-import com.javasensei.portfolio.math.MathHelper;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,8 +12,8 @@ import java.util.List;
 public class Aggregator {
     private List<IArc> arcs = new ArrayList<IArc>();
 
-    public void add(Arc arc){
-        Arc normalizedArc = new Arc(arc);
+    public void add(IArc arc){
+        IArc normalizedArc = new Arc(arc);
         normalizedArc.normalize();
         arcs.add(normalizedArc);
     }
@@ -66,9 +65,9 @@ public class Aggregator {
         double[] allAngles = new double[arcs.size() * 2];
         int i = 0;
         for(IArc arc : arcs){
-            allAngles[i] = arc.startAngle();
+            allAngles[i] = arc.getStartAngle();
             i++;
-            allAngles[i] = arc.endAngle();
+            allAngles[i] = arc.getEndAngle();
             i++;
         }
         Arrays.sort(allAngles);

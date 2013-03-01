@@ -11,9 +11,8 @@ import java.util.List;
  */
 public class DataProcessor {
     private DataProcessor(){}
-    public static void process(Reader inputFileReader, Writer outputFileWriter) throws Exception {
-        InputData inputData = new InputData();
-        inputData.read(inputFileReader);
+
+    public static OutputData process(InputData inputData){
         List<ICircle> circles =  inputData.getCircles();
         IPoint initPos = inputData.getInitPos();
         Aggregator agg = new Aggregator();
@@ -32,6 +31,12 @@ public class DataProcessor {
             IPoint result =  new Point(x, y);
             outputData.setExit(result);
         }
-        outputData.write(outputFileWriter);
+        return outputData;
+    }
+
+    public static void process(Reader inputFileReader, Writer outputFileWriter) throws Exception {
+        InputData inputData = new InputData();
+        inputData.read(inputFileReader);
+        process(inputData).write(outputFileWriter);
     }
 }

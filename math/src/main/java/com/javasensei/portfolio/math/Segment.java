@@ -1,7 +1,6 @@
 package com.javasensei.portfolio.math;
 
 import static com.javasensei.portfolio.math.MathHelper.equalsZero;
-import static com.javasensei.portfolio.math.MathHelper.intersection;
 
 /**
  * @author oleksiy sayankin
@@ -40,7 +39,7 @@ public class Segment implements ISegment {
 
         IVector orthogonalVector = this.toVector().orthogonal();
         Line orthogonalLine = new Line(point, orthogonalVector);
-        IPoint intersectionPoint = intersection(orthogonalLine, this.toLine());
+        IPoint intersectionPoint = orthogonalLine.intersection(this.toLine());
 
 
 
@@ -121,6 +120,19 @@ public class Segment implements ISegment {
 
     public IVector toVector() {
         return Primitives.unmodifiableVector(endPoint.getX() - startPoint.getX(), endPoint.getY() - startPoint.getY());
+    }
+
+    @Override
+    public IPoint intersection(ISegment b) {
+        ILine lineA = this.toLine();
+        ILine lineB = b.toLine();
+        if (lineA.isIntersection(lineB)) {
+            IPoint point = lineA.intersection(lineB);
+            if (this.has(point) && b.has(point)) {
+                return point;
+            }
+        }
+        return null;
     }
 
     @Override

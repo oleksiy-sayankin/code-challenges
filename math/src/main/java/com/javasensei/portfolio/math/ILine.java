@@ -9,4 +9,7 @@ public interface ILine extends IFigure {
     IPoint point1();
     IPoint point2();
     ILine orthogonal(IPoint point);
+    boolean isIntersection(ILine secondLine);
+    IPoint intersection(ILine secondLine);
+    IPoint intersection(ISegment segment);
 }

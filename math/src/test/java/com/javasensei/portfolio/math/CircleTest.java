@@ -162,4 +162,26 @@ public class CircleTest {
         Assert.assertEquals(expectedPoints, actualPoints);
     }
 
+    @Test
+    public void intersectionWithRay(){
+        double x = 1;
+        double y = 1;
+        double r = 5;
+        ICircle circle = new Circle(x, y, r);
+
+        double alpha0 = 1;
+
+
+        double x0 = x + r * Math.cos(alpha0);
+        double y0 = y + r * Math.sin(alpha0);
+
+        IRay ray = new Ray(new Point(x, y), new Point(x0, y0));
+        Set<IPoint> actualPoints = circle.intersection(ray);
+        Set<IPoint> expectedPoints = new HashSet<IPoint>();
+
+        expectedPoints.add(new Point(x0, y0));
+
+        Assert.assertEquals(expectedPoints, actualPoints);
+    }
+
 }

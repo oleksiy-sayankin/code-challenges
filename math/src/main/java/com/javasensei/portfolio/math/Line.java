@@ -1,7 +1,8 @@
 package com.javasensei.portfolio.math;
 
-import static com.javasensei.portfolio.math.Primitives.unmodifiableVector;
-import static com.javasensei.portfolio.math.Primitives.unmodifiablePoint;
+
+import static com.javasensei.portfolio.math.MathHelper.equalsZero;
+import static com.javasensei.portfolio.math.MathHelper.det;
 
 /**
  * @author oleksiy sayankin
@@ -73,6 +74,53 @@ public class Line implements ILine {
     public ILine orthogonal(IPoint point) {
         IVector orthogonalVector = this.toVector().orthogonal();
         return Primitives.unmodifiableLine(new Line(point, orthogonalVector));
+    }
+
+    @Override
+    public boolean isIntersection(ILine secondLine) {
+        LineCoef coef1 = this.coef();
+        LineCoef coef2 = secondLine.coef();
+        double a1 = coef1.a;
+        double b1 = coef1.b;
+        double a2 = coef2.a;
+        double b2 = coef2.b;
+        double det = det(a1, a2, b1, b2);
+        return !equalsZero(det);
+    }
+
+    @Override
+    public IPoint intersection(ILine secondLine) {
+        Point result = null;
+        LineCoef coef1 = this.coef();
+        LineCoef coef2 = secondLine.coef();
+        double a2 = coef1.a;
+        double b2 = coef1.b;
+        double c2 = coef1.c;
+        double a1 = coef2.a;
+        double b1 = coef2.b;
+        double c1 = coef2.c;
+        double det = det(a1, a2, b1, b2);
+
+        if (!equalsZero(det)) {
+            double detX = -det(c1, c2, b1, b2);
+            double detY = -det(a1, a2, c1, c2);
+            double x = detX / det;
+            double y = detY / det;
+            result = new Point(x, y);
+        }
+        return Primitives.unmodifiablePoint(result);
+    }
+
+    @Override
+    public IPoint intersection(ISegment segment) {
+        ILine lineB = segment.toLine();
+        if (this.isIntersection(lineB)) {
+            IPoint point = this.intersection(lineB);
+            if (segment.has(point)) {
+                return point;
+            }
+        }
+        return null;
     }
 
     @Override

@@ -24,14 +24,12 @@ public class DataProcessorTest{
 
     @Test
     public void noExitSimple01Test() throws Exception {
-        String output = "i002.out";
-        File result = new File(outputDir, output);
-        String input = "i002.in";
-        DataProcessor.process(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input))),
-                new BufferedWriter(new FileWriter(result)));
+        String inputFileName = "i002.in";
+        InputData inputData = new InputData();
+        inputData.read(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(inputFileName))));
+        OutputData actualOutputData = DataProcessor.process(inputData);
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(true);
-        OutputData actualOutputData = Util.read(new FileReader(result));
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
@@ -39,43 +37,45 @@ public class DataProcessorTest{
 
     @Test
     public void exitExistSimpleTest() throws Exception {
-        String output = "i003.out";
-        File result = new File(outputDir, output);
-        String input = "i003.in";
-        DataProcessor.process(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input))),
-                new BufferedWriter(new FileWriter(result)));
+        String inputFileName = "i003.in";
+        InputData inputData = new InputData();
+        inputData.read(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(inputFileName))));
+        OutputData actualOutputData = DataProcessor.process(inputData);
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(false);
         expectedOutputData.setExit(new Point(70.71067811865477, 70.71067811865477));
-        OutputData actualOutputData = Util.read(new FileReader(result));
+        Assert.assertFalse(Util.isIntersections(inputData, actualOutputData));
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
 
     @Test
     public void exitExistComplexTest() throws Exception {
-        String output = "i004.out";
-        File result = new File(outputDir, output);
-        String input = "i004.in";
-        DataProcessor.process(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input))),
-                new BufferedWriter(new FileWriter(result)));
+        String inputFileName = "i004.in";
+        InputData inputData = new InputData();
+        inputData.read(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(inputFileName))));
+        OutputData actualOutputData = DataProcessor.process(inputData);
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(false);
-        OutputData actualOutputData = Util.read(new FileReader(result));
+        expectedOutputData.setExit(new Point(80.71067811865477, 81.71067811865474));
+        Assert.assertFalse(Util.isIntersections(inputData, actualOutputData));
         Assert.assertEquals(expectedOutputData, actualOutputData);
+        System.out.println(actualOutputData);
     }
 
     @Test
     public void exitExistComplex2Test() throws Exception {
-        String output = "i005.out";
-        File result = new File(outputDir, output);
-        String input = "i005.in";
-        DataProcessor.process(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input))),
-                new BufferedWriter(new FileWriter(result)));
+        String inputFileName = "i005.in";
+        InputData inputData = new InputData();
+        inputData.read(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(inputFileName))));
+        OutputData actualOutputData = DataProcessor.process(inputData);
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(false);
-        OutputData actualOutputData = Util.read(new FileReader(result));
+        expectedOutputData.setExit(new Point(-91.28090415820634, -28.333333333333307));
+        System.out.println(actualOutputData);
+        Assert.assertFalse(Util.isIntersections(inputData, actualOutputData));
         Assert.assertEquals(expectedOutputData, actualOutputData);
+
     }
 
     @Test
@@ -87,7 +87,8 @@ public class DataProcessorTest{
                 new BufferedWriter(new FileWriter(result)));
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(true);
-        OutputData actualOutputData = Util.read(new FileReader(result));
+        OutputData actualOutputData = new OutputData();
+        actualOutputData.read(new FileReader(result));
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
@@ -101,7 +102,8 @@ public class DataProcessorTest{
                 new BufferedWriter(new FileWriter(result)));
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(true);
-        OutputData actualOutputData = Util.read(new FileReader(result));
+        OutputData actualOutputData = new OutputData();
+        actualOutputData.read(new FileReader(result));
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
@@ -114,7 +116,8 @@ public class DataProcessorTest{
                 new BufferedWriter(new FileWriter(result)));
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(true);
-        OutputData actualOutputData = Util.read(new FileReader(result));
+        OutputData actualOutputData = new OutputData();
+        actualOutputData.read(new FileReader(result));
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
@@ -127,7 +130,8 @@ public class DataProcessorTest{
                 new BufferedWriter(new FileWriter(result)));
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(true);
-        OutputData actualOutputData = Util.read(new FileReader(result));
+        OutputData actualOutputData = new OutputData();
+        actualOutputData.read(new FileReader(result));
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
@@ -140,7 +144,8 @@ public class DataProcessorTest{
                 new BufferedWriter(new FileWriter(result)));
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(false);
-        OutputData actualOutputData = Util.read(new FileReader(result));
+        OutputData actualOutputData = new OutputData();
+        actualOutputData.read(new FileReader(result));
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
@@ -153,7 +158,8 @@ public class DataProcessorTest{
                 new BufferedWriter(new FileWriter(result)));
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(true);
-        OutputData actualOutputData = Util.read(new FileReader(result));
+        OutputData actualOutputData = new OutputData();
+        actualOutputData.read(new FileReader(result));
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
@@ -166,7 +172,8 @@ public class DataProcessorTest{
                 new BufferedWriter(new FileWriter(result)));
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(false);
-        OutputData actualOutputData = Util.read(new FileReader(result));
+        OutputData actualOutputData = new OutputData();
+        actualOutputData.read(new FileReader(result));
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
@@ -179,7 +186,8 @@ public class DataProcessorTest{
                 new BufferedWriter(new FileWriter(result)));
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(false);
-        OutputData actualOutputData = Util.read(new FileReader(result));
+        OutputData actualOutputData = new OutputData();
+        actualOutputData.read(new FileReader(result));
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
@@ -192,7 +200,8 @@ public class DataProcessorTest{
                 new BufferedWriter(new FileWriter(result)));
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(false);
-        OutputData actualOutputData = Util.read(new FileReader(result));
+        OutputData actualOutputData = new OutputData();
+        actualOutputData.read(new FileReader(result));
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
@@ -205,7 +214,8 @@ public class DataProcessorTest{
                 new BufferedWriter(new FileWriter(result)));
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(false);
-        OutputData actualOutputData = Util.read(new FileReader(result));
+        OutputData actualOutputData = new OutputData();
+        actualOutputData.read(new FileReader(result));
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
@@ -219,7 +229,8 @@ public class DataProcessorTest{
                 new BufferedWriter(new FileWriter(result)));
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(true);
-        OutputData actualOutputData = Util.read(new FileReader(result));
+        OutputData actualOutputData = new OutputData();
+        actualOutputData.read(new FileReader(result));
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 }

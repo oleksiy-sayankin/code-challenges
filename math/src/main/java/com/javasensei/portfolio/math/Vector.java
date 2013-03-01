@@ -1,7 +1,6 @@
 package com.javasensei.portfolio.math;
 
 import static com.javasensei.portfolio.math.MathHelper.scalarProduct;
-import static com.javasensei.portfolio.math.MathHelper.isIntersection;
 import static com.javasensei.portfolio.math.MathHelper.equalsZero;
 
 /**
@@ -113,7 +112,7 @@ public class Vector implements IVector {
         if (this.isNull() || otherVector.isNull()) {
             return true;
         }
-        return !isIntersection(this.toLine(), otherVector.toLine());
+        return !this.toLine().isIntersection(otherVector.toLine());
     }
 
     @Override

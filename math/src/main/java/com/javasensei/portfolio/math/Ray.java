@@ -1,6 +1,5 @@
 package com.javasensei.portfolio.math;
 
-import static com.javasensei.portfolio.math.MathHelper.intersection;
 
 /**
  * @author oleksiy sayankin
@@ -12,6 +11,11 @@ public class Ray implements IRay{
     public Ray(IPoint point, IVector vector){
         this.point = point.copy();
         this.vector = vector.copy();
+    }
+
+    public Ray(IPoint point, IPoint otherPoint){
+        this.point = point.copy();
+        this.vector = new Vector(point, otherPoint);
     }
 
     @Override
@@ -52,7 +56,7 @@ public class Ray implements IRay{
             return rayStartPoint.distanceTo(otherPoint);
         }
         ILine orthogonalLine = rayLine.orthogonal(otherPoint);
-        IPoint intersectionPoint = intersection(rayLine, orthogonalLine);
+        IPoint intersectionPoint = rayLine.intersection(orthogonalLine);
         if(new Vector(rayStartPoint, intersectionPoint).isSemidirect(rayVector)){
             return otherPoint.distanceTo(intersectionPoint);
         }

@@ -13,4 +13,5 @@ public interface ISegment extends IFigure {
     double getPoint2Y();
     ILine toLine();
     IVector toVector();
+    IPoint intersection(ISegment b);
 }

@@ -23,12 +23,14 @@ public class Arc implements IArc{
         this.center = center.copy();
     }
 
-    public Arc(Arc otherArc){
-        startAngle = otherArc.startAngle;
-        endAngle = otherArc.endAngle;
-        radius = otherArc.radius;
-        center = otherArc.center.copy();
+    public Arc(IArc otherArc){
+        startAngle = otherArc.getStartAngle();
+        endAngle = otherArc.getEndAngle();
+        radius = otherArc.getRadius();
+        center = otherArc.getCenter().copy();
     }
+
+    @Override
     public void normalize(){
         startAngle = MathHelper.normalize(startAngle);
         endAngle = MathHelper.normalize(endAngle);
@@ -94,14 +96,25 @@ public class Arc implements IArc{
     }
 
     @Override
-    public double startAngle() {
+    public double getStartAngle() {
         return startAngle;
     }
 
     @Override
-    public double endAngle() {
+    public double getEndAngle() {
         return endAngle;
     }
+
+    @Override
+    public double getRadius() {
+        return radius;
+    }
+
+    @Override
+    public IPoint getCenter() {
+    return center;
+    }
+
 
     @Override
     public boolean containsAngle(double angle) {

@@ -1,8 +1,11 @@
 package com.javasensei.portfolio.deepforest;
 
 import com.javasensei.portfolio.math.IPoint;
+import com.javasensei.portfolio.math.Point;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.io.Writer;
 
 /**
@@ -12,6 +15,24 @@ public class OutputData {
     private boolean forestIsDeep;
     private IPoint exit;
 
+    public  void read(Reader reader) throws IOException {
+        BufferedReader br = new BufferedReader(reader);
+        try{
+            String firstLine = br.readLine();
+            if(Constants.YES.equals(firstLine.trim().toUpperCase())){
+                 setForestIsDeep(true);
+            } else {
+                 setForestIsDeep(false);
+                String secondLine =  br.readLine();
+                String[] values = secondLine.split(" ");
+                double x = Double.valueOf(values[0]);
+                double y = Double.valueOf(values[1]);
+                setExit(new Point(x, y));
+            }
+        }   finally {
+            br.close();
+        }
+    }
 
 
     public void write(Writer writer) throws IOException {
@@ -34,6 +55,10 @@ public class OutputData {
 
     public void setExit(IPoint exit){
        this.exit = exit;
+    }
+
+    public IPoint getExit(){
+        return exit;
     }
 
     @Override

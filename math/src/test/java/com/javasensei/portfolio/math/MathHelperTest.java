@@ -46,14 +46,14 @@ public class MathHelperTest {
     public void isIntersectionTrueTest() {
         ILine lineA = new Line(new Point(0, 1), new Point(1, 0));
         ILine lineB = new Line(new Point(0, 0), new Point(1, 1));
-        Boolean actualIsIntersection = MathHelper.isIntersection(lineA, lineB);
+        Boolean actualIsIntersection = lineA.isIntersection(lineB);
         assertTrue(actualIsIntersection);
     }
 
     @Test
     public void isSelfIntersectionFalseTest() {
         ILine line = new Line(new Point(0, 1), new Point(1, 0));
-        Boolean actualIsIntersection = MathHelper.isIntersection(line, line);
+        Boolean actualIsIntersection = line.isIntersection(line);
         assertFalse(actualIsIntersection);
     }
 
@@ -61,7 +61,7 @@ public class MathHelperTest {
     public void isIntersectionLineAndLineFalseTest() {
         ILine lineA = new Line(new Point(0, 1), new Point(1, 0));
         ILine lineB = new Line(new Point(0, 44), new Point(44, 0));
-        Boolean actualIsIntersection = MathHelper.isIntersection(lineA, lineB);
+        Boolean actualIsIntersection = lineA.isIntersection(lineB);
         assertFalse(actualIsIntersection);
     }
 
@@ -70,7 +70,7 @@ public class MathHelperTest {
         ILine lineA = new Line(new Point(0, 1), new Point(1, 0));
         ILine lineB = new Line(new Point(0, 0), new Point(1, 1));
         final IPoint EXPECTED_INTERSECTION_POINT = Primitives.unmodifiablePoint(0.5d, 0.5d);
-        IPoint actualIntersectionPoint = MathHelper.intersection(lineA, lineB);
+        IPoint actualIntersectionPoint = lineA.intersection(lineB);
         assertEquals(EXPECTED_INTERSECTION_POINT, actualIntersectionPoint);
     }
 
@@ -78,16 +78,16 @@ public class MathHelperTest {
     public void intersectionBetweenSegmentAndSegmentFalseTest() {
         ISegment segmentA = new Segment(new Point(2, 3), new Point(3, 2));
         ISegment segmentB = new Segment(new Point(34, 23), new Point(8, 42));
-        IPoint actualIntersectionPoint = MathHelper.intersection(segmentA, segmentB);
-        assertTrue(MathHelper.isIntersection(segmentA.toLine(), segmentB.toLine()));
+        IPoint actualIntersectionPoint = segmentA.intersection(segmentB);
+        assertTrue(segmentA.toLine().isIntersection(segmentB.toLine()));
         assertNull(actualIntersectionPoint);
     }
 
     @Test
     public void selfIntersectionBetweenSegmentAndSegmentFalseTest() {
         ISegment segment = new Segment(new Point(2, 3), new Point(3, 2));
-        IPoint actualIntersectionPoint = MathHelper.intersection(segment, segment);
-        assertFalse(MathHelper.isIntersection(segment.toLine(), segment.toLine()));
+        IPoint actualIntersectionPoint = segment.intersection(segment);
+        assertFalse(segment.toLine().isIntersection(segment.toLine()));
         assertNull(actualIntersectionPoint);
     }
 
@@ -96,7 +96,7 @@ public class MathHelperTest {
         ISegment segmentA = new Segment(new Point(2, 3), new Point(3, 2));
         ISegment segmentB = new Segment(new Point(0, 0), new Point(4, 4));
         final IPoint EXPECTED_INTERSECTION_POINT = Primitives.unmodifiablePoint(2.5d, 2.5d);
-        IPoint actualIntersectionPoint = MathHelper.intersection(segmentA, segmentB);
+        IPoint actualIntersectionPoint = segmentA.intersection(segmentB);
         assertEquals(EXPECTED_INTERSECTION_POINT, actualIntersectionPoint);
     }
 
@@ -104,8 +104,8 @@ public class MathHelperTest {
     public void intersectionBetweenLineAndSegmentFalseTest() {
         ISegment segment = new Segment(new Point(2, 3), new Point(3, 2));
         ILine line = new Line(new Point(4, 5), new Point(8, 3));
-        IPoint actualIntersectionPoint = MathHelper.intersection(line, segment);
-        assertTrue(MathHelper.isIntersection(segment.toLine(), line));
+        IPoint actualIntersectionPoint = line.intersection(segment);
+        assertTrue(segment.toLine().isIntersection(line));
         assertNull(actualIntersectionPoint);
     }
 
@@ -113,7 +113,7 @@ public class MathHelperTest {
     public void intersectionBetweenLineAndSegmentTrueTest() {
         ISegment segment = new Segment(new Point(0.1d, 0.1d), new Point(1.1d, 1.1d));
         ILine line = new Line(new Point(0, 1), new Point(1, 0));
-        IPoint actualIntersectionPoint = MathHelper.intersection(line, segment);
+        IPoint actualIntersectionPoint = line.intersection(segment);
         final IPoint EXPECTED_INTERSECTION_POINT = Primitives.unmodifiablePoint(0.5d, 0.5d);
         assertEquals(EXPECTED_INTERSECTION_POINT, actualIntersectionPoint);
     }
@@ -130,7 +130,7 @@ public class MathHelperTest {
         IPoint point = new Point(401.6420323796443, 78.51515990744261);
         IVector vector = new Vector(0.22980607359851407, 0.5698514120067321);
 
-        IPoint actualIntersectionPoint2 = MathHelper.intersection(new Line(point, vector), sides.get(2).toLine());
+        IPoint actualIntersectionPoint2 = new Line(point, vector).intersection(sides.get(2).toLine());
 
         vector.normalize();
         IVector direction = new Vector(point, actualIntersectionPoint2);
