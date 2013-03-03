@@ -72,4 +72,29 @@ public class Ray implements IRay{
     public void scale(double coef) {
         point.scale(coef);
     }
+
+    @Override
+    public String toString(){
+        return "{ start point = " + point + ", vector = " + vector + "}";
+    }
+
+    @Override
+    public boolean equals(Object other){
+        if(other == null){
+            return false;
+        }
+        if(!(other instanceof IRay)){
+            return false;
+        }
+        if(this == other){
+            return true;
+        }
+        IRay otherRay = (IRay)other;
+        return this.point.equals(otherRay.startPoint()) && this.vector.isCollinear(otherRay.toVector());
+    }
+
+    @Override
+    public int hashCode(){
+        return point.hashCode() + vector.hashCode();
+    }
 }

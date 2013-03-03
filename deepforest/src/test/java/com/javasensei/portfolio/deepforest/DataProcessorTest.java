@@ -149,17 +149,17 @@ public class DataProcessorTest{
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
-    @Test @Ignore
+    @Test
     public void test03() throws Exception {
-        String output = "Answer03.txt";
-        File result = new File(outputDir, output);
-        String input = "Input03.txt";
-        DataProcessor.process(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input))),
-                new BufferedWriter(new FileWriter(result)));
+        String inputFileName = "Input03.txt";
+        InputData inputData = new InputData();
+        inputData.read(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(inputFileName))));
+        OutputData actualOutputData = DataProcessor.process(inputData);
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(true);
-        OutputData actualOutputData = new OutputData();
-        actualOutputData.read(new FileReader(result));
+        expectedOutputData.setExit(new Point(3732.379887523458, 11192.009984318382));
+        System.out.println(actualOutputData);
+        Assert.assertFalse(Util.isIntersections(inputData, actualOutputData));
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
@@ -220,7 +220,7 @@ public class DataProcessorTest{
     }
 
 
-    @Ignore
+    @Test
     public void test08() throws Exception {
         String output = "Answer08.txt";
         File result = new File(outputDir, output);

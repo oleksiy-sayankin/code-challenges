@@ -184,4 +184,32 @@ public class CircleTest {
         Assert.assertEquals(expectedPoints, actualPoints);
     }
 
+    @Test
+    public void hasTest(){
+        ICircle circle1 = new Circle(-1, 3, 3);
+        IPoint point11 = new Point(-3.9641798961434582, 2.5377905850169697);
+        IPoint point12 = new Point(1.5959900629229289, 4.503607526319753);
+
+        ICircle circle2 = new Circle(-1, 5, 2);
+        IPoint point21 = new Point(0.849901182297058, 4.239825272890537);
+        IPoint point22 = new Point(-1.9610122934081708, 3.24601728289063);
+
+        ICircle circle3 = new Circle(0, 5, 1);
+        IPoint point31 = new Point(0.3333333333333327, 4.057190958417937);
+
+
+        Assert.assertFalse(circle2.has(point11));
+        Assert.assertFalse(circle2.has(point12));
+        Assert.assertFalse(circle2.has(point31));
+
+        Assert.assertTrue(circle2.has(point21));
+        Assert.assertTrue(circle2.has(point22));
+
+        Assert.assertTrue(circle3.has(point31));
+
+        Assert.assertTrue(circle1.has(point11));
+        Assert.assertTrue(circle1.has(point12));
+
+    }
+
 }
