@@ -92,13 +92,13 @@ public final class MathHelper {
         double sinAlpha = a / h;
         double sinDelta = circle.getRadius() / h;
         double alpha = 0;
-        if(x > 0 && y > 0 ){
+        if(x > 0 && y >= 0 ){
             alpha = Math.asin(sinAlpha);
         }
-        if(x < 0 && y > 0 ){
+        if(x <= 0 && y >= 0 ){
             alpha = Math.PI - Math.asin(sinAlpha);
         }
-        if(x < 0 && y < 0 ){
+        if(x <= 0 && y < 0 ){
             alpha = Math.PI + Math.asin(sinAlpha);
         }
         if(x > 0 && y < 0 ){

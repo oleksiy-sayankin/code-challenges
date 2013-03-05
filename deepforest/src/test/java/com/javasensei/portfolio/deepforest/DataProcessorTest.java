@@ -36,7 +36,7 @@ public class DataProcessorTest{
 
 
     @Test
-    public void exitExistSimpleTest() throws Exception {
+    public void exitExistSimple003Test() throws Exception {
         String inputFileName = "i003.in";
         InputData inputData = new InputData();
         inputData.read(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(inputFileName))));
@@ -163,7 +163,7 @@ public class DataProcessorTest{
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
-    @Test
+    @Test@Ignore
     public void test04() throws Exception {
         String output = "Answer04.txt";
         File result = new File(outputDir, output);
@@ -177,7 +177,7 @@ public class DataProcessorTest{
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
-    @Test
+    @Test@Ignore
     public void test05() throws Exception {
         String output = "Answer05.txt";
         File result = new File(outputDir, output);
@@ -191,7 +191,7 @@ public class DataProcessorTest{
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
-    @Test
+    @Test@Ignore
     public void test06() throws Exception {
         String output = "Answer06.txt";
         File result = new File(outputDir, output);
@@ -205,7 +205,7 @@ public class DataProcessorTest{
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
-    @Test
+    @Test@Ignore
     public void test07() throws Exception {
         String output = "Answer07.txt";
         File result = new File(outputDir, output);
@@ -220,7 +220,7 @@ public class DataProcessorTest{
     }
 
 
-    @Test
+    @Test@Ignore
     public void test08() throws Exception {
         String output = "Answer08.txt";
         File result = new File(outputDir, output);

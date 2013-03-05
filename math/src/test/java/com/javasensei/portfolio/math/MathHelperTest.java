@@ -276,4 +276,364 @@ public class MathHelperTest {
         IArc actualSegment = MathHelper.shadow(circle, point);
         Assert.assertEquals(expectedSegment, actualSegment);
     }
+
+    @Test
+    public void shadowComplex001PointTest(){
+        IPoint point = new Point(3632.38, 11191.86);
+        double x = 13511.91;
+        double y = 19985.14;
+        double radius = 3162.36;
+        ICircle circle = new Circle(new Point(x, y), radius);
+        double h = point.distanceTo(circle.getCenter());
+        System.out.println("h = " + h);
+        double dy = Math.abs(circle.getCenter().getY() - point.getY());
+        double dx = Math.abs(circle.getCenter().getX() - point.getX());
+        System.out.println("dx = " + dx);
+        System.out.println("dy = " + dy);
+        double sinAlpha =  dy / h;
+        double sinDelta =  radius / h;
+        System.out.println("sinAlpha = " + sinAlpha);
+        System.out.println("sinDelta = " + sinDelta);
+        double delta =  Math.asin(sinDelta);
+        double alpha = Math.asin(sinAlpha);
+        IArc expectedArc = new Arc(alpha - delta ,   alpha + delta);
+        IArc actualArc = MathHelper.shadow(circle, point);
+        Assert.assertEquals(expectedArc, actualArc);
+    }
+
+    @Test
+    public void shadowComplex002PointTest(){
+        IPoint point = new Point(3632.38, 11191.86);
+        double x = 2886.10;
+        double y = 17267.74;
+        double radius = 1463.67;
+        ICircle circle = new Circle(new Point(x, y), radius);
+        double h = point.distanceTo(circle.getCenter());
+        System.out.println("h = " + h);
+        double dy = circle.getCenter().getY() - point.getY();
+        double dx = circle.getCenter().getX() - point.getX();
+        System.out.println("dx = " + dx);
+        System.out.println("dy = " + dy);
+        double sinAlpha =  dy / h;
+        double sinDelta =  radius / h;
+        System.out.println("sinAlpha = " + sinAlpha);
+        System.out.println("sinDelta = " + sinDelta);
+        double delta =  Math.asin(sinDelta);
+        double alpha = Math.PI - Math.asin(sinAlpha) ;
+        IArc expectedArc = new Arc(alpha - delta ,   alpha + delta);
+        IArc actualArc = MathHelper.shadow(circle, point);
+        Assert.assertEquals(expectedArc, actualArc);
+    }
+
+    @Test
+    public void shadowComplex003PointTest(){
+        IPoint point = new Point(3632.38, 11191.86);
+        double x = -7519.49;
+        double y = 11191.86;
+        double radius = 2666.43;
+        ICircle circle = new Circle(new Point(x, y), radius);
+        double h = point.distanceTo(circle.getCenter());
+        System.out.println("h = " + h);
+        double dy = circle.getCenter().getY() - point.getY();
+        double dx = circle.getCenter().getX() - point.getX();
+        System.out.println("dx = " + dx);
+        System.out.println("dy = " + dy);
+        double sinAlpha =  dy / h;
+        double sinDelta =  radius / h;
+        System.out.println("sinAlpha = " + sinAlpha);
+        System.out.println("sinDelta = " + sinDelta);
+        double delta =  Math.asin(sinDelta);
+        double alpha = Math.PI - Math.asin(sinAlpha) ;
+        IArc expectedArc = new Arc(alpha - delta ,   alpha + delta);
+        IArc actualArc = MathHelper.shadow(circle, point);
+        Assert.assertEquals(expectedArc, actualArc);
+    }
+
+    @Test
+    public void shadowComplex004PointTest(){
+        IPoint point = new Point(3632.38, 11191.86);
+        double x = 14917.34;
+        double y = -18730.64;
+        double radius = 7646.41;
+        ICircle circle = new Circle(new Point(x, y), radius);
+        double h = point.distanceTo(circle.getCenter());
+        System.out.println("h = " + h);
+        double dy = circle.getCenter().getY() - point.getY();
+        double dx = circle.getCenter().getX() - point.getX();
+        System.out.println("dx = " + dx);
+        System.out.println("dy = " + dy);
+        double sinAlpha =  dy / h;
+        double sinDelta =  radius / h;
+        System.out.println("sinAlpha = " + sinAlpha);
+        System.out.println("sinDelta = " + sinDelta);
+        double delta =  Math.asin(sinDelta);
+        double alpha =  Math.asin(sinAlpha) ;
+        IArc expectedArc = new Arc(alpha - delta ,   alpha + delta);
+        IArc actualArc = MathHelper.shadow(circle, point);
+        Assert.assertEquals(expectedArc, actualArc);
+    }
+
+    @Test
+    public void shadowComplex005PointTest(){
+        IPoint point = new Point(3632.38, 11191.86);
+        double x = -19355.62;
+        double y = 23243.36;
+        double radius = 6205.99;
+        ICircle circle = new Circle(new Point(x, y), radius);
+        double h = point.distanceTo(circle.getCenter());
+        System.out.println("h = " + h);
+        double dy = circle.getCenter().getY() - point.getY();
+        double dx = circle.getCenter().getX() - point.getX();
+        System.out.println("dx = " + dx);
+        System.out.println("dy = " + dy);
+        double sinAlpha =  dy / h;
+        double sinDelta =  radius / h;
+        System.out.println("sinAlpha = " + sinAlpha);
+        System.out.println("sinDelta = " + sinDelta);
+        double delta =  Math.asin(sinDelta);
+        double alpha =  Math.PI - Math.asin(sinAlpha) ;
+        IArc expectedArc = new Arc(alpha - delta ,   alpha + delta);
+        IArc actualArc = MathHelper.shadow(circle, point);
+        Assert.assertEquals(expectedArc, actualArc);
+    }
+
+    @Test
+    public void shadowComplex006PointTest(){
+        IPoint point = new Point(3632.38, 11191.86);
+        double x = 3031.66;
+        double y = 6301.12;
+        double radius = 1178.17;
+        ICircle circle = new Circle(new Point(x, y), radius);
+        double h = point.distanceTo(circle.getCenter());
+        System.out.println("h = " + h);
+        double dy = circle.getCenter().getY() - point.getY();
+        double dx = circle.getCenter().getX() - point.getX();
+        System.out.println("dx = " + dx);
+        System.out.println("dy = " + dy);
+        double sinAlpha =  dy / h;
+        double sinDelta =  radius / h;
+        System.out.println("sinAlpha = " + sinAlpha);
+        System.out.println("sinDelta = " + sinDelta);
+        double delta =  Math.asin(sinDelta);
+        double alpha =  Math.PI - Math.asin(sinAlpha) ;
+        IArc expectedArc = new Arc(alpha - delta ,   alpha + delta);
+        IArc actualArc = MathHelper.shadow(circle, point);
+        Assert.assertEquals(expectedArc, actualArc);
+    }
+
+    @Test
+    public void shadowComplex007PointTest(){
+        IPoint point = new Point(3632.38, 11191.86);
+        double x = 9984.78;
+        double y = 5537.91;
+        double radius = 2033.35;
+        ICircle circle = new Circle(new Point(x, y), radius);
+        double h = point.distanceTo(circle.getCenter());
+        System.out.println("h = " + h);
+        double dy = circle.getCenter().getY() - point.getY();
+        double dx = circle.getCenter().getX() - point.getX();
+        System.out.println("dx = " + dx);
+        System.out.println("dy = " + dy);
+        double sinAlpha =  dy / h;
+        double sinDelta =  radius / h;
+        System.out.println("sinAlpha = " + sinAlpha);
+        System.out.println("sinDelta = " + sinDelta);
+        double delta =  Math.asin(sinDelta);
+        double alpha =  Math.asin(sinAlpha) ;
+        IArc expectedArc = new Arc(alpha - delta ,   alpha + delta);
+        IArc actualArc = MathHelper.shadow(circle, point);
+        Assert.assertEquals(expectedArc, actualArc);
+    }
+
+    @Test
+    public void shadowComplex008PointTest(){
+        IPoint point = new Point(3632.38, 11191.86);
+        double x = 1022.61;
+        double y = 9823.68;
+        double radius = 704.56;
+        ICircle circle = new Circle(new Point(x, y), radius);
+        double h = point.distanceTo(circle.getCenter());
+        System.out.println("h = " + h);
+        double dy = circle.getCenter().getY() - point.getY();
+        double dx = circle.getCenter().getX() - point.getX();
+        System.out.println("dx = " + dx);
+        System.out.println("dy = " + dy);
+        double sinAlpha =  dy / h;
+        double sinDelta =  radius / h;
+        System.out.println("sinAlpha = " + sinAlpha);
+        System.out.println("sinDelta = " + sinDelta);
+        double delta =  Math.asin(sinDelta);
+        double alpha =  - Math.PI - Math.asin(sinAlpha);
+        IArc expectedArc = new Arc(alpha - delta ,   alpha + delta);
+        IArc actualArc = MathHelper.shadow(circle, point);
+        Assert.assertEquals(expectedArc, actualArc);
+    }
+
+    @Test
+    public void shadowComplex009PointTest(){
+        IPoint point = new Point(3632.38, 11191.86);
+        double x = 31610.72;
+        double y = 11149.89;
+        double radius = 42.25;
+        ICircle circle = new Circle(new Point(x, y), radius);
+        double h = point.distanceTo(circle.getCenter());
+        System.out.println("h = " + h);
+        double dy = circle.getCenter().getY() - point.getY();
+        double dx = circle.getCenter().getX() - point.getX();
+        System.out.println("dx = " + dx);
+        System.out.println("dy = " + dy);
+        double sinAlpha =  dy / h;
+        double sinDelta =  radius / h;
+        System.out.println("sinAlpha = " + sinAlpha);
+        System.out.println("sinDelta = " + sinDelta);
+        double delta =  Math.asin(sinDelta);
+        double alpha =  Math.asin(sinAlpha);
+        IArc expectedArc = new Arc(alpha - delta ,   alpha + delta);
+        IArc actualArc = MathHelper.shadow(circle, point);
+        Assert.assertEquals(expectedArc, actualArc);
+    }
+
+    @Test
+    public void shadowComplex010PointTest(){
+        IPoint point = new Point(3632.38, 11191.86);
+        double x = 7445.01;
+        double y = 21301.20;
+        double radius = 2583.35;
+        ICircle circle = new Circle(new Point(x, y), radius);
+        double h = point.distanceTo(circle.getCenter());
+        System.out.println("h = " + h);
+        double dy = circle.getCenter().getY() - point.getY();
+        double dx = circle.getCenter().getX() - point.getX();
+        System.out.println("dx = " + dx);
+        System.out.println("dy = " + dy);
+        double sinAlpha =  dy / h;
+        double sinDelta =  radius / h;
+        System.out.println("sinAlpha = " + sinAlpha);
+        System.out.println("sinDelta = " + sinDelta);
+        double delta =  Math.asin(sinDelta);
+        double alpha =  Math.asin(sinAlpha);
+        IArc expectedArc = new Arc(alpha - delta ,   alpha + delta);
+        IArc actualArc = MathHelper.shadow(circle, point);
+        Assert.assertEquals(expectedArc, actualArc);
+    }
+
+    @Test
+    public void shadowComplex011PointTest(){
+        IPoint point = new Point(3632.38, 11191.86);
+        double x = -1327.28;
+        double y = 4020.72;
+        double radius = 2084.76;
+        ICircle circle = new Circle(new Point(x, y), radius);
+        double h = point.distanceTo(circle.getCenter());
+        System.out.println("h = " + h);
+        double dy = circle.getCenter().getY() - point.getY();
+        double dx = circle.getCenter().getX() - point.getX();
+        System.out.println("dx = " + dx);
+        System.out.println("dy = " + dy);
+        double sinAlpha =  dy / h;
+        double sinDelta =  radius / h;
+        System.out.println("sinAlpha = " + sinAlpha);
+        System.out.println("sinDelta = " + sinDelta);
+        double delta =  Math.asin(sinDelta);
+        double alpha = -Math.PI - Math.asin(sinAlpha);
+        IArc expectedArc = new Arc(alpha - delta ,   alpha + delta);
+        IArc actualArc = MathHelper.shadow(circle, point);
+        Assert.assertEquals(expectedArc, actualArc);
+    }
+
+    @Test
+    public void shadowComplex012PointTest(){
+        IPoint point = new Point(3632.38, 11191.86);
+        double x = 33674.61;
+        double y = 18684.91;
+        double radius = 7403.20;
+        ICircle circle = new Circle(new Point(x, y), radius);
+        double h = point.distanceTo(circle.getCenter());
+        System.out.println("h = " + h);
+        double dy = circle.getCenter().getY() - point.getY();
+        double dx = circle.getCenter().getX() - point.getX();
+        System.out.println("dx = " + dx);
+        System.out.println("dy = " + dy);
+        double sinAlpha =  dy / h;
+        double sinDelta =  radius / h;
+        System.out.println("sinAlpha = " + sinAlpha);
+        System.out.println("sinDelta = " + sinDelta);
+        double delta =  Math.asin(sinDelta);
+        double alpha =  Math.asin(sinAlpha);
+        IArc expectedArc = new Arc(alpha - delta ,   alpha + delta);
+        IArc actualArc = MathHelper.shadow(circle, point);
+        Assert.assertEquals(expectedArc, actualArc);
+    }
+
+    @Test
+    public void shadowComplex013PointTest(){
+        IPoint point = new Point(3632.38, 11191.86);
+        double x = 19190.25;
+        double y = 7311.46;
+        double radius = 3833.87;
+        ICircle circle = new Circle(new Point(x, y), radius);
+        double h = point.distanceTo(circle.getCenter());
+        System.out.println("h = " + h);
+        double dy = circle.getCenter().getY() - point.getY();
+        double dx = circle.getCenter().getX() - point.getX();
+        System.out.println("dx = " + dx);
+        System.out.println("dy = " + dy);
+        double sinAlpha =  dy / h;
+        double sinDelta =  radius / h;
+        System.out.println("sinAlpha = " + sinAlpha);
+        System.out.println("sinDelta = " + sinDelta);
+        double delta =  Math.asin(sinDelta);
+        double alpha =  Math.asin(sinAlpha);
+        IArc expectedArc = new Arc(alpha - delta ,   alpha + delta);
+        IArc actualArc = MathHelper.shadow(circle, point);
+        Assert.assertEquals(expectedArc, actualArc);
+    }
+
+    @Test
+    public void shadowComplex014PointTest(){
+        IPoint point = new Point(3632.38, 11191.86);
+        double x = -5281.84;
+        double y = 24080.87;
+        double radius = 3747.03;
+        ICircle circle = new Circle(new Point(x, y), radius);
+        double h = point.distanceTo(circle.getCenter());
+        System.out.println("h = " + h);
+        double dy = circle.getCenter().getY() - point.getY();
+        double dx = circle.getCenter().getX() - point.getX();
+        System.out.println("dx = " + dx);
+        System.out.println("dy = " + dy);
+        double sinAlpha =  dy / h;
+        double sinDelta =  radius / h;
+        System.out.println("sinAlpha = " + sinAlpha);
+        System.out.println("sinDelta = " + sinDelta);
+        double delta =  Math.asin(sinDelta);
+        double alpha = Math.PI - Math.asin(sinAlpha);
+        IArc expectedArc = new Arc(alpha - delta ,   alpha + delta);
+        IArc actualArc = MathHelper.shadow(circle, point);
+        Assert.assertEquals(expectedArc, actualArc);
+    }
+
+    @Test
+    public void shadowComplex015PointTest(){
+        IPoint point = new Point(3632.38, 11191.86);
+        double x = 19951.19;
+        double y = 11216.34;
+        double radius = 24.65;
+        ICircle circle = new Circle(new Point(x, y), radius);
+        double h = point.distanceTo(circle.getCenter());
+        System.out.println("h = " + h);
+        double dy = circle.getCenter().getY() - point.getY();
+        double dx = circle.getCenter().getX() - point.getX();
+        System.out.println("dx = " + dx);
+        System.out.println("dy = " + dy);
+        double sinAlpha =  dy / h;
+        double sinDelta =  radius / h;
+        System.out.println("sinAlpha = " + sinAlpha);
+        System.out.println("sinDelta = " + sinDelta);
+        double delta =  Math.asin(sinDelta);
+        double alpha =  Math.asin(sinAlpha);
+        IArc expectedArc = new Arc(alpha - delta ,   alpha + delta);
+        IArc actualArc = MathHelper.shadow(circle, point);
+        Assert.assertEquals(expectedArc, actualArc);
+    }
 }

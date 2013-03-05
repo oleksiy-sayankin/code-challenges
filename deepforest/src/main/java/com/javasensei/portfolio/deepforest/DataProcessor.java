@@ -15,7 +15,7 @@ public class DataProcessor {
     public static OutputData process(InputData inputData){
         List<ICircle> circles =  inputData.getCircles();
         IPoint initPos = inputData.getInitPos();
-        CircleAggregator agg = new CircleAggregator(inputData);
+        Aggregator agg = new Aggregator(inputData);
         List<IArc> freeSegments = agg.freeArcs();
         OutputData outputData = new OutputData();
         if(freeSegments.isEmpty()){
