@@ -110,10 +110,22 @@ public class AggregatorTest {
         agg.add(new Arc(1.05, 1.5));
         agg.add(new Arc(6, 7));
         List<IArc> expectedFreeSegments = new ArrayList<IArc>();
-        expectedFreeSegments.add(new Arc(0.5, 0.6));
         expectedFreeSegments.add(new Arc(1.0, 1.05));
         expectedFreeSegments.add(new Arc(2.0, 6.0));
         List<IArc> actualFreeSegments = agg.freeArcs();
         Assert.assertEquals(expectedFreeSegments, actualFreeSegments);
     }
+
+    @Test
+    public void freeSegmentsSimple8Test(){
+        Aggregator agg = new Aggregator();
+        agg.add(new Arc(5, 1));
+        agg.add(new Arc(6, 0.5));
+        List<IArc> expectedFreeSegments = new ArrayList<IArc>();
+        expectedFreeSegments.add(new Arc(1, 5));
+        List<IArc> actualFreeSegments = agg.freeArcs();
+        Assert.assertEquals(expectedFreeSegments, actualFreeSegments);
+    }
+
+
 }

@@ -118,11 +118,24 @@ public class Arc implements IArc{
 
     @Override
     public boolean containsAngle(double angle) {
+        double newStartAngle = startAngle;
+        double newEndAngle = endAngle;
         if(endAngle < startAngle){
-            return angle >= startAngle  && angle <= endAngle + 2 * Math.PI;
+            newEndAngle = endAngle + 2 * Math.PI;
         }
+        double normalizedAngle = MathHelper.normalize(angle);
 
-        return angle >= startAngle  && angle <= endAngle;
+        while(normalizedAngle < newEndAngle){
+            if(contains(newStartAngle, newEndAngle, normalizedAngle)){
+                return true;
+            }
+            normalizedAngle += 2 * Math.PI;
+        }
+        return false;
+    }
+
+    private static boolean contains(double startAngle,double endAngle, double angle){
+        return angle >= startAngle && angle <= endAngle;
     }
 
     @Override
