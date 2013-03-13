@@ -1,5 +1,7 @@
 package com.javasensei.portfolio.deepforest;
 
+import com.javasensei.portfolio.math.MathHelper;
+
 /**
  * @author oleksiy sayankin
  */
@@ -72,5 +74,53 @@ public class Sin implements Comparable{
 
         }
         return 0;
+    }
+
+    public Sin normalizedSin(){
+        if(Quadrant.isNormal(quadrant)){
+            return this;
+        }
+        Quadrant normalizedQuadrant = quadrant;
+        switch (this.quadrant){
+            case FIFTH:
+                normalizedQuadrant = Quadrant.FIRST;
+                break;
+            case SIXTH:
+                normalizedQuadrant = Quadrant.SECOND;
+                break;
+            case SEVENTH:
+                normalizedQuadrant = Quadrant.THIRD;
+                break;
+            case EIGHT:
+                normalizedQuadrant = Quadrant.FORTH;
+                break;
+        }
+
+        return new Sin(sinValue, normalizedQuadrant);
+    }
+
+    @Override
+    public String toString(){
+        return "[ val = " + sinValue + ", Q = " + quadrant + " ]";
+    }
+
+    @Override
+    public boolean equals(Object other){
+        if(other == null){
+            return false;
+        }
+        if(this == other){
+            return true;
+        }
+        if(!(other instanceof Sin)){
+            return false;
+        }
+        Sin otherSin = (Sin)other;
+        return MathHelper.equalsZero(this.sinValue - otherSin.sinValue) && this.quadrant == otherSin.quadrant;
+    }
+
+    @Override
+    public int hashCode(){
+        return (int)(Math.round(sinValue * 100)) + quadrant.hashCode();
     }
 }

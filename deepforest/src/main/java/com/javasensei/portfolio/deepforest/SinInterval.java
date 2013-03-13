@@ -57,4 +57,9 @@ public class SinInterval {
             }
         }
     }
+
+    @Override
+    public String toString(){
+        return "{Start = " + startSin + ", End = " + endSin + "}";
+    }
 }
