@@ -58,6 +58,58 @@ public class SinInterval {
         }
     }
 
+    public Sin innerSin(){
+        Quadrant startQuadrant = startSin.getQuadrant();
+        Quadrant endQuadrant = endSin.getQuadrant();
+        double innerSinValue = 0;
+        if(startQuadrant == endQuadrant){
+            innerSinValue = (startSin.getSinValue() + endSin.getSinValue()) / 2d;
+            return new Sin(innerSinValue, startQuadrant);
+        }
+        Quadrant innerQuadrant = Quadrant.getInner(startQuadrant, endQuadrant);
+        if(innerQuadrant != startQuadrant && innerQuadrant != endQuadrant){
+            return new Sin(innerQuadrant);
+        }
+        switch (startQuadrant){
+            case FIRST:
+            case FIFTH:
+                innerSinValue = 1;
+                break;
+            case SECOND:
+            case FORTH:
+            case EIGHT:
+            case SIXTH:
+                innerSinValue = 0;
+                break;
+            case THIRD:
+            case SEVENTH:
+                innerSinValue = -1;
+                break;
+        }
+        return new Sin(innerSinValue, startQuadrant);
+    }
+
+    @Override
+    public boolean equals(Object other){
+        if(other == null){
+            return false;
+        }
+        if(this ==  other){
+            return true;
+        }
+        if(!(other instanceof SinInterval)){
+            return false;
+        }
+        SinInterval otherSinInterval = (SinInterval)other;
+        return this.startSin.equals(otherSinInterval.getStartSin()) && this.endSin.equals(otherSinInterval.getEndSin());
+    }
+
+    @Override
+    public int hashCode(){
+        return startSin.hashCode() * 31 + endSin.hashCode();
+    }
+
+
     @Override
     public String toString(){
         return "{Start = " + startSin + ", End = " + endSin + "}";

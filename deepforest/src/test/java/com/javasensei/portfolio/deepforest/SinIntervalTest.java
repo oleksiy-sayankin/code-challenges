@@ -91,9 +91,32 @@ public class SinIntervalTest {
         Assert.assertTrue(sinInterval.contains(sin));
     }
 
+    @Test
+    public void containsTrue010Test(){
+        Sin startSin = new Sin(0.4, Quadrant.FIRST);
+        Sin endSin = new Sin(0.1, Quadrant.FIRST);
+        Sin sin = new Sin(0.31231, Quadrant.SECOND);
+        SinInterval sinInterval = new SinInterval(startSin, endSin);
+        Assert.assertTrue(sinInterval.contains(sin));
+    }
 
+    @Test
+    public void containsTrue011Test(){
+        Sin startSin = new Sin(0.4, Quadrant.FIRST);
+        Sin endSin = new Sin(0.1, Quadrant.FIRST);
+        Sin sin = new Sin(-0.31231, Quadrant.FORTH);
+        SinInterval sinInterval = new SinInterval(startSin, endSin);
+        Assert.assertTrue(sinInterval.contains(sin));
+    }
 
-
+    @Test
+    public void containsTrue012Test(){
+        Sin startSin = new Sin(0.4, Quadrant.FIRST);
+        Sin endSin = new Sin(0.1, Quadrant.FIRST);
+        Sin sin = new Sin(0.05, Quadrant.FIFTH);
+        SinInterval sinInterval = new SinInterval(startSin, endSin);
+        Assert.assertTrue(sinInterval.contains(sin));
+    }
 
 
     @Test
@@ -149,4 +172,64 @@ public class SinIntervalTest {
         SinInterval sinInterval = new SinInterval(startSin, endSin);
         Assert.assertFalse(sinInterval.contains(sin));
     }
+
+    @Test
+    public void containsFalse007Test(){
+        Sin startSin = new Sin(0.1, Quadrant.FIRST);
+        Sin endSin = new Sin(0.4, Quadrant.FIRST);
+        Sin sin = new Sin(0.31231, Quadrant.SECOND);
+        SinInterval sinInterval = new SinInterval(startSin, endSin);
+        Assert.assertFalse(sinInterval.contains(sin));
+    }
+
+    @Test
+    public void innerSin001Test(){
+        Sin startSin = new Sin(0.1, Quadrant.FIRST);
+        Sin endSin = new Sin(0.4, Quadrant.FIRST);
+        Sin innerSinExpected = new Sin(0.25, Quadrant.FIRST);
+        SinInterval sinInterval = new SinInterval(startSin, endSin);
+        Sin innerSinActual = sinInterval.innerSin();
+        Assert.assertEquals(innerSinExpected, innerSinActual);
+        Assert.assertTrue(sinInterval.contains(innerSinActual));
+        Assert.assertTrue(sinInterval.contains(innerSinExpected));
+    }
+
+
+    @Test
+    public void innerSin002Test(){
+        Sin startSin = new Sin(0.1, Quadrant.FIRST);
+        Sin endSin = new Sin(-0.4, Quadrant.THIRD);
+        Sin innerSinExpected = new Sin(0.5, Quadrant.SECOND);
+        SinInterval sinInterval = new SinInterval(startSin, endSin);
+        Sin innerSinActual = sinInterval.innerSin();
+        Assert.assertEquals(innerSinExpected, innerSinActual);
+        Assert.assertTrue(sinInterval.contains(innerSinActual));
+        Assert.assertTrue(sinInterval.contains(innerSinExpected));
+    }
+
+
+    @Test
+    public void innerSin003Test(){
+        Sin startSin = new Sin(0.1, Quadrant.FIRST);
+        Sin endSin = new Sin(0.1, Quadrant.SECOND);
+        Sin innerSinExpected = new Sin(1, Quadrant.FIRST);
+        SinInterval sinInterval = new SinInterval(startSin, endSin);
+        Sin innerSinActual = sinInterval.innerSin();
+        Assert.assertEquals(innerSinExpected, innerSinActual);
+        Assert.assertTrue(sinInterval.contains(innerSinActual));
+        Assert.assertTrue(sinInterval.contains(innerSinExpected));
+    }
+
+    @Test
+    public void innerSin004Test(){
+        Sin startSin = new Sin(0.5, Quadrant.FIRST);
+        Sin endSin = new Sin(0.3, Quadrant.FIRST);
+        Sin innerSinExpected = new Sin(-0.5, Quadrant.THIRD);
+        SinInterval sinInterval = new SinInterval(startSin, endSin);
+        Sin innerSinActual = sinInterval.innerSin();
+        Assert.assertEquals(innerSinExpected, innerSinActual);
+        Assert.assertTrue(sinInterval.contains(innerSinActual));
+        Assert.assertTrue(sinInterval.contains(innerSinExpected));
+    }
+
 }

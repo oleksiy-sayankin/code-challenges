@@ -25,6 +25,24 @@ public class Sin implements Comparable{
         this.quadrant = quadrant;
     }
 
+    public Sin(Quadrant quadrant){
+        switch (quadrant){
+            case FIRST:
+            case SECOND:
+            case FIFTH:
+            case SIXTH:
+                sinValue = 0.5;
+                break;
+            case THIRD:
+            case FORTH:
+            case SEVENTH:
+            case EIGHT:
+                sinValue = -0.5;
+                break;
+        }
+        this.quadrant = quadrant;
+    }
+
     public Sin(double sinValue, Quadrant quadrant){
         if(Math.abs(sinValue)> 1){
             throw new IllegalArgumentException("Absolute value of sin must be less or equal to 1. sin = " + sinValue);

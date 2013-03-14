@@ -7,8 +7,8 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- @author oleksiy sayankin
- */
+@author oleksiy sayankin
+*/
 public class SinIntervalAggregator {
     private List<SinInterval> sinIntervals = new ArrayList<SinInterval>();
     private InputData inputData;
@@ -26,7 +26,7 @@ public class SinIntervalAggregator {
         sinIntervals.add(sinInterval);
     }
 
-    public List<IArc> freeSinIntervals(){
+    public List<SinInterval> freeSinIntervals(){
         if(sinIntervals.isEmpty()){
             return null;
         }
@@ -37,15 +37,17 @@ public class SinIntervalAggregator {
         for(int i = 0; i <= allAngles.length - 2; i++){
             start = allAngles[i];
             end = allAngles[i + 1];
-            if(isFreeAngle(start, end)){
-                result.add(new Arc(start, end));
+            SinInterval interval = new SinInterval(start, end);
+            if(isFreeAngle(interval)){
+                result.add(interval);
             }
         }
         start = allAngles[allAngles.length - 1];
-        end = allAngles[0] + 2 * Math.PI;
+        end = allAngles[0];
 
-        if(isFreeAngle(start, end)){
-            result.add(new Arc(start, end));
+        SinInterval interval = new SinInterval(start, end);
+        if(isFreeAngle(interval)){
+            result.add(interval);
         }
         return result;
     }
@@ -87,18 +89,13 @@ public class SinIntervalAggregator {
         return allSin;
     }
 
-    private boolean isFreeAngle(Sin start, Sin end){
-        double angle = (start + end) / 2;
-        for(IArc arc : sinIntervals){
-            if(arc.containsAngle(angle)) return false;
-            System.out.print(arc);
-            if(arc.getStartAngle() > arc.getEndAngle()){
-                System.out.println("!!!");
-            }else{
-                System.out.println();
-            }
+    private boolean isFreeAngle(SinInterval interval){
+        Sin innerSin = interval.innerSin();
+        for(SinInterval sinInterval : sinIntervals){
+            if(sinInterval.contains(innerSin)) return false;
+            System.out.print(sinInterval);
         }
-        System.out.println("start = " + start + ", end = " + end);
+        System.out.println("start = " + interval);
         return true;
     }
 
@@ -126,10 +123,7 @@ public class SinIntervalAggregator {
         Sin sinStart =  new Sin(sinAlphaMinusDelta, quadrant(cosAlphaMinusDelta, sinAlphaMinusDelta));
         Sin sinEnd =  new Sin(sinAlphaPlusDelta, quadrant(cosAlphaPlusDelta, sinAlphaPlusDelta));
 
-        SinInterval result  = new SinInterval(sinStart, sinEnd);
-
-        return result;
-
+        return  new SinInterval(sinStart, sinEnd);
     }
 
     private static Quadrant quadrant(double x, double y){
