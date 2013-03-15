@@ -30,12 +30,21 @@ public class SinInterval {
         if (Quadrant.FORTH.compareTo(endSin.getQuadrant()) < 0) {
             throw new IllegalArgumentException("Acceptable only 1th, 2nd, 3d and 4th quadrants. End sin quadrant = " + endSin.getQuadrant());
         }
-        this.startSin = startSin;
-        this.endSin = endSin;
+        this.startSin = startSin.copy();
+        this.endSin = endSin.copy();
         normalize();
     }
 
     public boolean contains(Sin sin) {
+        Sin normalizedSin = sin.normalized();
+        Sin shiftedOver2PiSin = normalizedSin.shiftedOver2Pi();
+        boolean normalizedResult = trivialContains(normalizedSin);
+        boolean shiftedOver2PiResult = trivialContains(shiftedOver2PiSin);
+        return normalizedResult || shiftedOver2PiResult;
+    }
+
+
+    public boolean trivialContains(Sin sin) {
         return startSin.compareTo(sin) <= 0 && endSin.compareTo(sin) >= 0;
     }
 

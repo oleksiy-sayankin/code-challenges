@@ -1,6 +1,9 @@
 package com.javasensei.portfolio.deepforest;
 
-import com.javasensei.portfolio.math.*;
+import com.javasensei.portfolio.math.IArc;
+import com.javasensei.portfolio.math.ICircle;
+import com.javasensei.portfolio.math.IPoint;
+import com.javasensei.portfolio.math.Point;
 
 import java.io.Reader;
 import java.io.Writer;
@@ -9,21 +12,25 @@ import java.util.List;
 /**
  * @author oleksiy sayankin
  */
-public class DataProcessor {
-    private DataProcessor(){}
+public class SinIntervalDataProcessor {
+    private SinIntervalDataProcessor(){}
 
     public static OutputData process(InputData inputData){
         IPoint initPos = inputData.getInitPos();
-        Aggregator agg = new Aggregator(inputData);
-        List<IArc> freeSegments = agg.freeArcs();
+        SinIntervalAggregator agg = new SinIntervalAggregator(inputData);
+        List<SinInterval> freeSegments = agg.freeSinIntervals();
         OutputData outputData = new OutputData();
         if(freeSegments.isEmpty()){
             outputData.setForestIsDeep(true);
         }else {
             outputData.setForestIsDeep(false);
-            double alpha = freeSegments.get(0).midAngle();
-            double x = Constants.DEFAULT_RADIUS * Math.cos(alpha) + initPos.getX();
-            double y = Constants.DEFAULT_RADIUS * Math.sin(alpha) + initPos.getY();
+            Sin sin = freeSegments.get(0).innerSin();
+
+            Quadrant quadrant = sin.getQuadrant();
+            double sinValue = sin.getSinValue();
+            double cosValue = Quadrant.cosSign(quadrant) * Math.sqrt(1 - sinValue * sinValue);
+            double x = Constants.DEFAULT_RADIUS * cosValue + initPos.getX();
+            double y = Constants.DEFAULT_RADIUS * sinValue + initPos.getY();
             IPoint result =  new Point(x, y);
             outputData.setExit(result);
         }

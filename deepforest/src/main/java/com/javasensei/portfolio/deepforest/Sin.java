@@ -94,9 +94,9 @@ public class Sin implements Comparable{
         return 0;
     }
 
-    public Sin normalizedSin(){
+    public Sin normalized(){
         if(Quadrant.isNormal(quadrant)){
-            return this;
+            return copy();
         }
         Quadrant normalizedQuadrant = quadrant;
         switch (this.quadrant){
@@ -115,6 +115,35 @@ public class Sin implements Comparable{
         }
 
         return new Sin(sinValue, normalizedQuadrant);
+    }
+
+    public Sin shiftedOver2Pi(){
+        if(Quadrant.isNormal(quadrant)){
+            Quadrant shiftedQuadrant = quadrant;
+            switch (this.quadrant){
+                case FIRST:
+                    shiftedQuadrant = Quadrant.FIFTH;
+                    break;
+                case SECOND:
+                    shiftedQuadrant = Quadrant.SIXTH;
+                    break;
+                case THIRD:
+                    shiftedQuadrant = Quadrant.SEVENTH;
+                    break;
+                case FORTH:
+                    shiftedQuadrant = Quadrant.EIGHT;
+                    break;
+            }
+
+            return new Sin(sinValue, shiftedQuadrant);
+        }
+
+        return copy();
+
+    }
+
+    public Sin copy(){
+        return new Sin(sinValue, quadrant);
     }
 
     @Override

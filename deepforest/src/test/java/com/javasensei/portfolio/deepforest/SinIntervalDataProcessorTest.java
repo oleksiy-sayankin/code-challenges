@@ -1,7 +1,6 @@
 package com.javasensei.portfolio.deepforest;
 
 import com.javasensei.portfolio.math.Point;
-import com.javasensei.portfolio.math.Settings;
 import org.junit.*;
 
 import java.io.*;
@@ -10,19 +9,17 @@ import java.io.*;
  * @author oleksiy sayankin
  */
 
-public class DataProcessorTest{
+public class SinIntervalDataProcessorTest {
     private File outputDir;
     @Before
     public void createOutputDir(){
         outputDir = new File("output");
         outputDir.mkdir();
-        Settings.setError(0.00000000000000000001d);
     }
 
     @After
     public void deleteOutputDir(){
         Util.rmdir(outputDir);
-        Settings.restoreDefaults();
     }
 
     @Test
@@ -30,7 +27,7 @@ public class DataProcessorTest{
         String inputFileName = "i002.in";
         InputData inputData = new InputData();
         inputData.read(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(inputFileName))));
-        OutputData actualOutputData = DataProcessor.process(inputData);
+        OutputData actualOutputData = SinIntervalDataProcessor.process(inputData);
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(true);
         Assert.assertEquals(expectedOutputData, actualOutputData);
@@ -43,10 +40,10 @@ public class DataProcessorTest{
         String inputFileName = "i003.in";
         InputData inputData = new InputData();
         inputData.read(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(inputFileName))));
-        OutputData actualOutputData = DataProcessor.process(inputData);
+        OutputData actualOutputData = SinIntervalDataProcessor.process(inputData);
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(false);
-        expectedOutputData.setExit(new Point(70.71067811865477, 70.71067811865477));
+        expectedOutputData.setExit(new Point(0, 100));
         Assert.assertFalse(Util.isIntersections(inputData, actualOutputData));
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
@@ -57,7 +54,7 @@ public class DataProcessorTest{
         String inputFileName = "i004.in";
         InputData inputData = new InputData();
         inputData.read(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(inputFileName))));
-        OutputData actualOutputData = DataProcessor.process(inputData);
+        OutputData actualOutputData = SinIntervalDataProcessor.process(inputData);
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(false);
         expectedOutputData.setExit(new Point(80.71067811865477, 81.71067811865474));
@@ -71,7 +68,7 @@ public class DataProcessorTest{
         String inputFileName = "i005.in";
         InputData inputData = new InputData();
         inputData.read(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(inputFileName))));
-        OutputData actualOutputData = DataProcessor.process(inputData);
+        OutputData actualOutputData = SinIntervalDataProcessor.process(inputData);
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(false);
         expectedOutputData.setExit(new Point(-91.28090415820634, -28.333333333333307));
@@ -86,7 +83,7 @@ public class DataProcessorTest{
         String output = "i006.out";
         File result = new File(outputDir, output);
         String input = "i006.in";
-        DataProcessor.process(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input))),
+        SinIntervalDataProcessor.process(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input))),
                 new BufferedWriter(new FileWriter(result)));
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(true);
@@ -101,7 +98,7 @@ public class DataProcessorTest{
         String output = "i007.out";
         File result = new File(outputDir, output);
         String input = "i007.in";
-        DataProcessor.process(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input))),
+        SinIntervalDataProcessor.process(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input))),
                 new BufferedWriter(new FileWriter(result)));
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(true);
@@ -115,7 +112,7 @@ public class DataProcessorTest{
         String output = "i008.out";
         File result = new File(outputDir, output);
         String input = "i008.in";
-        DataProcessor.process(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input))),
+        SinIntervalDataProcessor.process(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input))),
                 new BufferedWriter(new FileWriter(result)));
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(true);
@@ -129,7 +126,7 @@ public class DataProcessorTest{
         String output = "Answer01.txt";
         File result = new File(outputDir, output);
         String input = "Input01.txt";
-        DataProcessor.process(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input))),
+        SinIntervalDataProcessor.process(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input))),
                 new BufferedWriter(new FileWriter(result)));
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(true);
@@ -143,7 +140,7 @@ public class DataProcessorTest{
         String output = "Answer02.txt";
         File result = new File(outputDir, output);
         String input = "Input02.txt";
-        DataProcessor.process(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input))),
+        SinIntervalDataProcessor.process(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input))),
                 new BufferedWriter(new FileWriter(result)));
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(false);
@@ -157,7 +154,7 @@ public class DataProcessorTest{
         String inputFileName = "Input03.txt";
         InputData inputData = new InputData();
         inputData.read(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(inputFileName))));
-        OutputData actualOutputData = DataProcessor.process(inputData);
+        OutputData actualOutputData = SinIntervalDataProcessor.process(inputData);
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(true);
         expectedOutputData.setExit(new Point(3732.379887523458, 11192.009984318382));
@@ -171,7 +168,7 @@ public class DataProcessorTest{
         String output = "Answer04.txt";
         File result = new File(outputDir, output);
         String input = "Input04.txt";
-        DataProcessor.process(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input))),
+        SinIntervalDataProcessor.process(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input))),
                 new BufferedWriter(new FileWriter(result)));
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(false);
@@ -185,7 +182,7 @@ public class DataProcessorTest{
         String output = "Answer05.txt";
         File result = new File(outputDir, output);
         String input = "Input05.txt";
-        DataProcessor.process(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input))),
+        SinIntervalDataProcessor.process(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input))),
                 new BufferedWriter(new FileWriter(result)));
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(false);
@@ -199,7 +196,7 @@ public class DataProcessorTest{
         String output = "Answer06.txt";
         File result = new File(outputDir, output);
         String input = "Input06.txt";
-        DataProcessor.process(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input))),
+        SinIntervalDataProcessor.process(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input))),
                 new BufferedWriter(new FileWriter(result)));
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(false);
@@ -213,7 +210,7 @@ public class DataProcessorTest{
         String output = "Answer07.txt";
         File result = new File(outputDir, output);
         String input = "Input07.txt";
-        DataProcessor.process(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input))),
+        SinIntervalDataProcessor.process(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input))),
                 new BufferedWriter(new FileWriter(result)));
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(false);
@@ -228,7 +225,7 @@ public class DataProcessorTest{
         String output = "Answer08.txt";
         File result = new File(outputDir, output);
         String input = "Input08.txt";
-        DataProcessor.process(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input))),
+        SinIntervalDataProcessor.process(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input))),
                 new BufferedWriter(new FileWriter(result)));
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(true);

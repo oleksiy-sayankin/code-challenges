@@ -15,4 +15,20 @@ public enum Quadrant {
     public static Quadrant getInner(Quadrant startQuadrant, Quadrant endQuadrant){
        return Quadrant.getByOrdinal((int) Math.round((startQuadrant.ordinal() + endQuadrant.ordinal()) / 2d));
     }
+
+    public static int cosSign(Quadrant quadrant){
+        switch (quadrant){
+            case FIRST:
+            case FORTH:
+            case FIFTH:
+            case EIGHT:
+                return 1;
+            case THIRD:
+            case SECOND:
+            case SIXTH:
+            case SEVENTH:
+                return -1;
+        }
+        return 0;
+    }
 }
