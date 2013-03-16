@@ -16,6 +16,10 @@ public enum Quadrant {
        return Quadrant.getByOrdinal((int) Math.round((startQuadrant.ordinal() + endQuadrant.ordinal()) / 2d));
     }
 
+    public static int getDelta(Quadrant startQuadrant, Quadrant endQuadrant){
+        return  endQuadrant.ordinal() - startQuadrant.ordinal();
+    }
+
     public static int cosSign(Quadrant quadrant){
         switch (quadrant){
             case FIRST:

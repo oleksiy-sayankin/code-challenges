@@ -75,8 +75,11 @@ public class SinInterval {
             innerSinValue = (startSin.getSinValue() + endSin.getSinValue()) / 2d;
             return new Sin(innerSinValue, startQuadrant);
         }
-        Quadrant innerQuadrant = Quadrant.getInner(startQuadrant, endQuadrant);
-        if(innerQuadrant != startQuadrant && innerQuadrant != endQuadrant){
+
+        int delta = Math.abs(Quadrant.getDelta(startQuadrant, endQuadrant));
+
+        if(delta > 1){
+            Quadrant innerQuadrant = Quadrant.getInner(startQuadrant, endQuadrant);
             return new Sin(innerQuadrant);
         }
         switch (startQuadrant){

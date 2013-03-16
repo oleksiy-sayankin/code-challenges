@@ -35,4 +35,12 @@ public class SinTest {
         Assert.assertEquals(expectedCompareTo, actualCompareTo);
     }
 
+    @Test
+    public void innerSin001Test(){
+        SinInterval sinInterval = new SinInterval(new Sin(0, Quadrant.FIRST), new Sin(1, Quadrant.SECOND));
+        Sin actualInnerSin = sinInterval.innerSin();
+        Sin expectedInnerSin = new Sin(0.5, Quadrant.FIRST);
+        Assert.assertEquals(expectedInnerSin, actualInnerSin);
+    }
+
 }
