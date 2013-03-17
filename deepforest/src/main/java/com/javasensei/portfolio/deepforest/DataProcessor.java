@@ -10,21 +10,22 @@ import java.util.List;
  * @author oleksiy sayankin
  */
 public class DataProcessor {
-    private DataProcessor(){}
+    private DataProcessor() {
+    }
 
-    public static OutputData process(InputData inputData){
+    public static OutputData process(InputData inputData) {
         IPoint initPos = inputData.getInitPos();
         Aggregator agg = new Aggregator(inputData);
         List<IArc> freeSegments = agg.freeArcs();
         OutputData outputData = new OutputData();
-        if(freeSegments.isEmpty()){
+        if (freeSegments.isEmpty()) {
             outputData.setForestIsDeep(true);
-        }else {
+        } else {
             outputData.setForestIsDeep(false);
             double alpha = freeSegments.get(0).midAngle();
             double x = Constants.DEFAULT_RADIUS * Math.cos(alpha) + initPos.getX();
             double y = Constants.DEFAULT_RADIUS * Math.sin(alpha) + initPos.getY();
-            IPoint result =  new Point(x, y);
+            IPoint result = new Point(x, y);
             outputData.setExit(result);
         }
         return outputData;

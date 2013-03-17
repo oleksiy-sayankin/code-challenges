@@ -15,74 +15,75 @@ public class OutputData {
     private boolean forestIsDeep;
     private IPoint exit;
 
-    public  void read(Reader reader) throws IOException {
+    public void read(Reader reader) throws IOException {
         BufferedReader br = new BufferedReader(reader);
-        try{
+        try {
             String firstLine = br.readLine();
-            if(Constants.YES.equals(firstLine.trim().toUpperCase())){
-                 setForestIsDeep(true);
+            if (Constants.YES.equals(firstLine.trim().toUpperCase())) {
+                setForestIsDeep(true);
             } else {
-                 setForestIsDeep(false);
-                String secondLine =  br.readLine();
+                setForestIsDeep(false);
+                String secondLine = br.readLine();
                 String[] values = secondLine.split(" ");
                 double x = Double.valueOf(values[0]);
                 double y = Double.valueOf(values[1]);
                 setExit(new Point(x, y));
             }
-        }   finally {
+        } finally {
             br.close();
         }
     }
 
 
     public void write(Writer writer) throws IOException {
-        try{
-            if(forestIsDeep){
+        try {
+            if (forestIsDeep) {
                 writer.write(Constants.YES);
-            }else{
+            } else {
                 writer.write(Constants.NO);
                 writer.write("\n");
                 writer.write(exit.getX() + " " + exit.getY());
             }
             writer.flush();
-        }finally {
+        } finally {
             writer.close();
         }
     }
-    public void setForestIsDeep(boolean forestIsDeep){
+
+    public void setForestIsDeep(boolean forestIsDeep) {
         this.forestIsDeep = forestIsDeep;
     }
 
-    public void setExit(IPoint exit){
-       this.exit = exit;
+    public void setExit(IPoint exit) {
+        this.exit = exit;
     }
 
-    public IPoint getExit(){
+    public IPoint getExit() {
         return exit;
     }
 
     @Override
-    public boolean equals(Object other){
-        if(other == null){
+    public boolean equals(Object other) {
+        if (other == null) {
             return false;
         }
-        if(!(other instanceof OutputData)){
+        if (!(other instanceof OutputData)) {
             return false;
         }
-        if(this == other){
-            return  true;
+        if (this == other) {
+            return true;
         }
-        OutputData otherOutputData = (OutputData)other;
+        OutputData otherOutputData = (OutputData) other;
         return this.forestIsDeep == otherOutputData.forestIsDeep;
     }
 
     @Override
-    public int hashCode(){
+    public int hashCode() {
         return (forestIsDeep ? 31 : 32) * exit.hashCode();
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return (forestIsDeep ? Constants.YES : Constants.NO) + ", " + exit;
     }
 }

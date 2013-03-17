@@ -43,7 +43,7 @@ public class SinIntervalDataProcessorTest {
         OutputData actualOutputData = SinIntervalDataProcessor.process(inputData);
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(false);
-        expectedOutputData.setExit(new Point(0, 100));
+        expectedOutputData.setExit(new Point(86.60254037844386, 50.0));
         Assert.assertFalse(Util.isIntersections(inputData, actualOutputData));
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
@@ -57,7 +57,7 @@ public class SinIntervalDataProcessorTest {
         OutputData actualOutputData = SinIntervalDataProcessor.process(inputData);
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(false);
-        expectedOutputData.setExit(new Point(80.71067811865477, 81.71067811865474));
+        expectedOutputData.setExit(new Point(96.60254037844386, 61.0));
         Assert.assertFalse(Util.isIntersections(inputData, actualOutputData));
         Assert.assertEquals(expectedOutputData, actualOutputData);
         System.out.println(actualOutputData);
@@ -71,7 +71,7 @@ public class SinIntervalDataProcessorTest {
         OutputData actualOutputData = SinIntervalDataProcessor.process(inputData);
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(false);
-        expectedOutputData.setExit(new Point(-91.28090415820634, -28.333333333333307));
+        expectedOutputData.setExit(new Point(91.44332774281067, 51.666666666666664));
         System.out.println(actualOutputData);
         Assert.assertFalse(Util.isIntersections(inputData, actualOutputData));
         Assert.assertEquals(expectedOutputData, actualOutputData);
@@ -157,13 +157,11 @@ public class SinIntervalDataProcessorTest {
         OutputData actualOutputData = SinIntervalDataProcessor.process(inputData);
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(true);
-        expectedOutputData.setExit(new Point(3732.379887523458, 11192.009984318382));
         System.out.println(actualOutputData);
-        Assert.assertFalse(Util.isIntersections(inputData, actualOutputData));
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
-    @Test@Ignore
+    @Test
     public void test04() throws Exception {
         String output = "Answer04.txt";
         File result = new File(outputDir, output);
@@ -177,7 +175,7 @@ public class SinIntervalDataProcessorTest {
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
-    @Test@Ignore
+    @Test
     public void test05() throws Exception {
         String output = "Answer05.txt";
         File result = new File(outputDir, output);
@@ -191,7 +189,7 @@ public class SinIntervalDataProcessorTest {
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
-    @Test@Ignore
+    @Test
     public void test06() throws Exception {
         String output = "Answer06.txt";
         File result = new File(outputDir, output);
@@ -205,7 +203,7 @@ public class SinIntervalDataProcessorTest {
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
-    @Test@Ignore
+    @Test
     public void test07() throws Exception {
         String output = "Answer07.txt";
         File result = new File(outputDir, output);
@@ -220,7 +218,7 @@ public class SinIntervalDataProcessorTest {
     }
 
 
-    @Test@Ignore
+    @Test
     public void test08() throws Exception {
         String output = "Answer08.txt";
         File result = new File(outputDir, output);
@@ -229,6 +227,62 @@ public class SinIntervalDataProcessorTest {
                 new BufferedWriter(new FileWriter(result)));
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(true);
+        OutputData actualOutputData = new OutputData();
+        actualOutputData.read(new FileReader(result));
+        Assert.assertEquals(expectedOutputData, actualOutputData);
+    }
+
+    @Test
+    public void test09() throws Exception {
+        String output = "Answer09.txt";
+        File result = new File(outputDir, output);
+        String input = "Input09.txt";
+        SinIntervalDataProcessor.process(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input))),
+                new BufferedWriter(new FileWriter(result)));
+        OutputData expectedOutputData = new OutputData();
+        expectedOutputData.setForestIsDeep(false);
+        OutputData actualOutputData = new OutputData();
+        actualOutputData.read(new FileReader(result));
+        Assert.assertEquals(expectedOutputData, actualOutputData);
+    }
+
+    @Test
+    public void test10() throws Exception {
+        String output = "Answer10.txt";
+        File result = new File(outputDir, output);
+        String input = "Input10.txt";
+        SinIntervalDataProcessor.process(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input))),
+                new BufferedWriter(new FileWriter(result)));
+        OutputData expectedOutputData = new OutputData();
+        expectedOutputData.setForestIsDeep(false);
+        OutputData actualOutputData = new OutputData();
+        actualOutputData.read(new FileReader(result));
+        Assert.assertEquals(expectedOutputData, actualOutputData);
+    }
+
+    @Test
+    public void test11() throws Exception {
+        String output = "Answer11.txt";
+        File result = new File(outputDir, output);
+        String input = "Input11.txt";
+        SinIntervalDataProcessor.process(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input))),
+                new BufferedWriter(new FileWriter(result)));
+        OutputData expectedOutputData = new OutputData();
+        expectedOutputData.setForestIsDeep(false);
+        OutputData actualOutputData = new OutputData();
+        actualOutputData.read(new FileReader(result));
+        Assert.assertEquals(expectedOutputData, actualOutputData);
+    }
+
+    @Test
+    public void test12() throws Exception {
+        String output = "Answer12.txt";
+        File result = new File(outputDir, output);
+        String input = "Input12.txt";
+        SinIntervalDataProcessor.process(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input))),
+                new BufferedWriter(new FileWriter(result)));
+        OutputData expectedOutputData = new OutputData();
+        expectedOutputData.setForestIsDeep(false);
         OutputData actualOutputData = new OutputData();
         actualOutputData.read(new FileReader(result));
         Assert.assertEquals(expectedOutputData, actualOutputData);

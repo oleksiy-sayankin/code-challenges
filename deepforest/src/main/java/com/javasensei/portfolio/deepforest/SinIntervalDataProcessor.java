@@ -13,16 +13,17 @@ import java.util.List;
  * @author oleksiy sayankin
  */
 public class SinIntervalDataProcessor {
-    private SinIntervalDataProcessor(){}
+    private SinIntervalDataProcessor() {
+    }
 
-    public static OutputData process(InputData inputData){
+    public static OutputData process(InputData inputData) {
         IPoint initPos = inputData.getInitPos();
         SinIntervalAggregator agg = new SinIntervalAggregator(inputData);
         List<SinInterval> freeSegments = agg.freeSinIntervals();
         OutputData outputData = new OutputData();
-        if(freeSegments.isEmpty()){
+        if (freeSegments.isEmpty()) {
             outputData.setForestIsDeep(true);
-        }else {
+        } else {
             outputData.setForestIsDeep(false);
             Sin sin = freeSegments.get(0).innerSin();
 
@@ -31,7 +32,7 @@ public class SinIntervalDataProcessor {
             double cosValue = Quadrant.cosSign(quadrant) * Math.sqrt(1 - sinValue * sinValue);
             double x = Constants.DEFAULT_RADIUS * cosValue + initPos.getX();
             double y = Constants.DEFAULT_RADIUS * sinValue + initPos.getY();
-            IPoint result =  new Point(x, y);
+            IPoint result = new Point(x, y);
             outputData.setExit(result);
         }
         return outputData;

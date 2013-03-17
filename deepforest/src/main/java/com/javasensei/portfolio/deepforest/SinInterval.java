@@ -67,63 +67,52 @@ public class SinInterval {
         }
     }
 
-    public Sin innerSin(){
+    public Sin innerSin() {
         Quadrant startQuadrant = startSin.getQuadrant();
         Quadrant endQuadrant = endSin.getQuadrant();
         double innerSinValue = 0;
-        if(startQuadrant == endQuadrant){
+        if (startQuadrant == endQuadrant) {
             innerSinValue = (startSin.getSinValue() + endSin.getSinValue()) / 2d;
             return new Sin(innerSinValue, startQuadrant);
         }
 
         int delta = Math.abs(Quadrant.getDelta(startQuadrant, endQuadrant));
 
-        if(delta > 1){
+        if (delta > 1) {
             Quadrant innerQuadrant = Quadrant.getInner(startQuadrant, endQuadrant);
             return new Sin(innerQuadrant);
         }
-        switch (startQuadrant){
-            case FIRST:
-            case FIFTH:
-                innerSinValue = 1;
-                break;
-            case SECOND:
-            case FORTH:
-            case EIGHT:
-            case SIXTH:
-                innerSinValue = 0;
-                break;
-            case THIRD:
-            case SEVENTH:
-                innerSinValue = -1;
-                break;
+        double leftDistance = startSin.distanceToRightAxe();
+        double rightDistance = endSin.distanceToLeftAxe();
+        if(leftDistance < rightDistance){
+            new Sin((endSin.getSinValue() + endSin.leftAxe()) / 2, endQuadrant);
         }
-        return new Sin(innerSinValue, startQuadrant);
+        return new Sin((startSin.getSinValue() + startSin.rightAxe()) / 2, startQuadrant);
     }
 
     @Override
-    public boolean equals(Object other){
-        if(other == null){
+    public boolean equals(Object other) {
+        if (other == null) {
             return false;
         }
-        if(this ==  other){
+        if (this == other) {
             return true;
         }
-        if(!(other instanceof SinInterval)){
+        if (!(other instanceof SinInterval)) {
             return false;
         }
-        SinInterval otherSinInterval = (SinInterval)other;
+        SinInterval otherSinInterval = (SinInterval) other;
         return this.startSin.equals(otherSinInterval.getStartSin()) && this.endSin.equals(otherSinInterval.getEndSin());
     }
 
     @Override
-    public int hashCode(){
+    public int hashCode() {
         return startSin.hashCode() * 31 + endSin.hashCode();
     }
 
 
     @Override
-    public String toString(){
+    public String toString() {
         return "{Start = " + startSin + ", End = " + endSin + "}";
     }
 }

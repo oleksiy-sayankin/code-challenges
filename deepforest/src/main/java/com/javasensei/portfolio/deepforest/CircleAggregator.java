@@ -7,15 +7,15 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- @author oleksiy sayankin
+ * @author oleksiy sayankin
  */
 public class CircleAggregator {
     private List<IArc> arcs = new ArrayList<IArc>();
     private InputData inputData;
 
-    public CircleAggregator(InputData inputData){
-         this.inputData  = inputData;
-        for(ICircle circle : inputData.getCircles()){
+    public CircleAggregator(InputData inputData) {
+        this.inputData = inputData;
+        for (ICircle circle : inputData.getCircles()) {
             IArc normalizedArc = MathHelper.shadow(circle, inputData.getInitPos());
             //normalizedArc.normalize();
             arcs.add(normalizedArc);
@@ -23,25 +23,25 @@ public class CircleAggregator {
     }
 
 
-    public List<IArc> freeArcs(){
-        if(arcs.isEmpty()){
+    public List<IArc> freeArcs() {
+        if (arcs.isEmpty()) {
             return null;
         }
         List<IArc> result = new ArrayList<IArc>();
         double[] allAngles = allAngles();
         double start;
         double end;
-        for(int i = 0; i <= allAngles.length - 2; i++){
+        for (int i = 0; i <= allAngles.length - 2; i++) {
             start = allAngles[i];
             end = allAngles[i + 1];
-            if(isFreeAngle(start, end)){
+            if (isFreeAngle(start, end)) {
                 result.add(new Arc(start, end));
             }
         }
         start = allAngles[allAngles.length - 1];
         end = allAngles[0] + 2 * Math.PI;
 
-        if(isFreeAngle(start, end)){
+        if (isFreeAngle(start, end)) {
             result.add(new Arc(start, end));
         }
         return result;
@@ -49,11 +49,11 @@ public class CircleAggregator {
 
 
     @Override
-    public String toString(){
+    public String toString() {
         StringBuffer sb = new StringBuffer();
         boolean first = true;
-        for(IArc arc : arcs){
-            if(first){
+        for (IArc arc : arcs) {
+            if (first) {
                 first = false;
             } else {
                 sb.append("\n");
@@ -63,10 +63,10 @@ public class CircleAggregator {
         return sb.toString();
     }
 
-    private double[] allAngles(){
+    private double[] allAngles() {
         double[] allAngles = new double[arcs.size() * 2];
         int i = 0;
-        for(IArc arc : arcs){
+        for (IArc arc : arcs) {
             allAngles[i] = arc.getStartAngle();
             i++;
             allAngles[i] = arc.getEndAngle();
@@ -76,14 +76,14 @@ public class CircleAggregator {
         return allAngles;
     }
 
-    private boolean isFreeAngle(double start, double end){
+    private boolean isFreeAngle(double start, double end) {
         double angle = (start + end) / 2;
         double dx = Math.cos(angle) * Constants.DEFAULT_RADIUS;
         double dy = Math.sin(angle) * Constants.DEFAULT_RADIUS;
         IRay ray = new Ray(inputData.getInitPos(), new Vector(dx, dy));
 
-        for(ICircle circle : inputData.getCircles()){
-            if(!circle.intersection(ray).isEmpty()) {
+        for (ICircle circle : inputData.getCircles()) {
+            if (!circle.intersection(ray).isEmpty()) {
 
                 return false;
             }

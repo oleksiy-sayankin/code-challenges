@@ -212,7 +212,7 @@ public class SinIntervalTest {
     public void innerSin003Test(){
         Sin startSin = new Sin(0.1, Quadrant.FIRST);
         Sin endSin = new Sin(0.1, Quadrant.SECOND);
-        Sin innerSinExpected = new Sin(1, Quadrant.FIRST);
+        Sin innerSinExpected = new Sin(0.55, Quadrant.FIRST);
         SinInterval sinInterval = new SinInterval(startSin, endSin);
         Sin innerSinActual = sinInterval.innerSin();
         Assert.assertEquals(innerSinExpected, innerSinActual);
