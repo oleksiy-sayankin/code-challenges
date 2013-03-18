@@ -118,6 +118,14 @@ public class SinIntervalTest {
         Assert.assertTrue(sinInterval.contains(sin));
     }
 
+    @Test
+    public void containsTrue013Test(){
+        Sin startSin = new Sin(-0.01231, Quadrant.FORTH);
+        Sin endSin = new Sin(0.31231, Quadrant.FIRST);
+        Sin sin = new Sin(0.31231, Quadrant.FIRST);
+        SinInterval sinInterval = new SinInterval(startSin, endSin);
+        Assert.assertTrue(sinInterval.contains(sin));
+    }
 
     @Test
     public void containsFalse001Test(){
@@ -164,14 +172,6 @@ public class SinIntervalTest {
         Assert.assertFalse(sinInterval.contains(sin));
     }
 
-    @Test
-    public void containsFalse006Test(){
-        Sin startSin = new Sin(-0.01231, Quadrant.FORTH);
-        Sin endSin = new Sin(0.31231, Quadrant.FIRST);
-        Sin sin = new Sin(0.31231, Quadrant.FIRST);
-        SinInterval sinInterval = new SinInterval(startSin, endSin);
-        Assert.assertFalse(sinInterval.contains(sin));
-    }
 
     @Test
     public void containsFalse007Test(){
