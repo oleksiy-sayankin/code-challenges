@@ -38,7 +38,6 @@ public class SinIntervalAggregator {
         for (int i = 0; i <= allAngles.length - 2; i++) {
             start = allAngles[i];
             end = allAngles[i + 1];
-            //System.out.println("### start = " + start + ", end = " + end);
             SinInterval interval = new SinInterval(start, end);
             if (isFreeAngle(interval)) {
                 result.add(interval);
@@ -46,7 +45,6 @@ public class SinIntervalAggregator {
         }
         start = allAngles[allAngles.length - 1];
         end = allAngles[0];
-     //   System.out.println("### start = " + start + ", end = " + end);
         SinInterval lastInterval = new SinInterval(start, end);
         if (isFreeAngle(lastInterval)) {
             result.add(lastInterval);
@@ -80,15 +78,6 @@ public class SinIntervalAggregator {
             i++;
         }
         Arrays.sort(allSin);
-//        for (i = 0; i <= allSin.length - 1; i++) {
-//            System.out.print(allSin[i]);
-//            if (i != 0) {
-//                System.out.println(", delta = " + (allSin[i].getSinValue() - allSin[i - 1].getSinValue()));
-//            } else {
-//                System.out.println();
-//            }
-//        }
-//        System.out.println("---");
         return allSin;
     }
 
@@ -98,7 +87,6 @@ public class SinIntervalAggregator {
             if (sinInterval.contains(innerSin))
                 return false;
         }
-        //System.out.println("start = " + interval);
         return true;
     }
 
