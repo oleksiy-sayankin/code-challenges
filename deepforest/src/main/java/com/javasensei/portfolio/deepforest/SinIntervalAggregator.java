@@ -1,15 +1,19 @@
 package com.javasensei.portfolio.deepforest;
 
 import com.javasensei.portfolio.math.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 /**
  * @author oleksiy sayankin
  */
 public class SinIntervalAggregator {
+    private static final Logger LOGGER = LoggerFactory.getLogger(SinIntervalAggregator.class);
     private List<SinInterval> sinIntervals = new ArrayList<SinInterval>();
     private InputData inputData;
 
@@ -77,7 +81,11 @@ public class SinIntervalAggregator {
             allSin[i] = sinInterval.getEndSin().normalized();
             i++;
         }
+
+        long startTime = new Date().getTime();
         Arrays.sort(allSin);
+        long endTime = new Date().getTime();
+        LOGGER.info("sort duration = "  + (endTime - startTime) + " ms for size = " + allSin.length);
         return allSin;
     }
 

@@ -6,6 +6,8 @@ import com.javasensei.portfolio.math.MathHelper;
  * @author oleksiy sayankin
  */
 public class Sin implements Comparable {
+    public static final Sin SIN_0 = new Sin(0, Quadrant.FIRST);
+    public static final Sin SIN_4PI = new Sin(0, Quadrant.EIGHT);
     private double sinValue;
     private Quadrant quadrant;
 
@@ -211,6 +213,9 @@ public class Sin implements Comparable {
         }
         return 0;
     }
+
+
+
 
     @Override
     public String toString() {
