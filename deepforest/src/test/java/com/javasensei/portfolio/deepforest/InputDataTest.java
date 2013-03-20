@@ -22,13 +22,13 @@ public class InputDataTest {
         inputData.read(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input)));
         IPoint expectedPoint = new Point(0, 0);
         IPoint actualPoint = inputData.getInitPos();
-        List<ICircle> actualList = inputData.getCircles();
-        List<ICircle> expectedList = new ArrayList<ICircle>();
-        expectedList.add(new Circle(new Point(-2, 2), 2));
-        expectedList.add(new Circle(new Point(-2, -2), 2));
-        expectedList.add(new Circle(new Point(2, -2), 2));
-        expectedList.add(new Circle(new Point(2, 2), 2));
-        Assert.assertEquals(expectedList, actualList);
+        ICircle[] actualList = inputData.getCircles();
+        ICircle[] expectedList = new ICircle[4];
+        expectedList[0] = new Circle(new Point(-2, 2), 2);
+        expectedList[1] = new Circle(new Point(-2, -2), 2);
+        expectedList[2] = new Circle(new Point(2, -2), 2);
+        expectedList[3] = new Circle(new Point(2, 2), 2);
+        Assert.assertArrayEquals(expectedList, actualList);
         Assert.assertEquals(expectedPoint, actualPoint);
     }
 }

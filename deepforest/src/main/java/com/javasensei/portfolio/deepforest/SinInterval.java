@@ -3,7 +3,7 @@ package com.javasensei.portfolio.deepforest;
 /**
  * @author oleksiy sayankin
  */
-public class SinInterval {
+public class SinInterval implements Comparable{
     private Sin startSin;
     private Sin endSin;
 
@@ -114,5 +114,11 @@ public class SinInterval {
     @Override
     public String toString() {
         return "{Start = " + startSin + ", End = " + endSin + "}";
+    }
+
+    @Override
+    public int compareTo(Object other) {
+        SinInterval otherSinInterval = (SinInterval) other;
+        return this.startSin.compareTo(otherSinInterval.startSin);
     }
 }

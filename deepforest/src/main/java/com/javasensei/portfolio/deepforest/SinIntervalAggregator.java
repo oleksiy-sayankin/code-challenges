@@ -14,28 +14,39 @@ import java.util.List;
  */
 public class SinIntervalAggregator {
     private static final Logger LOGGER = LoggerFactory.getLogger(SinIntervalAggregator.class);
-    private List<SinInterval> sinIntervals = new ArrayList<SinInterval>();
-    private InputData inputData;
-
-    public SinIntervalAggregator() {
-    }
+    private SinInterval sinIntervals[];
 
     public SinIntervalAggregator(InputData inputData) {
-        this.inputData = inputData;
+        int circlesCount = inputData.getCirclesCount();
+        sinIntervals = new SinInterval[circlesCount];
+        int i = 0;
         for (ICircle circle : inputData.getCircles()) {
-            sinIntervals.add(sinInterval(circle, inputData.getInitPos()));
+            sinIntervals[i] = sinInterval(circle, inputData.getInitPos());
+            i++;
         }
+    }
+
+    public SinIntervalAggregator(int length){
+        sinIntervals = new SinInterval[length];
     }
 
     public void add(SinInterval sinInterval) {
-        sinIntervals.add(sinInterval);
+        int i = 0;
+        while(sinIntervals[i] != null){
+            if(i == sinIntervals.length - 1) {
+                return;
+            }
+            i++;
+        }
+
+        sinIntervals[i] = sinInterval;
     }
 
-    public List<SinInterval> freeSinIntervals() {
-        if (sinIntervals.isEmpty()) {
+    public SinInterval freeSinInterval() {
+        if (sinIntervals.length == 0) {
             return null;
         }
-        List<SinInterval> result = new ArrayList<SinInterval>();
+
         Sin[] allAngles = allSin();
         Sin start;
         Sin end;
@@ -44,16 +55,16 @@ public class SinIntervalAggregator {
             end = allAngles[i + 1];
             SinInterval interval = new SinInterval(start, end);
             if (isFreeAngle(interval)) {
-                result.add(interval);
+                return interval;
             }
         }
         start = allAngles[allAngles.length - 1];
         end = allAngles[0];
         SinInterval lastInterval = new SinInterval(start, end);
         if (isFreeAngle(lastInterval)) {
-            result.add(lastInterval);
+            return lastInterval;
         }
-        return result;
+        return null;
     }
 
 
@@ -73,7 +84,7 @@ public class SinIntervalAggregator {
     }
 
     private Sin[] allSin() {
-        Sin[] allSin = new Sin[sinIntervals.size() * 2];
+        Sin[] allSin = new Sin[sinIntervals.length * 2];
         int i = 0;
         for (SinInterval sinInterval : sinIntervals) {
             allSin[i] = sinInterval.getStartSin().normalized();

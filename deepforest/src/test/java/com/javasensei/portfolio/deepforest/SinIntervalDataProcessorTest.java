@@ -338,18 +338,18 @@ public class SinIntervalDataProcessorTest {
         String output = "Answer12.txt";
         final File result = new File(outputDir, output);
         final String input = "Input12.txt";
-
-        ProfilerAware.execute(new Runnable() {
-            @Override
-            public void run() {
-                try {
+//
+//        ProfilerAware.execute(new Runnable() {
+//            @Override
+//            public void run() {
+//                try {
                     SinIntervalDataProcessor.process(new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(input))),
                             new BufferedWriter(new FileWriter(result)));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
 
         OutputData expectedOutputData = new OutputData();
         expectedOutputData.setForestIsDeep(false);

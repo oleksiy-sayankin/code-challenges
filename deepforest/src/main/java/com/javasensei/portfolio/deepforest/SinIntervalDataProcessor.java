@@ -1,7 +1,5 @@
 package com.javasensei.portfolio.deepforest;
 
-import com.javasensei.portfolio.math.IArc;
-import com.javasensei.portfolio.math.ICircle;
 import com.javasensei.portfolio.math.IPoint;
 import com.javasensei.portfolio.math.Point;
 
@@ -19,13 +17,13 @@ public class SinIntervalDataProcessor {
     public static OutputData process(InputData inputData) {
         IPoint initPos = inputData.getInitPos();
         SinIntervalAggregator agg = new SinIntervalAggregator(inputData);
-        List<SinInterval> freeSegments = agg.freeSinIntervals();
+        SinInterval freeSinInterval = agg.freeSinInterval();
         OutputData outputData = new OutputData();
-        if (freeSegments.isEmpty()) {
+        if (freeSinInterval == null) {
             outputData.setForestIsDeep(true);
         } else {
             outputData.setForestIsDeep(false);
-            Sin sin = freeSegments.get(0).innerSin();
+            Sin sin = freeSinInterval.innerSin();
 
             Quadrant quadrant = sin.getQuadrant();
             double sinValue = sin.getSinValue();

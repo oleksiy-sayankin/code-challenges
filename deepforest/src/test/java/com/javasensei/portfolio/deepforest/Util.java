@@ -39,7 +39,7 @@ public final class Util {
         }
     }
 
-    public static Set<IPoint> intersectionPoints(List<ICircle> circles, IRay ray){
+    public static Set<IPoint> intersectionPoints(ICircle[] circles, IRay ray){
         Set<IPoint> result = new HashSet<IPoint>();
         for(ICircle circle : circles){
             Set<IPoint> intersectionPoints = circle.intersection(ray);

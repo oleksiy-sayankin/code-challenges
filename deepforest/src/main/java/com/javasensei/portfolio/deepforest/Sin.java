@@ -6,17 +6,11 @@ import com.javasensei.portfolio.math.MathHelper;
  * @author oleksiy sayankin
  */
 public class Sin implements Comparable {
-    public static final Sin SIN_0 = new Sin(0, Quadrant.FIRST);
-    public static final Sin SIN_4PI = new Sin(0, Quadrant.EIGHT);
     private double sinValue;
     private Quadrant quadrant;
 
     public double getSinValue() {
         return sinValue;
-    }
-
-    public void setSinValue(double sinValue) {
-        this.sinValue = sinValue;
     }
 
     public Quadrant getQuadrant() {
