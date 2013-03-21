@@ -42,29 +42,63 @@ public class SinIntervalAggregator {
         sinIntervals[i] = sinInterval;
     }
 
+//    public SinInterval freeSinInterval() {
+//        if (sinIntervals.length == 0) {
+//            return null;
+//        }
+//
+//        Sin[] allAngles = allSin();
+//        Sin start;
+//        Sin end;
+//        for (int i = 0; i <= allAngles.length - 2; i++) {
+//            start = allAngles[i];
+//            end = allAngles[i + 1];
+//            SinInterval interval = new SinInterval(start, end);
+//            if (isFreeAngle(interval)) {
+//                return interval;
+//            }
+//        }
+//        start = allAngles[allAngles.length - 1];
+//        end = allAngles[0];
+//        SinInterval lastInterval = new SinInterval(start, end);
+//        if (isFreeAngle(lastInterval)) {
+//            return lastInterval;
+//        }
+//        return null;
+//    }
+
+
     public SinInterval freeSinInterval() {
+        Arrays.sort(sinIntervals);
         if (sinIntervals.length == 0) {
             return null;
         }
+        int index = 0;
+        while (index <= sinIntervals.length - 2){
+            Sin currentEndSin = sinIntervals[index].getEndSin();
+            int nextIndex = next(index);
+            Sin nextStartSin = sinIntervals[nextIndex].getStartSin();
+            if(currentEndSin.compareTo(nextStartSin) < 0){
+                return new SinInterval(currentEndSin.normalized(), nextStartSin.normalized());
+            }
+            index = nextIndex;
+        }
 
-        Sin[] allAngles = allSin();
-        Sin start;
-        Sin end;
-        for (int i = 0; i <= allAngles.length - 2; i++) {
-            start = allAngles[i];
-            end = allAngles[i + 1];
-            SinInterval interval = new SinInterval(start, end);
-            if (isFreeAngle(interval)) {
-                return interval;
+
+        Sin start = getMaxEndSin().normalized();
+        Sin end = sinIntervals[0].getStartSin().normalized();
+        SinInterval lastInterval = new SinInterval(start, end);
+        return lastInterval;
+    }
+
+    private Sin getMaxEndSin(){
+        Sin maxEndSin = new Sin(0, Quadrant.FIRST);
+        for(SinInterval sinInterval : sinIntervals){
+            if(maxEndSin.compareTo(sinInterval.getEndSin()) < 0){
+                maxEndSin = sinInterval.getEndSin();
             }
         }
-        start = allAngles[allAngles.length - 1];
-        end = allAngles[0];
-        SinInterval lastInterval = new SinInterval(start, end);
-        if (isFreeAngle(lastInterval)) {
-            return lastInterval;
-        }
-        return null;
+        return maxEndSin;
     }
 
 
@@ -168,6 +202,18 @@ public class SinIntervalAggregator {
         }
 
         return null;
+    }
+
+    private int next(int index){
+        int nextIndex = index;
+        Sin currentStartSin = sinIntervals[index].getStartSin();
+        while (currentStartSin.equals(sinIntervals[nextIndex].getStartSin())){
+            if(nextIndex == sinIntervals.length - 1){
+                break;
+            }
+            nextIndex++;
+        }
+        return nextIndex;
     }
 
 }

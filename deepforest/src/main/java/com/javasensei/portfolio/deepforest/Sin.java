@@ -164,12 +164,12 @@ public class Sin implements Comparable {
             case THIRD:
             case FIFTH:
             case SEVENTH:
-                return Math.abs(sinValue);
+                return Math.abs(1 - Math.abs(sinValue));
             case SECOND:
             case FORTH:
             case SIXTH:
             case EIGHT:
-                return Math.abs(1 - Math.abs(sinValue));
+                return Math.abs(sinValue);
         }
         return 0;
     }

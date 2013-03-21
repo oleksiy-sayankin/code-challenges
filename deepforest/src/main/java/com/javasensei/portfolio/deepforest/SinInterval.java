@@ -90,6 +90,20 @@ public class SinInterval implements Comparable{
         return new Sin((startSin.getSinValue() + startSin.rightAxe()) / 2, startQuadrant);
     }
 
+    public double length(){
+        Quadrant startQuadrant = startSin.getQuadrant();
+        Quadrant endQuadrant = endSin.getQuadrant();
+        if (startQuadrant == endQuadrant) {
+            return Math.abs(endSin.getSinValue() - startSin.getSinValue());
+        }
+
+        int delta = Math.abs(Quadrant.getDelta(startQuadrant, endQuadrant));
+        double leftDistance = startSin.distanceToRightAxe();
+        double rightDistance = endSin.distanceToLeftAxe();
+        return (delta - 1) + leftDistance + rightDistance;
+    }
+
+
     @Override
     public boolean equals(Object other) {
         if (other == null) {
@@ -119,6 +133,9 @@ public class SinInterval implements Comparable{
     @Override
     public int compareTo(Object other) {
         SinInterval otherSinInterval = (SinInterval) other;
-        return this.startSin.compareTo(otherSinInterval.startSin);
+        if(!this.startSin.equals(otherSinInterval.getStartSin())){
+            return this.startSin.compareTo(otherSinInterval.startSin);
+        }
+        return (int)Math.signum(otherSinInterval.length() - this.length());
     }
 }
