@@ -70,24 +70,34 @@ public class Sin implements Comparable {
     @Override
     public int compareTo(Object other) {
         Sin otherSin = (Sin) other;
-        if (this.quadrant != otherSin.getQuadrant()) {
-            return this.quadrant.compareTo(otherSin.getQuadrant());
+        Quadrant otherQuadrant = otherSin.getQuadrant();
+        if (Math.abs(Quadrant.getDelta(this.quadrant, otherQuadrant)) == 0) {
+            switch (this.quadrant) {
+                case FIRST:
+                case FORTH:
+                case FIFTH:
+                case EIGHT:
+                    return (int) Math.signum(this.sinValue - otherSin.sinValue);
+                case SECOND:
+                case THIRD:
+                case SIXTH:
+                case SEVENTH:
+                    return (int) Math.signum(otherSin.sinValue - this.sinValue);
+            }
+        }
+        if (Math.abs(Quadrant.getDelta(this.quadrant, otherQuadrant)) == 1) {
+            return this.equals(otherSin) ? 0 : this.quadrant.compareTo(otherSin.getQuadrant());
         }
 
-        switch (this.quadrant) {
-            case FIRST:
-            case FORTH:
-            case FIFTH:
-            case EIGHT:
-                return (int) Math.signum(this.sinValue - otherSin.sinValue);
-            case SECOND:
-            case THIRD:
-            case SIXTH:
-            case SEVENTH:
-                return (int) Math.signum(otherSin.sinValue - this.sinValue);
+        if (Math.abs(Quadrant.getDelta(this.quadrant, otherQuadrant)) >= 1) {
+        return this.quadrant.compareTo(otherSin.getQuadrant());
+            }
 
-        }
         return 0;
+    }
+
+    public boolean isLessThan(Sin otherSin){
+        return  this.compareTo(otherSin) < 0;
     }
 
     public Sin normalized() {
@@ -209,8 +219,6 @@ public class Sin implements Comparable {
     }
 
 
-
-
     @Override
     public String toString() {
         return "[ val = " + sinValue + ", Q = " + quadrant + " ]";
@@ -228,11 +236,38 @@ public class Sin implements Comparable {
             return false;
         }
         Sin otherSin = (Sin) other;
-        return MathHelper.equalsZero(this.sinValue - otherSin.sinValue) && this.quadrant == otherSin.quadrant;
+        if (this.isEdgeSin() && otherSin.isEdgeSin()) {
+            return equalsAsEdgeSin(otherSin);
+        }
+        return equalsTrivial(otherSin);
     }
 
     @Override
     public int hashCode() {
         return (int) (Math.round(sinValue * 100)) + quadrant.hashCode();
+    }
+
+    private boolean isEdgeSin() {
+        for (Sin[] sinPair : Constants.EDGE_SIN) {
+            if (sinPair[0].equalsTrivial(this) || sinPair[1].equalsTrivial(this)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean equalsAsEdgeSin(Sin otherSin) {
+        for (Sin[] sinPair : Constants.EDGE_SIN) {
+            if ((sinPair[0].equalsTrivial(this) && sinPair[1].equalsTrivial(otherSin)) ||
+                    (sinPair[1].equalsTrivial(this) && sinPair[0].equalsTrivial(otherSin))) {
+                return true;
+            }
+
+        }
+        return false;
+    }
+
+    private boolean equalsTrivial(Sin otherSin) {
+        return MathHelper.equalsZero(this.sinValue - otherSin.sinValue) && this.quadrant == otherSin.quadrant;
     }
 }

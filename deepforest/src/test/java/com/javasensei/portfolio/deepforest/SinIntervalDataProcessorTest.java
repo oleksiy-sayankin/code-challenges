@@ -2,6 +2,7 @@ package com.javasensei.portfolio.deepforest;
 
 import com.javasensei.portfolio.math.Point;
 
+import com.javasensei.portfolio.math.Settings;
 import org.apache.log4j.PropertyConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +23,7 @@ public class SinIntervalDataProcessorTest {
         outputDir = new File("output");
         outputDir.mkdir();
         PropertyConfigurator.configure("log4j.properties");
+        Settings.setError(0.000000001d);
     }
 
     @After
@@ -29,7 +31,7 @@ public class SinIntervalDataProcessorTest {
         Util.rmdir(outputDir);
     }
 
-    @Test
+    @Test(timeout = 3000)
     public void noExitSimple01Test() throws Exception {
         long startTime = new Date().getTime();
         String inputFileName = "i002.in";
@@ -45,7 +47,7 @@ public class SinIntervalDataProcessorTest {
 
 
 
-    @Test
+    @Test(timeout = 3000)
     public void exitExistSimple003Test() throws Exception {
         long startTime = new Date().getTime();
         String inputFileName = "i003.in";
@@ -62,7 +64,7 @@ public class SinIntervalDataProcessorTest {
     }
 
 
-    @Test
+    @Test(timeout = 3000)
     public void exitExistComplexTest() throws Exception {
         long startTime = new Date().getTime();
         String inputFileName = "i004.in";
@@ -78,7 +80,7 @@ public class SinIntervalDataProcessorTest {
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
-    @Test
+    @Test(timeout = 3000)
     public void exitExistComplex2Test() throws Exception {
         long startTime = new Date().getTime();
         String inputFileName = "i005.in";
@@ -95,7 +97,7 @@ public class SinIntervalDataProcessorTest {
 
     }
 
-    @Test
+    @Test(timeout = 3000)
     public void noExitSimple006Test() throws Exception {
         long startTime = new Date().getTime();
         String output = "i006.out";
@@ -113,7 +115,7 @@ public class SinIntervalDataProcessorTest {
     }
 
 
-    @Test
+    @Test(timeout = 3000)
     public void noExitSimple007Test() throws Exception {
         long startTime = new Date().getTime();
         String output = "i007.out";
@@ -130,7 +132,7 @@ public class SinIntervalDataProcessorTest {
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
-    @Test
+    @Test(timeout = 3000)
     public void noExitSimple008Test() throws Exception {
         long startTime = new Date().getTime();
         String output = "i008.out";
@@ -147,7 +149,7 @@ public class SinIntervalDataProcessorTest {
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
-    @Test
+    @Test(timeout = 3000)
     public void test01() throws Exception {
         long startTime = new Date().getTime();
         String output = "Answer01.txt";
@@ -164,7 +166,7 @@ public class SinIntervalDataProcessorTest {
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
-    @Test
+    @Test(timeout = 3000)
     public void test02() throws Exception {
         long startTime = new Date().getTime();
         String output = "Answer02.txt";
@@ -181,7 +183,7 @@ public class SinIntervalDataProcessorTest {
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
-    @Test
+    @Test(timeout = 3000)
     public void test03() throws Exception {
         long startTime = new Date().getTime();
         String inputFileName = "Input03.txt";
@@ -195,7 +197,7 @@ public class SinIntervalDataProcessorTest {
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
-    @Test
+    @Test(timeout = 3000)
     public void test04() throws Exception {
         long startTime = new Date().getTime();
         String output = "Answer04.txt";
@@ -212,7 +214,7 @@ public class SinIntervalDataProcessorTest {
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
-    @Test
+    @Test(timeout = 3000)
     public void test05() throws Exception {
         long startTime = new Date().getTime();
         String output = "Answer05.txt";
@@ -229,7 +231,7 @@ public class SinIntervalDataProcessorTest {
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
-    @Test
+    @Test(timeout = 3000)
     public void test06() throws Exception {
         long startTime = new Date().getTime();
         String output = "Answer06.txt";
@@ -246,7 +248,7 @@ public class SinIntervalDataProcessorTest {
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
-    @Test
+    @Test(timeout = 3000)
     public void test07() throws Exception {
         long startTime = new Date().getTime();
         String output = "Answer07.txt";
@@ -264,7 +266,7 @@ public class SinIntervalDataProcessorTest {
     }
 
 
-    @Test
+    @Test(timeout = 3000)
     public void test08() throws Exception {
         long startTime = new Date().getTime();
         String output = "Answer08.txt";
@@ -281,7 +283,7 @@ public class SinIntervalDataProcessorTest {
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
-    @Test
+    @Test(timeout = 3000)
     public void test09() throws Exception {
         long startTime = new Date().getTime();
         String output = "Answer09.txt";
@@ -298,7 +300,7 @@ public class SinIntervalDataProcessorTest {
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
-    @Test
+    @Test(timeout = 3000)
     public void test10() throws Exception {
         long startTime = new Date().getTime();
         String output = "Answer10.txt";
@@ -315,7 +317,7 @@ public class SinIntervalDataProcessorTest {
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
-    @Test
+    @Test(timeout = 3000)
     public void test11() throws Exception {
         long startTime = new Date().getTime();
         String output = "Answer11.txt";
@@ -332,7 +334,7 @@ public class SinIntervalDataProcessorTest {
         Assert.assertEquals(expectedOutputData, actualOutputData);
     }
 
-    @Test
+    @Test(timeout = 3000)
     public void test12() throws Exception {
         long startTime = new Date().getTime();
         String output = "Answer12.txt";

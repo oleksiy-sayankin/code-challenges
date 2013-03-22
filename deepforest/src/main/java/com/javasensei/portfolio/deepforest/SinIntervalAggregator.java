@@ -26,14 +26,14 @@ public class SinIntervalAggregator {
         }
     }
 
-    public SinIntervalAggregator(int length){
+    public SinIntervalAggregator(int length) {
         sinIntervals = new SinInterval[length];
     }
 
     public void add(SinInterval sinInterval) {
         int i = 0;
-        while(sinIntervals[i] != null){
-            if(i == sinIntervals.length - 1) {
+        while (sinIntervals[i] != null) {
+            if (i == sinIntervals.length - 1) {
                 return;
             }
             i++;
@@ -42,43 +42,22 @@ public class SinIntervalAggregator {
         sinIntervals[i] = sinInterval;
     }
 
-//    public SinInterval freeSinInterval() {
-//        if (sinIntervals.length == 0) {
-//            return null;
-//        }
-//
-//        Sin[] allAngles = allSin();
-//        Sin start;
-//        Sin end;
-//        for (int i = 0; i <= allAngles.length - 2; i++) {
-//            start = allAngles[i];
-//            end = allAngles[i + 1];
-//            SinInterval interval = new SinInterval(start, end);
-//            if (isFreeAngle(interval)) {
-//                return interval;
-//            }
-//        }
-//        start = allAngles[allAngles.length - 1];
-//        end = allAngles[0];
-//        SinInterval lastInterval = new SinInterval(start, end);
-//        if (isFreeAngle(lastInterval)) {
-//            return lastInterval;
-//        }
-//        return null;
-//    }
-
-
     public SinInterval freeSinInterval() {
         Arrays.sort(sinIntervals);
         if (sinIntervals.length == 0) {
             return null;
         }
         int index = 0;
-        while (index <= sinIntervals.length - 2){
-            Sin currentEndSin = sinIntervals[index].getEndSin();
+        Sin currentEndSin = sinIntervals[index].getEndSin();
+        while (index <= sinIntervals.length - 2) {
+            Sin newCurrentEndSin = sinIntervals[index].getEndSin();
+            if (currentEndSin.isLessThan(newCurrentEndSin)) {
+                currentEndSin = newCurrentEndSin;
+            }
+
             int nextIndex = next(index);
             Sin nextStartSin = sinIntervals[nextIndex].getStartSin();
-            if(currentEndSin.compareTo(nextStartSin) < 0){
+            if (currentEndSin.isLessThan(nextStartSin)) {
                 return new SinInterval(currentEndSin.normalized(), nextStartSin.normalized());
             }
             index = nextIndex;
@@ -87,14 +66,16 @@ public class SinIntervalAggregator {
 
         Sin start = getMaxEndSin().normalized();
         Sin end = sinIntervals[0].getStartSin().normalized();
-        SinInterval lastInterval = new SinInterval(start, end);
-        return lastInterval;
+        if (start.isLessThan(end)) {
+            return new SinInterval(start, end);
+        }
+        return null;
     }
 
-    private Sin getMaxEndSin(){
+    private Sin getMaxEndSin() {
         Sin maxEndSin = new Sin(0, Quadrant.FIRST);
-        for(SinInterval sinInterval : sinIntervals){
-            if(maxEndSin.compareTo(sinInterval.getEndSin()) < 0){
+        for (SinInterval sinInterval : sinIntervals) {
+            if (maxEndSin.compareTo(sinInterval.getEndSin()) < 0) {
                 maxEndSin = sinInterval.getEndSin();
             }
         }
@@ -115,32 +96,6 @@ public class SinIntervalAggregator {
             sb.append(sinInterval);
         }
         return sb.toString();
-    }
-
-    private Sin[] allSin() {
-        Sin[] allSin = new Sin[sinIntervals.length * 2];
-        int i = 0;
-        for (SinInterval sinInterval : sinIntervals) {
-            allSin[i] = sinInterval.getStartSin().normalized();
-            i++;
-            allSin[i] = sinInterval.getEndSin().normalized();
-            i++;
-        }
-
-        long startTime = new Date().getTime();
-        Arrays.sort(allSin);
-        long endTime = new Date().getTime();
-        LOGGER.info("sort duration = "  + (endTime - startTime) + " ms for size = " + allSin.length);
-        return allSin;
-    }
-
-    private boolean isFreeAngle(SinInterval interval) {
-        Sin innerSin = interval.innerSin();
-        for (SinInterval sinInterval : sinIntervals) {
-            if (sinInterval.contains(innerSin))
-                return false;
-        }
-        return true;
     }
 
     private static SinInterval sinInterval(ICircle circle, IPoint point) {
@@ -164,21 +119,28 @@ public class SinIntervalAggregator {
         double sinAlphaPlusDelta = sinAlpha * cosDelta + sinDelta * cosAlpha;
         double cosAlphaPlusDelta = cosAlpha * cosDelta - sinAlpha * sinDelta;
 
-        if (Math.abs(sinAlphaPlusDelta) < Settings.error()) {
+        if (MathHelper.equalsZero(sinAlphaPlusDelta)) {
             sinAlphaPlusDelta = 0d;
         }
 
-        if (Math.abs(sinAlphaPlusDelta - 1) < Settings.error()) {
-            sinAlphaPlusDelta = Math.signum(sinAlphaPlusDelta);
+        if (MathHelper.equals(sinAlphaPlusDelta, 1)) {
+            sinAlphaPlusDelta = 1;
         }
 
+        if (MathHelper.equals(sinAlphaPlusDelta, -1)) {
+            sinAlphaPlusDelta = -1;
+        }
 
-        if (Math.abs(sinAlphaMinusDelta) < Settings.error()) {
+        if (MathHelper.equalsZero(sinAlphaMinusDelta)) {
             sinAlphaMinusDelta = 0d;
         }
 
-        if (Math.abs(sinAlphaMinusDelta - 1) < Settings.error()) {
-            sinAlphaMinusDelta = Math.signum(sinAlphaMinusDelta);
+        if (MathHelper.equals(sinAlphaMinusDelta, 1)) {
+            sinAlphaMinusDelta = 1;
+        }
+
+        if (MathHelper.equals(sinAlphaMinusDelta, -1)) {
+            sinAlphaMinusDelta = -1;
         }
 
         Sin sinStart = new Sin(sinAlphaMinusDelta, quadrant(cosAlphaMinusDelta, sinAlphaMinusDelta));
@@ -204,16 +166,15 @@ public class SinIntervalAggregator {
         return null;
     }
 
-    private int next(int index){
+    private int next(int index) {
         int nextIndex = index;
         Sin currentStartSin = sinIntervals[index].getStartSin();
-        while (currentStartSin.equals(sinIntervals[nextIndex].getStartSin())){
-            if(nextIndex == sinIntervals.length - 1){
+        while (currentStartSin.equals(sinIntervals[nextIndex].getStartSin())) {
+            if (nextIndex == sinIntervals.length - 1) {
                 break;
             }
             nextIndex++;
         }
         return nextIndex;
     }
-
 }

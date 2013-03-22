@@ -36,7 +36,11 @@ public final class MathHelper {
     }
 
     public static boolean equalsZero(double value) {
-        return Math.abs(value) < MathConstants.ERROR;
+        return Math.abs(value) < Settings.error();
+    }
+
+    public static boolean equals(double a, double b){
+        return Math.abs(a - b) < Settings.error();
     }
 
     public static ISegment nearestSegment(final List<ISegment> segments, final IPoint point) {
