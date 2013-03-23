@@ -1,5 +1,6 @@
 package com.javasensei.portfolio.deepforest;
 
+import com.javasensei.portfolio.math.Settings;
 import org.apache.log4j.PropertyConfigurator;
 import org.junit.Assert;
 import org.junit.Before;
@@ -18,6 +19,7 @@ public class SinIntervalAggregatorTest {
     @Before
     public void createOutputDir(){
         PropertyConfigurator.configure("log4j.properties");
+        Settings.setError(0.000000001d);
     }
 
     @Test
