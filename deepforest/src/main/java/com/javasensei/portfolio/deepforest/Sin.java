@@ -21,6 +21,10 @@ public class Sin implements Comparable {
         this.quadrant = quadrant;
     }
 
+    public boolean isNormal(){
+       return quadrant.ordinal() <= 3;
+    }
+
     public Sin(Quadrant quadrant) {
         switch (quadrant) {
             case FIRST:
@@ -98,6 +102,10 @@ public class Sin implements Comparable {
 
     public boolean isLessThan(Sin otherSin){
         return  this.compareTo(otherSin) < 0;
+    }
+
+    public double length(){
+        return quadrant.ordinal() + distanceToLeftAxe();
     }
 
     public Sin normalized() {

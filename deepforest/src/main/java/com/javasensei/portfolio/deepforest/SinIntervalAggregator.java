@@ -64,11 +64,18 @@ public class SinIntervalAggregator {
         }
 
 
-        Sin start = getMaxEndSin().normalized();
-        Sin end = sinIntervals[0].getStartSin().normalized();
-        if (start.isLessThan(end)) {
+        Sin start = getMaxEndSin();
+        Sin end = sinIntervals[0].getStartSin();
+
+        if(start.isNormal()){
             return new SinInterval(start, end);
+        } else{
+            Sin startNormalized = start.normalized();
+            if (startNormalized.isLessThan(end)) {
+                return new SinInterval(startNormalized, end);
+            }
         }
+
         return null;
     }
 

@@ -15,7 +15,7 @@ import java.util.List;
  * @author oleksiy sayankin
  */
 public class SinIntervalAggregatorTest {
-    private static final Logger LOGGER = LoggerFactory.getLogger(SinIntervalDataProcessorTest.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(SinIntervalAggregatorTest.class);
     @Before
     public void createOutputDir(){
         PropertyConfigurator.configure("log4j.properties");
