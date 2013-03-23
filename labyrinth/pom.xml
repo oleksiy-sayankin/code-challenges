@@ -8,7 +8,7 @@
   <packaging>jar</packaging>
 
   <name>labyrinth</name>
-  <url>http://maven.apache.org</url>
+  <url>http://javasensei.com</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
