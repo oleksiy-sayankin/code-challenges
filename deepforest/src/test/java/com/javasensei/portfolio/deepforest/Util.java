@@ -1,6 +1,10 @@
 package com.javasensei.portfolio.deepforest;
 
 import com.javasensei.portfolio.math.*;
+import org.apache.log4j.PropertyConfigurator;
+import org.junit.Before;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -15,6 +19,13 @@ import java.util.Set;
  */
 public final class Util {
     private Util(){}
+    private static final Logger LOGGER = LoggerFactory.getLogger(Util.class);
+
+    @Before
+    public void init(){
+        PropertyConfigurator.configure("log4j.properties");
+    }
+
     /**
      * Empty and delete a folder (and subfolders).
      * @param folder
@@ -34,7 +45,7 @@ public final class Util {
                 }
             }
             if (!folder.delete()) {
-                System.out.println("can't delete folder : " + folder);
+                LOGGER.info("can't delete folder : " + folder);
             }
         }
     }
@@ -45,7 +56,7 @@ public final class Util {
             Set<IPoint> intersectionPoints = circle.intersection(ray);
             if(!intersectionPoints.isEmpty()){
                 result.addAll(intersectionPoints);
-                System.out.println(circle + ", " + intersectionPoints);
+                LOGGER.info(circle + ", " + intersectionPoints);
             }
         }
         return result;

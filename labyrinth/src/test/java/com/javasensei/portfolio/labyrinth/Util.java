@@ -1,5 +1,10 @@
 package com.javasensei.portfolio.labyrinth;
 
+import org.apache.log4j.PropertyConfigurator;
+import org.junit.Before;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.sql.rowset.WebRowSet;
 import java.io.BufferedReader;
 import java.io.File;
@@ -10,6 +15,13 @@ import java.io.Reader;
  * @author oleksiy sayankin
  */
 public final class Util {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Util.class);
+
+    @Before
+    public void init(){
+        PropertyConfigurator.configure("log4j.properties");
+    }
+
     /**
      * Empty and delete a folder (and subfolders).
      * @param folder
@@ -29,7 +41,7 @@ public final class Util {
                 }
             }
             if (!folder.delete()) {
-                System.out.println("can't delete folder : " + folder);
+                LOGGER.info("can't delete folder : " + folder);
             }
         }
     }

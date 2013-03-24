@@ -1,5 +1,9 @@
 package com.javasensei.portfolio.labyrinth;
 
+import org.apache.log4j.PropertyConfigurator;
+import org.junit.Before;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.junit.Test;
 import org.junit.Assert;
 
@@ -12,6 +16,12 @@ import java.util.Queue;
  * @author oleksiy sayankin
  */
 public class NodeTest {
+    private static final Logger LOGGER = LoggerFactory.getLogger(NodeTest.class);
+
+    @Before
+    public void init(){
+        PropertyConfigurator.configure("log4j.properties");
+    }
 
     @Test
     public void isConnectedToTrueTest(){
@@ -61,8 +71,8 @@ public class NodeTest {
         nodeC.setWeight(300);
         queue.renew();
         while (!queue.isEmpty()){
-            System.out.println(queue.poll());
+            LOGGER.info(queue.poll().toString());
         }
-        System.out.println(queue);
+        LOGGER.info(queue.toString());
     }
 }
