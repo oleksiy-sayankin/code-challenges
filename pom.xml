@@ -29,6 +29,12 @@
 
 		<!--Main -->
         <dependency>
+            <groupId>com.javasensei.portfolio.math</groupId>
+            <artifactId>math</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.javasensei.portfolio.labyrinth</groupId>
             <artifactId>labyrinth</artifactId>
             <version>${project.version}</version>
@@ -47,11 +53,11 @@
         </dependency>		
 
         <dependency>
-            <groupId>com.javasensei.portfolio.math</groupId>
-            <artifactId>math</artifactId>
+            <groupId>com.javasensei.portfolio.anagrammer</groupId>
+            <artifactId>anagrammer</artifactId>
             <version>${project.version}</version>
-        </dependency>		
-		
+        </dependency>
+
 		<!--Other dependencies -->
 		<dependency>
             <groupId>log4j</groupId>
@@ -78,11 +84,11 @@
 </dependencyManagement>
 
   <modules>
-        <module>labyrinth</module>
-        <module>particles</module>
-        <module>deepforest</module>
-        <module>math</module>
-        <module>anagrammer</module>
+      <module>math</module>
+      <module>labyrinth</module>
+      <module>particles</module>
+      <module>deepforest</module>
+      <module>anagrammer</module>
   </modules>
 	
 </project>
