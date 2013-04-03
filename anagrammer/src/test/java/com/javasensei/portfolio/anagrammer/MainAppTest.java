@@ -1,13 +1,13 @@
-package jar;
+package com.javasensei.portfolio.anagrammer;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 /**
- * Unit test for simple App.
+ * Unit test for simple MainApp.
  */
-public class AppTest 
+public class MainAppTest
     extends TestCase
 {
     /**
@@ -15,7 +15,7 @@ public class AppTest
      *
      * @param testName name of the test case
      */
-    public AppTest( String testName )
+    public MainAppTest(String testName)
     {
         super( testName );
     }
@@ -25,7 +25,7 @@ public class AppTest
      */
     public static Test suite()
     {
-        return new TestSuite( AppTest.class );
+        return new TestSuite( MainAppTest.class );
     }
 
     /**
