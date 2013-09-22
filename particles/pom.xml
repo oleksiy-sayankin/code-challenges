@@ -2,13 +2,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.javasensei.portfolio.particles</groupId>
+    <groupId>com.javacogito.portfolio.particles</groupId>
     <artifactId>particles</artifactId>
     <version>1.0.0.0</version>
     <packaging>jar</packaging>
 
     <name>particles</name>
-    <url>http://javasensei.com</url>
+    <url>http://javacogito.com</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -27,7 +27,7 @@
     <dependencies>
         <!--Main dependency -->
         <dependency>
-            <groupId>com.javasensei.portfolio.math</groupId>
+            <groupId>com.javacogito.portfolio.math</groupId>
             <artifactId>math</artifactId>
             <version>${project.version}</version>
         </dependency>

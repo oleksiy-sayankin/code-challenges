@@ -8,12 +8,8 @@ import com.javacogito.portfolio.particles.physics.state.ParticleState;
  */
 public interface IParticleModel {
     void move();
-
     ParticleState state();
-
     void translateInDirection(IVector vector);
-
     double getX();
-
     double getY();
 }
