@@ -2,13 +2,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.javasensei.portfolio</groupId>
+    <groupId>com.javacogito.portfolio</groupId>
     <artifactId>portfolio</artifactId>
     <version>1.0.0.0</version>
     <packaging>pom</packaging>
 
     <name>portfolio</name>
-    <url>http://javasensei.com</url>
+    <url>http://javacogito.com</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -29,31 +29,31 @@
 
 		<!--Main -->
         <dependency>
-            <groupId>com.javasensei.portfolio.math</groupId>
+            <groupId>com.javacogito.portfolio.math</groupId>
             <artifactId>math</artifactId>
             <version>${project.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>com.javasensei.portfolio.labyrinth</groupId>
+            <groupId>com.javacogito.portfolio.labyrinth</groupId>
             <artifactId>labyrinth</artifactId>
             <version>${project.version}</version>
         </dependency>
 		
         <dependency>
-            <groupId>com.javasensei.portfolio.deepforest</groupId>
+            <groupId>com.javacogito.portfolio.deepforest</groupId>
             <artifactId>deepforest</artifactId>
             <version>${project.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>com.javasensei.portfolio.particles</groupId>
+            <groupId>com.javacogito.portfolio.particles</groupId>
             <artifactId>particles</artifactId>
             <version>${project.version}</version>
         </dependency>		
 
         <dependency>
-            <groupId>com.javasensei.portfolio.anagrammer</groupId>
+            <groupId>com.javacogito.portfolio.anagrammer</groupId>
             <artifactId>anagrammer</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -89,6 +89,7 @@
       <module>particles</module>
       <module>deepforest</module>
       <module>anagrammer</module>
+      <module>gravity</module>
   </modules>
 	
 </project>

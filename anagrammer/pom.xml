@@ -3,16 +3,16 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>com.javasensei.portfolio</groupId>
+    <groupId>com.javacogito.portfolio</groupId>
     <artifactId>portfolio</artifactId>
     <version>1.0.0.0</version>
   </parent>
 
-  <groupId>com.javasensei.portfolio.anagrammer</groupId>
+  <groupId>com.javacogito.portfolio.anagrammer</groupId>
   <artifactId>anagrammer</artifactId>
   <version>1.0.0.0</version>
   <name>anagrammer</name>
-  <url>http://javasensei.com</url>
+  <url>http://javacogito.com</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
