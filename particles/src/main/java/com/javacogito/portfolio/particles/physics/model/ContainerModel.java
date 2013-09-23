@@ -60,6 +60,11 @@ public class ContainerModel implements Runnable, IContainerModel {
     }
 
     @Override
+    public IParticleCollection<IParticleModel> getParticles() {
+        return particles;
+    }
+
+    @Override
     public void run() {
         while (!shouldStopThread) {
             particlesAndBounds.lock();

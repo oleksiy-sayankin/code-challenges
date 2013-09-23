@@ -10,4 +10,5 @@ public interface IContainerModel {
     void setDimension(MathDimension newDimension);
     MathDimension getDimension();
     IPolygon getSides();
+    IParticleCollection<IParticleModel> getParticles();
 }
