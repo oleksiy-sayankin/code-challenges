@@ -4,6 +4,7 @@ import com.javacogito.portfolio.math.IPoint;
 import com.javacogito.portfolio.math.IPolygon;
 import com.javacogito.portfolio.math.IVector;
 import com.javacogito.portfolio.math.Vector;
+import com.javacogito.portfolio.particles.ParticleFactory;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -31,7 +32,7 @@ public class ParticleCollection<E extends IParticleModel> implements IParticleCo
     @Override
     public void addParticles(int count) {
         for (int i = 0; i <= count - 1; i++) {
-            particles.add(new ParticleModel(containerModel));
+            particles.add(ParticleFactory.createParticleModel(containerModel));
         }
     }
 

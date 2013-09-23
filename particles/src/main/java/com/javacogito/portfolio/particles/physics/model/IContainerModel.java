@@ -8,8 +8,6 @@ import com.javacogito.portfolio.math.IPolygon;
  */
 public interface IContainerModel {
     void setDimension(MathDimension newDimension);
-
     MathDimension getDimension();
-
     IPolygon getSides();
 }

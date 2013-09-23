@@ -89,7 +89,6 @@
       <module>particles</module>
       <module>deepforest</module>
       <module>anagrammer</module>
-      <module>gravity</module>
   </modules>
 	
 </project>

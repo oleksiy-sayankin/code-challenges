@@ -8,14 +8,14 @@ import com.javacogito.portfolio.particles.*;
 import com.javacogito.portfolio.math.*;
 import com.javacogito.portfolio.particles.physics.state.ParticleState;
 
-public class ParticleModel implements IParticleModel {
+public class SimpleParticleModel implements IParticleModel {
     private IPoint coord;
     private IVector velocity;
     private final IContainerModel particleContainer;
     private int size = 4;
 
 
-    public ParticleModel(IContainerModel aParticleContainer) {
+    public SimpleParticleModel(IContainerModel aParticleContainer) {
         particleContainer = aParticleContainer;
         coord = new Point(particleContainer.getDimension().width / 2, particleContainer.getDimension().height / 2);
         velocity = randomVelocity();
