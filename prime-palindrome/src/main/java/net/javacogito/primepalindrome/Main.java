@@ -1,4 +1,4 @@
-package net.javacogito;
+package net.javacogito.primepalindrome;
 
 
 public class Main {
