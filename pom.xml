@@ -89,6 +89,7 @@
       <module>particles</module>
       <module>deepforest</module>
       <module>anagrammer</module>
+      <module>prime-palindrome</module>
   </modules>
 	
 </project>
