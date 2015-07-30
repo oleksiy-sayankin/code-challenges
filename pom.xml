@@ -91,7 +91,8 @@
       <module>anagrammer</module>
       <module>prime-palindrome</module>
       <module>longest-lines</module>
-    <module>string-permutations</module>
+      <module>string-permutations</module>
+      <module>lucky-tickets</module>
   </modules>
 	
 </project>
