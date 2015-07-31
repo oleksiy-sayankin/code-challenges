@@ -11,7 +11,11 @@ Many thanks to http://www.ega-math.narod.ru/Quant/Tickets.htm
 
 public class Main {
 
-    private static BigInteger[][]Ncache;
+    private static final int MAX_DIGITS = 100;
+    private static final int MAX_HALF_DIGITS = MAX_DIGITS / 2;
+    private static final int MAX_SUM = 9 * MAX_HALF_DIGITS;
+
+    private static BigInteger[][]Ncache = new BigInteger[MAX_HALF_DIGITS + 1][MAX_SUM + 1];
 
     public static void main( String[] args ) throws IOException {
 
@@ -30,8 +34,6 @@ public class Main {
         int halfDigits = digits / 2;
         int maxSum = 9 * halfDigits;
         BigInteger totalCount = BigInteger.ZERO;
-
-        Ncache = new BigInteger[halfDigits + 1][maxSum + 1];
 
         for (int k = 0; k <= maxSum; k++){
             BigInteger N = N(halfDigits, k);
