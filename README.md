@@ -14,6 +14,7 @@ MODERATE LEVEL
 --------------
 * [Lucky Tickets](/lucky-tickets/README.md)
 * [Longest Lines](/longest-lines/README.md)
+* [Particles](/particles/README.md)
 
 EASY LEVEL
 ----------
