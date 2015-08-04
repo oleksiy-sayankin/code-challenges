@@ -93,6 +93,7 @@
       <module>longest-lines</module>
       <module>string-permutations</module>
       <module>lucky-tickets</module>
+      <module>labyrinth2</module>
   </modules>
 	
 </project>
