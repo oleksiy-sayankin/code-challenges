@@ -6,8 +6,8 @@ Challenge Description:
 
 ![Challenge Image](DeepForest.jpg)
 
-We say that the observer is the deep forest, if from his current position
-the observer sees only the trees. Map of the forest is given and coordinates of the point, at which the observer is. It is required to determine whether the forest deep for this observer.
+We say that the observer is in the deep forest, if from his current position
+the observer sees only the trees. Map of the forest is given and coordinates of the point, at which the observer is. It is required to determine whether the forest is deep for this observer.
 All the trees of the forest are represented as circles on the map. Some  trees are grown together in the forest (images of trees intersect on the map), and one tree can be
 inside the other. The point at which there is an observer does not lie within or on the boundary of one of the trees.
 
