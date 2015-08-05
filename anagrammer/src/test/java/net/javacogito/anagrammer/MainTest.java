@@ -1,38 +1,20 @@
 package net.javacogito.anagrammer;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import java.io.IOException;
+import java.net.URL;
+import org.junit.Test;
 
-/**
- * Unit test for simple Main.
- */
-public class MainTest
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public MainTest(String testName)
-    {
-        super( testName );
-    }
+public class MainTest {
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( MainTest.class );
-    }
-
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+    @Test
+    public void mainTest() throws IOException {
+        long startTime = System.currentTimeMillis();
+        URL url = Thread.currentThread().getContextClassLoader().getResource("data001.in");
+        String[] input = {url.getPath()};
+        Main.main(input);
+        long endTime = System.currentTimeMillis();
+        long intervalMilliseconds = endTime - startTime;
+        long intervalSeconds = intervalMilliseconds / 1000;
+        System.out.println("duration = " + intervalSeconds);
     }
 }

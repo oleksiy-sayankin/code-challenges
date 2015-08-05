@@ -17,6 +17,7 @@ MODERATE LEVEL
 * [Longest Lines](/longest-lines/README.md)
 * [Particles](/particles/README.md)
 * [Mathematics](/math/README.md)
+* [The Anagrammer](/anagrammer/README.md)
 
 EASY LEVEL
 ----------
