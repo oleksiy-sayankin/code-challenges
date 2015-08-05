@@ -5,6 +5,7 @@ List of solved code challenges:
 
 HARD LEVEL
 ----------
+* [The Labyrinth 1](/labyrinth/README.md)
 * [The Labyrinth 2](/labyrinth2/README.md)
 * [String permutations](/string-permutations/README.md)
 * [Deep forest](/deepforest/README.md)
