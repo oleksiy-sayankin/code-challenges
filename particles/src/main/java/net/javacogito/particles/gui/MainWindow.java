@@ -5,6 +5,7 @@ package net.javacogito.particles.gui;
  */
 
 import net.javacogito.particles.Constants;
+import net.javacogito.particles.Constants.Strings;
 
 
 import java.awt.*;

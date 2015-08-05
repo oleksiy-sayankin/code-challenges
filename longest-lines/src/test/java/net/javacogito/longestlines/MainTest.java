@@ -1,6 +1,5 @@
-package net.javacogito.longlines;
+package net.javacogito.longestlines;
 
-import net.javacogito.longestlines.Main;
 import org.junit.Test;
 
 
