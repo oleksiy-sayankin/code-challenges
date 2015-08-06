@@ -14,44 +14,49 @@ public class Main {
     private static int sequenceCount;
     private static List<String> sequences = new ArrayList<String>();
     private static final int MAX_SEQUENCE_COUNT = 1000;
-    private static int sequenceSize = 0;
+    private static int completeSequenceSize = 0;
+    private static int sourceStringLength = 0;
+    private static String sourceString = "";
+    private static String destString = "";
+
 
     public static void main( String[] args ) throws IOException {
         File file = new File(args[0]);
         BufferedReader buffer = new BufferedReader(new FileReader(file));
-        String sourceString = buffer.readLine();
-        String destString = buffer.readLine();
-        sequenceSize = sourceString.length() * 2;
+        sourceString = buffer.readLine();
+        destString = buffer.readLine();
+        sourceStringLength = sourceString.length();
+        completeSequenceSize = sourceStringLength * 2;
         int sourceIndex = 0;
         int destIndex = 0;
         Stack<String> currentString = new Stack<String>();
         Stack<Integer> sequence = new Stack<Integer>();
-        findSequence(sourceString, destString, sourceIndex, destIndex, currentString, sequence);
+        findSequence(sourceIndex, destIndex, currentString, sequence);
         System.out.println(sequenceCount);
         if (sequenceCount <= MAX_SEQUENCE_COUNT){
             printSequences();
         }
     }
 
-    public static void findSequence(String sourceString, String destString, int sourceIndex, int destIndex, Stack<String> currentString, Stack<Integer> sequence){
-        if(sequence.size() == sequenceSize){
+    public static void findSequence(int sourceIndex, int destIndex, Stack<String> currentString, Stack<Integer> sequence){
+        if(sequence.size() == completeSequenceSize){
             sequenceCount++;
             if (sequenceCount <= MAX_SEQUENCE_COUNT){
                 sequences.add(stackToString(sequence));
             }
             return;
         }
-        if(sourceIndex < sourceString.length()){
+        if(sourceIndex < sourceStringLength){
             currentString.push(stringAt(sourceString, sourceIndex));
             sequence.push(1);
-            findSequence(sourceString, destString, sourceIndex + 1, destIndex, currentString, sequence);
+            findSequence(sourceIndex + 1, destIndex, currentString, sequence);
             sequence.pop();
             currentString.pop();
         }
         if(currentString.size() > 0 && currentString.peek().equals(stringAt(destString, destIndex))){
             String s = currentString.pop();
             sequence.push(2);
-            findSequence(sourceString, destString, sourceIndex, destIndex + 1, currentString, sequence);
+            findSequence(sourceIndex, destIndex + 1, currentString, sequence);
             sequence.pop();
             currentString.push(s);
         }
