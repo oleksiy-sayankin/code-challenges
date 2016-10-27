@@ -1,3 +1,5 @@
+![Main Logo](code-challenge.png)
+
 This project is portfolio to show my developing skills. 
 It consists of several code challenges each in separate folder.
 Every code challenge has its own description. 
