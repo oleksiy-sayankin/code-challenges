@@ -21,6 +21,7 @@ MODERATE LEVEL
 * [Mathematics](/math/README.md)
 * [The Anagrammer](/anagrammer/README.md)
 * [Game of Tag](/fifteen/README.md)
+* [Stack Implementation](/stack-implementation/README.md)
 
 EASY LEVEL
 ----------
