@@ -83,6 +83,7 @@
       <module>labyrinth2</module>
       <module>stack-implementation</module>
       <module>fizz-buzz</module>
+      <module>multiplication-tables</module>
   </modules>
 	
 </project>

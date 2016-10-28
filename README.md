@@ -22,11 +22,12 @@ MODERATE LEVEL
 * [The Anagrammer](/anagrammer/README.md)
 * [Game of Tag](/fifteen/README.md)
 * [Stack Implementation](/stack-implementation/README.md)
-* [Fizz Buzz](/fizz-buzz/README.md)
 
 
 EASY LEVEL
 ----------
 * [Prime Palindrome](/prime-palindrome/README.md)
+* [Fizz Buzz](/fizz-buzz/README.md)
+* [Multiplication Tables](/multiplication-tables/README.md)
 
    
