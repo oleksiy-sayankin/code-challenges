@@ -82,6 +82,7 @@
       <module>lucky-tickets</module>
       <module>labyrinth2</module>
       <module>stack-implementation</module>
+      <module>fizz-buzz</module>
   </modules>
 	
 </project>
