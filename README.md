@@ -22,6 +22,7 @@ MODERATE LEVEL
 * [The Anagrammer](/anagrammer/README.md)
 * [Game of Tag](/fifteen/README.md)
 * [Stack Implementation](/stack-implementation/README.md)
+* [Interrupted Bubble Sort](/interrupted-bubble-sort/README.md)
 
 
 EASY LEVEL
