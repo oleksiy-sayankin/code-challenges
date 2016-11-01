@@ -23,7 +23,7 @@ MODERATE LEVEL
 * [Game of Tag](/fifteen/README.md)
 * [Stack Implementation](/stack-implementation/README.md)
 * [Interrupted Bubble Sort](/interrupted-bubble-sort/README.md)
-
+* [Pass Triangle](/pass-triangle/README.md)
 
 EASY LEVEL
 ----------

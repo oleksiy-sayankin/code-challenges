@@ -84,7 +84,8 @@
       <module>stack-implementation</module>
       <module>fizz-buzz</module>
       <module>multiplication-tables</module>
-    <module>interrupted-bubble-sort</module>
+      <module>interrupted-bubble-sort</module>
+      <module>pass-triangle</module>
   </modules>
 	
 </project>
