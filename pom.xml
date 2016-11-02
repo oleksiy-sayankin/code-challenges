@@ -86,6 +86,7 @@
       <module>multiplication-tables</module>
       <module>interrupted-bubble-sort</module>
       <module>pass-triangle</module>
+      <module>game-of-life</module>
   </modules>
 	
 </project>
