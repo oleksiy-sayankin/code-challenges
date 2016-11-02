@@ -24,6 +24,7 @@ MODERATE LEVEL
 * [Stack Implementation](/stack-implementation/README.md)
 * [Interrupted Bubble Sort](/interrupted-bubble-sort/README.md)
 * [Pass Triangle](/pass-triangle/README.md)
+* [Game of Life](game-of-life/README.md)
 
 EASY LEVEL
 ----------
