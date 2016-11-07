@@ -26,6 +26,7 @@ MODERATE LEVEL
 * [Pass Triangle](/pass-triangle/README.md)
 * [Game of Life](game-of-life/README.md)
 * [Decode Numbers](/decode-numbers/README.md)
+* [Sort Matrix Columns](/sort-matrix-columns/README.md)
 
 EASY LEVEL
 ----------
