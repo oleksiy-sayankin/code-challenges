@@ -7,9 +7,13 @@ import net.javacogito.particles.physics.state.ParticleState;
  * @author oleksiy sayankin
  */
 public interface IParticleModel {
-    void move();
-    ParticleState state();
-    void translateInDirection(IVector vector);
-    double getX();
-    double getY();
+  void move();
+
+  ParticleState state();
+
+  void translateInDirection(IVector vector);
+
+  double getX();
+
+  double getY();
 }

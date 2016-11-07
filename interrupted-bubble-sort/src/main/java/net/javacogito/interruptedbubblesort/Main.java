@@ -17,26 +17,26 @@ public class Main {
       String[] numbersAsString = numbersAndState[0].split(" ");
       int numbersCount = numbersAsString.length;
       int[] numbers = new int[numbersCount];
-      for(int i = 0; i <= numbersCount - 1; i++){
+      for (int i = 0; i <= numbersCount - 1; i++) {
         numbers[i] = Integer.parseInt(numbersAsString[i]);
       }
       long state = Long.parseLong(numbersAndState[1]);
-      for(long i = 0; i <= state - 1; i++){
+      for (long i = 0; i <= state - 1; i++) {
         boolean isChanged = false;
-        for(int j = 0; j <= numbersCount - 2; j++){
-          if(numbers[j] > numbers[j + 1]){
+        for (int j = 0; j <= numbersCount - 2; j++) {
+          if (numbers[j] > numbers[j + 1]) {
             int temp = numbers[j];
             numbers[j] = numbers[j + 1];
             numbers[j + 1] = temp;
             isChanged = true;
           }
         }
-        if(!isChanged){
+        if (!isChanged) {
           break;
         }
       }
 
-      for(int j = 0; j <= numbersCount - 2; j++){
+      for (int j = 0; j <= numbersCount - 2; j++) {
         System.out.print(numbers[j] + " ");
       }
       System.out.print(numbers[numbersCount - 1]);

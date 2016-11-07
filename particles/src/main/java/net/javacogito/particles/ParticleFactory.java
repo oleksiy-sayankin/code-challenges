@@ -14,29 +14,32 @@ import java.util.Properties;
  */
 
 public final class ParticleFactory {
-    private static Properties properties = new Properties();
+  private static Properties properties = new Properties();
 
-    static {
-        try {
-            properties.load(new InputStreamReader(ParticleFactory.class.getClassLoader().getResourceAsStream(Constants.Util.PROPERTIES_FILE_NAME)));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+  static {
+    try {
+      properties.load(new InputStreamReader(ParticleFactory.class.getClassLoader().getResourceAsStream(Constants.Util.PROPERTIES_FILE_NAME)));
+    } catch (IOException e) {
+      e.printStackTrace();
     }
 
-    private ParticleFactory() throws IOException {
-    }
-    public static IParticleModel createParticleModel(ParticleModeType type, IContainerModel containerModel){
-        switch (type){
-            case SIMPLE: return new SimpleParticleModel(containerModel);
-            case MASS: return new MassParticleModel(containerModel);
-        }
-        return null;
-    }
+  }
 
-    public static IParticleModel createParticleModel(IContainerModel containerModel){
-        ParticleModeType type = ParticleModeType.parse(properties.getProperty(Constants.Properties.PARTICLE_TYPE));
-        return createParticleModel(type, containerModel);
+  private ParticleFactory() throws IOException {
+  }
+
+  public static IParticleModel createParticleModel(ParticleModeType type, IContainerModel containerModel) {
+    switch (type) {
+      case SIMPLE:
+        return new SimpleParticleModel(containerModel);
+      case MASS:
+        return new MassParticleModel(containerModel);
     }
+    return null;
+  }
+
+  public static IParticleModel createParticleModel(IContainerModel containerModel) {
+    ParticleModeType type = ParticleModeType.parse(properties.getProperty(Constants.Properties.PARTICLE_TYPE));
+    return createParticleModel(type, containerModel);
+  }
 }

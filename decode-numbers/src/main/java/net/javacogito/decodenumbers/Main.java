@@ -19,42 +19,42 @@ public class Main {
     }
   }
 
-  private static void decode(String line){
+  private static void decode(String line) {
     int length = line.length();
-    if(length == 0){
+    if (length == 0) {
       numberOfWays++;
       return;
     }
 
-    if(length == 1){
-      if(Integer.parseInt(line) > 0) {
+    if (length == 1) {
+      if (Integer.parseInt(line) > 0) {
         decode(removeFistSingleDigit(line));
       }
       return;
     }
 
-    if(Integer.parseInt(getFirstSingleDigit(line)) > 0) {
+    if (Integer.parseInt(getFirstSingleDigit(line)) > 0) {
       decode(removeFistSingleDigit(line));
     }
 
-    if(Integer.parseInt(getFirstTwoDigit(line)) <= 26){
+    if (Integer.parseInt(getFirstTwoDigit(line)) <= 26) {
       decode(removeFistTwoDigit(line));
     }
   }
 
-  private static String getFirstSingleDigit(String data){
+  private static String getFirstSingleDigit(String data) {
     return data.substring(0, 1);
   }
 
-  private static String getFirstTwoDigit(String data){
+  private static String getFirstTwoDigit(String data) {
     return data.substring(0, 2);
   }
 
-  private static String removeFistSingleDigit(String data){
+  private static String removeFistSingleDigit(String data) {
     return data.substring(1);
   }
 
-  private static String removeFistTwoDigit(String data){
+  private static String removeFistTwoDigit(String data) {
     return data.substring(2);
   }
 

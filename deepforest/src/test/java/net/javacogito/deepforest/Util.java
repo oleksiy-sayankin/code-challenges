@@ -17,53 +17,55 @@ import java.util.Set;
  * @author oleksiy sayankin
  */
 public final class Util {
-    private Util(){}
-    private static final Logger LOGGER = LoggerFactory.getLogger(Util.class);
+  private Util() {
+  }
 
-    @Before
-    public void init(){
-        PropertyConfigurator.configure("log4j.properties");
-    }
+  private static final Logger LOGGER = LoggerFactory.getLogger(Util.class);
 
-    /**
-     * Empty and delete a folder (and subfolders).
-     * @param folder
-     *            folder to empty
-     */
-    public static void rmdir(final File folder) {
-        // check if folder file is a real folder
-        if (folder.isDirectory()) {
-            File[] list = folder.listFiles();
-            if (list != null) {
-                for (int i = 0; i < list.length; i++) {
-                    File tmpF = list[i];
-                    if (tmpF.isDirectory()) {
-                        rmdir(tmpF);
-                    }
-                    tmpF.delete();
-                }
-            }
-            if (!folder.delete()) {
-                LOGGER.info("can't delete folder : " + folder);
-            }
+  @Before
+  public void init() {
+    PropertyConfigurator.configure("log4j.properties");
+  }
+
+  /**
+   * Empty and delete a folder (and subfolders).
+   *
+   * @param folder folder to empty
+   */
+  public static void rmdir(final File folder) {
+    // check if folder file is a real folder
+    if (folder.isDirectory()) {
+      File[] list = folder.listFiles();
+      if (list != null) {
+        for (int i = 0; i < list.length; i++) {
+          File tmpF = list[i];
+          if (tmpF.isDirectory()) {
+            rmdir(tmpF);
+          }
+          tmpF.delete();
         }
+      }
+      if (!folder.delete()) {
+        LOGGER.info("can't delete folder : " + folder);
+      }
     }
+  }
 
-    public static Set<IPoint> intersectionPoints(ICircle[] circles, IRay ray){
-        Set<IPoint> result = new HashSet<IPoint>();
-        for(ICircle circle : circles){
-            Set<IPoint> intersectionPoints = circle.intersection(ray);
-            if(!intersectionPoints.isEmpty()){
-                result.addAll(intersectionPoints);
-                LOGGER.info(circle + ", " + intersectionPoints);
-            }
-        }
-        return result;
+  public static Set<IPoint> intersectionPoints(ICircle[] circles, IRay ray) {
+    Set<IPoint> result = new HashSet<IPoint>();
+    for (ICircle circle : circles) {
+      Set<IPoint> intersectionPoints = circle.intersection(ray);
+      if (!intersectionPoints.isEmpty()) {
+        result.addAll(intersectionPoints);
+        LOGGER.info(circle + ", " + intersectionPoints);
+      }
     }
+    return result;
+  }
 
-    public static boolean isIntersections(InputData inputData, OutputData outputData){
-        IRay ray = new Ray(inputData.getInitPos(), outputData.getExit());
-        Set<IPoint> intersectionPoints = intersectionPoints(inputData.getCircles(), ray);
-        return !intersectionPoints.isEmpty();
-    }
+  public static boolean isIntersections(InputData inputData, OutputData outputData) {
+    IRay ray = new Ray(inputData.getInitPos(), outputData.getExit());
+    Set<IPoint> intersectionPoints = intersectionPoints(inputData.getCircles(), ray);
+    return !intersectionPoints.isEmpty();
+  }
 }

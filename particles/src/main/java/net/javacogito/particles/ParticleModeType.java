@@ -6,21 +6,22 @@ package net.javacogito.particles;
 
 public enum ParticleModeType {
 
-    SIMPLE(Constants.ParticleType.SIMPLE),
-    MASS(Constants.ParticleType.MASS);
-    private String name;
-    ParticleModeType(String name){
-        this.name = name;
-    }
+  SIMPLE(Constants.ParticleType.SIMPLE),
+  MASS(Constants.ParticleType.MASS);
+  private String name;
 
-    public String getName(){
-        return name;
-    }
+  ParticleModeType(String name) {
+    this.name = name;
+  }
 
-    public static ParticleModeType parse(String name){
-        for(ParticleModeType type : ParticleModeType.values()){
-            if(type.getName().equals(name)) return type;
-        }
-        return null;
+  public String getName() {
+    return name;
+  }
+
+  public static ParticleModeType parse(String name) {
+    for (ParticleModeType type : ParticleModeType.values()) {
+      if (type.getName().equals(name)) return type;
     }
+    return null;
+  }
 }

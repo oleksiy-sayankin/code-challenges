@@ -7,8 +7,11 @@ import net.javacogito.math.IPolygon;
  * @author oleksiy sayankin
  */
 public interface IContainerModel {
-    void setDimension(MathDimension newDimension);
-    MathDimension getDimension();
-    IPolygon getSides();
-    IParticleCollection<IParticleModel> getParticles();
+  void setDimension(MathDimension newDimension);
+
+  MathDimension getDimension();
+
+  IPolygon getSides();
+
+  IParticleCollection<IParticleModel> getParticles();
 }

@@ -10,11 +10,11 @@ import net.javacogito.particles.physics.state.BoundsState;
  * @author oleksiy sayankin
  */
 public interface IBoundModel {
-    IRectangle bounds();
+  IRectangle bounds();
 
-    void stretch(IPoint stretchPoint, IVector direction);
+  void stretch(IPoint stretchPoint, IVector direction);
 
-    IPolygon getSides();
+  IPolygon getSides();
 
-    BoundsState state();
+  BoundsState state();
 }

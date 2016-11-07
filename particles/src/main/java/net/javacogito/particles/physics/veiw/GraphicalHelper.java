@@ -15,28 +15,29 @@ import net.javacogito.particles.physics.state.ParticleState;
  */
 public final class GraphicalHelper {
 
-    private GraphicalHelper(){}
+  private GraphicalHelper() {
+  }
 
-    public static CanvasPoint transform(IPoint point) {
-        int x = (int) point.getX() + Constants.Panel.MARGIN;
-        int y = (int) point.getY() + Constants.Panel.MARGIN;
-        return new CanvasPoint(x, y);
-    }
+  public static CanvasPoint transform(IPoint point) {
+    int x = (int) point.getX() + Constants.Panel.MARGIN;
+    int y = (int) point.getY() + Constants.Panel.MARGIN;
+    return new CanvasPoint(x, y);
+  }
 
-    public static CanvasParticle transform(ParticleState particleState) {
-        CanvasPoint canvasPoint = transform(particleState.point);
-        int size = particleState.size;
-        return new CanvasParticle(canvasPoint, size);
-    }
+  public static CanvasParticle transform(ParticleState particleState) {
+    CanvasPoint canvasPoint = transform(particleState.point);
+    int size = particleState.size;
+    return new CanvasParticle(canvasPoint, size);
+  }
 
-    public static CanvasPolygon transform(IPolygon polygon) {
-        return new CanvasPolygon(polygon);
-    }
+  public static CanvasPolygon transform(IPolygon polygon) {
+    return new CanvasPolygon(polygon);
+  }
 
-    public static CanvasRectangle transform(IRectangle rectangle) {
-        CanvasPoint point = transform(rectangle.topLeftPoint());
-        int width = (int) rectangle.width();
-        int height = (int) rectangle.height();
-        return new CanvasRectangle(point, width, height);
-    }
+  public static CanvasRectangle transform(IRectangle rectangle) {
+    CanvasPoint point = transform(rectangle.topLeftPoint());
+    int width = (int) rectangle.width();
+    int height = (int) rectangle.height();
+    return new CanvasRectangle(point, width, height);
+  }
 }

@@ -4,5 +4,5 @@ import com.fifteen.gamefields.GameFieldState;
 
 
 public interface Observer {
-	void update(GameFieldState aGameFieldState);
+  void update(GameFieldState aGameFieldState);
 }

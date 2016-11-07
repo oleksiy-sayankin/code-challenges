@@ -7,14 +7,14 @@ import net.javacogito.math.Primitives;
  * @author oleksiy sayankin
  */
 public final class BoundsState {
-    public final IPolygon sides;
+  public final IPolygon sides;
 
-    public BoundsState(IPolygon polygon) {
-        sides = Primitives.unmodifiablePolygon(polygon);
-    }
+  public BoundsState(IPolygon polygon) {
+    sides = Primitives.unmodifiablePolygon(polygon);
+  }
 
-    @Override
-    public String toString() {
-        return sides.toString();
-    }
+  @Override
+  public String toString() {
+    return sides.toString();
+  }
 }

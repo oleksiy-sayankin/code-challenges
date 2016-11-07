@@ -9,10 +9,10 @@ import java.net.URL;
 
 
 public class MainTest {
-    @org.junit.Test
-    public void mainTest() throws IOException {
-        URL url = Thread.currentThread().getContextClassLoader().getResource("data001.in");
-        String[] input = {url.getPath()};
-        Main.main(input);
-    }
+  @org.junit.Test
+  public void mainTest() throws IOException {
+    URL url = Thread.currentThread().getContextClassLoader().getResource("data001.in");
+    String[] input = {url.getPath()};
+    Main.main(input);
+  }
 }

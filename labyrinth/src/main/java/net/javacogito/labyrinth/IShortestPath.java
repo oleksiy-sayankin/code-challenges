@@ -1,8 +1,8 @@
 package net.javacogito.labyrinth;
 
 /**
- *  @author oleksiy sayankin
+ * @author oleksiy sayankin
  */
 public interface IShortestPath {
-    Path shortestPath(Graph graph, INode startNode, INode endNode);
+  Path shortestPath(Graph graph, INode startNode, INode endNode);
 }

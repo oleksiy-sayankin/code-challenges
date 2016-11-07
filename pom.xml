@@ -1,93 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-    <groupId>net.javacogito</groupId>
-    <artifactId>code-challenges</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
+  <groupId>net.javacogito</groupId>
+  <artifactId>code-challenges</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
 
-    <name>code-challenges</name>
+  <name>code-challenges</name>
 
-    <dependencies>
-
-
-
-        <!--Other dependencies -->
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>${log4j.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.sun.jmx</groupId>
-                    <artifactId>jmxri</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.sun.jdmk</groupId>
-                    <artifactId>jmxtools</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>javax.jms</groupId>
-                    <artifactId>jms</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
-    <url>http://javacogito.net</url>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <log4j.version>1.2.15</log4j.version>
-        <slf4j.version>1.6.1</slf4j.version>
-        <junit.version>4.8.2</junit.version>
-    </properties>
+  <dependencies>
 
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
-                <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+    <!--Other dependencies -->
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>${log4j.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.sun.jmx</groupId>
+          <artifactId>jmxri</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.sun.jdmk</groupId>
+          <artifactId>jmxtools</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>javax.jms</groupId>
+          <artifactId>jms</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>${slf4j.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <url>http://javacogito.net</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <log4j.version>1.2.15</log4j.version>
+    <slf4j.version>1.6.1</slf4j.version>
+    <junit.version>4.8.2</junit.version>
+  </properties>
+
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 
   <modules>
-      <module>math</module>
-      <module>labyrinth</module>
-      <module>particles</module>
-      <module>deepforest</module>
-      <module>anagrammer</module>
-      <module>prime-palindrome</module>
-      <module>longest-lines</module>
-      <module>string-permutations</module>
-      <module>lucky-tickets</module>
-      <module>labyrinth2</module>
-      <module>stack-implementation</module>
-      <module>fizz-buzz</module>
-      <module>multiplication-tables</module>
-      <module>interrupted-bubble-sort</module>
-      <module>pass-triangle</module>
-      <module>game-of-life</module>
-      <module>decode-numbers</module>
+    <module>math</module>
+    <module>labyrinth</module>
+    <module>particles</module>
+    <module>deepforest</module>
+    <module>anagrammer</module>
+    <module>prime-palindrome</module>
+    <module>longest-lines</module>
+    <module>string-permutations</module>
+    <module>lucky-tickets</module>
+    <module>labyrinth2</module>
+    <module>stack-implementation</module>
+    <module>fizz-buzz</module>
+    <module>multiplication-tables</module>
+    <module>interrupted-bubble-sort</module>
+    <module>pass-triangle</module>
+    <module>game-of-life</module>
+    <module>decode-numbers</module>
   </modules>
-	
+
 </project>

@@ -1,65 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/about"
+              android:id="@+id/about"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal">
+
+  <ImageView
+    android:id="@+id/image_info"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:src="@drawable/ic_menu_info"/>
+
+  <TableLayout
+    android:id="@+id/tableLayout1"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="horizontal" >
+    android:layout_weight="0.79">
 
-    <ImageView
-        android:id="@+id/image_info"
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:src="@drawable/ic_menu_info" />
-   
-    <TableLayout
-        android:id="@+id/tableLayout1"
+    <TableRow
+      android:id="@+id/tableRow1"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content">
+
+      <TextView
+        android:id="@+id/textViewAuthor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0.79" >
+        android:text="Author"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
 
-        <TableRow
-            android:id="@+id/tableRow1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+      <TextView
+        android:id="@+id/textViewAuthorValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Oleksiy Sayankin"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
 
-            <TextView
-                android:id="@+id/textViewAuthor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Author"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <TextView
-                android:id="@+id/textViewAuthorValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Oleksiy Sayankin"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-            
-            
-        </TableRow>
+    </TableRow>
 
-        <TableRow
-            android:id="@+id/tableRow2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-            
-            <TextView
-                android:id="@+id/textViewVersion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Version"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-            
-            <TextView
-                android:id="@+id/textViewVersionValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1.0.0"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-                        
-        </TableRow>
+    <TableRow
+      android:id="@+id/tableRow2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content">
 
-    </TableLayout>
+      <TextView
+        android:id="@+id/textViewVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Version"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+      <TextView
+        android:id="@+id/textViewVersionValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1.0.0"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+    </TableRow>
+
+  </TableLayout>
 
 </LinearLayout>
