@@ -25,6 +25,7 @@ MODERATE LEVEL
 * [Interrupted Bubble Sort](/interrupted-bubble-sort/README.md)
 * [Pass Triangle](/pass-triangle/README.md)
 * [Game of Life](game-of-life/README.md)
+* [Decode Numbers](/decode-numbers/README.md)
 
 EASY LEVEL
 ----------

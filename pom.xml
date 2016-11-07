@@ -87,6 +87,7 @@
       <module>interrupted-bubble-sort</module>
       <module>pass-triangle</module>
       <module>game-of-life</module>
+      <module>decode-numbers</module>
   </modules>
 	
 </project>
