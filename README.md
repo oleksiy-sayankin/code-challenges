@@ -28,6 +28,7 @@ MODERATE LEVEL
 * [Decode Numbers](/decode-numbers/README.md)
 * [Sort Matrix Columns](/sort-matrix-columns/README.md)
 * [Number of Ones](/number-of-ones/README.md)
+* [Minimum Coins](minimum-coins/README.md)
 
 EASY LEVEL
 ----------
