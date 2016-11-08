@@ -1,5 +1,5 @@
-Interrupted Bubble Sort
-=======================
+Number of Ones
+==============
 
 Challenge Description:
 ----------------------
