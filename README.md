@@ -29,6 +29,7 @@ MODERATE LEVEL
 * [Sort Matrix Columns](/sort-matrix-columns/README.md)
 * [Number of Ones](/number-of-ones/README.md)
 * [Minimum Coins](minimum-coins/README.md)
+* [A Pile of Bricks](a-pile-bricks/README.md)
 
 EASY LEVEL
 ----------

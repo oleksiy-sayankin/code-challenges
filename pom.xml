@@ -90,6 +90,7 @@
     <module>sort-matrix-columns</module>
     <module>number-of-ones</module>
     <module>minimum-coins</module>
+    <module>a-pile-of-bricks</module>
   </modules>
 
 </project>
