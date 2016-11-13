@@ -31,6 +31,7 @@ MODERATE LEVEL
 * [Minimum Coins](minimum-coins/README.md)
 * [A Pile of Bricks](a-pile-of-bricks/README.md)
 * [Locks](locks/README.md)
+* [Card Number Validation](card-number-validation/README.md)
 
 EASY LEVEL
 ----------

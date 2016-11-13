@@ -92,6 +92,7 @@
     <module>minimum-coins</module>
     <module>a-pile-of-bricks</module>
     <module>locks</module>
+    <module>card-number-validation</module>
   </modules>
 
 </project>
