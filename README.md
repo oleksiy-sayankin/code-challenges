@@ -30,6 +30,7 @@ MODERATE LEVEL
 * [Number of Ones](/number-of-ones/README.md)
 * [Minimum Coins](minimum-coins/README.md)
 * [A Pile of Bricks](a-pile-of-bricks/README.md)
+* [Locks](locks/README.md)
 
 EASY LEVEL
 ----------

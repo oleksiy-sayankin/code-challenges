@@ -91,6 +91,7 @@
     <module>number-of-ones</module>
     <module>minimum-coins</module>
     <module>a-pile-of-bricks</module>
+    <module>locks</module>
   </modules>
 
 </project>
