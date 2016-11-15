@@ -93,6 +93,7 @@
     <module>a-pile-of-bricks</module>
     <module>locks</module>
     <module>card-number-validation</module>
+    <module>code-combinations</module>
   </modules>
 
 </project>

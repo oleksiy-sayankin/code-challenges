@@ -32,6 +32,7 @@ MODERATE LEVEL
 * [A Pile of Bricks](a-pile-of-bricks/README.md)
 * [Locks](locks/README.md)
 * [Card Number Validation](card-number-validation/README.md)
+* [Code Combinations](code-combinations/README.md)
 
 EASY LEVEL
 ----------
