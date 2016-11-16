@@ -95,6 +95,7 @@
     <module>card-number-validation</module>
     <module>code-combinations</module>
     <module>overlapping-rectangles</module>
+    <module>find-a-square</module>
   </modules>
 
 </project>

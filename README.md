@@ -34,6 +34,7 @@ MODERATE LEVEL
 * [Card Number Validation](card-number-validation/README.md)
 * [Code Combinations](code-combinations/README.md)
 * [Overlapping Rectangles](overlapping-rectangles/README.md)
+* [Find a Square](find-a-square/README.md)
 
 EASY LEVEL
 ----------
