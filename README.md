@@ -33,6 +33,7 @@ MODERATE LEVEL
 * [Locks](locks/README.md)
 * [Card Number Validation](card-number-validation/README.md)
 * [Code Combinations](code-combinations/README.md)
+* [Overlapping Rectangles](overlapping-rectangles/README.md)
 
 EASY LEVEL
 ----------
