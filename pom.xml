@@ -96,6 +96,7 @@
     <module>code-combinations</module>
     <module>overlapping-rectangles</module>
     <module>find-a-square</module>
+    <module>lost-in-translation</module>
   </modules>
 
 </project>

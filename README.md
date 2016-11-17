@@ -35,6 +35,7 @@ MODERATE LEVEL
 * [Code Combinations](code-combinations/README.md)
 * [Overlapping Rectangles](overlapping-rectangles/README.md)
 * [Find a Square](find-a-square/README.md)
+* [Lost In Translation](lost-in-translation/README.md)
 
 EASY LEVEL
 ----------
