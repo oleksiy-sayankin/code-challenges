@@ -98,6 +98,7 @@
     <module>find-a-square</module>
     <module>lost-in-translation</module>
     <module>city-blocks-flyover</module>
+    <module>roman-and-arabic</module>
   </modules>
 
 </project>

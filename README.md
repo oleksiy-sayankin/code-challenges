@@ -37,6 +37,7 @@ MODERATE LEVEL
 * [Find a Square](find-a-square/README.md)
 * [Lost In Translation](lost-in-translation/README.md)
 * [City Blocks Flyover](city-blocks-flyover/README.md)
+* [Roman and Arabic](roman-and-arabic/README.md)
 
 EASY LEVEL
 ----------
