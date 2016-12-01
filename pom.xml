@@ -99,6 +99,7 @@
     <module>lost-in-translation</module>
     <module>city-blocks-flyover</module>
     <module>roman-and-arabic</module>
+    <module>point-in-circle</module>
   </modules>
 
 </project>

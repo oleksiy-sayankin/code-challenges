@@ -38,6 +38,7 @@ MODERATE LEVEL
 * [Lost In Translation](lost-in-translation/README.md)
 * [City Blocks Flyover](city-blocks-flyover/README.md)
 * [Roman and Arabic](roman-and-arabic/README.md)
+* [Point in Circle](point-in-circle/README.md)
 
 EASY LEVEL
 ----------
