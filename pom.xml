@@ -100,6 +100,7 @@
     <module>city-blocks-flyover</module>
     <module>roman-and-arabic</module>
     <module>point-in-circle</module>
+    <module>broken-lcd</module>
   </modules>
 
 </project>
