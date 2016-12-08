@@ -101,6 +101,7 @@
     <module>roman-and-arabic</module>
     <module>point-in-circle</module>
     <module>broken-lcd</module>
+    <module>number-operations</module>
   </modules>
 
 </project>

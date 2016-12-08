@@ -40,6 +40,7 @@ MODERATE LEVEL
 * [Roman and Arabic](roman-and-arabic/README.md)
 * [Point in Circle](point-in-circle/README.md)
 * [Broken LCD](broken-lcd/README.md)
+* [Number Operations](number-operations/README.md)
 
 EASY LEVEL
 ----------
