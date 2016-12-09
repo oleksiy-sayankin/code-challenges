@@ -41,6 +41,7 @@ MODERATE LEVEL
 * [Point in Circle](point-in-circle/README.md)
 * [Broken LCD](broken-lcd/README.md)
 * [Number Operations](number-operations/README.md)
+* [Bats Challenge](bats-challenge/README.md)
 
 EASY LEVEL
 ----------

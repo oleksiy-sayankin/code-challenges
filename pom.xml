@@ -102,6 +102,7 @@
     <module>point-in-circle</module>
     <module>broken-lcd</module>
     <module>number-operations</module>
+    <module>bats-challenge</module>
   </modules>
 
 </project>
