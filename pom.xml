@@ -103,6 +103,7 @@
     <module>broken-lcd</module>
     <module>number-operations</module>
     <module>bats-challenge</module>
+    <module>sum-to-zero</module>
   </modules>
 
 </project>

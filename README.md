@@ -42,6 +42,7 @@ MODERATE LEVEL
 * [Broken LCD](broken-lcd/README.md)
 * [Number Operations](number-operations/README.md)
 * [Bats Challenge](bats-challenge/README.md)
+* [Sum to Zero](sum-to-zero/README.md)
 
 EASY LEVEL
 ----------
