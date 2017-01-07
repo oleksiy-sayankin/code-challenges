@@ -43,6 +43,7 @@ MODERATE LEVEL
 * [Number Operations](number-operations/README.md)
 * [Bats Challenge](bats-challenge/README.md)
 * [Sum to Zero](sum-to-zero/README.md)
+* [Chain Inspection](chain-inspection/README.md)
 
 EASY LEVEL
 ----------

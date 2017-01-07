@@ -104,6 +104,7 @@
     <module>number-operations</module>
     <module>bats-challenge</module>
     <module>sum-to-zero</module>
+    <module>chain-inspection</module>
   </modules>
 
 </project>
