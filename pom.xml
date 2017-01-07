@@ -70,41 +70,9 @@
   </build>
 
   <modules>
-    <module>math</module>
-    <module>labyrinth</module>
-    <module>particles</module>
-    <module>deepforest</module>
-    <module>anagrammer</module>
-    <module>prime-palindrome</module>
-    <module>longest-lines</module>
-    <module>string-permutations</module>
-    <module>lucky-tickets</module>
-    <module>labyrinth2</module>
-    <module>stack-implementation</module>
-    <module>fizz-buzz</module>
-    <module>multiplication-tables</module>
-    <module>interrupted-bubble-sort</module>
-    <module>pass-triangle</module>
-    <module>game-of-life</module>
-    <module>decode-numbers</module>
-    <module>sort-matrix-columns</module>
-    <module>number-of-ones</module>
-    <module>minimum-coins</module>
-    <module>a-pile-of-bricks</module>
-    <module>locks</module>
-    <module>card-number-validation</module>
-    <module>code-combinations</module>
-    <module>overlapping-rectangles</module>
-    <module>find-a-square</module>
-    <module>lost-in-translation</module>
-    <module>city-blocks-flyover</module>
-    <module>roman-and-arabic</module>
-    <module>point-in-circle</module>
-    <module>broken-lcd</module>
-    <module>number-operations</module>
-    <module>bats-challenge</module>
-    <module>sum-to-zero</module>
-    <module>chain-inspection</module>
+    <module>easy</module>
+    <module>moderate</module>
+    <module>hard</module>
   </modules>
 
 </project>

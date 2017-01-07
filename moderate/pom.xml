@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>net.javacogito</groupId>
+    <artifactId>code-challenges</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <artifactId>moderate-level</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>Moderate Level</name>
+  <modules>
+    <module>math</module>
+    <module>particles</module>
+    <module>anagrammer</module>
+    <module>longest-lines</module>
+    <module>lucky-tickets</module>
+    <module>stack-implementation</module>
+    <module>interrupted-bubble-sort</module>
+    <module>pass-triangle</module>
+    <module>game-of-life</module>
+    <module>decode-numbers</module>
+    <module>sort-matrix-columns</module>
+    <module>number-of-ones</module>
+    <module>minimum-coins</module>
+    <module>a-pile-of-bricks</module>
+    <module>locks</module>
+    <module>card-number-validation</module>
+    <module>code-combinations</module>
+    <module>overlapping-rectangles</module>
+    <module>find-a-square</module>
+    <module>lost-in-translation</module>
+    <module>city-blocks-flyover</module>
+    <module>roman-and-arabic</module>
+    <module>point-in-circle</module>
+    <module>broken-lcd</module>
+    <module>number-operations</module>
+    <module>bats-challenge</module>
+    <module>sum-to-zero</module>
+    <module>chain-inspection</module>
+  </modules>
+
+</project>
