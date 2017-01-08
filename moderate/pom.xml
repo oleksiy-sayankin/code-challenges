@@ -42,6 +42,7 @@
     <module>sum-to-zero</module>
     <module>chain-inspection</module>
     <module>decimal-to-binary</module>
+    <module>trailing-string</module>
   </modules>
 
 </project>

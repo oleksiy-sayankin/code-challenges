@@ -45,6 +45,7 @@ MODERATE LEVEL
 * [Sum to Zero](moderate/sum-to-zero/README.md)
 * [Chain Inspection](moderate/chain-inspection/README.md)
 * [Decimal To Binary](moderate/decimal-to-binary/README.md)
+* [Trailing String](moderate/trailing-string/README.md)
 
 EASY LEVEL
 ----------
