@@ -47,6 +47,7 @@ MODERATE LEVEL
 * [Decimal To Binary](moderate/decimal-to-binary/README.md)
 * [Trailing String](moderate/trailing-string/README.md)
 * [Email Validation](moderate/email-validation/README.md)
+* [Pangrams](moderate/pangrams/README.md)
 
 EASY LEVEL
 ----------

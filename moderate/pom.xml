@@ -44,6 +44,7 @@
     <module>decimal-to-binary</module>
     <module>trailing-string</module>
     <module>email-validation</module>
+    <module>pangrams</module>
   </modules>
 
 </project>
