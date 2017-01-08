@@ -43,6 +43,7 @@
     <module>chain-inspection</module>
     <module>decimal-to-binary</module>
     <module>trailing-string</module>
+    <module>email-validation</module>
   </modules>
 
 </project>

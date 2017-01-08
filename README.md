@@ -46,6 +46,7 @@ MODERATE LEVEL
 * [Chain Inspection](moderate/chain-inspection/README.md)
 * [Decimal To Binary](moderate/decimal-to-binary/README.md)
 * [Trailing String](moderate/trailing-string/README.md)
+* [Email Validation](moderate/email-validation/README.md)
 
 EASY LEVEL
 ----------
