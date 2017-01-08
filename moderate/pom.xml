@@ -45,6 +45,7 @@
     <module>trailing-string</module>
     <module>email-validation</module>
     <module>pangrams</module>
+    <module>jolly-jumpers</module>
   </modules>
 
 </project>

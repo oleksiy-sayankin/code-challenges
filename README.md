@@ -48,6 +48,7 @@ MODERATE LEVEL
 * [Trailing String](moderate/trailing-string/README.md)
 * [Email Validation](moderate/email-validation/README.md)
 * [Pangrams](moderate/pangrams/README.md)
+* [Jolly Jumpers](moderate/jolly-jumpers/README.md)
 
 EASY LEVEL
 ----------
