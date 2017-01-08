@@ -44,6 +44,7 @@ MODERATE LEVEL
 * [Bats Challenge](moderate/bats-challenge/README.md)
 * [Sum to Zero](moderate/sum-to-zero/README.md)
 * [Chain Inspection](moderate/chain-inspection/README.md)
+* [Decimal To Binary](moderate/decimal-to-binary/README.md)
 
 EASY LEVEL
 ----------

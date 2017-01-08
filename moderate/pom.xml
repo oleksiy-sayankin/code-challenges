@@ -41,6 +41,7 @@
     <module>bats-challenge</module>
     <module>sum-to-zero</module>
     <module>chain-inspection</module>
+    <module>decimal-to-binary</module>
   </modules>
 
 </project>
