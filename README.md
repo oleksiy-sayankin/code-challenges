@@ -56,5 +56,6 @@ EASY LEVEL
 * [Prime Palindrome](easy/prime-palindrome/README.md)
 * [Fizz Buzz](easy/fizz-buzz/README.md)
 * [Multiplication Tables](easy/multiplication-tables/README.md)
+* [The Major Element](/easy/the-major-element/README.md)
 
    

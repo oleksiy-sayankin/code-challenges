@@ -18,5 +18,6 @@
     <module>fizz-buzz</module>
     <module>multiplication-tables</module>
     <module>prime-palindrome</module>
+    <module>the-major-element</module>
   </modules>
 </project>
