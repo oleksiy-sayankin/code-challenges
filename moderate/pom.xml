@@ -46,6 +46,7 @@
     <module>email-validation</module>
     <module>pangrams</module>
     <module>jolly-jumpers</module>
+    <module>black-and-white</module>
   </modules>
 
 </project>
