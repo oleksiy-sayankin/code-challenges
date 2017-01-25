@@ -19,5 +19,6 @@
     <module>multiplication-tables</module>
     <module>prime-palindrome</module>
     <module>the-major-element</module>
+    <module>details</module>
   </modules>
 </project>
