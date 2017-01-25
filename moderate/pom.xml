@@ -47,6 +47,7 @@
     <module>pangrams</module>
     <module>jolly-jumpers</module>
     <module>black-and-white</module>
+    <module>alternative-reality</module>
   </modules>
 
 </project>
