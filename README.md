@@ -51,6 +51,7 @@ MODERATE LEVEL
 * [Jolly Jumpers](moderate/jolly-jumpers/README.md)
 * [Black and White](moderate/black-and-white/README.md)
 * [Alternative reality](moderate/alternative-reality/README.md)
+* [First Non-Repeated Character](moderate/first-non-repeated-character/README.md)
 
 EASY LEVEL
 ----------

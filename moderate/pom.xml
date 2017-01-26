@@ -48,6 +48,7 @@
     <module>jolly-jumpers</module>
     <module>black-and-white</module>
     <module>alternative-reality</module>
+    <module>first-non-repeated-character</module>
   </modules>
 
 </project>
