@@ -60,5 +60,6 @@ EASY LEVEL
 * [Multiplication Tables](easy/multiplication-tables/README.md)
 * [The Major Element](/easy/the-major-element/README.md)
 * [Details](/easy/details/README.md)
+* [Hidden Digits](easy/hidden-digits/README.md)
 
    
