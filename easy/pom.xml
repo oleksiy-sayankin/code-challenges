@@ -21,5 +21,6 @@
     <module>the-major-element</module>
     <module>details</module>
     <module>hidden-digits</module>
+    <module>big-digits</module>
   </modules>
 </project>

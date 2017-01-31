@@ -61,5 +61,6 @@ EASY LEVEL
 * [The Major Element](/easy/the-major-element/README.md)
 * [Details](/easy/details/README.md)
 * [Hidden Digits](easy/hidden-digits/README.md)
+* [Big Digits](easy/big-digits/README.md)
 
    
