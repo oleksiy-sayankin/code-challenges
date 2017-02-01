@@ -62,5 +62,6 @@ EASY LEVEL
 * [Details](/easy/details/README.md)
 * [Hidden Digits](easy/hidden-digits/README.md)
 * [Big Digits](easy/big-digits/README.md)
+* [Read More](easy/read-more/README.md)
 
    

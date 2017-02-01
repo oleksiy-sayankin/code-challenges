@@ -22,5 +22,6 @@
     <module>details</module>
     <module>hidden-digits</module>
     <module>big-digits</module>
+    <module>read-more</module>
   </modules>
 </project>
