@@ -63,5 +63,6 @@ EASY LEVEL
 * [Hidden Digits](easy/hidden-digits/README.md)
 * [Big Digits](easy/big-digits/README.md)
 * [Read More](easy/read-more/README.md)
+* [Minimum Distance](easy/minimum-distance/README.md)
 
    

@@ -23,5 +23,6 @@
     <module>hidden-digits</module>
     <module>big-digits</module>
     <module>read-more</module>
+    <module>minimum-distance</module>
   </modules>
 </project>
