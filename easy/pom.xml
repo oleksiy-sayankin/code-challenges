@@ -24,5 +24,6 @@
     <module>big-digits</module>
     <module>read-more</module>
     <module>minimum-distance</module>
+    <module>compare-points</module>
   </modules>
 </project>

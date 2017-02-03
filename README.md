@@ -64,5 +64,6 @@ EASY LEVEL
 * [Big Digits](easy/big-digits/README.md)
 * [Read More](easy/read-more/README.md)
 * [Minimum Distance](easy/minimum-distance/README.md)
+* [Compare Points](easy/compare-points/README.md)
 
    
