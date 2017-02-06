@@ -65,5 +65,6 @@ EASY LEVEL
 * [Read More](easy/read-more/README.md)
 * [Minimum Distance](easy/minimum-distance/README.md)
 * [Compare Points](easy/compare-points/README.md)
+* [One zero, two zeros...](easy/one-zero-two-zeros/README.md)
 
    

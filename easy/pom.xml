@@ -25,5 +25,6 @@
     <module>read-more</module>
     <module>minimum-distance</module>
     <module>compare-points</module>
+    <module>one-zero-two-zeros</module>
   </modules>
 </project>
