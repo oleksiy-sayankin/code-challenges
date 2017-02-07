@@ -26,5 +26,6 @@
     <module>minimum-distance</module>
     <module>compare-points</module>
     <module>one-zero-two-zeros</module>
+    <module>query-board</module>
   </modules>
 </project>
