@@ -28,5 +28,6 @@
     <module>one-zero-two-zeros</module>
     <module>query-board</module>
     <module>penultimate-word</module>
+    <module>shortest-repetition</module>
   </modules>
 </project>

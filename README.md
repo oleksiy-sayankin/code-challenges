@@ -68,5 +68,4 @@ EASY LEVEL
 * [One zero, two zeros...](easy/one-zero-two-zeros/README.md)
 * [Query Board](easy/query-board/README.md)
 * [Penultimate Word](easy/penultimate-word/README.md)
-
-   
+* [Shortest Repetition](easy/shortest-repetition/README.md) 
