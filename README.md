@@ -67,5 +67,6 @@ EASY LEVEL
 * [Compare Points](easy/compare-points/README.md)
 * [One zero, two zeros...](easy/one-zero-two-zeros/README.md)
 * [Query Board](easy/query-board/README.md)
+* [Penultimate Word](easy/penultimate-word/README.md)
 
    

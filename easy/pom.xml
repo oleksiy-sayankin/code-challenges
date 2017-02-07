@@ -27,5 +27,6 @@
     <module>compare-points</module>
     <module>one-zero-two-zeros</module>
     <module>query-board</module>
+    <module>penultimate-word</module>
   </modules>
 </project>
