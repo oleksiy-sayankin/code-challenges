@@ -29,5 +29,6 @@
     <module>query-board</module>
     <module>penultimate-word</module>
     <module>shortest-repetition</module>
+    <module>roman-numerals</module>
   </modules>
 </project>
