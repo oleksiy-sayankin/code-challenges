@@ -31,5 +31,6 @@
     <module>shortest-repetition</module>
     <module>roman-numerals</module>
     <module>longest-word</module>
+    <module>racing-chars</module>
   </modules>
 </project>

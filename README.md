@@ -71,3 +71,4 @@ EASY LEVEL
 * [Shortest Repetition](easy/shortest-repetition/README.md) 
 * [Roman Numerals](easy/roman-numerals/README.md)
 * [Longest Word](easy/longest-word/README.md)
+* [Racing Chars](easy/racing-chars/README.md)
