@@ -32,5 +32,6 @@
     <module>roman-numerals</module>
     <module>longest-word</module>
     <module>racing-chars</module>
+    <module>nice-angles</module>
   </modules>
 </project>
