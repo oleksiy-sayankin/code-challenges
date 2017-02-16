@@ -34,5 +34,6 @@
     <module>racing-chars</module>
     <module>nice-angles</module>
     <module>chardonnay-or-cabernet</module>
+    <module>self-describing-numbers</module>
   </modules>
 </project>

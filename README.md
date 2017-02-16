@@ -74,3 +74,4 @@ EASY LEVEL
 * [Racing Chars](easy/racing-chars/README.md)
 * [Nice Angles](easy/nice-angles/README.md)
 * [Chardonnay or Cabernet](easy/chardonnay-or-cabernet/README.md)
+* [Self Describing Numbers](easy/self-describing-numbers/README.md)
