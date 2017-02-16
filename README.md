@@ -73,3 +73,4 @@ EASY LEVEL
 * [Longest Word](easy/longest-word/README.md)
 * [Racing Chars](easy/racing-chars/README.md)
 * [Nice Angles](easy/nice-angles/README.md)
+* [Chardonnay or Cabernet](easy/chardonnay-or-cabernet/README.md)

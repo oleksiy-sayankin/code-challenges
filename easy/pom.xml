@@ -33,5 +33,6 @@
     <module>longest-word</module>
     <module>racing-chars</module>
     <module>nice-angles</module>
+    <module>chardonnay-or-cabernet</module>
   </modules>
 </project>
