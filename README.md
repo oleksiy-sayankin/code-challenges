@@ -75,3 +75,4 @@ EASY LEVEL
 * [Nice Angles](easy/nice-angles/README.md)
 * [Chardonnay or Cabernet](easy/chardonnay-or-cabernet/README.md)
 * [Self Describing Numbers](easy/self-describing-numbers/README.md)
+* [Sum of Primes](easy/sum-of-primes/README.md)
