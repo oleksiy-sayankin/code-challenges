@@ -36,5 +36,6 @@
     <module>chardonnay-or-cabernet</module>
     <module>self-describing-numbers</module>
     <module>sum-of-primes</module>
+    <module>hex-to-decimal</module>
   </modules>
 </project>

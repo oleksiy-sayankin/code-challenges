@@ -76,3 +76,4 @@ EASY LEVEL
 * [Chardonnay or Cabernet](easy/chardonnay-or-cabernet/README.md)
 * [Self Describing Numbers](easy/self-describing-numbers/README.md)
 * [Sum of Primes](easy/sum-of-primes/README.md)
+* [Hex to Decimal](easy/hex-to-decimal/README.md)
