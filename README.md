@@ -90,3 +90,4 @@ EASY LEVEL
 * [Unique Elements](easy/unique-elements/README.md)
 * [Set Intersection](easy/set-intersection/README.md)
 * [Rightmost Char](easy/rightmost-char/README.md)
+* [Happy Numbers](easy/happy-numbers/README.md)
