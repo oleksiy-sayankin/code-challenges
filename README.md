@@ -84,3 +84,4 @@ EASY LEVEL
 * [Sum of Digits](easy/sum-of-digits/README.md)
 * [Capitalize Words](easy/capitalize-words/README.md)
 * [Fibonacci Series](easy/fibonacci-series/README.md)
+* [Sum of Integers from File](easy/sum-of-integers-from-file/README.md)
