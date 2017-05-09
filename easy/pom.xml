@@ -47,5 +47,6 @@
     <module>sum-of-integers-from-file</module>
     <module>odd-numbers</module>
     <module>file-size</module>
+    <module>unique-elements</module>
   </modules>
 </project>
