@@ -78,3 +78,4 @@ EASY LEVEL
 * [Sum of Primes](easy/sum-of-primes/README.md)
 * [Hex to Decimal](easy/hex-to-decimal/README.md)
 * [Reverse words](easy/reverse-words/README.md)
+* [Multiples of a Number](easy/multiples-of-a-number/README.md)

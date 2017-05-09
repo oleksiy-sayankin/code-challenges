@@ -38,5 +38,6 @@
     <module>sum-of-primes</module>
     <module>hex-to-decimal</module>
     <module>reverse-words</module>
+    <module>multiples-of-a-number</module>
   </modules>
 </project>
