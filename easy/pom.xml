@@ -46,5 +46,6 @@
     <module>fibonacci-series</module>
     <module>sum-of-integers-from-file</module>
     <module>odd-numbers</module>
+    <module>file-size</module>
   </modules>
 </project>

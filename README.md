@@ -86,3 +86,4 @@ EASY LEVEL
 * [Fibonacci Series](easy/fibonacci-series/README.md)
 * [Sum of Integers from File](easy/sum-of-integers-from-file/README.md)
 * [Odd Numbers](easy/odd-numbers/README.md)
+* [File Size](easy/file-size/README.md)
