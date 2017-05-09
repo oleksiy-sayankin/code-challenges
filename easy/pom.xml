@@ -43,5 +43,6 @@
     <module>lowercase</module>
     <module>sum-of-digits</module>
     <module>capitalize-words</module>
+    <module>fibonacci-series</module>
   </modules>
 </project>

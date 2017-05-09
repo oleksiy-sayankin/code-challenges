@@ -83,3 +83,4 @@ EASY LEVEL
 * [Lowercase](easy/lowercase/README.md)
 * [Sum of Digits](easy/sum-of-digits/README.md)
 * [Capitalize Words](easy/capitalize-words/README.md)
+* [Fibonacci Series](easy/fibonacci-series/README.md)
