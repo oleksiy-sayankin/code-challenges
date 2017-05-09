@@ -51,5 +51,7 @@
     <module>set-intersection</module>
     <module>rightmost-char</module>
     <module>happy-numbers</module>
+    <module>n-mod-m</module>
+    <module>armstrong-numbers</module>
   </modules>
 </project>

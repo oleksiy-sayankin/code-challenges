@@ -92,3 +92,4 @@ EASY LEVEL
 * [Rightmost Char](easy/rightmost-char/README.md)
 * [Happy Numbers](easy/happy-numbers/README.md)
 * [N Mod M](easy/n-mod-m/README.md)
+* [Armstrong Numbers](easy/armstrong-numbers/README.md)
