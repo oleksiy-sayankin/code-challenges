@@ -45,5 +45,6 @@
     <module>capitalize-words</module>
     <module>fibonacci-series</module>
     <module>sum-of-integers-from-file</module>
+    <module>odd-numbers</module>
   </modules>
 </project>
