@@ -81,3 +81,4 @@ EASY LEVEL
 * [Multiples of a Number](easy/multiples-of-a-number/README.md)
 * [Bit Positions](easy/bit-positions/README.md)
 * [Lowercase](easy/lowercase/README.md)
+* [Sum of Digits](easy/sum-of-digits/README.md)

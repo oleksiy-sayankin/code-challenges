@@ -41,5 +41,6 @@
     <module>multiples-of-a-number</module>
     <module>bit-positions</module>
     <module>lowercase</module>
+    <module>sum-of-digits</module>
   </modules>
 </project>
