@@ -88,3 +88,4 @@ EASY LEVEL
 * [Odd Numbers](easy/odd-numbers/README.md)
 * [File Size](easy/file-size/README.md)
 * [Unique Elements](easy/unique-elements/README.md)
+* [Set Intersection](easy/set-intersection/README.md)

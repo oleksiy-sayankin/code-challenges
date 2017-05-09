@@ -48,5 +48,6 @@
     <module>odd-numbers</module>
     <module>file-size</module>
     <module>unique-elements</module>
+    <module>set-intersection</module>
   </modules>
 </project>
