@@ -49,5 +49,6 @@
     <module>file-size</module>
     <module>unique-elements</module>
     <module>set-intersection</module>
+    <module>rightmost-char</module>
   </modules>
 </project>
