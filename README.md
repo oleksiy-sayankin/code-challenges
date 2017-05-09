@@ -91,3 +91,4 @@ EASY LEVEL
 * [Set Intersection](easy/set-intersection/README.md)
 * [Rightmost Char](easy/rightmost-char/README.md)
 * [Happy Numbers](easy/happy-numbers/README.md)
+* [N Mod M](easy/n-mod-m/README.md)
