@@ -40,5 +40,6 @@
     <module>reverse-words</module>
     <module>multiples-of-a-number</module>
     <module>bit-positions</module>
+    <module>lowercase</module>
   </modules>
 </project>

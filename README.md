@@ -80,3 +80,4 @@ EASY LEVEL
 * [Reverse words](easy/reverse-words/README.md)
 * [Multiples of a Number](easy/multiples-of-a-number/README.md)
 * [Bit Positions](easy/bit-positions/README.md)
+* [Lowercase](easy/lowercase/README.md)
