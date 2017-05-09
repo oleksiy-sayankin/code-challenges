@@ -82,3 +82,4 @@ EASY LEVEL
 * [Bit Positions](easy/bit-positions/README.md)
 * [Lowercase](easy/lowercase/README.md)
 * [Sum of Digits](easy/sum-of-digits/README.md)
+* [Capitalize Words](easy/capitalize-words/README.md)
