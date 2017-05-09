@@ -37,5 +37,6 @@
     <module>self-describing-numbers</module>
     <module>sum-of-primes</module>
     <module>hex-to-decimal</module>
+    <module>reverse-words</module>
   </modules>
 </project>
