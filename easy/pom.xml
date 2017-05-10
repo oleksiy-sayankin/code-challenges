@@ -53,5 +53,6 @@
     <module>happy-numbers</module>
     <module>n-mod-m</module>
     <module>armstrong-numbers</module>
+    <module>beautiful-strings</module>
   </modules>
 </project>
