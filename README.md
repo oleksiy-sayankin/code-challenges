@@ -94,3 +94,4 @@ EASY LEVEL
 * [N Mod M](easy/n-mod-m/README.md)
 * [Armstrong Numbers](easy/armstrong-numbers/README.md)
 * [Beautiful Strings](easy/beautiful-strings/README.md)
+* [Simple Sorting](easy/simple-sorting/README.md)

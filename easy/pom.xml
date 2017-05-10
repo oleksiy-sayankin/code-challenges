@@ -54,5 +54,6 @@
     <module>n-mod-m</module>
     <module>armstrong-numbers</module>
     <module>beautiful-strings</module>
+    <module>simple-sorting</module>
   </modules>
 </project>
