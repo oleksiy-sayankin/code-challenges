@@ -55,5 +55,6 @@
     <module>armstrong-numbers</module>
     <module>beautiful-strings</module>
     <module>simple-sorting</module>
+    <module>working-experience</module>
   </modules>
 </project>

@@ -95,3 +95,4 @@ EASY LEVEL
 * [Armstrong Numbers](easy/armstrong-numbers/README.md)
 * [Beautiful Strings](easy/beautiful-strings/README.md)
 * [Simple Sorting](easy/simple-sorting/README.md)
+* [Working Experience](easy/working-experience/README.md)
