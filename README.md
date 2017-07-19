@@ -97,3 +97,4 @@ EASY LEVEL
 * [Simple Sorting](easy/simple-sorting/README.md)
 * [Working Experience](easy/working-experience/README.md)
 * [Data Recovery](easy/data-recovery/README.md)
+* [Lettercase Percentage Ratio](easy/lettercase-percentage-ratio/README.md)
