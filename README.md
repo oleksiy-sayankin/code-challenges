@@ -96,3 +96,4 @@ EASY LEVEL
 * [Beautiful Strings](easy/beautiful-strings/README.md)
 * [Simple Sorting](easy/simple-sorting/README.md)
 * [Working Experience](easy/working-experience/README.md)
+* [Data Recovery](easy/data-recovery/README.md)

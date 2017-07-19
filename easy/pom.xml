@@ -56,5 +56,6 @@
     <module>beautiful-strings</module>
     <module>simple-sorting</module>
     <module>working-experience</module>
+    <module>data-recovery</module>
   </modules>
 </project>
