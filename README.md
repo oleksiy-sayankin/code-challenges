@@ -98,3 +98,4 @@ EASY LEVEL
 * [Working Experience](easy/working-experience/README.md)
 * [Data Recovery](easy/data-recovery/README.md)
 * [Lettercase Percentage Ratio](easy/lettercase-percentage-ratio/README.md)
+* [Juggling With Zeroes](easy/juggling-with-zeroes/README.md)

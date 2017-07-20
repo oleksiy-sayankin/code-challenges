@@ -58,5 +58,6 @@
     <module>working-experience</module>
     <module>data-recovery</module>
     <module>lettercase-percentage-ratio</module>
+    <module>juggling-with-zeroes</module>
   </modules>
 </project>
