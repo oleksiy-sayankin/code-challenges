@@ -60,5 +60,6 @@
     <module>lettercase-percentage-ratio</module>
     <module>juggling-with-zeroes</module>
     <module>age-distribution</module>
+    <module>roller-coaster</module>
   </modules>
 </project>

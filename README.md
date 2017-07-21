@@ -100,3 +100,4 @@ EASY LEVEL
 * [Lettercase Percentage Ratio](easy/lettercase-percentage-ratio/README.md)
 * [Juggling With Zeroes](easy/juggling-with-zeroes/README.md)
 * [Age Distribution](easy/age-distribution/README.md)
+* [Roller Coaster](easy/roller-coaster/README.md)
