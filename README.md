@@ -101,3 +101,4 @@ EASY LEVEL
 * [Juggling With Zeroes](easy/juggling-with-zeroes/README.md)
 * [Age Distribution](easy/age-distribution/README.md)
 * [Roller Coaster](easy/roller-coaster/README.md)
+* [Delta Time](easy/delta-time/README.md)

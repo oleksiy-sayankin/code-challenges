@@ -61,5 +61,6 @@
     <module>juggling-with-zeroes</module>
     <module>age-distribution</module>
     <module>roller-coaster</module>
+    <module>delta-time</module>
   </modules>
 </project>
