@@ -62,5 +62,6 @@
     <module>age-distribution</module>
     <module>roller-coaster</module>
     <module>delta-time</module>
+    <module>without-repetitions</module>
   </modules>
 </project>
