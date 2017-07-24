@@ -105,3 +105,4 @@ EASY LEVEL
 * [Without Repetitions](easy/without-repetitions/README.md)
 * [Slang Flavor](easy/slang-flavor/README.md)
 * [Matrix Rotation](easy/matrix-rotation/README.md)
+* [Knight Moves](easy/knight-moves/README.md)
