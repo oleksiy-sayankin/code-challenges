@@ -63,5 +63,6 @@
     <module>roller-coaster</module>
     <module>delta-time</module>
     <module>without-repetitions</module>
+    <module>slang-flavor</module>
   </modules>
 </project>
