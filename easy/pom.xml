@@ -64,5 +64,6 @@
     <module>delta-time</module>
     <module>without-repetitions</module>
     <module>slang-flavor</module>
+    <module>matrix-rotation</module>
   </modules>
 </project>

@@ -104,3 +104,4 @@ EASY LEVEL
 * [Delta Time](easy/delta-time/README.md)
 * [Without Repetitions](easy/without-repetitions/README.md)
 * [Slang Flavor](easy/slang-flavor/README.md)
+* [Matrix Rotation](easy/matrix-rotation/README.md)
