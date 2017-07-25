@@ -106,3 +106,4 @@ EASY LEVEL
 * [Slang Flavor](easy/slang-flavor/README.md)
 * [Matrix Rotation](easy/matrix-rotation/README.md)
 * [Knight Moves](easy/knight-moves/README.md)
+* [Max Range Sum](easy/max-range-sum/README.md)

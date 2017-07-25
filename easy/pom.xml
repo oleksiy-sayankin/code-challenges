@@ -66,5 +66,6 @@
     <module>slang-flavor</module>
     <module>matrix-rotation</module>
     <module>knight-moves</module>
+    <module>max-range-sum</module>
   </modules>
 </project>
