@@ -109,3 +109,4 @@ EASY LEVEL
 * [Max Range Sum](easy/max-range-sum/README.md)
 * [Swap Numbers](easy/swap-numbers/README.md)
 * [String Mask](easy/string-mask/README.md)
+* [Clean Up The Words](easy/clean-up-the-words/README.md)

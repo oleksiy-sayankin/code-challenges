@@ -69,5 +69,6 @@
     <module>max-range-sum</module>
     <module>swap-numbers</module>
     <module>string-mask</module>
+    <module>clean-up-the-words</module>
   </modules>
 </project>
