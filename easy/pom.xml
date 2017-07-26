@@ -71,5 +71,6 @@
     <module>string-mask</module>
     <module>clean-up-the-words</module>
     <module>stepwise-word</module>
+    <module>string-and-arrows</module>
   </modules>
 </project>
