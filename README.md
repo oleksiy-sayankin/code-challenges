@@ -107,3 +107,4 @@ EASY LEVEL
 * [Matrix Rotation](easy/matrix-rotation/README.md)
 * [Knight Moves](easy/knight-moves/README.md)
 * [Max Range Sum](easy/max-range-sum/README.md)
+* [Swap Numbers](easy/swap-numbers/README.md)

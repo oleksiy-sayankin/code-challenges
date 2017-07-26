@@ -67,5 +67,6 @@
     <module>matrix-rotation</module>
     <module>knight-moves</module>
     <module>max-range-sum</module>
+    <module>swap-numbers</module>
   </modules>
 </project>
