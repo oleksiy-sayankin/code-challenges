@@ -108,3 +108,4 @@ EASY LEVEL
 * [Knight Moves](easy/knight-moves/README.md)
 * [Max Range Sum](easy/max-range-sum/README.md)
 * [Swap Numbers](easy/swap-numbers/README.md)
+* [String Mask](easy/string-mask/README.md)

@@ -68,5 +68,6 @@
     <module>knight-moves</module>
     <module>max-range-sum</module>
     <module>swap-numbers</module>
+    <module>string-mask</module>
   </modules>
 </project>
