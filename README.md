@@ -113,3 +113,4 @@ EASY LEVEL
 * [Stepwise Word](easy/stepwise-word/README.md)
 * [String And Arrows](easy/string-and-arrows/README.md)
 * [Find The Highest Score](easy/find-the-highest-score/README.md)
+* [Time To Eat](easy/time-to-eat/README.md)

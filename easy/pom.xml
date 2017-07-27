@@ -73,5 +73,6 @@
     <module>stepwise-word</module>
     <module>string-and-arrows</module>
     <module>find-the-highest-score</module>
+    <module>time-to-eat</module>
   </modules>
 </project>
