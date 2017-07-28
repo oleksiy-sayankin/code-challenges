@@ -75,5 +75,6 @@
     <module>find-the-highest-score</module>
     <module>time-to-eat</module>
     <module>trick-or-treat</module>
+    <module>black-card</module>
   </modules>
 </project>
