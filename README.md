@@ -116,3 +116,4 @@ EASY LEVEL
 * [Time To Eat](easy/time-to-eat/README.md)
 * [Trick Or Treat](easy/trick-or-treat/README.md)
 * [Black Card](easy/black-card/README.md)
+* [Testing](easy/testing/README.md)

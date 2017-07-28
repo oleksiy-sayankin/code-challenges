@@ -76,5 +76,6 @@
     <module>time-to-eat</module>
     <module>trick-or-treat</module>
     <module>black-card</module>
+    <module>testing</module>
   </modules>
 </project>
