@@ -74,5 +74,6 @@
     <module>string-and-arrows</module>
     <module>find-the-highest-score</module>
     <module>time-to-eat</module>
+    <module>trick-or-treat</module>
   </modules>
 </project>
