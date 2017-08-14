@@ -79,5 +79,6 @@
     <module>testing</module>
     <module>mersenne-prime</module>
     <module>panacea</module>
+    <module>simple-or-trump</module>
   </modules>
 </project>
