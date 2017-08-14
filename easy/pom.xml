@@ -78,5 +78,6 @@
     <module>black-card</module>
     <module>testing</module>
     <module>mersenne-prime</module>
+    <module>panacea</module>
   </modules>
 </project>

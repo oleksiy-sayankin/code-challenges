@@ -118,3 +118,4 @@ EASY LEVEL
 * [Black Card](easy/black-card/README.md)
 * [Testing](easy/testing/README.md)
 * [Mersenne Prime](easy/mersenne-prime/README.md)
+* [Panacea - Truth or Lie](easy/panacea/README.md)
