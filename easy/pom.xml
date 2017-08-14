@@ -77,5 +77,6 @@
     <module>trick-or-treat</module>
     <module>black-card</module>
     <module>testing</module>
+    <module>mersenne-prime</module>
   </modules>
 </project>

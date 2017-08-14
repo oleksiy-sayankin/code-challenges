@@ -117,3 +117,4 @@ EASY LEVEL
 * [Trick Or Treat](easy/trick-or-treat/README.md)
 * [Black Card](easy/black-card/README.md)
 * [Testing](easy/testing/README.md)
+* [Mersenne Prime](easy/mersenne-prime/README.md)
