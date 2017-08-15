@@ -81,5 +81,6 @@
     <module>panacea</module>
     <module>simple-or-trump</module>
     <module>not-so-clever</module>
+    <module>football</module>
   </modules>
 </project>
