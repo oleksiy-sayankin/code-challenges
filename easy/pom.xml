@@ -82,5 +82,6 @@
     <module>simple-or-trump</module>
     <module>not-so-clever</module>
     <module>football</module>
+    <module>real-fake</module>
   </modules>
 </project>

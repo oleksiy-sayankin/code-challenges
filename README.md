@@ -122,3 +122,4 @@ EASY LEVEL
 * [Simple or Trump](easy/simple-or-trump/README.md)
 * [Not So Clever](easy/not-so-clever/README.md)
 * [Football](easy/football/README.md)
+* [Real Fake](easy/real-fake/README.md)
