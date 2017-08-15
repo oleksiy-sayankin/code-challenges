@@ -80,5 +80,6 @@
     <module>mersenne-prime</module>
     <module>panacea</module>
     <module>simple-or-trump</module>
+    <module>not-so-clever</module>
   </modules>
 </project>

@@ -120,3 +120,4 @@ EASY LEVEL
 * [Mersenne Prime](easy/mersenne-prime/README.md)
 * [Panacea - Truth or Lie](easy/panacea/README.md)
 * [Simple or Trump](easy/simple-or-trump/README.md)
+* [Not So Clever](easy/not-so-clever/README.md)
