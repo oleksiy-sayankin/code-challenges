@@ -49,6 +49,7 @@
     <module>black-and-white</module>
     <module>alternative-reality</module>
     <module>first-non-repeated-character</module>
+    <module>justify-the-text</module>
   </modules>
 
 </project>
