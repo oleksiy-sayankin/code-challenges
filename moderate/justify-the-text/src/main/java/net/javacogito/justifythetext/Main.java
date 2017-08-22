@@ -15,25 +15,58 @@ public class Main {
     File file = new File(args[0]);
     BufferedReader buffer = new BufferedReader(new FileReader(file));
     String inputLine;
+    List<String> rawLines = new LinkedList<>();
     while ((inputLine = buffer.readLine()) != null) {
       if (!EMPTY.equals(inputLine.trim())) {
-        System.out.println(toString(justifyLines(splitLines(parseInput(inputLine)))));
+        rawLines.add(inputLine);
       }
     }
+    System.out.println(toString(justifyLines(splitLines(parseInput(rawLines)))));
+
+
   }
 
 
-  private static List<Line> parseInput(String data){
-    return new LinkedList<>();
+  private static List<Line> parseInput(List<String> rawLines){
+    List<Line> result = new LinkedList<>();
+    for(String rawLine : rawLines){
+      result.add(parseLine(rawLine));
+    }
+    return result;
   }
 
-
-  private static List<Line> splitLines(List<Line> lines){
-    return new LinkedList<>();
+  private static Line parseLine(String data){
+    String[] words = data.split("[ ]+");
+    String[] spaces = data.split("[^ ]+");
+    int length = words.length;
+    Line result = new Line();
+    for(int i = 0; i <= length - 1; i++){
+      result.addToken(new Word(words[i]));
+      boolean isLast = i == length - 1;
+      if(!isLast){
+        result.addToken(new Space(spaces.length));
+      }
+    }
+    return result;
   }
 
-  private static List<Line> justifyLines(List<Line> lines){
-    return new LinkedList<>();
+  private static List<Line> splitLines(List<Line> inputLines){
+    List<Line> lines = new LinkedList<>();
+    int length = lines.size();
+    for(int i = 0; i <= length - 2; i++){
+      lines.addAll(inputLines.get(i).split());
+    }
+    lines.add(inputLines.get(length - 1));
+    return lines;
+  }
+
+  private static List<Line> justifyLines(List<Line> inputLines){
+    List<Line> lines = new LinkedList<>(inputLines);
+    int length = lines.size();
+    for(int i = 0; i <= length - 2; i++){
+      lines.get(i).adjust();
+    }
+    return lines;
   }
 
   private static String toString(List<Line> lines){
@@ -45,7 +78,7 @@ public class Main {
   }
 
 
-  private class Line implements Printable{
+  private static class Line implements Printable{
     private List<Printable> tokens = new LinkedList<>();
 
     @Override
@@ -57,17 +90,38 @@ public class Main {
       return sb.toString();
     }
 
+    @Override
+    public boolean isWord() {
+      return false;
+    }
+
     private List<Line> split(){
       List<Line> result = new LinkedList<>();
       return result;
     }
 
     private void adjust(){
+      if(numWords() <= 2){
+        return;
+      }
     }
 
+    private int numWords(){
+      int result = 0;
+      for(Printable token : tokens){
+        if(token.isWord()){
+          result++;
+        }
+      }
+      return result;
+    }
+
+    private void addToken(Printable token){
+      tokens.add(token);
+    }
   }
 
-  private class Word implements Printable{
+  private static class Word implements Printable{
     private final String value;
 
 
@@ -79,10 +133,19 @@ public class Main {
     public String toString() {
       return value;
     }
+
+    @Override
+    public boolean isWord() {
+      return true;
+    }
   }
 
-  private class Space implements Printable{
+  private static class Space implements Printable{
     private int num;
+
+    private Space(int num){
+      this.num = num;
+    }
 
     public int getNum() {
       return num;
@@ -100,10 +163,16 @@ public class Main {
       }
       return sb.toString();
     }
+
+    @Override
+    public boolean isWord() {
+      return false;
+    }
   }
 
   private  interface Printable{
     String toString();
+    boolean isWord();
   }
 
 }
