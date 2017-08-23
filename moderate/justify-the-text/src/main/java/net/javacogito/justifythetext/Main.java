@@ -4,12 +4,16 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Main {
 
   private static final String EMPTY = "";
+  private static final int LINE_SIZE = 80;
+
+
 
   public static void main(String[] args) throws IOException {
     File file = new File(args[0]);
@@ -27,7 +31,7 @@ public class Main {
   }
 
 
-  private static List<Line> parseInput(List<String> rawLines){
+  static List<Line> parseInput(List<String> rawLines){
     List<Line> result = new LinkedList<>();
     for(String rawLine : rawLines){
       result.add(parseLine(rawLine));
@@ -35,16 +39,17 @@ public class Main {
     return result;
   }
 
-  private static Line parseLine(String data){
+  static Line parseLine(String data){
     String[] words = data.split("[ ]+");
-    String[] spaces = data.split("[^ ]+");
+    String[] spacesAll = data.split("[^ ]+");
+    String[] spaces = Arrays.copyOfRange(spacesAll, 1, spacesAll.length);;
     int length = words.length;
     Line result = new Line();
     for(int i = 0; i <= length - 1; i++){
       result.addToken(new Word(words[i]));
       boolean isLast = i == length - 1;
       if(!isLast){
-        result.addToken(new Space(spaces.length));
+        result.addToken(new Space(spaces[i].length()));
       }
     }
     return result;
@@ -78,7 +83,7 @@ public class Main {
   }
 
 
-  private static class Line implements Printable{
+  static class Line{
     private List<Printable> tokens = new LinkedList<>();
 
     @Override
@@ -90,9 +95,16 @@ public class Main {
       return sb.toString();
     }
 
-    @Override
-    public boolean isWord() {
-      return false;
+    Printable get(int i){
+      return tokens.get(i);
+    }
+
+    int length(){
+      int result = 0;
+      for(Printable token : tokens){
+        result += token.length();
+      }
+      return result;
     }
 
     private List<Line> split(){
@@ -100,10 +112,41 @@ public class Main {
       return result;
     }
 
-    private void adjust(){
+    void adjust(){
       if(numWords() <= 2){
         return;
       }
+      int spaceSize = (LINE_SIZE - wordsLength()) / (numWords() - 1);
+      setAllSpacesSize(spaceSize);
+      int numSpacesToAdjust = LINE_SIZE - length();
+      int numChangedSpaces = 0;
+      for(Printable token : tokens){
+        if (numChangedSpaces == numSpacesToAdjust){
+          break;
+        }
+        if(token.isSpace()){
+          ((Space)token).setNum(spaceSize + 1);
+          numChangedSpaces++;
+        }
+      }
+    }
+
+    private void setAllSpacesSize(int size){
+      for(Printable token : tokens){
+        if(token.isSpace()){
+          ((Space)token).setNum(size);
+        }
+      }
+    }
+
+    private int wordsLength(){
+      int result = 0;
+      for(Printable token : tokens){
+        if(token.isWord()){
+          result += token.length();
+        }
+      }
+      return result;
     }
 
     private int numWords(){
@@ -114,6 +157,29 @@ public class Main {
         }
       }
       return result;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      Line line = (Line) o;
+      if(tokens.size() != line.tokens.size()){
+        return false;
+      }
+      int length = tokens.size();
+      for (int i = 0; i <= length - 1; i++){
+        if(!tokens.get(i).equals(line.tokens.get(i))){
+          return false;
+        }
+      }
+      return true;
+    }
+
+    @Override
+    public int hashCode() {
+      return tokens.hashCode();
     }
 
     private void addToken(Printable token){
@@ -138,6 +204,29 @@ public class Main {
     public boolean isWord() {
       return true;
     }
+
+    @Override
+    public boolean isSpace() {
+      return false;
+    }
+
+    @Override
+    public int length() {
+      return value.length();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Word word = (Word) o;
+      return value.equals(word.value);
+    }
+
+    @Override
+    public int hashCode() {
+      return value.hashCode();
+    }
   }
 
   private static class Space implements Printable{
@@ -156,6 +245,21 @@ public class Main {
     }
 
     @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      Space space = (Space) o;
+
+      return num == space.num;
+    }
+
+    @Override
+    public int hashCode() {
+      return num;
+    }
+
+    @Override
     public String toString() {
       StringBuilder sb =  new StringBuilder();
       for(int i = 0; i <= num - 1; i++ ){
@@ -168,11 +272,23 @@ public class Main {
     public boolean isWord() {
       return false;
     }
+
+    @Override
+    public boolean isSpace() {
+      return true;
+    }
+
+    @Override
+    public int length() {
+      return num;
+    }
   }
 
-  private  interface Printable{
+  interface Printable{
     String toString();
     boolean isWord();
+    boolean isSpace();
+    int length();
   }
 
 }
