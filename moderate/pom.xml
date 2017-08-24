@@ -51,6 +51,7 @@
     <module>first-non-repeated-character</module>
     <module>justify-the-text</module>
     <module>meet-cocktail-sort</module>
+    <module>counting-primes</module>
   </modules>
 
 </project>

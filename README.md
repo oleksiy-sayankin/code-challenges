@@ -54,6 +54,7 @@ MODERATE LEVEL
 * [First Non-Repeated Character](moderate/first-non-repeated-character/README.md)
 * [Justify the Text](moderate/justify-the-text/README.md)
 * [Meet Cocktail Sort](moderate/meet-cocktail-sort/README.md)
+* [Counting Primes](moderate/counting-primes/README.md)
 
 EASY LEVEL
 ----------
