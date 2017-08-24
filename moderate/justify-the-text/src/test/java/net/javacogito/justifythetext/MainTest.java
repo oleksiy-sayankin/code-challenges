@@ -58,6 +58,23 @@ public class MainTest {
   }
 
   @Test
+  public void splitTest(){
+    String inputLine1 = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+    Line line1 = parseLine(inputLine1);
+    List<Line> actualLines1 = line1.split();
+
+    String inputLine2 = "   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA    AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA   ";
+    Line line2 = parseLine(inputLine2);
+    List<Line> actualLines2 = line2.split();
+
+    Assert.assertEquals(40, actualLines1.get(0).length());
+    Assert.assertEquals(40, actualLines1.get(1).length());
+
+    Assert.assertEquals(40, actualLines2.get(0).length());
+    Assert.assertEquals(40, actualLines2.get(1).length());
+  }
+
+  @Test
   public void mainTest() throws IOException {
     long startTime = System.currentTimeMillis();
     URL url = Thread.currentThread().getContextClassLoader().getResource("data001.in");

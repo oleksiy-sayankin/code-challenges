@@ -4,16 +4,14 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Main {
 
   private static final String EMPTY = "";
+  private static final String NEW_LINE = "\n";
   private static final int LINE_SIZE = 80;
-
-
 
   public static void main(String[] args) throws IOException {
     File file = new File(args[0]);
@@ -26,8 +24,6 @@ public class Main {
       }
     }
     System.out.println(toString(justifyLines(splitLines(parseInput(rawLines)))));
-
-
   }
 
 
@@ -40,9 +36,8 @@ public class Main {
   }
 
   static Line parseLine(String data){
-    String[] words = data.split("[ ]+");
-    String[] spacesAll = data.split("[^ ]+");
-    String[] spaces = Arrays.copyOfRange(spacesAll, 1, spacesAll.length);;
+    String[] words = removeEmpty(data.split("[ ]+"));
+    String[] spaces = removeEmpty(data.split("[^ ]+"));
     int length = words.length;
     Line result = new Line();
     for(int i = 0; i <= length - 1; i++){
@@ -55,28 +50,75 @@ public class Main {
     return result;
   }
 
-  private static List<Line> splitLines(List<Line> inputLines){
-    List<Line> lines = new LinkedList<>();
-    int length = lines.size();
-    for(int i = 0; i <= length - 2; i++){
-      lines.addAll(inputLines.get(i).split());
+  private static String[] removeEmpty(String[] strings){
+    String[] result = new String[strings.length - numEmpty(strings)];
+    int index = 0;
+    for(String string : strings){
+      if(!string.isEmpty()){
+        result[index] = string;
+        index++;
+      }
     }
-    lines.add(inputLines.get(length - 1));
-    return lines;
+    return result;
+  }
+
+  private static int numEmpty(String[] strings){
+    int result = 0;
+    for(String string : strings){
+      if (string.isEmpty()){
+        result++;
+      }
+    }
+    return result;
+  }
+
+  private static List<Line> splitLines(List<Line> lines){
+    List<Line> result = new LinkedList<>();
+    int length = lines.size();
+    for(int i = 0; i <= length - 1; i++){
+      result.addAll(markLastLine(lines.get(i).split()));
+    }
+    return result;
+  }
+
+  private static List<Line> markLastLine(List<Line> lines) {
+    List<Line> resultLines = new LinkedList<>(lines);
+    int index = 0;
+    int length = resultLines.size();
+    for(Line line : resultLines){
+      boolean isLast = index == length - 1;
+      if(isLast){
+        line.setLast(true);
+      } else {
+        line.setLast(false);
+      }
+      index++;
+    }
+    return resultLines;
   }
 
   private static List<Line> justifyLines(List<Line> inputLines){
     List<Line> lines = new LinkedList<>(inputLines);
     int length = lines.size();
-    for(int i = 0; i <= length - 2; i++){
-      lines.get(i).adjust();
+    for(int i = 0; i <= length - 1; i++){
+      Line line = lines.get(i);
+      if(!line.isLast()){
+        line.adjust();
+      }
     }
     return lines;
   }
 
   private static String toString(List<Line> lines){
     StringBuilder sb = new StringBuilder();
+    boolean first = true;
     for(Line line : lines){
+      if(first){
+        sb.append(line);
+        first = false;
+        continue;
+      }
+      sb.append(NEW_LINE);
       sb.append(line);
     }
     return sb.toString();
@@ -85,6 +127,7 @@ public class Main {
 
   static class Line{
     private List<Printable> tokens = new LinkedList<>();
+    private boolean isLast;
 
     @Override
     public String toString() {
@@ -107,13 +150,43 @@ public class Main {
       return result;
     }
 
-    private List<Line> split(){
+    List<Line> split(){
       List<Line> result = new LinkedList<>();
+      Line line = new Line();
+      for (Printable token : tokens){
+        if (line.length() + token.length() <= LINE_SIZE){
+          line.addToken(token);
+        } else {
+          line.trim();
+          result.add(line);
+          line = new Line();
+          if(token.isWord()) {
+            line.addToken(token);
+          }
+        }
+      }
+      line.trim();
+      result.add(line);
       return result;
     }
 
+    void trim(){
+      if(tokens.get(0).isSpace()){
+        tokens.remove(0);
+      }
+      int lastIndex = tokens.size() - 1;
+      if(tokens.get(lastIndex).isSpace()){
+        tokens.remove(lastIndex);
+      }
+    }
+
     void adjust(){
-      if(numWords() <= 2){
+      if(numWords() <= 1){
+        return;
+      }
+      if(numWords() == 2){
+        int spaceSize = LINE_SIZE - wordsLength();
+        ((Space)tokens.get(1)).setNum(spaceSize + 1);
         return;
       }
       int spaceSize = (LINE_SIZE - wordsLength()) / (numWords() - 1);
@@ -185,6 +258,14 @@ public class Main {
     private void addToken(Printable token){
       tokens.add(token);
     }
+
+    boolean isLast() {
+      return isLast;
+    }
+
+    void setLast(boolean last) {
+      isLast = last;
+    }
   }
 
   private static class Word implements Printable{
@@ -236,11 +317,7 @@ public class Main {
       this.num = num;
     }
 
-    public int getNum() {
-      return num;
-    }
-
-    public void setNum(int num) {
+    private void setNum(int num) {
       this.num = num;
     }
 
@@ -248,9 +325,7 @@ public class Main {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
-
       Space space = (Space) o;
-
       return num == space.num;
     }
 
@@ -290,5 +365,4 @@ public class Main {
     boolean isSpace();
     int length();
   }
-
 }

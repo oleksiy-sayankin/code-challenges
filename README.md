@@ -52,6 +52,7 @@ MODERATE LEVEL
 * [Black and White](moderate/black-and-white/README.md)
 * [Alternative reality](moderate/alternative-reality/README.md)
 * [First Non-Repeated Character](moderate/first-non-repeated-character/README.md)
+* [Justify the Text](moderate/justify-the-text/README.md)
 
 EASY LEVEL
 ----------
