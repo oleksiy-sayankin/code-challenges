@@ -50,6 +50,7 @@
     <module>alternative-reality</module>
     <module>first-non-repeated-character</module>
     <module>justify-the-text</module>
+    <module>meet-cocktail-sort</module>
   </modules>
 
 </project>
