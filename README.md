@@ -55,6 +55,7 @@ MODERATE LEVEL
 * [Justify the Text](moderate/justify-the-text/README.md)
 * [Meet Cocktail Sort](moderate/meet-cocktail-sort/README.md)
 * [Counting Primes](moderate/counting-primes/README.md)
+* [Guess The Number](moderate/guess-the-number/README.md)
 
 EASY LEVEL
 ----------

@@ -52,6 +52,7 @@
     <module>justify-the-text</module>
     <module>meet-cocktail-sort</module>
     <module>counting-primes</module>
+    <module>guess-the-number</module>
   </modules>
 
 </project>
