@@ -53,6 +53,7 @@
     <module>meet-cocktail-sort</module>
     <module>counting-primes</module>
     <module>guess-the-number</module>
+    <module>magic-numbers</module>
   </modules>
 
 </project>

@@ -56,6 +56,7 @@ MODERATE LEVEL
 * [Meet Cocktail Sort](moderate/meet-cocktail-sort/README.md)
 * [Counting Primes](moderate/counting-primes/README.md)
 * [Guess The Number](moderate/guess-the-number/README.md)
+* [Magic Numbers](moderate/magic-numbers/README.md)
 
 EASY LEVEL
 ----------
