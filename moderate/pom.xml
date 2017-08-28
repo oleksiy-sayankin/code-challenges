@@ -55,6 +55,7 @@
     <module>guess-the-number</module>
     <module>magic-numbers</module>
     <module>number-pairs</module>
+    <module>string-rotation</module>
   </modules>
 
 </project>

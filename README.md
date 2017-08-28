@@ -58,6 +58,7 @@ MODERATE LEVEL
 * [Guess The Number](moderate/guess-the-number/README.md)
 * [Magic Numbers](moderate/magic-numbers/README.md)
 * [Number Pairs](moderate/number-pairs/README.md)
+* [String Rotation](moderate/string-rotation/README.md)
 
 EASY LEVEL
 ----------
