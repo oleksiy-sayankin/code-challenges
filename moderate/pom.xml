@@ -54,6 +54,7 @@
     <module>counting-primes</module>
     <module>guess-the-number</module>
     <module>magic-numbers</module>
+    <module>number-pairs</module>
   </modules>
 
 </project>

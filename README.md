@@ -57,6 +57,7 @@ MODERATE LEVEL
 * [Counting Primes](moderate/counting-primes/README.md)
 * [Guess The Number](moderate/guess-the-number/README.md)
 * [Magic Numbers](moderate/magic-numbers/README.md)
+* [Number Pairs](moderate/number-pairs/README.md)
 
 EASY LEVEL
 ----------
