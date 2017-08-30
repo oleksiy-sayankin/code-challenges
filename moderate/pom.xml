@@ -56,7 +56,7 @@
     <module>magic-numbers</module>
     <module>number-pairs</module>
     <module>string-rotation</module>
-    <module>ballanced-smiles</module>
+    <module>balanced-smiles</module>
   </modules>
 
 </project>
