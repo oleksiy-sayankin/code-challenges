@@ -102,6 +102,19 @@ public class MainTest {
     String data16 = "(a:a)";
     String data17 = "llkl:";
     String data18 = "(      : kl)";
+    String data19 = "(      :)";
+    String data20 = ":((";
+    String data21 = "i am sick today (:()";
+    String data22 = "(:)";
+    String data23 = "hacker cup: started :):)";
+    String data24 = ")(";
+    String data25 = "(  abc::::::)";
+    String data26 = ":):):(:(";
+    String data27 = "(  :::  )";
+    String data28 = "::::::::";
+    String data29 = "    ";
+    String data30 = "((((((((((";
+    String data31 = "))))))))))";
 
     Assert.assertEquals("YES", Main.isBalanced(data01));
     Assert.assertEquals("NO", Main.isBalanced(data02));
@@ -121,39 +134,18 @@ public class MainTest {
     Assert.assertEquals("YES", Main.isBalanced(data16));
     Assert.assertEquals("YES", Main.isBalanced(data17));
     Assert.assertEquals("YES", Main.isBalanced(data18));
+    Assert.assertEquals("YES", Main.isBalanced(data19));
+    Assert.assertEquals("NO", Main.isBalanced(data20));
+    Assert.assertEquals("YES", Main.isBalanced(data21));
+    Assert.assertEquals("YES", Main.isBalanced(data22));
+    Assert.assertEquals("YES", Main.isBalanced(data23));
+    Assert.assertEquals("NO", Main.isBalanced(data24));
+    Assert.assertEquals("YES", Main.isBalanced(data25));
+    Assert.assertEquals("YES", Main.isBalanced(data26));
+    Assert.assertEquals("YES", Main.isBalanced(data27));
+    Assert.assertEquals("YES", Main.isBalanced(data28));
+    Assert.assertEquals("YES", Main.isBalanced(data29));
+    Assert.assertEquals("NO", Main.isBalanced(data30));
+    Assert.assertEquals("NO", Main.isBalanced(data31));
   }
-
-
-  @Test
-  public void deleteColonsTest(){
-    String data01 = "(:) : ojoi::):ljkljlk:::(:)(:)";
-    String data02 = ":(:) : ojoi::):ljkljlk:::(:)(:)";
-    String expected01 = "(:)  ojoi:)ljkljlk:(:)(:)";
-    String expected02 = ":(:)  ojoi:)ljkljlk:(:)(:)";
-    Assert.assertEquals(expected01, Main.deleteColons(data01));
-    Assert.assertEquals(expected02, Main.deleteColons(data02));
-  }
-
-  @Test
-  public void deleteSmiles(){
-    String data01 = ":((";
-    String data02 = "i am sick today (:()";
-    String data03 = "(:)";
-    String data04 = "hacker cup: started :):)";
-    String data05 = ")(";
-
-    String expected01 = "(";
-    String expected02 = "i am sick today ()";
-    String expected03 = "";
-    String expected04 = "hacker cup: started ";
-    String expected05 = ")(";
-
-    Assert.assertEquals(expected01, Main.deleteSmiles(data01));
-    Assert.assertEquals(expected02, Main.deleteSmiles(data02));
-    Assert.assertEquals(expected03, Main.deleteSmiles(data03));
-    Assert.assertEquals(expected04, Main.deleteSmiles(data04));
-    Assert.assertEquals(expected05, Main.deleteSmiles(data05));
-  }
-
-
 }

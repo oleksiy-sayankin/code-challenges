@@ -23,9 +23,7 @@ public class Main {
   }
 
   static String isBalanced(String data){
-    data = deleteSmiles(data);
-    data = deleteAzCharsAndColons(data);
-    data = deleteColons(data);
+    data = prepare(data);
     if(data.isEmpty()){
       return YES;
     }
@@ -53,40 +51,13 @@ public class Main {
     return NO;
   }
 
-  private static String deleteAzCharsAndColons(String data){
-    String result = data.replaceAll("[a-z]|\\s", "Z");
-    return result.replaceAll("Z+:Z+", "");
-  }
-
-  static String deleteColons(String data){
-    char[] symbols = data.toCharArray();
-    StringBuilder sb = new StringBuilder();
-    int index = 0;
-    int last = symbols.length - 1;
-    for(char symbol : symbols){
-      if(symbol != ':'){
-        index++;
-        sb.append(symbol);
-        continue;
-      }
-      if(index == last){
-        index++;
-        continue;
-      }
-      if(symbols[index + 1] != ')' && symbols[index + 1] != '('){
-        index++;
-        continue;
-      }
-      sb.append(symbol);
-      index++;
-    }
-    return sb.toString();
-  }
-
-  static String deleteSmiles(String data){
-    String result = data.replaceAll("\\(:\\)", "");
-    result = result.replaceAll(":\\)" , "");
-    result = result.replaceAll(":\\(" , "");
-    return result;
+  static String prepare(String data){
+    String result = data.replaceAll("\\(([a-z]|\\s)*:+\\)", "Z");
+    result = result.replaceAll("([a-z]\\s)*:+\\)", "Z");
+    result = result.replaceAll("[a-z]|\\s", "Z");
+    result = result.replaceAll("Z+:+Z+", "Z");
+    result = result.replaceAll(":\\)", "Z");
+    result = result.replaceAll(":\\(", "Z");
+    return result.replaceAll("Z", "");
   }
 }
