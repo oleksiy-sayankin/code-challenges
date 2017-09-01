@@ -115,6 +115,8 @@ public class MainTest {
     String data29 = "    ";
     String data30 = "((((((((((";
     String data31 = "))))))))))";
+    String data32 = "(abcd:))";
+    String data33 = "(abcd:))(aaaa)aaaa:)(((aaa:))))(:)(aaa:)";
 
     Assert.assertEquals("YES", Main.isBalanced(data01));
     Assert.assertEquals("NO", Main.isBalanced(data02));
@@ -147,5 +149,7 @@ public class MainTest {
     Assert.assertEquals("YES", Main.isBalanced(data29));
     Assert.assertEquals("NO", Main.isBalanced(data30));
     Assert.assertEquals("NO", Main.isBalanced(data31));
+    Assert.assertEquals("YES", Main.isBalanced(data32));
+    Assert.assertEquals("YES", Main.isBalanced(data33));
   }
 }
