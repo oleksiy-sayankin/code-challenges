@@ -81,6 +81,12 @@ public class MainTest {
   }
 
 
+  @Test
+  public void preProcessSmileTest(){
+    String data01 = "aaa(a(abcd:)aaa)a)";
+    System.out.println(Main.preProcessSmile(data01));
+  }
+
 
   @Test
   public void isBalancedBracketsWithSymbolsAndColonsTest(){
