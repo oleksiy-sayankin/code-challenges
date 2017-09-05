@@ -12,7 +12,7 @@ public class Main {
   private static final String NO = "NO";
   private static final String SMILE = ":)";
   private static final String FROWN = ":(";
-  private static final String VALID_CHARS = "abcdefghijgklmnopqrstuvwxyz :";
+  private static final String BALANCE_SYMBOL = "Z";
   private static final int NO_BRACKET = -1;
 
   public static void main(String[] args) throws IOException {
@@ -65,23 +65,51 @@ public class Main {
       result = preProcessFrown(result);
     }
 
-    result = result.replaceAll("Z+:+Z+", "Z");
-    return result.replaceAll("Z", "");
+    return removeBalanced(result);
+  }
+
+  private static String removeBalanced(String data){
+    return data.replaceAll(BALANCE_SYMBOL, "");
   }
 
   static String preProcessSmile(String data){
     int leftIndex = data.indexOf(SMILE);
-    int rightIndex = leftIndex + 1;
+    int rightIndex = leftIndex;
 
-    while (leftIndex > 0 && !isBracket(data.charAt(leftIndex))){
-      leftIndex--;
-    }
+    leftIndex = maxLeftNonTerminal(data, leftIndex);
 
     int[] withFirstBracket = maxBalancedInterval(data, leftIndex, rightIndex);
-    int[] withFirstNoBracket = maxBalancedInterval(data, leftIndex, rightIndex + 1);
-    
-    return "";
+    int[] withFirstNoBracket = maxBalancedInterval(data, leftIndex, maxRightNonTerminal(data,rightIndex + 1));
+
+    int withFirstBracketLength = withFirstBracket[1] - withFirstBracket[0];
+    int withFirstNoBracketLength = withFirstNoBracket[1] - withFirstNoBracket[0];
+
+    int leftBalancedIndex;
+    int rightBalancedIndex;
+
+    if(withFirstBracketLength > withFirstNoBracketLength){
+      leftBalancedIndex = withFirstBracket[0];
+      rightBalancedIndex = withFirstBracket[1];
+    } else {
+      leftBalancedIndex = withFirstNoBracket[0];
+      rightBalancedIndex = withFirstNoBracket[1];
+    }
+    return markBalanced(data, leftBalancedIndex, rightBalancedIndex);
   }
+
+  private static String markBalanced(String data, int leftIndex, int rightIndex){
+    StringBuilder sb = new StringBuilder();
+    int length = data.length();
+    for(int i = 0; i <= length - 1; i++){
+      if(i >= leftIndex && i <= rightIndex){
+        sb.append(BALANCE_SYMBOL);
+        continue;
+      }
+      sb.append(data.charAt(i));
+    }
+    return sb.toString();
+  }
+
 
   private static int[] maxBalancedInterval(String data, int leftIndex, int rightIndex){
     int length = data.length();
@@ -89,10 +117,14 @@ public class Main {
     while (leftIndex > 0 && rightIndex < length){
       int nextLeftIndex = nearestOpenLeftBracket(data, leftIndex);
       int nextRightIndex = nearestClosedRightBracket(data, rightIndex);
-      if((bracketExist(nextLeftIndex) && bracketExist(nextRightIndex))
-        || (!bracketExist(nextLeftIndex) && !bracketExist(nextRightIndex))){
+      if((bracketExist(nextLeftIndex) && bracketExist(nextRightIndex))){
         leftIndex = nextLeftIndex;
         rightIndex = nextRightIndex;
+        continue;
+      }
+      if(!bracketExist(nextLeftIndex) && !bracketExist(nextRightIndex)){
+        leftIndex = maxLeftNonTerminal(data, leftIndex);
+        rightIndex = maxRightNonTerminal(data, rightIndex);
         continue;
       }
       break;
@@ -120,14 +152,34 @@ public class Main {
       return NO_BRACKET;
     }
     char currentChar = data.charAt(result);
-    while (isValid(currentChar) && currentChar != '('){
+    while (isValid(currentChar) && !isBracket(currentChar)){
       result--;
       if(result == -1){
         return NO_BRACKET;
       }
       currentChar = data.charAt(result);
     }
-    return result;
+    if(isOpenBracket(currentChar)){
+      return result;
+    }
+    return NO_BRACKET;
+  }
+
+  private static int maxLeftNonTerminal(String data, int startIndex){
+    int result = startIndex;
+    result--;
+    if(result == -1){
+      return 0;
+    }
+    char currentChar = data.charAt(result);
+    while (isValid(currentChar) && !isBracket(currentChar)){
+      result--;
+      if(result == -1){
+        return 0;
+      }
+      currentChar = data.charAt(result);
+    }
+    return result + 1;
   }
 
 
@@ -139,24 +191,77 @@ public class Main {
       return NO_BRACKET;
     }
     char currentChar = data.charAt(result);
-    while (isValid(currentChar) && currentChar != ')'){
+    while (isValid(currentChar) && !isBracket(currentChar)){
       result++;
       if(result == length){
         return NO_BRACKET;
       }
       currentChar = data.charAt(result);
     }
-    return result;
+    if(isClosedBracket(currentChar)){
+      return result;
+    }
+    return NO_BRACKET;
+  }
+
+
+  private static int maxRightNonTerminal(String data, int startIndex){
+    int result = startIndex;
+    int length = data.length();
+    result++;
+    if(result == length){
+      return length - 1;
+    }
+    char currentChar = data.charAt(result);
+    while (isValid(currentChar) && !isBracket(currentChar)){
+      result++;
+      if(result == length){
+        return length - 1;
+      }
+      currentChar = data.charAt(result);
+    }
+    return result - 1;
   }
 
 
 
   private static boolean isBracket(char symbol){
-    return symbol == '(' || symbol == ')';
+    return isOpenBracket(symbol) || isClosedBracket(symbol);
   }
 
+  private static boolean isOpenBracket(char symbol){
+    return symbol == '(';
+  }
+
+  private static boolean isClosedBracket(char symbol){
+    return symbol == ')';
+  }
+
+
   static String preProcessFrown(String data){
-    return "";
+    int leftIndex = data.indexOf(FROWN);
+    int rightIndex = leftIndex;
+
+    //leftIndex = maxLeftNonTerminal(data, leftIndex);
+    //rightIndex = maxRightNonTerminal(data, rightIndex + 1);
+
+    int[] withFirstBracket = maxBalancedInterval(data, maxLeftNonTerminal(data, leftIndex), rightIndex + 1);
+    int[] withFirstNoBracket = maxBalancedInterval(data, leftIndex + 1, maxRightNonTerminal(data, rightIndex + 2));
+
+    int withFirstBracketLength = withFirstBracket[1] - withFirstBracket[0];
+    int withFirstNoBracketLength = withFirstNoBracket[1] - withFirstNoBracket[0];
+
+    int leftBalancedIndex;
+    int rightBalancedIndex;
+
+    if(withFirstBracketLength > withFirstNoBracketLength){
+      leftBalancedIndex = withFirstBracket[0];
+      rightBalancedIndex = withFirstBracket[1];
+    } else {
+      leftBalancedIndex = withFirstNoBracket[0];
+      rightBalancedIndex = withFirstNoBracket[1];
+    }
+    return markBalanced(data, leftBalancedIndex, rightBalancedIndex);
   }
 
 

@@ -84,7 +84,28 @@ public class MainTest {
   @Test
   public void preProcessSmileTest(){
     String data01 = "aaa(a(abcd:)aaa)a)";
-    System.out.println(Main.preProcessSmile(data01));
+    String data02 = "(:)";
+    String data03 = "(:):)";
+    String data04 = "(((:):)))";
+    Assert.assertEquals("ZZZZZZZZZZZZZZZZZZ", Main.preProcessSmile(data01));
+    Assert.assertEquals("ZZZ", Main.preProcessSmile(data02));
+    Assert.assertEquals("ZZZZZ", Main.preProcessSmile(data03));
+    Assert.assertEquals("ZZZZZZZZZ", Main.preProcessSmile(data04));
+    System.out.println(Main.preProcessSmile(data04));
+  }
+
+
+  @Test
+  public void preProcessFrownTest(){
+    String data01 = "abcd:(";
+    String data02 = "abcd:()";
+//    String data03 = "(:):)";
+//    String data04 = "(((:):)))";
+//    Assert.assertEquals("ZZZZZZZZZZZZZZZZZZ", Main.preProcessSmile(data01));
+//    Assert.assertEquals("ZZZ", Main.preProcessSmile(data02));
+//    Assert.assertEquals("ZZZZZ", Main.preProcessSmile(data03));
+//    Assert.assertEquals("ZZZZZZZZZ", Main.preProcessSmile(data04));
+    System.out.println(Main.preProcessFrown(data01));
   }
 
 
