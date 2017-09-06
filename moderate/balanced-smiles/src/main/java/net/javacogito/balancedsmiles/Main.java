@@ -245,6 +245,8 @@ public class Main {
     //leftIndex = maxLeftNonTerminal(data, leftIndex);
     //rightIndex = maxRightNonTerminal(data, rightIndex + 1);
 
+    //TODO: check if abcd:() <--- this bracket exists before verifying without :( <--- this one
+
     int[] withFirstBracket = maxBalancedInterval(data, maxLeftNonTerminal(data, leftIndex), rightIndex + 1);
     int[] withFirstNoBracket = maxBalancedInterval(data, leftIndex + 1, maxRightNonTerminal(data, rightIndex + 2));
 
