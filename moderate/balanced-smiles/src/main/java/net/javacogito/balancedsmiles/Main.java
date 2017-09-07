@@ -248,7 +248,13 @@ public class Main {
     //TODO: check if abcd:() <--- this bracket exists before verifying without :( <--- this one
 
     int[] withFirstBracket = maxBalancedInterval(data, maxLeftNonTerminal(data, leftIndex), rightIndex + 1);
-    int[] withFirstNoBracket = maxBalancedInterval(data, leftIndex + 1, maxRightNonTerminal(data, rightIndex + 2));
+
+    int[] withFirstNoBracket = {0, 0};
+
+    if(nearestClosedRightBracket(data, rightIndex + 1) != NO_BRACKET){
+      withFirstNoBracket = maxBalancedInterval(data, leftIndex + 1, maxRightNonTerminal(data, rightIndex + 2));
+    }
+
 
     int withFirstBracketLength = withFirstBracket[1] - withFirstBracket[0];
     int withFirstNoBracketLength = withFirstNoBracket[1] - withFirstNoBracket[0];
