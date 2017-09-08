@@ -57,6 +57,7 @@
     <module>number-pairs</module>
     <module>string-rotation</module>
     <module>balanced-smiles</module>
+    <module>color-code-converter</module>
   </modules>
 
 </project>
