@@ -59,6 +59,7 @@ MODERATE LEVEL
 * [Magic Numbers](moderate/magic-numbers/README.md)
 * [Number Pairs](moderate/number-pairs/README.md)
 * [String Rotation](moderate/string-rotation/README.md)
+* [Balanced Smiles](moderate/balanced-smiles/README.md)
 
 EASY LEVEL
 ----------

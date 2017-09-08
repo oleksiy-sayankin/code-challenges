@@ -82,41 +82,25 @@ public class MainTest {
 
 
   @Test
-  public void preProcessSmileTest(){
-    String data01 = "aaa(a(abcd:)aaa)a)";
-    String data02 = "(:)";
-    String data03 = "(:):)";
-    String data04 = "(((:):)))";
-    String data05 = "abcd:)";
-    String data06 = "(abcd:)";
-    Assert.assertEquals("ZZZZZZZZZZZZZZZZZZ", Main.preProcessSmile(data01));
-    Assert.assertEquals("ZZZ", Main.preProcessSmile(data02));
-    Assert.assertEquals("ZZZZZ", Main.preProcessSmile(data03));
-    Assert.assertEquals("ZZZZZZZZZ", Main.preProcessSmile(data04));
-    Assert.assertEquals("ZZZZZZ", Main.preProcessSmile(data05));
-    Assert.assertEquals("ZZZZZZZ", Main.preProcessSmile(data06));
-    System.out.println(Main.preProcessSmile(data04));
+  public void replaceSingleSmileTest(){
+    String data01 = "(khk:jh):)";
+    String data02 = "(k:)hk:jh):)";
+    String data03 = "aaa:((k:)hk:jh):)";
+    Assert.assertEquals("(khk:jh)Z", Main.replaceSingleSmile(data01));
+    Assert.assertEquals("(kZhk:jh):)", Main.replaceSingleSmile(data02));
+    Assert.assertEquals("aaaZ(k:)hk:jh):)", Main.replaceSingleSmile(data03));
   }
 
 
   @Test
-  public void preProcessFrownTest(){
-    String data01 = "abcd:(";
-    String data02 = "abcd:()";
-    String data03 = "abcd:(((()))";
-    String data04 = "abcd:((()))";
-    String data05 = "(((abcd:()))";
-    String data06 = "((abcd:()))";
-//    String data03 = "(:):)";
-//    String data04 = "(((:):)))";
-//    Assert.assertEquals("ZZZZZZZZZZZZZZZZZZ", Main.preProcessSmile(data01));
-//    Assert.assertEquals("ZZZ", Main.preProcessSmile(data02));
-//    Assert.assertEquals("ZZZZZ", Main.preProcessSmile(data03));
-//    Assert.assertEquals("ZZZZZZZZZ", Main.preProcessSmile(data04));
-    System.out.println(Main.preProcessFrown(data01));
-    System.out.println(Main.preProcessFrown(data04));
+  public void replaceColonFromSmileTest(){
+    String data01 = "(khk:jh):)";
+    String data02 = "(k:)hk:jh):)";
+    String data03 = "aaa:((k:)hk:jh):)";
+    Assert.assertEquals("(khk:jh)Z)", Main.replaceColonFromSmile(data01));
+    Assert.assertEquals("(kZ)hk:jh):)", Main.replaceColonFromSmile(data02));
+    Assert.assertEquals("aaaZ((k:)hk:jh):)", Main.replaceColonFromSmile(data03));
   }
-
 
   @Test
   public void isBalancedBracketsWithSymbolsAndColonsTest(){
