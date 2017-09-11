@@ -61,6 +61,7 @@ MODERATE LEVEL
 * [String Rotation](moderate/string-rotation/README.md)
 * [Balanced Smiles](moderate/balanced-smiles/README.md)
 * [Color Code Converter](moderate/color-code-converter/README.md)
+* [Endianness](moderate/endianness/README.md)
 
 EASY LEVEL
 ----------
