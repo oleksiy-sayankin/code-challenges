@@ -143,8 +143,15 @@ public class Main {
     int G = (int) Math.round(255 * (1- m) * (1 - k));
     int B = (int) Math.round(255 * (1- y) * (1 - k));
     return toString(R, G, B);
-
   }
+
+  static String HexToRgb(String hexR, String hexG, String hexB){
+    int R = Integer.parseInt(hexR, 16);
+    int G = Integer.parseInt(hexG, 16);
+    int B = Integer.parseInt(hexB, 16);
+    return toString(R, G, B);
+  }
+
 
   private static String toString(int R, int G, int B){
     StringBuilder sb = new StringBuilder();

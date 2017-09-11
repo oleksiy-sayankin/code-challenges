@@ -91,4 +91,13 @@ public class MainTest {
     Assert.assertEquals(RGB1, Main.CmykToRgb(c1, m1, y1, k1));
     Assert.assertEquals(RGB2, Main.CmykToRgb(c2, m2, y2, k2));
   }
+
+  @Test
+  public void HexToRgbTest(){
+    String hexR = "cf";
+    String hexG = "a9";
+    String hexB = "c4";
+    String RGB = "RGB(207,169,196)";
+    Assert.assertEquals(RGB, Main.HexToRgb(hexR, hexG, hexB));
+  }
 }
