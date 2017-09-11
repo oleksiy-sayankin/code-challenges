@@ -71,4 +71,24 @@ public class MainTest {
     Assert.assertEquals(RGB3, Main.HsvToRgb(hue3, saturation3, lightness3));
   }
 
+
+  @Test
+  public void CmykToRgbTest(){
+    double c1 = 0.56;
+    double m1 = 0.94;
+    double y1 = 0.21;
+    double k1 = 0.02;
+
+    double c2 = 0.31;
+    double m2 = 0.4;
+    double y2 = 0.7;
+    double k2 = 0.07;
+
+
+    String RGB1 = "RGB(110,15,197)";
+    String RGB2 = "RGB(164,142,71)";
+
+    Assert.assertEquals(RGB1, Main.CmykToRgb(c1, m1, y1, k1));
+    Assert.assertEquals(RGB2, Main.CmykToRgb(c2, m2, y2, k2));
+  }
 }

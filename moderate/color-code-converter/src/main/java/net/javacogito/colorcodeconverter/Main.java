@@ -76,16 +76,7 @@ public class Main {
     int G = (int)Math.round(g);
     int B = (int)Math.round(b);
 
-    StringBuilder sb = new StringBuilder();
-    sb.append("RGB(");
-    sb.append(R);
-    sb.append(",");
-    sb.append(G);
-    sb.append(",");
-    sb.append(B);
-    sb.append(")");
-
-    return sb.toString();
+    return toString(R, G, B);
   }
 
 
@@ -143,6 +134,19 @@ public class Main {
     int G = (int)Math.round(g);
     int B = (int)Math.round(b);
 
+    return toString(R, G, B);
+  }
+
+
+  static String CmykToRgb(double c, double m, double y, double k){
+    int R = (int) Math.round(255 * (1- c) * (1 - k));
+    int G = (int) Math.round(255 * (1- m) * (1 - k));
+    int B = (int) Math.round(255 * (1- y) * (1 - k));
+    return toString(R, G, B);
+
+  }
+
+  private static String toString(int R, int G, int B){
     StringBuilder sb = new StringBuilder();
     sb.append("RGB(");
     sb.append(R);
@@ -151,7 +155,6 @@ public class Main {
     sb.append(",");
     sb.append(B);
     sb.append(")");
-
     return sb.toString();
   }
 
