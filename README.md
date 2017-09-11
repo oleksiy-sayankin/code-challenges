@@ -60,6 +60,7 @@ MODERATE LEVEL
 * [Number Pairs](moderate/number-pairs/README.md)
 * [String Rotation](moderate/string-rotation/README.md)
 * [Balanced Smiles](moderate/balanced-smiles/README.md)
+* [Color Code Converter](moderate/color-code-converter/README.md)
 
 EASY LEVEL
 ----------

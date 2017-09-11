@@ -15,14 +15,56 @@ public class Main {
     String inputLine;
     while ((inputLine = buffer.readLine()) != null) {
       if (!EMPTY.equals(inputLine.trim())) {
-        System.out.println(Integer.parseInt(inputLine));
+        System.out.println(convert(inputLine));
       }
     }
   }
 
 
+  private static String convert(String data){
+    if(data.startsWith("(")){
+      int startIndex = 1;
+      int endIndex = data.indexOf(")");
+      String[] rawData = data.substring(startIndex, endIndex).split(",");
+      double c = Double.parseDouble(rawData[0]);
+      double m = Double.parseDouble(rawData[1]);
+      double y = Double.parseDouble(rawData[2]);
+      double k = Double.parseDouble(rawData[3]);
+      return cmykToRgb(c, m, y, k);
+    }
 
-  static String HslToRgb(int hue, int saturation, int lightness){
+    if(data.startsWith("HSL(")){
+      int startIndex = 4;
+      int endIndex = data.indexOf(")");
+      String[] rawData = data.substring(startIndex, endIndex).split(",");
+      int h = Integer.parseInt(rawData[0]);
+      int s = Integer.parseInt(rawData[1]);
+      int l = Integer.parseInt(rawData[2]);
+      return hslToRgb(h, s, l);
+    }
+
+    if(data.startsWith("HSV(")){
+      int startIndex = 4;
+      int endIndex = data.indexOf(")");
+      String[] rawData = data.substring(startIndex, endIndex).split(",");
+      int h = Integer.parseInt(rawData[0]);
+      int s = Integer.parseInt(rawData[1]);
+      int v = Integer.parseInt(rawData[2]);
+      return hsvToRgb(h, s, v);
+    }
+
+
+    if(data.startsWith("#")){
+      String rHex = data.substring(1, 3);
+      String gHex = data.substring(3, 5);
+      String bHex = data.substring(5, 7);
+      return hexToRgb(rHex, gHex, bHex);
+    }
+    return EMPTY;
+  }
+
+
+  static String hslToRgb(int hue, int saturation, int lightness){
     double h = hue;
     double s = (double) saturation / 100;
     double l = (double) lightness / 100;
@@ -80,7 +122,7 @@ public class Main {
   }
 
 
-  static String HsvToRgb(int hue, int saturation, int value){
+  static String hsvToRgb(int hue, int saturation, int value){
     double h = hue;
     double s = (double) saturation / 100;
     double v = (double) value / 100;
@@ -138,20 +180,19 @@ public class Main {
   }
 
 
-  static String CmykToRgb(double c, double m, double y, double k){
+  static String cmykToRgb(double c, double m, double y, double k){
     int R = (int) Math.round(255 * (1- c) * (1 - k));
     int G = (int) Math.round(255 * (1- m) * (1 - k));
     int B = (int) Math.round(255 * (1- y) * (1 - k));
     return toString(R, G, B);
   }
 
-  static String HexToRgb(String hexR, String hexG, String hexB){
+  static String hexToRgb(String hexR, String hexG, String hexB){
     int R = Integer.parseInt(hexR, 16);
     int G = Integer.parseInt(hexG, 16);
     int B = Integer.parseInt(hexB, 16);
     return toString(R, G, B);
   }
-
 
   private static String toString(int R, int G, int B){
     StringBuilder sb = new StringBuilder();
@@ -164,5 +205,4 @@ public class Main {
     sb.append(")");
     return sb.toString();
   }
-
 }

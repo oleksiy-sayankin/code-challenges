@@ -3,9 +3,6 @@ package net.javacogito.colorcodeconverter;
 import java.io.IOException;
 import java.net.URL;
 
-import java.io.IOException;
-import java.net.URL;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -42,9 +39,9 @@ public class MainTest {
     String RGB2 = "RGB(173,233,170)";
     String RGB3 = "RGB(128,128,128)";
 
-    Assert.assertEquals(RGB1, Main.HslToRgb(hue1, saturation1, lightness1));
-    Assert.assertEquals(RGB2, Main.HslToRgb(hue2, saturation2, lightness2));
-    Assert.assertEquals(RGB3, Main.HslToRgb(hue3, saturation3, lightness3));
+    Assert.assertEquals(RGB1, Main.hslToRgb(hue1, saturation1, lightness1));
+    Assert.assertEquals(RGB2, Main.hslToRgb(hue2, saturation2, lightness2));
+    Assert.assertEquals(RGB3, Main.hslToRgb(hue3, saturation3, lightness3));
   }
 
   @Test
@@ -66,9 +63,9 @@ public class MainTest {
     String RGB2 = "RGB(89,201,83)";
     String RGB3 = "RGB(128,128,128)";
 
-    Assert.assertEquals(RGB1, Main.HsvToRgb(hue1, saturation1, lightness1));
-    Assert.assertEquals(RGB2, Main.HsvToRgb(hue2, saturation2, lightness2));
-    Assert.assertEquals(RGB3, Main.HsvToRgb(hue3, saturation3, lightness3));
+    Assert.assertEquals(RGB1, Main.hsvToRgb(hue1, saturation1, lightness1));
+    Assert.assertEquals(RGB2, Main.hsvToRgb(hue2, saturation2, lightness2));
+    Assert.assertEquals(RGB3, Main.hsvToRgb(hue3, saturation3, lightness3));
   }
 
 
@@ -88,8 +85,8 @@ public class MainTest {
     String RGB1 = "RGB(110,15,197)";
     String RGB2 = "RGB(164,142,71)";
 
-    Assert.assertEquals(RGB1, Main.CmykToRgb(c1, m1, y1, k1));
-    Assert.assertEquals(RGB2, Main.CmykToRgb(c2, m2, y2, k2));
+    Assert.assertEquals(RGB1, Main.cmykToRgb(c1, m1, y1, k1));
+    Assert.assertEquals(RGB2, Main.cmykToRgb(c2, m2, y2, k2));
   }
 
   @Test
@@ -98,6 +95,6 @@ public class MainTest {
     String hexG = "a9";
     String hexB = "c4";
     String RGB = "RGB(207,169,196)";
-    Assert.assertEquals(RGB, Main.HexToRgb(hexR, hexG, hexB));
+    Assert.assertEquals(RGB, Main.hexToRgb(hexR, hexG, hexB));
   }
 }
