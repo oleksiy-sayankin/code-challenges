@@ -46,4 +46,29 @@ public class MainTest {
     Assert.assertEquals(RGB2, Main.HslToRgb(hue2, saturation2, lightness2));
     Assert.assertEquals(RGB3, Main.HslToRgb(hue3, saturation3, lightness3));
   }
+
+  @Test
+  public void HsvToRgbTest(){
+    int hue1 = 276;
+    int saturation1 = 33;
+    int lightness1 = 7;
+
+    int hue2 = 117;
+    int saturation2 = 59;
+    int lightness2 = 79;
+
+    int hue3 = 0;
+    int saturation3 = 0;
+    int lightness3 = 50;
+
+
+    String RGB1 = "RGB(15,12,18)";
+    String RGB2 = "RGB(89,201,83)";
+    String RGB3 = "RGB(128,128,128)";
+
+    Assert.assertEquals(RGB1, Main.HsvToRgb(hue1, saturation1, lightness1));
+    Assert.assertEquals(RGB2, Main.HsvToRgb(hue2, saturation2, lightness2));
+    Assert.assertEquals(RGB3, Main.HsvToRgb(hue3, saturation3, lightness3));
+  }
+
 }
