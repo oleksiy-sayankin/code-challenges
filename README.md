@@ -62,6 +62,7 @@ MODERATE LEVEL
 * [Balanced Smiles](moderate/balanced-smiles/README.md)
 * [Color Code Converter](moderate/color-code-converter/README.md)
 * [Endianness](moderate/endianness/README.md)
+* [Sum of Integers](moderate/sum-of-integers/README.md)
 
 EASY LEVEL
 ----------
