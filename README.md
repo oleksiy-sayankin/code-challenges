@@ -63,6 +63,7 @@ MODERATE LEVEL
 * [Color Code Converter](moderate/color-code-converter/README.md)
 * [Endianness](moderate/endianness/README.md)
 * [Sum of Integers](moderate/sum-of-integers/README.md)
+* [Filename Pattern](moderate/filename-pattern/README.md)
 
 EASY LEVEL
 ----------
