@@ -60,6 +60,7 @@
     <module>color-code-converter</module>
     <module>endianness</module>
     <module>sum-of-integers</module>
+    <module>filename-pattern</module>
   </modules>
 
 </project>
