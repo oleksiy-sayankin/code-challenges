@@ -61,6 +61,7 @@
     <module>endianness</module>
     <module>sum-of-integers</module>
     <module>filename-pattern</module>
+    <module>double-trouble</module>
   </modules>
 
 </project>
