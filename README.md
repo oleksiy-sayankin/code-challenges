@@ -66,6 +66,7 @@ MODERATE LEVEL
 * [Filename Pattern](moderate/filename-pattern/README.md)
 * [Double Trouble](moderate/double-trouble/README.md)
 * [Array Absurdity](moderate/array-absurdity/README.md)
+* [Sudoku](moderate/sudoku/README.md)
 
 EASY LEVEL
 ----------

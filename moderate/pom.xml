@@ -63,6 +63,7 @@
     <module>filename-pattern</module>
     <module>double-trouble</module>
     <module>array-absurdity</module>
+    <module>sudoku</module>
   </modules>
 
 </project>
