@@ -65,6 +65,7 @@ MODERATE LEVEL
 * [Sum of Integers](moderate/sum-of-integers/README.md)
 * [Filename Pattern](moderate/filename-pattern/README.md)
 * [Double Trouble](moderate/double-trouble/README.md)
+* [Array Absurdity](moderate/array-absurdity/README.md)
 
 EASY LEVEL
 ----------

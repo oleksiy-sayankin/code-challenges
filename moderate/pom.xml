@@ -62,6 +62,7 @@
     <module>sum-of-integers</module>
     <module>filename-pattern</module>
     <module>double-trouble</module>
+    <module>array-absurdity</module>
   </modules>
 
 </project>
