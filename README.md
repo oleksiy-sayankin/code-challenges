@@ -64,6 +64,7 @@ MODERATE LEVEL
 * [Endianness](moderate/endianness/README.md)
 * [Sum of Integers](moderate/sum-of-integers/README.md)
 * [Filename Pattern](moderate/filename-pattern/README.md)
+* [Double Trouble](moderate/double-trouble/README.md)
 
 EASY LEVEL
 ----------
