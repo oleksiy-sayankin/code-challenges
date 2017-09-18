@@ -64,6 +64,7 @@
     <module>double-trouble</module>
     <module>array-absurdity</module>
     <module>sudoku</module>
+    <module>suggest-groups</module>
   </modules>
 
 </project>
