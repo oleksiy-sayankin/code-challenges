@@ -65,6 +65,7 @@
     <module>array-absurdity</module>
     <module>sudoku</module>
     <module>suggest-groups</module>
+    <module>burrows-wheller-transform</module>
   </modules>
 
 </project>
