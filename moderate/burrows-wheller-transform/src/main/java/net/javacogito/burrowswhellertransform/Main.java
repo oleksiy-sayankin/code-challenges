@@ -33,13 +33,22 @@ public class Main {
     boolean[] usedKeys = new boolean[length];
     char[] word = new char[length];
     word[length - 1] = EOL;
+    markFirstAsUsed(values, usedKeys);
     for(int i = length - 1; i >= 1; i--){
       word[i - 1] = getElem(keys, values, usedKeys, word[i]);
     }
     return String.valueOf(word);
   }
 
-
+  private static void markFirstAsUsed(char[] values, boolean[] usedKeys){
+    int length = values.length;
+    for(int i = 0; i <= length - 1; i++){
+      if(values[i] == EOL){
+        usedKeys[i] = true;
+        return;
+      }
+    }
+  }
 
   private static char getElem(char[] keys, char[] values, boolean[] usedKeys, char key){
     int length = keys.length;
@@ -56,14 +65,21 @@ public class Main {
     int length = data.length();
     String[] matrix = new String[length];
     matrix[0] = data;
+    System.out.println(matrix[0]);
     for(int i = 1; i <= length - 1; i++){
       matrix[i] = rotateRight(matrix[i - 1]);
+      System.out.println(matrix[i]);
     }
     Arrays.sort(matrix);
+    System.out.println("------------");
     char[] result = new char[length];
     for(int i = 0; i <= length - 1; i++) {
       result[i] = matrix[i].charAt(length - 1);
+      System.out.println(matrix[i]);
     }
+    System.out.println("------------");
+    System.out.println(String.valueOf(result));
+    System.out.println("============");
     return String.valueOf(result);
   }
 
