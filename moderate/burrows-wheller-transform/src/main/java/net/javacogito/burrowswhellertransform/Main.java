@@ -30,12 +30,24 @@ public class Main {
     char[] keys = Arrays.copyOf(symbols, length);
     Arrays.sort(keys);
     char[] values = symbols;
+    System.out.println("=======================");
+    System.out.println("GIVEN:");
+    System.out.println("=======================");
+    for(int i = 0; i <=  length - 1; i++){
+      System.out.println(keys[i] + " ---> " + values[i]);
+    }
+    System.out.println("=======================");
     boolean[] usedKeys = new boolean[length];
     char[] word = new char[length];
     word[length - 1] = EOL;
     markFirstAsUsed(values, usedKeys);
+    System.out.println("SOLUTION:");
+    System.out.println("=======================");
     for(int i = length - 1; i >= 1; i--){
-      word[i - 1] = getElem(keys, values, usedKeys, word[i]);
+      char key = word[i];
+      char value = getElem(keys, values, usedKeys, word[i]);
+      System.out.println(key + " ---> " + value);
+      word[i - 1] = value;
     }
     return String.valueOf(word);
   }
