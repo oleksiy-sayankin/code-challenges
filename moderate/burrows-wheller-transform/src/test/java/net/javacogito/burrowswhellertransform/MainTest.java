@@ -26,7 +26,7 @@ public class MainTest {
     char[] in02 = {'u', 'u', '$', '-', 'b', 'B'};
     char[] in03 = "oo$ff-ffuuaallbB".toCharArray();
     char[] in04 = "oo$ff ffuuaallbB".toCharArray();
-    char[] in05 = Main.encode("ko#o$").toCharArray();
+    char[] in05 = Main.encode("aobocodoeofo$").toCharArray();
 //    char[] in06 = Main.encode("xo-yo-zo-so-po$").toCharArray();
     //char[] in06 = Main.encode("Neko n$").toCharArray();
 
