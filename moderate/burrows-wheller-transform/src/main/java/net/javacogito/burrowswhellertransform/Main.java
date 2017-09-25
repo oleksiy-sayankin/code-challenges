@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 public class Main {
   private static final String EMPTY = "";
-  private static final char EOL = '$';
+  private static final String EOL = "$";
 
   public static void main(String[] args) throws IOException {
     File file = new File(args[0]);
@@ -27,51 +27,45 @@ public class Main {
 
   static String decode(char[] symbols){
     int length = symbols.length;
-    char[] keys = Arrays.copyOf(symbols, length);
-    Arrays.sort(keys);
-    char[] values = symbols;
-    System.out.println("=======================");
-    System.out.println("GIVEN:");
-    System.out.println("=======================");
-    for(int i = 0; i <=  length - 1; i++){
-      System.out.println(keys[i] + " ---> " + values[i]);
+    String[] lines = new String[length];
+    Arrays.fill(lines, EMPTY);
+    lines = add(lines, symbols);
+    for(int i = 1; i <= length - 1; i++){
+      String[] sortedLines = Arrays.copyOf(lines, length);
+      Arrays.sort(sortedLines);
+      lines = add(lines, lastCol(sortedLines));
     }
-    System.out.println("=======================");
-    boolean[] usedKeys = new boolean[length];
-    char[] word = new char[length];
-    word[length - 1] = EOL;
-    markFirstAsUsed(values, usedKeys);
-    System.out.println("SOLUTION:");
-    System.out.println("=======================");
-    for(int i = length - 1; i >= 1; i--){
-      char key = word[i];
-      char value = getElem(keys, values, usedKeys, word[i]);
-      System.out.println(key + " ---> " + value);
-      word[i - 1] = value;
-    }
-    return String.valueOf(word);
+    return solution(lines);
   }
 
-  private static void markFirstAsUsed(char[] values, boolean[] usedKeys){
-    int length = values.length;
-    for(int i = 0; i <= length - 1; i++){
-      if(values[i] == EOL){
-        usedKeys[i] = true;
-        return;
-      }
+  private static char[] lastCol(String[] lines){
+    int length = lines.length;
+    char[] result = new char[length];
+    int i = 0;
+    for(String line : lines){
+      result[i] = line.charAt(line.length() - 1);
+      i++;
     }
+    return result;
   }
 
-  private static char getElem(char[] keys, char[] values, boolean[] usedKeys, char key){
-    int length = keys.length;
+  private static String[] add(String[] lines, char[] symbols){
+    int length = symbols.length;
     for(int i = 0; i <= length - 1; i++){
-      if(key == keys[i] && !usedKeys[i]){
-        usedKeys[i] = true;
-        return values[i];
+      lines[i] = lines[i] + Character.toString(symbols[i]);
+    }
+    return lines;
+  }
+
+  private static String solution(String[] lines){
+    for (String line : lines){
+      if(line.endsWith(EOL)){
+        return line;
       }
     }
-    return (char)0; // never happens
+    return EMPTY; // never happens
   }
+
 
   static String encode(String data){
     int length = data.length();
@@ -90,9 +84,9 @@ public class Main {
       System.out.println(matrix[i]);
     }
     System.out.println("------------");
-    System.out.println(String.valueOf(result));
+    System.out.println(String.valueOf(result)  + "|");
     System.out.println("============");
-    return String.valueOf(result);
+    return (String.valueOf(result));
   }
 
   private static String rotateRight(String data){
