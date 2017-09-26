@@ -68,6 +68,7 @@ MODERATE LEVEL
 * [Array Absurdity](moderate/array-absurdity/README.md)
 * [Sudoku](moderate/sudoku/README.md)
 * [Suggest Groups](moderate/suggest-groups/README.md)
+* [Burrows-Wheeler Transform](moderate/burrows-wheeler-transform/README.md)
 
 EASY LEVEL
 ----------

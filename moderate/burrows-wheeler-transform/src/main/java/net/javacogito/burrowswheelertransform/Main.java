@@ -1,4 +1,4 @@
-package net.javacogito.burrowswhellertransform;
+package net.javacogito.burrowswheelertransform;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 public class Main {
   private static final String EMPTY = "";
-  private static final String EOL = "$";
+  private static final char EOL = '$';
 
   public static void main(String[] args) throws IOException {
     File file = new File(args[0]);
@@ -27,40 +27,71 @@ public class Main {
 
   static String decode(char[] symbols){
     int length = symbols.length;
-    String[] lines = new String[length];
-    Arrays.fill(lines, EMPTY);
-    lines = add(lines, symbols);
+    char[][] lines = new char[length][length];
+    add(lines, symbols, 0);
     for(int i = 1; i <= length - 1; i++){
-      String[] sortedLines = Arrays.copyOf(lines, length);
-      Arrays.sort(sortedLines);
-      lines = add(lines, lastCol(sortedLines));
+      char[][] sortedLines = Arrays.copyOf(lines, length);
+      sort(sortedLines);
+      add(lines, lastCol(sortedLines, i - 1), i);
     }
     return solution(lines);
   }
 
-  private static char[] lastCol(String[] lines){
+  private static void sort(char[][] lines){
+    boolean hasSwitch = true;
+    int length = lines.length;
+    while (hasSwitch){
+      hasSwitch = false;
+      for(int i = 0; i <= length - 2; i++){
+        if(compare(lines[i], lines[i + 1]) > 0){
+          switchLines(lines, i, i + 1);
+          hasSwitch = true;
+        }
+      }
+    }
+  }
+
+
+  private static void switchLines(char[][] lines, int row1, int row2){
+    char[] temp = lines[row2];
+    lines[row2] = lines[row1];
+    lines[row1] = temp;
+  }
+
+  private static int compare(char[] line1, char[] line2){
+    if (line1[0] < line2[0]){
+      return -1;
+    }
+    if (line1[0] > line2[0]){
+      return 1;
+    }
+    return 0;
+  }
+
+
+  private static char[] lastCol(char[][] lines, int col){
     int length = lines.length;
     char[] result = new char[length];
     int i = 0;
-    for(String line : lines){
-      result[i] = line.charAt(line.length() - 1);
+    for(char[] line : lines){
+      result[i] = line[col];
       i++;
     }
     return result;
   }
 
-  private static String[] add(String[] lines, char[] symbols){
+  private static void add(char[][] lines, char[] symbols, int col){
     int length = symbols.length;
     for(int i = 0; i <= length - 1; i++){
-      lines[i] = lines[i] + Character.toString(symbols[i]);
+      lines[i][col] = symbols[i] ;
     }
-    return lines;
   }
 
-  private static String solution(String[] lines){
-    for (String line : lines){
-      if(line.endsWith(EOL)){
-        return line;
+  private static String solution(char[][] lines){
+    int length = lines.length;
+    for (char[] line : lines){
+      if(line[length - 1] == EOL){
+        return new String(line);
       }
     }
     return EMPTY; // never happens
@@ -71,21 +102,14 @@ public class Main {
     int length = data.length();
     String[] matrix = new String[length];
     matrix[0] = data;
-    System.out.println(matrix[0]);
     for(int i = 1; i <= length - 1; i++){
       matrix[i] = rotateRight(matrix[i - 1]);
-      System.out.println(matrix[i]);
     }
     Arrays.sort(matrix);
-    System.out.println("------------");
     char[] result = new char[length];
     for(int i = 0; i <= length - 1; i++) {
       result[i] = matrix[i].charAt(length - 1);
-      System.out.println(matrix[i]);
     }
-    System.out.println("------------");
-    System.out.println(String.valueOf(result)  + "|");
-    System.out.println("============");
     return (String.valueOf(result));
   }
 
