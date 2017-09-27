@@ -66,6 +66,7 @@
     <module>sudoku</module>
     <module>suggest-groups</module>
     <module>burrows-wheeler-transform</module>
+    <module>gronsfeld-cipher</module>
   </modules>
 
 </project>
