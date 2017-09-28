@@ -69,6 +69,7 @@ MODERATE LEVEL
 * [Sudoku](moderate/sudoku/README.md)
 * [Suggest Groups](moderate/suggest-groups/README.md)
 * [Burrows-Wheeler Transform](moderate/burrows-wheeler-transform/README.md)
+* [Gronsfeld Cipher](moderate/gronsfeld-cipher/README.md)
 
 EASY LEVEL
 ----------
