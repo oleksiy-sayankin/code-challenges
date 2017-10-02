@@ -16,22 +16,65 @@ public class Main {
     String inputLine;
     while ((inputLine = buffer.readLine()) != null) {
       if (!EMPTY.equals(inputLine.trim())) {
-        System.out.println();
+        System.out.println(decrypt(parseKey(inputLine), parseMessage(inputLine)));
       }
     }
   }
 
-  static String encrypt(int[] key, String message){
-    return "";
+  private static String parseKey(String data){
+    return data.split(";")[0];
+  }
+
+  private static String parseMessage(String data){
+    return data.split(";")[1];
+  }
+
+  static String decrypt(String smallKey, String message){
+    int messageLength =  message.length();
+    int[] fullKey = buildFullKey(smallKey, messageLength);
+    StringBuilder sb =  new StringBuilder();
+    for(int i = 0; i <= messageLength - 1; i++){
+      sb.append(shift(message.charAt(i), -fullKey[i]));
+    }
+    return sb.toString();
+  }
+
+
+  static String encrypt(String smallKey, String message){
+    int messageLength =  message.length();
+    int[] fullKey = buildFullKey(smallKey, messageLength);
+    StringBuilder sb =  new StringBuilder();
+    for(int i = 0; i <= messageLength - 1; i++){
+      sb.append(shift(message.charAt(i), fullKey[i]));
+    }
+    return sb.toString();
+  }
+
+  static int[] buildFullKey(String smallKey, int messageLength){
+    StringBuilder sb = new StringBuilder();
+    while (sb.length() < messageLength){
+      sb.append(smallKey);
+    }
+    String rawKey = sb.toString().substring(0, messageLength);
+    int[] result = new int[messageLength];
+    for(int i = 0; i <= messageLength - 1; i++){
+      result[i] = rawKey.charAt(i) - '0';
+    }
+    return result;
   }
 
   static char shift(char symbol, int shift){
     int index = indexOf(symbol);
     int resultIndex = index + shift;
-    if(index + shift <= ALPHABET_LENGTH - 1){
+    if(resultIndex >= 0 && resultIndex <= ALPHABET_LENGTH - 1){
       return ALPHABET[resultIndex];
     }
-    resultIndex = resultIndex - ALPHABET_LENGTH;
+    if(resultIndex > ALPHABET_LENGTH){
+      resultIndex = resultIndex - ALPHABET_LENGTH;
+    }
+    if(resultIndex < 0){
+      resultIndex = ALPHABET_LENGTH + resultIndex;
+    }
     return ALPHABET[resultIndex];
   }
 
