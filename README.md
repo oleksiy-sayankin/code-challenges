@@ -70,6 +70,7 @@ MODERATE LEVEL
 * [Suggest Groups](moderate/suggest-groups/README.md)
 * [Burrows-Wheeler Transform](moderate/burrows-wheeler-transform/README.md)
 * [Gronsfeld Cipher](moderate/gronsfeld-cipher/README.md)
+* [Meet Comb Sort](moderate/meet-comb-sort/README.md)
 
 EASY LEVEL
 ----------

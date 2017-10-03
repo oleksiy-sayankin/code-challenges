@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
 
 public class Main {
 
@@ -33,27 +32,22 @@ public class Main {
   }
 
   private static int combSort(int[] numbers) {
-    System.out.println("init = " + Arrays.toString(numbers));
+    double decreaseFactor = 1.25;
     int length = numbers.length;
     int numIterations = 0;
-    for (int range = length - 1; range >= 1; range--) {
-      if (isSortedAsc(numbers)) {
-        break;
-      }
+    int range = length;
+    while (!isSortedAsc(numbers)) {
+      range = (int)Math.floor(((double) range) / decreaseFactor);
       numIterations++;
-      System.out.print("range = " + range + ".");
       for (int i = 0; i <= length - range - 1; i++) {
         int first = numbers[i];
         int second = numbers[i + range];
         if (first > second) {
           numbers[i] = second;
           numbers[i + range] = first;
-          System.out.print(" exchange: " + first + " <--> " + second + "!");
         }
       }
-      System.out.println();
     }
-    System.out.println("sorted = " + Arrays.toString(numbers));
     return numIterations;
   }
 
