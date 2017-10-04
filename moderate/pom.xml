@@ -68,6 +68,7 @@
     <module>burrows-wheeler-transform</module>
     <module>gronsfeld-cipher</module>
     <module>meet-comb-sort</module>
+    <module>lowest-common-ancestor</module>
   </modules>
 
 </project>
