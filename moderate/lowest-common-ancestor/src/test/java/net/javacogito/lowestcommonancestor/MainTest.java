@@ -59,12 +59,27 @@ public class MainTest {
 
   @Test
   public void lowestCommonAncestorTest(){
-//    Assert.assertEquals("30", Main.lowestCommonAncestor(Main.getNodeById("8"), Main.getNodeById("20")).toString());
-//    Assert.assertEquals("30", Main.lowestCommonAncestor(Main.getNodeById("8"), Main.getNodeById("52")).toString());
-//    Assert.assertEquals("8", Main.lowestCommonAncestor(Main.getNodeById("3"), Main.getNodeById("29")).toString());
-//    Assert.assertEquals("30", Main.lowestCommonAncestor(Main.getNodeById("29"), Main.getNodeById("8")).toString());
-//    Assert.assertEquals("20", Main.lowestCommonAncestor(Main.getNodeById("10"), Main.getNodeById("29")).toString());
+    Assert.assertEquals("30", Main.lowestCommonAncestor(Main.getNodeById("8"), Main.getNodeById("20")).toString());
+    Assert.assertEquals("30", Main.lowestCommonAncestor(Main.getNodeById("8"), Main.getNodeById("52")).toString());
+    Assert.assertEquals("30", Main.lowestCommonAncestor(Main.getNodeById("3"), Main.getNodeById("52")).toString());
+    Assert.assertEquals("30", Main.lowestCommonAncestor(Main.getNodeById("20"), Main.getNodeById("52")).toString());
+    Assert.assertEquals("30", Main.lowestCommonAncestor(Main.getNodeById("10"), Main.getNodeById("52")).toString());
+    Assert.assertEquals("30", Main.lowestCommonAncestor(Main.getNodeById("29"), Main.getNodeById("52")).toString());
+    Assert.assertEquals("8", Main.lowestCommonAncestor(Main.getNodeById("3"), Main.getNodeById("29")).toString());
+    Assert.assertEquals("8", Main.lowestCommonAncestor(Main.getNodeById("3"), Main.getNodeById("20")).toString());
+    Assert.assertEquals("8", Main.lowestCommonAncestor(Main.getNodeById("20"), Main.getNodeById("3")).toString());
+    Assert.assertEquals("30", Main.lowestCommonAncestor(Main.getNodeById("8"), Main.getNodeById("3")).toString());
+    Assert.assertEquals("30", Main.lowestCommonAncestor(Main.getNodeById("8"), Main.getNodeById("10")).toString());
+    Assert.assertEquals("30", Main.lowestCommonAncestor(Main.getNodeById("8"), Main.getNodeById("29")).toString());
+    Assert.assertEquals("30", Main.lowestCommonAncestor(Main.getNodeById("29"), Main.getNodeById("8")).toString());
+    Assert.assertEquals("20", Main.lowestCommonAncestor(Main.getNodeById("10"), Main.getNodeById("29")).toString());
     Assert.assertEquals("30", Main.lowestCommonAncestor(Main.getNodeById("8"), Main.getNodeById("30")).toString());
-    System.out.println();
+    Assert.assertEquals("30", Main.lowestCommonAncestor(Main.getNodeById("8"), Main.getNodeById("8")).toString());
+    Assert.assertEquals("20", Main.lowestCommonAncestor(Main.getNodeById("29"), Main.getNodeById("29")).toString());
+    Assert.assertEquals("8", Main.lowestCommonAncestor(Main.getNodeById("3"), Main.getNodeById("3")).toString());
+    Assert.assertEquals("8", Main.lowestCommonAncestor(Main.getNodeById("20"), Main.getNodeById("20")).toString());
+    Assert.assertEquals("30", Main.lowestCommonAncestor(Main.getNodeById("10"), Main.getNodeById("30")).toString());
+    Assert.assertEquals("30", Main.lowestCommonAncestor(Main.getNodeById("30"), Main.getNodeById("30")).toString());
+    Assert.assertEquals("20", Main.lowestCommonAncestor(Main.getNodeById("10"), Main.getNodeById("10")).toString());
   }
 }
