@@ -69,6 +69,7 @@
     <module>gronsfeld-cipher</module>
     <module>meet-comb-sort</module>
     <module>lowest-common-ancestor</module>
+    <module>cash-register</module>
   </modules>
 
 </project>
