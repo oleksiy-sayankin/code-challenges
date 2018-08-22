@@ -83,5 +83,6 @@
     <module>not-so-clever</module>
     <module>football</module>
     <module>real-fake</module>
+    <module>distinct-words</module>
   </modules>
 </project>

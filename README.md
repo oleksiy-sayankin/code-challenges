@@ -142,3 +142,4 @@ EASY LEVEL
 * [Not So Clever](easy/not-so-clever/README.md)
 * [Football](easy/football/README.md)
 * [Real Fake](easy/real-fake/README.md)
+* [Distinct Words](easy/distinct-words/README.md)
