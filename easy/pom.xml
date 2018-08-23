@@ -85,5 +85,6 @@
     <module>real-fake</module>
     <module>distinct-words</module>
     <module>array-into-collection</module>
+    <module>synchronization</module>
   </modules>
 </project>
