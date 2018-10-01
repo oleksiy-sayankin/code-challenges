@@ -86,5 +86,6 @@
     <module>distinct-words</module>
     <module>array-into-collection</module>
     <module>synchronization</module>
+    <module>mysql-connector</module>
   </modules>
 </project>

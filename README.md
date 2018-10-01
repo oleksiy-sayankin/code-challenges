@@ -145,3 +145,4 @@ EASY LEVEL
 * [Distinct Words](easy/distinct-words/README.md)
 * [Array into collection](easy/array-into-collection/README.md)
 * [Synchronization](easy/synchronization/README.md)
+* [My SQL Connector](easy/mysql-connector/README.md)
