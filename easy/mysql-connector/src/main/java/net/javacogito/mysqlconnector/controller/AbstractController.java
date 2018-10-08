@@ -1,5 +1,6 @@
 package net.javacogito.mysqlconnector.controller;
 
+import net.javacogito.mysqlconnector.connection.BasicConnectionPool;
 import net.javacogito.mysqlconnector.connection.ConnectionPool;
 
 import java.sql.Connection;
@@ -14,55 +15,21 @@ import java.util.List;
  * @param <K> Type of the primary key
  */
 
-public abstract class AbstractController<E, K> {
+public abstract class AbstractController<E, K> implements Controller<E, K>{
   private Connection connection;
   private ConnectionPool connectionPool;
 
   public AbstractController() {
-    connectionPool = ConnectionPool.getConnectionPool();
+    connectionPool = BasicConnectionPool.create("", "", "", "");
     connection = connectionPool.getConnection();
   }
-
-  /**
-   * Returns all elements as list. Executes SELECT * FROM entity.
-   * @return list of all elements
-   */
-  public abstract List<E> getAll();
-
-  /**
-   * Updates an entity.
-   * @param entity entity to update.
-   * @return
-   */
-  public abstract void update(E entity);
-
-  /**
-   * Returns entity by it id, usually primary key.
-   * @param id Id of entity
-   * @return result entity.
-   */
-  public abstract E getEntityById(K id);
-
-  /**
-   * Deletes entity by id.
-   * @param id Id of entirty to delete
-   * @return true of deletion completes successfully.
-   */
-  public abstract boolean delete(K id);
-
-  /**
-   * Creates new entity.
-   * @param entity Entity to create.
-   * @return true of createn completes successfully.
-   */
-  public abstract boolean create(E entity);
 
   /**
    * After connection has been used we return it into pool to be available for other requests.
    */
 
   public void returnConnectionInPool() {
-    connectionPool.returnConnection(connection);
+    connectionPool.releaseConnection(connection);
   }
 
   /**

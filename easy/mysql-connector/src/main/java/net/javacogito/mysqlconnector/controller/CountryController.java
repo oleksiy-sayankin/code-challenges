@@ -14,6 +14,7 @@ public class CountryController extends AbstractController <Country, Integer> {
   public static final String DELETE_COUNTRY = "DELETE FROM country WHERE id = ?";
   public static final String SELECT_COUNTRY_BY_ID = "SELECT * FROM country WHERE id = ?";
   public static final String UPDATE_COUNTRY_BY_ID = "UPDATE country SET name = ? WHERE id = ?";
+  public static final String CREATE_COUNTRY = "CREATE TABLE country (id INT PRIMARY KEY, name VARCHAR(100))";
   
   @Override public List<Country> getAll() {
     List<Country> countries = new LinkedList<>();
@@ -80,7 +81,7 @@ public class CountryController extends AbstractController <Country, Integer> {
     return true;
   }
 
-  @Override public boolean create(Country entity)  {
+  @Override public boolean insert(Country entity)  {
     PreparedStatement ps = getPrepareStatement(INSERT_COUNTRY);
     try {
       ps.setInt(1, entity.getId());
@@ -92,6 +93,19 @@ public class CountryController extends AbstractController <Country, Integer> {
     finally {
     closePrepareStatement(ps);
   }
+    return true;
+  }
+
+  @Override public boolean create() {
+    PreparedStatement ps = getPrepareStatement(CREATE_COUNTRY);
+    try {
+      ps.executeUpdate();
+    } catch (SQLException e) {
+      return false;
+    }
+    finally {
+      closePrepareStatement(ps);
+    }
     return true;
   }
 }
