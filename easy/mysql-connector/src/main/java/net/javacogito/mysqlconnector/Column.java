@@ -1,9 +1,9 @@
 package net.javacogito.mysqlconnector;
 
-final class Column {
-  final String name;
-  final Types type;
-  Column(String name, Types type){
+public final class Column {
+  public final String name;
+  public final Types type;
+  public Column(String name, Types type){
     this.name = name;
     this.type = type;
   }

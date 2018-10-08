@@ -13,11 +13,22 @@
   <name>mysql-connector</name>
   <url>http://javacogito.net</url>
 
+  <properties>
+    <mysql.connector.version>8.0.12</mysql.connector.version>
+    <h2.database.version>1.4.197</h2.database.version>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
-      <version>8.0.12</version>
+      <version>${mysql.connector.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <version>${h2.database.version}</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 

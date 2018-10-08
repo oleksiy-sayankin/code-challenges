@@ -1,5 +1,7 @@
 package net.javacogito.mysqlconnector;
 
+import net.javacogito.mysqlconnector.entity.Employee;
+
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -10,7 +12,7 @@ import static net.javacogito.mysqlconnector.MySqlUtil.getConnection;
 
 public class Main {
   public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
-    printFromTable("localhost", "testdb", "root", "123456", new Employee());
+    // TODO : reimplement
   }
 
   private static void printFromTable(String host, String dataBase, String user, String password, Table table)
