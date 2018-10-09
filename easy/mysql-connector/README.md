@@ -1,5 +1,5 @@
-Multiplication Tables
-=====================
+MySQL Connector
+===============
 
 Challenge Description:
 ----------------------
