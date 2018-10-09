@@ -5,6 +5,22 @@ It consists of several code challenges each in separate folder.
 Every code challenge has its own description. 
 List of solved code challenges:
 
+JAVA CORE AND JAVA EE
+=====================
+
+MODERATE LEVEL
+--------------
+* [My SQL Connector](easy/mysql-connector/README.md)
+
+EASY LEVEL
+----------
+* [Synchronization](easy/synchronization/README.md)
+
+
+
+ALGORITHMS
+==========
+
 HARD LEVEL
 ----------
 * [The Labyrinth 1](hard/labyrinth/README.md)
@@ -144,5 +160,3 @@ EASY LEVEL
 * [Real Fake](easy/real-fake/README.md)
 * [Distinct Words](easy/distinct-words/README.md)
 * [Array into collection](easy/array-into-collection/README.md)
-* [Synchronization](easy/synchronization/README.md)
-* [My SQL Connector](easy/mysql-connector/README.md)
