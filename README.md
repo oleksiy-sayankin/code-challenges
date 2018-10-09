@@ -5,23 +5,22 @@ It consists of several code challenges each in separate folder.
 Every code challenge has its own description. 
 List of solved code challenges:
 
-JAVA CORE AND JAVA EE
+Java core and Java EE
 =====================
 
-MODERATE LEVEL
+Moderate level
 --------------
 * [My SQL Connector](easy/mysql-connector/README.md)
 
-EASY LEVEL
+Easy level
 ----------
 * [Synchronization](easy/synchronization/README.md)
 
 
-
-ALGORITHMS
+Algorithms
 ==========
 
-HARD LEVEL
+Hard level
 ----------
 * [The Labyrinth 1](hard/labyrinth/README.md)
 * [The Labyrinth 2](hard/labyrinth2/README.md)
@@ -29,7 +28,7 @@ HARD LEVEL
 * [Deep forest](hard/deepforest/README.md)
 
 
-MODERATE LEVEL
+Moderate level
 --------------
 * [Lucky Tickets](moderate/lucky-tickets/README.md)
 * [Longest Lines](moderate/longest-lines/README.md)
@@ -88,7 +87,7 @@ MODERATE LEVEL
 * [Gronsfeld Cipher](moderate/gronsfeld-cipher/README.md)
 * [Meet Comb Sort](moderate/meet-comb-sort/README.md)
 
-EASY LEVEL
+Easy level
 ----------
 * [Prime Palindrome](easy/prime-palindrome/README.md)
 * [Fizz Buzz](easy/fizz-buzz/README.md)

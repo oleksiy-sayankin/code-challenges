@@ -5,7 +5,7 @@ import java.util.Objects;
 /**
  * Basic lass for 'country' table. Represents a single row.
  */
-public class Country {
+public final class Country {
   private int id;
   private String name;
 

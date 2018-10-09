@@ -1,6 +1,6 @@
 package net.javacogito.mysqlconnector.entity;
 
-public class Order {
+public final class Order {
   private int id;
   private int customerId;
   private int productId;

@@ -1,6 +1,6 @@
 package net.javacogito.mysqlconnector.entity;
 
-public class EmployeeMail {
+public final class EmployeeMail {
   private int id;
   private int employeeId;
   private String email;
