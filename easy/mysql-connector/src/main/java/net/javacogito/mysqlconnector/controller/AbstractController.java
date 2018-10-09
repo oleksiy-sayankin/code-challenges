@@ -6,7 +6,6 @@ import net.javacogito.mysqlconnector.connection.ConnectionPool;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.List;
 
 /**
  * Basic class for all controllers.
@@ -15,7 +14,7 @@ import java.util.List;
  * @param <K> Type of the primary key
  */
 
-public abstract class AbstractController<E, K> implements Controller<E, K>{
+public abstract class AbstractController<E, K> implements Controller<E, K> {
   private Connection connection;
   private ConnectionPool connectionPool;
 
@@ -46,7 +45,6 @@ public abstract class AbstractController<E, K> implements Controller<E, K>{
     } catch (SQLException e) {
       e.printStackTrace();
     }
-
     return ps;
   }
 

@@ -8,14 +8,19 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
-public class CountryController extends AbstractController <Country, Integer> {
+/**
+ * Implementation for table 'country' controller.
+ * Contains basic CRUD operations for table 'country'.
+ */
+
+public class CountryController extends AbstractController<Country, Integer> {
   public static final String SELECT_ALL_COUNTRIES = "SELECT * FROM country";
   public static final String INSERT_COUNTRY = "INSERT INTO country VALUES (?, ?)";
   public static final String DELETE_COUNTRY = "DELETE FROM country WHERE id = ?";
   public static final String SELECT_COUNTRY_BY_ID = "SELECT * FROM country WHERE id = ?";
   public static final String UPDATE_COUNTRY_BY_ID = "UPDATE country SET name = ? WHERE id = ?";
   public static final String CREATE_COUNTRY = "CREATE TABLE country (id INT PRIMARY KEY, name VARCHAR(100))";
-  
+
   @Override public List<Country> getAll() {
     List<Country> countries = new LinkedList<>();
     PreparedStatement ps = getPrepareStatement(SELECT_ALL_COUNTRIES);
@@ -32,7 +37,6 @@ public class CountryController extends AbstractController <Country, Integer> {
     } finally {
       closePrepareStatement(ps);
     }
-
     return countries;
   }
 
@@ -43,8 +47,7 @@ public class CountryController extends AbstractController <Country, Integer> {
       ps.setInt(2, entity.getId());
       ps.executeUpdate();
     } catch (SQLException e) {
-    }
-    finally {
+    } finally {
       closePrepareStatement(ps);
     }
   }
@@ -74,14 +77,13 @@ public class CountryController extends AbstractController <Country, Integer> {
       ps.executeUpdate();
     } catch (SQLException e) {
       return false;
-    }
-    finally {
+    } finally {
       closePrepareStatement(ps);
     }
     return true;
   }
 
-  @Override public boolean insert(Country entity)  {
+  @Override public boolean insert(Country entity) {
     PreparedStatement ps = getPrepareStatement(INSERT_COUNTRY);
     try {
       ps.setInt(1, entity.getId());
@@ -89,10 +91,9 @@ public class CountryController extends AbstractController <Country, Integer> {
       ps.executeUpdate();
     } catch (SQLException e) {
       return false;
+    } finally {
+      closePrepareStatement(ps);
     }
-    finally {
-    closePrepareStatement(ps);
-  }
     return true;
   }
 
@@ -102,8 +103,7 @@ public class CountryController extends AbstractController <Country, Integer> {
       ps.executeUpdate();
     } catch (SQLException e) {
       return false;
-    }
-    finally {
+    } finally {
       closePrepareStatement(ps);
     }
     return true;
