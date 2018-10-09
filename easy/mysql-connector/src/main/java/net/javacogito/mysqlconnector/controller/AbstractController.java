@@ -2,6 +2,7 @@ package net.javacogito.mysqlconnector.controller;
 
 import net.javacogito.mysqlconnector.connection.BasicConnectionPool;
 import net.javacogito.mysqlconnector.connection.ConnectionPool;
+import net.javacogito.mysqlconnector.context.EnvContext;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,7 +20,7 @@ public abstract class AbstractController<E, K> implements Controller<E, K> {
   private ConnectionPool connectionPool;
 
   public AbstractController() {
-    connectionPool = BasicConnectionPool.create("", "", "", "");
+    connectionPool = BasicConnectionPool.create(new EnvContext());
     connection = connectionPool.getConnection();
   }
 

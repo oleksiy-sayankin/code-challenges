@@ -1,5 +1,7 @@
 package net.javacogito.mysqlconnector.connection;
 
+import net.javacogito.mysqlconnector.context.Context;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -55,19 +57,16 @@ public final class BasicConnectionPool implements ConnectionPool {
 
   /**
    * Creates pool of connection with size equal to INITIAL_POOL_SIZE.
-   * @param dbUrl URL for JDBC connection
-   * @param dbDriver JDBC driver
-   * @param dbUser JDBC user
-   * @param dbPassword JDBC password
+   * @param context context with JDBC parameters
    * @return connection pool
    */
 
-  public static ConnectionPool create(String dbUrl, String dbDriver, String dbUser, String dbPassword) {
+  public static ConnectionPool create(Context context) {
     List<Connection> pool = new ArrayList<>(INITIAL_POOL_SIZE);
     for (int i = 0; i < INITIAL_POOL_SIZE; i++) {
-      pool.add(createConnection(dbUrl, dbDriver, dbUser, dbPassword));
+      pool.add(createConnection(context.getDbUrl(), context.getDbDriver(), context.getDbUser(), context.getDbPassword()));
     }
-    return new BasicConnectionPool(dbUrl, dbDriver, dbUser, dbPassword, pool);
+    return new BasicConnectionPool(context.getDbUrl(), context.getDbDriver(), context.getDbUser(), context.getDbPassword(), pool);
   }
 
   /**

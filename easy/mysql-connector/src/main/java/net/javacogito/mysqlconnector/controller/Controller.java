@@ -12,6 +12,7 @@ import java.util.List;
 public interface Controller<E, K> {
   /**
    * Returns all elements as list. Executes SELECT * FROM entity.
+   *
    * @return list of all elements
    */
   List<E> getAll();
@@ -21,10 +22,10 @@ public interface Controller<E, K> {
    *
    * @param entity entity to update.
    */
-  void update(E entity);
+  boolean update(E entity);
 
   /**
-   * Returns entity by it id, usually primary key.
+   * Returns entity by it's id, usually primary key.
    *
    * @param id Id of entity
    * @return result entity.
@@ -49,6 +50,15 @@ public interface Controller<E, K> {
 
   /**
    * Creates table for entity.
+   *
+   * @return true if creation is successful
    */
   boolean create();
+
+  /**
+   * Drops table with entity.
+   *
+   * @return true if deletion is successful
+   */
+  boolean drop();
 }

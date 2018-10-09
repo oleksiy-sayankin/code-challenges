@@ -14,8 +14,9 @@
   <url>http://javacogito.net</url>
 
   <properties>
-    <mysql.connector.version>8.0.12</mysql.connector.version>
+    <mysql.connector.version>5.1.9</mysql.connector.version>
     <h2.database.version>1.4.197</h2.database.version>
+    <maven.surefire.plugin.version>2.22.0</maven.surefire.plugin.version>
   </properties>
 
   <dependencies>
@@ -32,4 +33,21 @@
     </dependency>
   </dependencies>
 
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+           <version>${maven.surefire.plugin.version}</version>
+            <configuration>
+              <environmentVariables>
+                <DB_DRIVER>org.h2.Driver</DB_DRIVER>
+                <DB_URL>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1</DB_URL>
+                <DB_USER></DB_USER>
+                <DB_PASSWORD></DB_PASSWORD>
+              </environmentVariables>
+            </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
