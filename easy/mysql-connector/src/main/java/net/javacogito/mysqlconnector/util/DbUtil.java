@@ -7,7 +7,7 @@ import net.javacogito.mysqlconnector.controller.*;
  */
 public final class DbUtil {
   private static final Controller[] CONTROLLERS = {new CountryController(), new CustomerController(), new DepartmentController(),
-  new EmployeeController() };
+  new EmployeeController(), new EmployeeEmailController() };
   private DbUtil(){}
 
   /**
