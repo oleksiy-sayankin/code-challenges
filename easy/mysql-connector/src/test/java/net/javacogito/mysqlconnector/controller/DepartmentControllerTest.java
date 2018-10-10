@@ -20,7 +20,7 @@ public class DepartmentControllerTest {
     controller.drop();
   }
 
-  @Test public void insertDepartmentTest() {
+  @Test public void insertTest() {
     Department department = new Department();
 
     List<Department> departments = controller.getAll();
@@ -52,7 +52,7 @@ public class DepartmentControllerTest {
     Assert.assertEquals(department, controller.getEntityById(2));
   }
 
-  @Test public void deleteDepartmentTest() {
+  @Test public void deleteTest() {
     Department department = new Department();
 
     Assert.assertTrue(controller.delete(2));

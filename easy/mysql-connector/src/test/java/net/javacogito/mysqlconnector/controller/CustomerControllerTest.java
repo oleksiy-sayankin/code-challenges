@@ -20,7 +20,7 @@ public class CustomerControllerTest {
     controller.drop();
   }
 
-  @Test public void insertCustomerTest() {
+  @Test public void insertTest() {
     Customer customer = new Customer();
 
     List<Customer> countries = controller.getAll();
@@ -62,7 +62,7 @@ public class CustomerControllerTest {
     Assert.assertEquals(customer, controller.getEntityById(2));
   }
 
-  @Test public void deleteCustomerTest() {
+  @Test public void deleteTest() {
     Customer customer = new Customer();
 
     Assert.assertTrue(controller.delete(2));

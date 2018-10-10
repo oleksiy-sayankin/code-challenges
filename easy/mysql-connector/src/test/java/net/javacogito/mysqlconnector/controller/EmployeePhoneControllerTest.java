@@ -56,7 +56,7 @@ public class EmployeePhoneControllerTest {
     Assert.assertEquals(employeePhone, controller.getEntityById(2));
   }
 
-  @Test public void deleteEmployeePhoneTest() {
+  @Test public void deleteTest() {
     EmployeePhone employeePhone = new EmployeePhone();
 
     Assert.assertTrue(controller.delete(2));

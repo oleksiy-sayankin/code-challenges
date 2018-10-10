@@ -20,7 +20,7 @@ public class EmployeeControllerTest {
     controller.drop();
   }
 
-  @Test public void insertEmployeeTest() {
+  @Test public void insertTest() {
     Employee employee = new Employee();
 
     List<Employee> employees = controller.getAll();
@@ -77,7 +77,7 @@ public class EmployeeControllerTest {
     Assert.assertEquals(employee, controller.getEntityById(2));
   }
 
-  @Test public void deleteEmployeeTest() {
+  @Test public void deleteTest() {
     Employee employee = new Employee();
 
     Assert.assertTrue(controller.delete(2));
