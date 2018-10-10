@@ -1,15 +1,13 @@
 package net.javacogito.mysqlconnector.util;
 
-import net.javacogito.mysqlconnector.controller.Controller;
-import net.javacogito.mysqlconnector.controller.CountryController;
-import net.javacogito.mysqlconnector.controller.CustomerController;
-import net.javacogito.mysqlconnector.controller.DepartmentController;
+import net.javacogito.mysqlconnector.controller.*;
 
 /**
  * Utility class to create / drop all tables in DB.
  */
 public final class DbUtil {
-  private static final Controller[] CONTROLLERS = {new CountryController(), new CustomerController(), new DepartmentController() };
+  private static final Controller[] CONTROLLERS = {new CountryController(), new CustomerController(), new DepartmentController(),
+  new EmployeeController() };
   private DbUtil(){}
 
   /**

@@ -81,7 +81,6 @@ public class CustomerControllerTest {
     Customer customer = new Customer();
 
     customer.setId(2);
-    customer.setId(2);
     customer.setCompany("MicroSoft");
     customer.setAddress("USA, Los Angeles, 2549  Southside Lane");
     customer.setCountryId(1);
