@@ -15,7 +15,7 @@ import java.util.List;
 
 public class CustomerController extends AbstractController<Customer, Integer> {
   public static final String SELECT_ALL_CUSTOMERS = "SELECT * FROM customer";
-  public static final String INSERT_CUSTOMER = "INSERT INTO customer VALUES (?, ?, ?, ?, ?)";
+  public static final String INSERT_CUSTOMER = "INSERT INTO customer VALUES (?, ?, ?, ?)";
   public static final String DELETE_CUSTOMER = "DELETE FROM customer WHERE id = ?";
   public static final String SELECT_CUSTOMER_BY_ID = "SELECT * FROM customer WHERE id = ?";
   public static final String UPDATE_CUSTOMER_BY_ID = "UPDATE customer SET company = ?, address = ?, country_id = ? WHERE id = ?";

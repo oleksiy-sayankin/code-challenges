@@ -11,34 +11,65 @@ public final class Customer {
   private String address;
   private int countryId;
 
+  /**
+   * Gets id.
+   * @return id
+   */
   public int getId() {
     return id;
   }
+
+  /**
+   * Sets id.
+   * @param id primary key
+   */
 
   public void setId(int id) {
     this.id = id;
   }
 
+  /**
+   * Gets company.
+   * @return company
+   */
   public String getCompany() {
     return company;
   }
 
+  /**
+   * Sets company.
+   */
   public void setCompany(String company) {
     this.company = company;
   }
 
+  /**
+   * Gets address.
+   * @return address.
+   */
   public String getAddress() {
     return address;
   }
 
+  /**
+   * Sets address.
+   */
   public void setAddress(String address) {
     this.address = address;
   }
 
+
+  /**
+   * Gets country Id.
+   * @return address.
+   */
   public int getCountryId() {
     return countryId;
   }
 
+  /**
+   * Sets country Id.
+   */
   public void setCountryId(int countryId) {
     this.countryId = countryId;
   }
