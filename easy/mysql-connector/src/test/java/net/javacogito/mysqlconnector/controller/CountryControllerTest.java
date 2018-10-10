@@ -5,40 +5,23 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
 import java.util.List;
 
 public class CountryControllerTest {
   private Controller<Country, Integer> controller;
 
-
-  @Before
-  public void init(){
-    controller = new CountryController();
-    if (!controller.create()) {
-      throw new IllegalArgumentException("Can not create table.");
-    }
+  @Before public void init() {
+    createTable();
+    insertData();
   }
 
-  @After
-  public void close(){
+  @After public void close() {
     controller.drop();
   }
 
-  @Test
-  public void insertCountryTest(){
+  @Test public void insertCountryTest() {
     Country country = new Country();
-
-    country.setId(1);
-    country.setName("Ukraine");
-    Assert.assertTrue(controller.insert(country));
-
-    country.setId(2);
-    country.setName("USA");
-    Assert.assertTrue(controller.insert(country));
-
-    country.setId(3);
-    country.setName("Great Britain");
-    Assert.assertTrue(controller.insert(country));
 
     List<Country> countries = controller.getAll();
 
@@ -61,36 +44,15 @@ public class CountryControllerTest {
     Assert.assertFalse(countries.contains(country));
   }
 
-  @Test
-  public void getEntityById(){
+  @Test public void getEntityById() {
     Country country = new Country();
-    country.setId(1);
-    country.setName("Ukraine");
-    Assert.assertTrue(controller.insert(country));
-    country.setId(2);
-    country.setName("USA");
-    Assert.assertTrue(controller.insert(country));
-    country.setId(3);
-    country.setName("Great Britain");
-    Assert.assertTrue(controller.insert(country));
-
     country.setId(2);
     country.setName("USA");
     Assert.assertEquals(country, controller.getEntityById(2));
   }
 
-  @Test
-  public void deleteCountryTest(){
+  @Test public void deleteCountryTest() {
     Country country = new Country();
-    country.setId(1);
-    country.setName("Ukraine");
-    Assert.assertTrue(controller.insert(country));
-    country.setId(2);
-    country.setName("USA");
-    Assert.assertTrue(controller.insert(country));
-    country.setId(3);
-    country.setName("Great Britain");
-    Assert.assertTrue(controller.insert(country));
 
     Assert.assertTrue(controller.delete(2));
     List<Country> countries = controller.getAll();
@@ -102,21 +64,35 @@ public class CountryControllerTest {
     Assert.assertFalse(countries.contains(country));
   }
 
-  @Test public void updateTest(){
+  @Test public void updateTest() {
     Country country = new Country();
-    country.setId(1);
-    country.setName("Ukraine");
-    Assert.assertTrue(controller.insert(country));
-    country.setId(2);
-    country.setName("USA");
-    Assert.assertTrue(controller.insert(country));
-    country.setId(3);
-    country.setName("Great Britain");
-    Assert.assertTrue(controller.insert(country));
 
     country.setId(2);
     country.setName("Russia");
     Assert.assertTrue(controller.update(country));
     Assert.assertEquals(country, controller.getEntityById(2));
+  }
+
+  private void createTable() {
+    controller = new CountryController();
+    if (!controller.create()) {
+      throw new IllegalArgumentException("Can not create table.");
+    }
+  }
+
+  private void insertData() {
+    Country country = new Country();
+
+    country.setId(1);
+    country.setName("Ukraine");
+    Assert.assertTrue(controller.insert(country));
+
+    country.setId(2);
+    country.setName("USA");
+    Assert.assertTrue(controller.insert(country));
+
+    country.setId(3);
+    country.setName("Great Britain");
+    Assert.assertTrue(controller.insert(country));
   }
 }

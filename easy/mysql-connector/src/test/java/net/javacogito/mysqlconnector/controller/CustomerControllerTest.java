@@ -11,41 +11,17 @@ import java.util.List;
 public class CustomerControllerTest {
   private Controller<Customer, Integer> controller;
 
-
-  @Before
-  public void init(){
-    controller = new CustomerController();
-    if (!controller.create()) {
-      throw new IllegalArgumentException("Can not create table.");
-    }
+  @Before public void init() {
+    createTable();
+    insertData();
   }
 
-  @After
-  public void close(){
+  @After public void close() {
     controller.drop();
   }
 
-  @Test
-  public void insertCustomerTest(){
+  @Test public void insertCustomerTest() {
     Customer customer = new Customer();
-
-    customer.setId(1);
-    customer.setCompany("IMB");
-    customer.setAddress("USA, Los Angeles, 3829  Red Maple Drive");
-    customer.setCountryId(1);
-    Assert.assertTrue(controller.insert(customer));
-
-    customer.setId(2);
-    customer.setCompany("MicroSoft");
-    customer.setAddress("USA, Los Angeles, 2549  Southside Lane");
-    customer.setCountryId(1);
-    Assert.assertTrue(controller.insert(customer));
-
-    customer.setId(3);
-    customer.setCompany("Google");
-    customer.setAddress("USA, Los Angeles, 3400  Evergreen Lane");
-    customer.setCountryId(1);
-    Assert.assertTrue(controller.insert(customer));
 
     List<Customer> countries = controller.getAll();
 
@@ -76,26 +52,8 @@ public class CustomerControllerTest {
     Assert.assertFalse(countries.contains(customer));
   }
 
-  @Test
-  public void getEntityById(){
+  @Test public void getEntityById() {
     Customer customer = new Customer();
-    customer.setId(1);
-    customer.setCompany("IMB");
-    customer.setAddress("USA, Los Angeles, 3829  Red Maple Drive");
-    customer.setCountryId(1);
-    Assert.assertTrue(controller.insert(customer));
-
-    customer.setId(2);
-    customer.setCompany("MicroSoft");
-    customer.setAddress("USA, Los Angeles, 2549  Southside Lane");
-    customer.setCountryId(1);
-    Assert.assertTrue(controller.insert(customer));
-
-    customer.setId(3);
-    customer.setCompany("Google");
-    customer.setAddress("USA, Los Angeles, 3400  Evergreen Lane");
-    customer.setCountryId(1);
-    Assert.assertTrue(controller.insert(customer));
 
     customer.setId(2);
     customer.setCompany("MicroSoft");
@@ -104,26 +62,8 @@ public class CustomerControllerTest {
     Assert.assertEquals(customer, controller.getEntityById(2));
   }
 
-  @Test
-  public void deleteCustomerTest(){
+  @Test public void deleteCustomerTest() {
     Customer customer = new Customer();
-    customer.setId(1);
-    customer.setCompany("IMB");
-    customer.setAddress("USA, Los Angeles, 3829  Red Maple Drive");
-    customer.setCountryId(1);
-    Assert.assertTrue(controller.insert(customer));
-
-    customer.setId(2);
-    customer.setCompany("MicroSoft");
-    customer.setAddress("USA, Los Angeles, 2549  Southside Lane");
-    customer.setCountryId(1);
-    Assert.assertTrue(controller.insert(customer));
-
-    customer.setId(3);
-    customer.setCompany("Google");
-    customer.setAddress("USA, Los Angeles, 3400  Evergreen Lane");
-    customer.setCountryId(1);
-    Assert.assertTrue(controller.insert(customer));
 
     Assert.assertTrue(controller.delete(2));
     List<Customer> customers = controller.getAll();
@@ -137,7 +77,26 @@ public class CustomerControllerTest {
     Assert.assertFalse(customers.contains(customer));
   }
 
-  @Test public void updateTest(){
+  @Test public void updateTest() {
+    Customer customer = new Customer();
+
+    customer.setId(2);
+    customer.setId(2);
+    customer.setCompany("MicroSoft");
+    customer.setAddress("USA, Los Angeles, 2549  Southside Lane");
+    customer.setCountryId(1);
+    Assert.assertTrue(controller.update(customer));
+    Assert.assertEquals(customer, controller.getEntityById(2));
+  }
+
+  private void createTable() {
+    controller = new CustomerController();
+    if (!controller.create()) {
+      throw new IllegalArgumentException("Can not create table.");
+    }
+  }
+
+  private void insertData() {
     Customer customer = new Customer();
     customer.setId(1);
     customer.setCompany("IMB");
@@ -156,13 +115,5 @@ public class CustomerControllerTest {
     customer.setAddress("USA, Los Angeles, 3400  Evergreen Lane");
     customer.setCountryId(1);
     Assert.assertTrue(controller.insert(customer));
-
-    customer.setId(2);
-    customer.setId(2);
-    customer.setCompany("MicroSoft");
-    customer.setAddress("USA, Los Angeles, 2549  Southside Lane");
-    customer.setCountryId(1);
-    Assert.assertTrue(controller.update(customer));
-    Assert.assertEquals(customer, controller.getEntityById(2));
   }
 }
