@@ -28,29 +28,60 @@ public final class BasicConnectionPool implements ConnectionPool {
     this.connectionPool = pool;
   }
 
+  /**
+   * Gets connection from pool
+   *
+   * @return JDBC connection object
+   */
   @Override public Connection getConnection() {
     Connection connection = connectionPool.remove(connectionPool.size() - 1);
     usedConnections.add(connection);
     return connection;
   }
 
+  /**
+   * Releases connection and puts it back to pool.
+   *
+   * @param connection connection to release
+   * @return true if connection successfully released.
+   */
   @Override public boolean releaseConnection(Connection connection) {
     connectionPool.add(connection);
     return usedConnections.remove(connection);
   }
 
+  /**
+   * Gets JDBC URL
+   *
+   * @return JDBC URL as string
+   */
   @Override public String getDbUrl() {
     return dbUrl;
   }
 
+  /**
+   * Gets JDBC user
+   *
+   * @return JDBC user as string
+   */
   @Override public String getDbUser() {
     return dbUser;
   }
 
+  /**
+   * Gets JDBC password.
+   *
+   * @return JDBC password as string
+   */
   @Override public String getDbPassword() {
     return dbPassword;
   }
 
+  /**
+   * Gets JDBC driver class name.
+   *
+   * @return JDBC driver class name as string
+   */
   @Override public String getDbDriver() {
     return dbDriver;
   }
