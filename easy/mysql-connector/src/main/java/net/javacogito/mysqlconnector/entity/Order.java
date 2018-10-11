@@ -12,34 +12,72 @@ public final class Order {
   private int productId;
   private int amount;
 
+  /**
+   * Gets id.
+   * @return id
+   */
   public int getId() {
     return id;
   }
 
+  /**
+   * Sets id.
+   * @param id primary key
+   */
   public void setId(int id) {
     this.id = id;
   }
 
+  /**
+   * Gets customer Id.
+   *
+   * @return customer Id
+   */
   public int getCustomerId() {
     return customerId;
   }
 
+  /**
+   * Sets customer Id.
+   *
+   * @param customerId customer Id
+   */
   public void setCustomerId(int customerId) {
     this.customerId = customerId;
   }
 
+  /**
+   * Gets product Id.
+   *
+   * @return product Id
+   */
   public int getProductId() {
     return productId;
   }
 
+  /**
+   * Sets product Id.
+   *
+   * @param productId product Id
+   */
   public void setProductId(int productId) {
     this.productId = productId;
   }
 
+  /**
+   * Get amount of product in the order.
+   *
+   * @return amount of product in the order
+   */
   public int getAmount() {
     return amount;
   }
 
+  /**
+   * Set amount of product in the order.
+   *
+   * @param amount amount of product in the order
+   */
   public void setAmount(int amount) {
     this.amount = amount;
   }
