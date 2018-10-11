@@ -81,9 +81,9 @@ public class OrderControllerTest {
     Order order = new Order();
 
     order.setId(2);
-    order.setCustomerId(2);
-    order.setProductId(2);
-    order.setAmount(2);
+    order.setCustomerId(20);
+    order.setProductId(20);
+    order.setAmount(20);
     Assert.assertTrue(controller.update(order));
     Assert.assertEquals(order, controller.getEntityById(2));
   }

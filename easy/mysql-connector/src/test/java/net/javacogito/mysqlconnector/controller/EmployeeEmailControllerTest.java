@@ -74,8 +74,8 @@ public class EmployeeEmailControllerTest {
     EmployeeEmail employeeEmail = new EmployeeEmail();
 
     employeeEmail.setId(2);
-    employeeEmail.setEmployeeId(2);
-    employeeEmail.setEmail("test@mail.ru");
+    employeeEmail.setEmployeeId(8);
+    employeeEmail.setEmail("update@mail.ru");
     Assert.assertTrue(controller.update(employeeEmail));
     Assert.assertEquals(employeeEmail, controller.getEntityById(2));
   }

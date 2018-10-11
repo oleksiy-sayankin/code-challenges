@@ -74,8 +74,8 @@ public class EmployeePhoneControllerTest {
     EmployeePhone employeePhone = new EmployeePhone();
 
     employeePhone.setId(2);
-    employeePhone.setEmployeeId(2);
-    employeePhone.setNumber("555-3243-22-77-554");
+    employeePhone.setEmployeeId(27);
+    employeePhone.setNumber("555-777-22-77-888");
     Assert.assertTrue(controller.update(employeePhone));
     Assert.assertEquals(employeePhone, controller.getEntityById(2));
   }
