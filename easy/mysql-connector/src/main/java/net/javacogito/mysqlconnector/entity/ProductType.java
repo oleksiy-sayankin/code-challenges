@@ -9,18 +9,38 @@ public final class ProductType {
   private int id;
   private String name;
 
+  /**
+   * Gets id.
+   *
+   * @return id
+   */
   public int getId() {
     return id;
   }
 
+  /**
+   * Sets id.
+   *
+   * @param id product type id
+   */
   public void setId(int id) {
     this.id = id;
   }
 
+  /**
+   * Gets name.
+   *
+   * @return product type name
+   */
   public String getName() {
     return name;
   }
 
+  /**
+   * Sets name.
+   *
+   * @param name product type name
+   */
   public void setName(String name) {
     this.name = name;
   }
