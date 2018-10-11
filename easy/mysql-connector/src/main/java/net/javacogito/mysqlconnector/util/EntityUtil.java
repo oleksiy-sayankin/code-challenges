@@ -1,12 +1,10 @@
 package net.javacogito.mysqlconnector.util;
 
-import net.javacogito.mysqlconnector.entity.Country;
-import net.javacogito.mysqlconnector.entity.Customer;
-import net.javacogito.mysqlconnector.entity.Department;
-import net.javacogito.mysqlconnector.entity.Employee;
+import net.javacogito.mysqlconnector.entity.*;
 
 /**
  * Class for creation an entity instances.
+ * This class does not creates entity in DB.
  */
 public final class EntityUtil {
   private EntityUtil(){}
@@ -80,5 +78,21 @@ public final class EntityUtil {
     employee.setCountryId(countryId);
     employee.setSalary(salary);
     return employee;
+  }
+
+  /**
+   * Creates employee email entity.
+   *
+   * @param id employee email id
+   * @param employeeId employee id
+   * @param email email value
+   * @return employee email entity
+   */
+  public static EmployeeEmail createEmployeeEmail(int id, int employeeId, String email){
+    EmployeeEmail employeeEmail = new EmployeeEmail();
+    employeeEmail.setId(id);
+    employeeEmail.setEmployeeId(employeeId);
+    employeeEmail.setEmail(email);
+    return employeeEmail;
   }
 }
