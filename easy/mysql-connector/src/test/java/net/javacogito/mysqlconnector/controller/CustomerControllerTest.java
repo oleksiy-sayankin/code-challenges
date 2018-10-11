@@ -8,6 +8,8 @@ import org.junit.Test;
 
 import java.util.List;
 
+import static net.javacogito.mysqlconnector.util.EntityUtil.createCustomer;
+
 public class CustomerControllerTest {
   private Controller<Customer, Integer> controller;
 
@@ -21,69 +23,27 @@ public class CustomerControllerTest {
   }
 
   @Test public void insertTest() {
-    Customer customer = new Customer();
-
     List<Customer> countries = controller.getAll();
-
     Assert.assertEquals(3, countries.size());
-
-    customer.setId(1);
-    customer.setCompany("IMB");
-    customer.setAddress("USA, Los Angeles, 3829  Red Maple Drive");
-    customer.setCountryId(1);
-    Assert.assertTrue(countries.contains(customer));
-
-    customer.setId(2);
-    customer.setCompany("MicroSoft");
-    customer.setAddress("USA, Los Angeles, 2549  Southside Lane");
-    customer.setCountryId(1);
-    Assert.assertTrue(countries.contains(customer));
-
-    customer.setId(3);
-    customer.setCompany("Google");
-    customer.setAddress("USA, Los Angeles, 3400  Evergreen Lane");
-    customer.setCountryId(1);
-    Assert.assertTrue(countries.contains(customer));
-
-    customer.setId(4);
-    customer.setCompany("No name");
-    customer.setAddress("No address");
-    customer.setCountryId(1);
-    Assert.assertFalse(countries.contains(customer));
+    Assert.assertTrue(countries.contains(createCustomer(1, "IMB", "USA, Los Angeles, 3829  Red Maple Drive", 1)));
+    Assert.assertTrue(countries.contains(createCustomer(2, "MicroSoft", "USA, Los Angeles, 2549  Southside Lane", 1)));
+    Assert.assertTrue(countries.contains(createCustomer(3, "Google", "USA, Los Angeles, 3400  Evergreen Lane", 1)));
+    Assert.assertFalse(countries.contains(createCustomer(4, "No name", "No address", 1)));
   }
 
-  @Test public void getEntityById() {
-    Customer customer = new Customer();
-
-    customer.setId(2);
-    customer.setCompany("MicroSoft");
-    customer.setAddress("USA, Los Angeles, 2549  Southside Lane");
-    customer.setCountryId(1);
-    Assert.assertEquals(customer, controller.getEntityById(2));
+  @Test public void getEntityByIdTest() {
+    Assert.assertEquals(createCustomer(2, "MicroSoft", "USA, Los Angeles, 2549  Southside Lane", 1), controller.getEntityById(2));
   }
 
   @Test public void deleteTest() {
-    Customer customer = new Customer();
-
     Assert.assertTrue(controller.delete(2));
     List<Customer> customers = controller.getAll();
-
     Assert.assertEquals(2, customers.size());
-
-    customer.setId(2);
-    customer.setCompany("MicroSoft");
-    customer.setAddress("USA, Los Angeles, 2549  Southside Lane");
-    customer.setCountryId(1);
-    Assert.assertFalse(customers.contains(customer));
+    Assert.assertFalse(customers.contains(createCustomer(2, "MicroSoft", "USA, Los Angeles, 2549  Southside Lane", 1)));
   }
 
   @Test public void updateTest() {
-    Customer customer = new Customer();
-
-    customer.setId(2);
-    customer.setCompany("Orcale");
-    customer.setAddress("USA, Los Angeles, 252  Parrill Court");
-    customer.setCountryId(1);
+    Customer customer = createCustomer(2, "Oracle", "USA, Los Angeles, 252  Parrill Court", 1);
     Assert.assertTrue(controller.update(customer));
     Assert.assertEquals(customer, controller.getEntityById(2));
   }
@@ -96,23 +56,8 @@ public class CustomerControllerTest {
   }
 
   private void insertData() {
-    Customer customer = new Customer();
-    customer.setId(1);
-    customer.setCompany("IMB");
-    customer.setAddress("USA, Los Angeles, 3829  Red Maple Drive");
-    customer.setCountryId(1);
-    Assert.assertTrue(controller.insert(customer));
-
-    customer.setId(2);
-    customer.setCompany("MicroSoft");
-    customer.setAddress("USA, Los Angeles, 2549  Southside Lane");
-    customer.setCountryId(1);
-    Assert.assertTrue(controller.insert(customer));
-
-    customer.setId(3);
-    customer.setCompany("Google");
-    customer.setAddress("USA, Los Angeles, 3400  Evergreen Lane");
-    customer.setCountryId(1);
-    Assert.assertTrue(controller.insert(customer));
+    Assert.assertTrue(controller.insert(createCustomer(1, "IMB", "USA, Los Angeles, 3829  Red Maple Drive", 1)));
+    Assert.assertTrue(controller.insert(createCustomer(2, "MicroSoft", "USA, Los Angeles, 2549  Southside Lane", 1)));
+    Assert.assertTrue(controller.insert(createCustomer(3, "Google", "USA, Los Angeles, 3400  Evergreen Lane", 1)));
   }
 }
