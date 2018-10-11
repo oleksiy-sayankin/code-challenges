@@ -13,6 +13,7 @@ public final class Customer {
 
   /**
    * Gets id.
+   *
    * @return id
    */
   public int getId() {
@@ -21,6 +22,7 @@ public final class Customer {
 
   /**
    * Sets id.
+   *
    * @param id primary key
    */
 
@@ -30,6 +32,7 @@ public final class Customer {
 
   /**
    * Gets company.
+   *
    * @return company
    */
   public String getCompany() {
@@ -45,6 +48,7 @@ public final class Customer {
 
   /**
    * Gets address.
+   *
    * @return address.
    */
   public String getAddress() {
@@ -61,6 +65,7 @@ public final class Customer {
 
   /**
    * Gets country Id.
+   *
    * @return address.
    */
   public int getCountryId() {

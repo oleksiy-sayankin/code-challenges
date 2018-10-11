@@ -11,6 +11,7 @@ public final class Country {
 
   /**
    * Gets id.
+   *
    * @return id
    */
   public int getId() {
@@ -19,6 +20,7 @@ public final class Country {
 
   /**
    * Sets id.
+   *
    * @param id primary key
    */
   public void setId(int id) {
@@ -27,6 +29,7 @@ public final class Country {
 
   /**
    * Gets name.
+   *
    * @return name
    */
   public String getName() {
@@ -35,6 +38,7 @@ public final class Country {
 
   /**
    * Sets name.
+   *
    * @param name country name.
    */
   public void setName(String name) {

@@ -105,7 +105,7 @@ public final class Order {
     sb.append(Integer.toString(customerId));
     sb.append(", ");
     sb.append("product_id=");
-    sb.append(productId);
+    sb.append(Integer.toString(productId));
     sb.append(", ");
     sb.append("amount=");
     sb.append(Integer.toString(amount));

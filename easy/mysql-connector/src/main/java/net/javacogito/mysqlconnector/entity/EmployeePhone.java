@@ -83,7 +83,7 @@ public final class EmployeePhone {
     sb.append(Integer.toString(id));
     sb.append(", ");
     sb.append("employeeId=");
-    sb.append(employeeId);
+    sb.append(Integer.toString(employeeId));
     sb.append(", ");
     sb.append("number=");
     sb.append(number);

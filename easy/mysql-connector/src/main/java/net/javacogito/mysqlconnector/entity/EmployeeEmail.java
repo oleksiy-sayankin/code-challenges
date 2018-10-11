@@ -83,7 +83,7 @@ public final class EmployeeEmail {
     sb.append(Integer.toString(id));
     sb.append(", ");
     sb.append("employeeId=");
-    sb.append(employeeId);
+    sb.append(Integer.toString(employeeId));
     sb.append(", ");
     sb.append("email=");
     sb.append(email);

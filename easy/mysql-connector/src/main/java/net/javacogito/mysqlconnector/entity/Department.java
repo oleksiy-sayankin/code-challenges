@@ -12,6 +12,7 @@ public final class Department {
 
   /**
    * Gets id.
+   *
    * @return id
    */
   public int getId() {
@@ -20,6 +21,7 @@ public final class Department {
 
   /**
    * Sets id.
+   *
    * @param id primary key
    */
   public void setId(int id) {
@@ -28,6 +30,7 @@ public final class Department {
 
   /**
    * Gets name.
+   *
    * @return name
    */
   public String getName() {
@@ -36,6 +39,7 @@ public final class Department {
 
   /**
    * Sets name.
+   *
    * @param name department name.
    */
   public void setName(String name) {
