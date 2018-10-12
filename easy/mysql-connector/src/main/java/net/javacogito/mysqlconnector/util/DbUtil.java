@@ -24,6 +24,15 @@ public final class DbUtil {
   }
 
   /**
+   * Drops all tables in Db
+   */
+  public static void dropDb() {
+    for (Controller controller : CONTROLLERS) {
+      controller.drop();
+    }
+  }
+
+  /**
    * Stores entity into DB
    *
    * @param entities list of entities

@@ -16,11 +16,14 @@ public class Main {
   /**
    * This method initializes DB, loads data from CSV file and stores it in DB.
    *
+   * @return true if createoin completes successfully
    * @throws IOException when can't read data from file
+   *
    */
-  public static void initDbAndFillWithData() throws IOException {
+  public static boolean initDbAndFillWithData() throws IOException {
     initDb();
     storeInDb(loadCountries(getFromResources("country.csv")));
     storeInDb(loadCustomers(getFromResources("customer.csv")));
+    return true;
   }
 }
