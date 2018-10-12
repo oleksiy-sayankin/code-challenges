@@ -18,7 +18,7 @@ public class Main {
    *
    * @throws IOException when can't read data from file
    */
-  private static void initDbAndFillWithData() throws IOException {
+  public static void initDbAndFillWithData() throws IOException {
     initDb();
     storeInDb(loadCountries(getFromResources("country.csv")));
     storeInDb(loadCustomers(getFromResources("customer.csv")));
