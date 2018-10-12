@@ -16,7 +16,7 @@ public class Main {
   /**
    * This method initializes DB, loads data from CSV file and stores it in DB.
    *
-   * @return true if createoin completes successfully
+   * @return true if creation completes successfully
    * @throws IOException when can't read data from file
    *
    */
