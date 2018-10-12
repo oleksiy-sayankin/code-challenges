@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
+import static net.javacogito.mysqlconnector.util.EntityUtil.createOrder;
 
 public class OrderControllerTest {
   private Controller<Order, Integer> controller;
@@ -21,69 +22,27 @@ public class OrderControllerTest {
   }
 
   @Test public void insertCustomerTest() {
-    Order order = new Order();
-
     List<Order> orders = controller.getAll();
-
     Assert.assertEquals(3, orders.size());
-
-    order.setId(1);
-    order.setCustomerId(1);
-    order.setProductId(1);
-    order.setAmount(1);
-    Assert.assertTrue(orders.contains(order));
-
-    order.setId(2);
-    order.setCustomerId(2);
-    order.setProductId(2);
-    order.setAmount(2);
-    Assert.assertTrue(orders.contains(order));
-
-    order.setId(3);
-    order.setCustomerId(3);
-    order.setProductId(3);
-    order.setAmount(3);
-    Assert.assertTrue(orders.contains(order));
-
-    order.setId(4);
-    order.setCustomerId(4);
-    order.setProductId(4);
-    order.setAmount(4);
-    Assert.assertFalse(orders.contains(order));
+    Assert.assertTrue(orders.contains(createOrder(1,1,1,1)));
+    Assert.assertTrue(orders.contains(createOrder(2,2,2,2)));
+    Assert.assertTrue(orders.contains(createOrder(3,3,3,3)));
+    Assert.assertFalse(orders.contains(createOrder(4,4,4,4)));
   }
 
-  @Test public void getEntityById() {
-    Order order = new Order();
-
-    order.setId(2);
-    order.setCustomerId(2);
-    order.setProductId(2);
-    order.setAmount(2);
-    Assert.assertEquals(order, controller.getEntityById(2));
+  @Test public void getEntityByIdTest() {
+    Assert.assertEquals(createOrder(2,2,2,2), controller.getEntityById(2));
   }
 
   @Test public void deleteTest() {
-    Order order = new Order();
-
     Assert.assertTrue(controller.delete(2));
     List<Order> orders = controller.getAll();
-
     Assert.assertEquals(2, orders.size());
-
-    order.setId(2);
-    order.setCustomerId(2);
-    order.setProductId(2);
-    order.setAmount(2);
-    Assert.assertFalse(orders.contains(order));
+    Assert.assertFalse(orders.contains(createOrder(2,2,2,2)));
   }
 
   @Test public void updateTest() {
-    Order order = new Order();
-
-    order.setId(2);
-    order.setCustomerId(20);
-    order.setProductId(20);
-    order.setAmount(20);
+    Order order = createOrder(2,20,20,20);
     Assert.assertTrue(controller.update(order));
     Assert.assertEquals(order, controller.getEntityById(2));
   }
@@ -96,23 +55,8 @@ public class OrderControllerTest {
   }
 
   private void insertData() {
-    Order order = new Order();
-    order.setId(1);
-    order.setCustomerId(1);
-    order.setProductId(1);
-    order.setAmount(1);
-    Assert.assertTrue(controller.insert(order));
-
-    order.setId(2);
-    order.setCustomerId(2);
-    order.setProductId(2);
-    order.setAmount(2);
-    Assert.assertTrue(controller.insert(order));
-
-    order.setId(3);
-    order.setCustomerId(3);
-    order.setProductId(3);
-    order.setAmount(3);
-    Assert.assertTrue(controller.insert(order));
+    Assert.assertTrue(controller.insert(createOrder(1,1,1,1)));
+    Assert.assertTrue(controller.insert(createOrder(2,2,2,2)));
+    Assert.assertTrue(controller.insert(createOrder(3,3,3,3)));
   }
 }

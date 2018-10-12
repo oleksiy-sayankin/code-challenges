@@ -95,4 +95,69 @@ public final class EntityUtil {
     employeeEmail.setEmail(email);
     return employeeEmail;
   }
+
+  /**
+   * Creates employee phone entity.
+   *
+   * @param id employee phone id
+   * @param employeeId employee id
+   * @param number phone value
+   * @return employee phone entity
+   */
+  public static EmployeePhone createEmployeePhone(int id, int employeeId, String number){
+    EmployeePhone employeePhone = new EmployeePhone();
+    employeePhone.setId(id);
+    employeePhone.setEmployeeId(employeeId);
+    return employeePhone;
+  }
+
+  /**
+   * Creates order entity.
+   *
+   * @param id order id
+   * @param customerId customer Id
+   * @param productId product Id
+   * @param amount amount of product
+   * @return order entity
+   */
+  public static Order createOrder(int id, int customerId, int productId, int amount){
+    Order order = new Order();
+    order.setId(id);
+    order.setCustomerId(customerId);
+    order.setProductId(productId);
+    order.setAmount(amount);
+    return order;
+  }
+
+  /**
+   * Creates product entity.
+   *
+   * @param id product Id
+   * @param name product name
+   * @param productTypeId product type Id
+   * @param price product price
+   * @return product entity
+   */
+  public static Product createProduct(int id, String name, int productTypeId, float price){
+    Product product = new Product();
+    product.setId(id);
+    product.setName(name);
+    product.setProductTypeId(productTypeId);
+    product.setPrice(price);
+    return product;
+  }
+
+  /**
+   * Creates product type entity.
+   *
+   * @param id product type id
+   * @param name product type name
+   * @return product type
+   */
+  public static ProductType createProductType(int id, String name){
+    ProductType productType = new ProductType();
+    productType.setId(id);
+    productType.setName(name);
+    return productType;
+  }
 }

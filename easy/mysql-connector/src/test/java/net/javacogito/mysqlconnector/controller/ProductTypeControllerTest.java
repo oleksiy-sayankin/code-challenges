@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
+import static net.javacogito.mysqlconnector.util.EntityUtil.createProductType;
 
 public class ProductTypeControllerTest {
   private Controller<ProductType, Integer> controller;
@@ -21,54 +22,27 @@ public class ProductTypeControllerTest {
   }
 
   @Test public void insertTest() {
-    ProductType productType = new ProductType();
-
     List<ProductType> productTypes = controller.getAll();
-
     Assert.assertEquals(3, productTypes.size());
-
-    productType.setId(1);
-    productType.setName("Movies");
-    Assert.assertTrue(productTypes.contains(productType));
-
-    productType.setId(2);
-    productType.setName("Books");
-    Assert.assertTrue(productTypes.contains(productType));
-
-    productType.setId(3);
-    productType.setName("Software");
-    Assert.assertTrue(productTypes.contains(productType));
-
-    productType.setId(4);
-    productType.setName("No Name");
-    Assert.assertFalse(productTypes.contains(productType));
+    Assert.assertTrue(productTypes.contains(createProductType(1, "Movies")));
+    Assert.assertTrue(productTypes.contains(createProductType(2, "Books")));
+    Assert.assertTrue(productTypes.contains(createProductType(3, "Software")));
+    Assert.assertFalse(productTypes.contains(createProductType(3, "No Name")));
   }
 
-  @Test public void getEntityById() {
-    ProductType productType = new ProductType();
-    productType.setId(2);
-    productType.setName("Books");
-    Assert.assertEquals(productType, controller.getEntityById(2));
+  @Test public void getEntityByIdTest() {
+    Assert.assertEquals(createProductType(2, "Books"), controller.getEntityById(2));
   }
 
   @Test public void deleteTest() {
-    ProductType productType = new ProductType();
-
     Assert.assertTrue(controller.delete(2));
     List<ProductType> productTypes = controller.getAll();
-
     Assert.assertEquals(2, productTypes.size());
-
-    productType.setId(2);
-    productType.setName("Books");
-    Assert.assertFalse(productTypes.contains(productType));
+    Assert.assertFalse(productTypes.contains(createProductType(2, "Books")));
   }
 
   @Test public void updateTest() {
-    ProductType productType = new ProductType();
-
-    productType.setId(2);
-    productType.setName("Electronics");
+    ProductType productType = createProductType(2, "Electronics");
     Assert.assertTrue(controller.update(productType));
     Assert.assertEquals(productType, controller.getEntityById(2));
   }
@@ -81,18 +55,8 @@ public class ProductTypeControllerTest {
   }
 
   private void insertData() {
-    ProductType productType = new ProductType();
-
-    productType.setId(1);
-    productType.setName("Movies");
-    Assert.assertTrue(controller.insert(productType));
-
-    productType.setId(2);
-    productType.setName("Books");
-    Assert.assertTrue(controller.insert(productType));
-
-    productType.setId(3);
-    productType.setName("Software");
-    Assert.assertTrue(controller.insert(productType));
+    Assert.assertTrue(controller.insert(createProductType(1, "Movies")));
+    Assert.assertTrue(controller.insert(createProductType(2, "Books")));
+    Assert.assertTrue(controller.insert(createProductType(3, "Software")));
   }
 }
