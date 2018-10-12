@@ -1,11 +1,15 @@
 package net.javacogito.mysqlconnector.entity;
 
+import net.javacogito.mysqlconnector.controller.Controller;
+import net.javacogito.mysqlconnector.controller.CustomerController;
+
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * Basic lass for 'country' table. Represents a single row.
  */
-public final class Customer {
+public final class Customer implements Serializable, Entity {
   private int id;
   private String company;
   private String address;
@@ -78,6 +82,16 @@ public final class Customer {
   public void setCountryId(int countryId) {
     this.countryId = countryId;
   }
+
+  /**
+   * Gets customer controller.
+   *
+   * @return customer controller.
+   */
+  @Override public Controller getController() {
+    return new CustomerController();
+  }
+
 
   @Override public boolean equals(Object o) {
     if (this == o)

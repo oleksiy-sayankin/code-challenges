@@ -1,23 +1,26 @@
 package net.javacogito.mysqlconnector;
 
-import net.javacogito.mysqlconnector.entity.Employee;
-
 import java.io.IOException;
-import java.sql.SQLException;
 
-import static net.javacogito.mysqlconnector.MySqlUtil.tableToString;
-import static net.javacogito.mysqlconnector.MySqlUtil.execute;
-import static net.javacogito.mysqlconnector.MySqlUtil.readFromResource;
-import static net.javacogito.mysqlconnector.MySqlUtil.getConnection;
+import static net.javacogito.mysqlconnector.util.DbUtil.initDb;
+import static net.javacogito.mysqlconnector.util.DbUtil.storeInDb;
+import static net.javacogito.mysqlconnector.util.LoadTableUtil.loadCountries;
+import static net.javacogito.mysqlconnector.util.FileUtil.getFromResources;
+import static net.javacogito.mysqlconnector.util.LoadTableUtil.loadCustomers;
 
 public class Main {
-  public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
-    // TODO : reimplement
+  public static void main(String[] args) throws IOException {
+    initDbAndFillWithData();
   }
 
-  private static void printFromTable(String host, String dataBase, String user, String password, Table table)
-      throws IOException, SQLException, ClassNotFoundException {
-    System.out.println(tableToString(execute(getConnection(host, dataBase, user, password), readFromResource("select-star-query.sql")), table));
+  /**
+   * This method initializes DB, loads data from CSV file and stores it in DB.
+   *
+   * @throws IOException when can't read data from file
+   */
+  private static void initDbAndFillWithData() throws IOException {
+    initDb();
+    storeInDb(loadCountries(getFromResources("country.csv")));
+    storeInDb(loadCustomers(getFromResources("customer.csv")));
   }
-
 }

@@ -1,12 +1,16 @@
 package net.javacogito.mysqlconnector.entity;
 
+import net.javacogito.mysqlconnector.controller.Controller;
+import net.javacogito.mysqlconnector.controller.DepartmentController;
+
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * Basic lass for 'department' table. Represents a single row.
  */
 
-public final class Department {
+public final class Department implements Serializable, Entity {
   private int id;
   private String name;
 
@@ -44,6 +48,15 @@ public final class Department {
    */
   public void setName(String name) {
     this.name = name;
+  }
+
+  /**
+   * Gets department controller.
+   *
+   * @return department controller.
+   */
+  @Override public Controller getController() {
+    return new DepartmentController();
   }
 
   @Override public boolean equals(Object o) {

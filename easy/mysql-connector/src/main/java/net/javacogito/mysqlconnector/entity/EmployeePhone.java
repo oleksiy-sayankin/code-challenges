@@ -1,12 +1,16 @@
 package net.javacogito.mysqlconnector.entity;
 
+import net.javacogito.mysqlconnector.controller.Controller;
+import net.javacogito.mysqlconnector.controller.EmployeePhoneController;
+
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * Basic lass for 'employee_phone' table. Represents a single row.
  */
 
-public final class EmployeePhone {
+public final class EmployeePhone implements Serializable, Entity {
   private int id;
   private int employeeId;
   private String number;
@@ -63,6 +67,15 @@ public final class EmployeePhone {
     this.number = number;
   }
 
+  /**
+   * Gets employee phone controller.
+   *
+   * @return employee phone controller
+   */
+  @Override public Controller getController() {
+    return new EmployeePhoneController();
+  }
+
   @Override public boolean equals(Object o) {
     if (this == o)
       return true;
@@ -90,5 +103,4 @@ public final class EmployeePhone {
     sb.append("]");
     return sb.toString();
   }
-
 }

@@ -1,12 +1,16 @@
 package net.javacogito.mysqlconnector.entity;
 
+import net.javacogito.mysqlconnector.controller.Controller;
+import net.javacogito.mysqlconnector.controller.EmployeeController;
+
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * Basic lass for 'employee' table. Represents a single row.
  */
 
-public final class Employee {
+public final class Employee implements Serializable, Entity {
   private int id;
   private String firstName;
   private String lastName;
@@ -137,6 +141,15 @@ public final class Employee {
    */
   public void setSalary(float salary) {
     this.salary = salary;
+  }
+
+  /**
+   * Gets employee controller.
+   *
+   * @return employee controller.
+   */
+  @Override public Controller getController() {
+    return new EmployeeController();
   }
 
   @Override public boolean equals(Object o) {

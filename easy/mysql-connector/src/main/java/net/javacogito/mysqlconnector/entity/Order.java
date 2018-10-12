@@ -1,12 +1,16 @@
 package net.javacogito.mysqlconnector.entity;
 
+import net.javacogito.mysqlconnector.controller.Controller;
+import net.javacogito.mysqlconnector.controller.OrderController;
+
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * Basic lass for 'order' table. Represents a single row.
  */
 
-public final class Order {
+public final class Order implements Serializable, Entity {
   private int id;
   private int customerId;
   private int productId;
@@ -80,6 +84,15 @@ public final class Order {
    */
   public void setAmount(int amount) {
     this.amount = amount;
+  }
+
+  /**
+   * Gets order controller.
+   *
+   * @return order controller.
+   */
+  @Override public Controller getController() {
+    return new OrderController();
   }
 
   @Override public boolean equals(Object o) {

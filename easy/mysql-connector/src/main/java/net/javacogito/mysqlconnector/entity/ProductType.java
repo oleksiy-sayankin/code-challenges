@@ -1,11 +1,15 @@
 package net.javacogito.mysqlconnector.entity;
 
+import net.javacogito.mysqlconnector.controller.Controller;
+import net.javacogito.mysqlconnector.controller.ProductTypeController;
+
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * Basic lass for 'product_type' table. Represents a single row.
  */
-public final class ProductType {
+public final class ProductType implements Serializable, Entity {
   private int id;
   private String name;
 
@@ -43,6 +47,15 @@ public final class ProductType {
    */
   public void setName(String name) {
     this.name = name;
+  }
+
+  /**
+   * Gets product type controller.
+   *
+   * @return product type controller
+   */
+  @Override public Controller getController() {
+    return new ProductTypeController();
   }
 
   @Override public boolean equals(Object o) {

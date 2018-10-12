@@ -1,12 +1,16 @@
 package net.javacogito.mysqlconnector.entity;
 
+import net.javacogito.mysqlconnector.controller.Controller;
+import net.javacogito.mysqlconnector.controller.ProductController;
+
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * Basic lass for 'product' table. Represents a single row.
  */
 
-public final class Product {
+public final class Product implements Serializable, Entity {
   private int id;
   private String name;
   private int productTypeId;
@@ -82,6 +86,16 @@ public final class Product {
    */
   public void setPrice(float price) {
     this.price = price;
+  }
+
+  /**
+   * Gets product controller.
+   *
+   * @return product controller
+   */
+
+  @Override public Controller getController() {
+    return new ProductController();
   }
 
   @Override public boolean equals(Object o) {

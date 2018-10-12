@@ -1,12 +1,16 @@
 package net.javacogito.mysqlconnector.entity;
 
+import net.javacogito.mysqlconnector.controller.Controller;
+import net.javacogito.mysqlconnector.controller.EmployeeEmailController;
+
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * Basic lass for 'employee_email' table. Represents a single row.
  */
 
-public final class EmployeeEmail {
+public final class EmployeeEmail implements Serializable, Entity {
   private int id;
   private int employeeId;
   private String email;
@@ -61,6 +65,15 @@ public final class EmployeeEmail {
    */
   public void setEmail(String email) {
     this.email = email;
+  }
+
+  /**
+   * Gets employee email controller.
+   *
+   * @return employee email controller.
+   */
+  @Override public Controller getController() {
+    return new EmployeeEmailController();
   }
 
   @Override public boolean equals(Object o) {

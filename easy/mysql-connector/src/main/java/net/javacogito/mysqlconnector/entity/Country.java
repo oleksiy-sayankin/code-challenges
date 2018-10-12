@@ -1,11 +1,15 @@
 package net.javacogito.mysqlconnector.entity;
 
+import net.javacogito.mysqlconnector.controller.Controller;
+import net.javacogito.mysqlconnector.controller.CountryController;
+
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * Basic lass for 'country' table. Represents a single row.
  */
-public final class Country {
+public final class Country implements Serializable, Entity {
   private int id;
   private String name;
 
@@ -43,6 +47,15 @@ public final class Country {
    */
   public void setName(String name) {
     this.name = name;
+  }
+
+  /**
+   * Gets country controller.
+   *
+   * @return country controller
+   */
+  @Override public Controller getController() {
+    return new CountryController();
   }
 
   @Override public boolean equals(Object o) {
