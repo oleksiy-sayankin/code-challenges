@@ -14,17 +14,9 @@ import java.util.List;
 public final class BasicConnectionPool implements ConnectionPool {
   private List<Connection> connectionPool;
   private List<Connection> usedConnections = new ArrayList<>();
-  private String dbUrl;
-  private String dbDriver;
-  private String dbUser;
-  private String dbPassword;
   private static int INITIAL_POOL_SIZE = 3;
 
-  private BasicConnectionPool(String dbUrl, String dbDriver, String dbUser, String dbPassword, List<Connection> pool) {
-    this.dbUrl = dbUrl;
-    this.dbDriver = dbDriver;
-    this.dbUser = dbUser;
-    this.dbPassword = dbPassword;
+  private BasicConnectionPool(List<Connection> pool) {
     this.connectionPool = pool;
   }
 
@@ -51,42 +43,6 @@ public final class BasicConnectionPool implements ConnectionPool {
   }
 
   /**
-   * Gets JDBC URL
-   *
-   * @return JDBC URL as string
-   */
-  @Override public String getDbUrl() {
-    return dbUrl;
-  }
-
-  /**
-   * Gets JDBC user
-   *
-   * @return JDBC user as string
-   */
-  @Override public String getDbUser() {
-    return dbUser;
-  }
-
-  /**
-   * Gets JDBC password.
-   *
-   * @return JDBC password as string
-   */
-  @Override public String getDbPassword() {
-    return dbPassword;
-  }
-
-  /**
-   * Gets JDBC driver class name.
-   *
-   * @return JDBC driver class name as string
-   */
-  @Override public String getDbDriver() {
-    return dbDriver;
-  }
-
-  /**
    * Creates pool of connection with size equal to INITIAL_POOL_SIZE.
    * @param context context with JDBC parameters
    * @return connection pool
@@ -97,7 +53,7 @@ public final class BasicConnectionPool implements ConnectionPool {
     for (int i = 0; i < INITIAL_POOL_SIZE; i++) {
       pool.add(createConnection(context.getDbUrl(), context.getDbDriver(), context.getDbUser(), context.getDbPassword()));
     }
-    return new BasicConnectionPool(context.getDbUrl(), context.getDbDriver(), context.getDbUser(), context.getDbPassword(), pool);
+    return new BasicConnectionPool(pool);
   }
 
   /**
