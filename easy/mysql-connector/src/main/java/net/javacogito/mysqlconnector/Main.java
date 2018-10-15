@@ -9,6 +9,7 @@ import static net.javacogito.mysqlconnector.util.LoadTableUtil.*;
 
 public class Main {
   public static void main(String[] args) throws IOException {
+    validateJdbcParameters();
     initDbAndFillWithData();
   }
 
@@ -28,5 +29,19 @@ public class Main {
     storeInDb(loadEmployeeEmails(getFromResources("employee-email.csv")));
     storeInDb(loadEmployeePhones(getFromResources("employee-phone.csv")));
     return true;
+  }
+
+  /**
+   * Checks that all environment variables needed to connects via JDBC, have non empty values.
+   *
+   */
+  public static void validateJdbcParameters(){
+    String[] jdbcParameters = {"DB_URL", "DB_DRIVER"};
+    for (String jdbcParameter : jdbcParameters) {
+      String value = System.getenv(jdbcParameter);
+      if (value == null || value.isEmpty()) {
+        throw new IllegalArgumentException(String.format("Environment variable %s has an empty value. Use EXPORT %s=<value>", jdbcParameter, jdbcParameter));
+      }
+    }
   }
 }
