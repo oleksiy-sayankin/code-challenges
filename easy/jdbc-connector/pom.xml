@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>easy-level</artifactId>
+    <groupId>net.javacogito</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <groupId>net.javacogito.mysqlconnector</groupId>
+  <artifactId>jdbc-connector</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <name>jdbc-connector</name>
+  <url>http://javacogito.net</url>
+
+  <properties>
+    <mysql.connector.version>5.1.9</mysql.connector.version>
+    <h2.database.version>1.4.197</h2.database.version>
+    <maven.surefire.plugin.version>2.22.0</maven.surefire.plugin.version>
+    <commoms.scv.version>1.6</commoms.scv.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>${mysql.connector.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <version>${h2.database.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-csv</artifactId>
+      <version>${commoms.scv.version}</version>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+           <version>${maven.surefire.plugin.version}</version>
+            <configuration>
+              <environmentVariables>
+                <DB_DRIVER>org.h2.Driver</DB_DRIVER>
+                <DB_URL>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1</DB_URL>
+                <DB_USER></DB_USER>
+                <DB_PASSWORD></DB_PASSWORD>
+              </environmentVariables>
+            </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
