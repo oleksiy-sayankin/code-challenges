@@ -37,6 +37,7 @@ public final class DbUtil {
    *
    * @param entities list of entities
    */
+  @SuppressWarnings("unchecked")
   public static void storeInDb(List<? extends Entity> entities){
     for (Entity entity : entities){
       entity.getController().insert(entity);
