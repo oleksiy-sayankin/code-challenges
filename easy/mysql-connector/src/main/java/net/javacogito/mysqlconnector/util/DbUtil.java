@@ -11,7 +11,7 @@ import java.util.List;
 public final class DbUtil {
   private static final Controller[] CONTROLLERS = {new CountryController(), new CustomerController(),
       new DepartmentController(), new EmployeeController(), new EmployeeEmailController(),
-      new EmployeePhoneController(), new OrderController(), new ProductController() };
+      new EmployeePhoneController(), new OrderController(), new ProductController(), new ProductTypeController() };
   private DbUtil(){}
 
   /**

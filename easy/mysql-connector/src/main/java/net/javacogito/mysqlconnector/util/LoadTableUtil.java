@@ -140,4 +140,63 @@ public final class LoadTableUtil {
     return employeePhones;
   }
 
+  /**
+   * Loads orders from CSV file into list of entities.
+   *
+   * @param ordersFile orders File
+   * @return list of entities
+   * @throws IOException when can't read data
+   */
+  public static List<Order> loadOrders(File ordersFile) throws IOException {
+    List<Order> orders = new ArrayList<>();
+    try(
+        Reader reader = new FileReader(ordersFile);
+        CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
+    ) {
+      for (CSVRecord csvRecord : csvParser) {
+        orders.add(createOrder(Integer.parseInt(csvRecord.get(0)), Integer.parseInt(csvRecord.get(1)), Integer.parseInt(csvRecord.get(2)), Integer.parseInt(csvRecord.get(3))));
+      }
+    }
+    return orders;
+  }
+
+  /**
+   * Loads products from CSV file into list of entities.
+   *
+   * @param productsFile products File
+   * @return list of entities
+   * @throws IOException when can't read data
+   */
+  public static List<Product> loadProducts(File productsFile) throws IOException {
+    List<Product> products = new ArrayList<>();
+    try(
+        Reader reader = new FileReader(productsFile);
+        CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
+    ) {
+      for (CSVRecord csvRecord : csvParser) {
+        products.add(createProduct(Integer.parseInt(csvRecord.get(0)), csvRecord.get(1), Integer.parseInt(csvRecord.get(2)), Float.parseFloat(csvRecord.get(3))));
+      }
+    }
+    return products;
+  }
+
+  /**
+   * Loads product types from CSV file into list of entities.
+   *
+   * @param productTypesFile product types File
+   * @return list of entities
+   * @throws IOException when can't read data
+   */
+  public static List<ProductType> loadProductTypes(File productTypesFile) throws IOException {
+    List<ProductType> productTypes = new ArrayList<>();
+    try(
+        Reader reader = new FileReader(productTypesFile);
+        CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
+    ) {
+      for (CSVRecord csvRecord : csvParser) {
+        productTypes.add(createProductType(Integer.parseInt(csvRecord.get(0)), csvRecord.get(1)));
+      }
+    }
+    return productTypes;
+  }
 }

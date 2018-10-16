@@ -7,7 +7,17 @@ import static net.javacogito.mysqlconnector.util.DbUtil.storeInDb;
 import static net.javacogito.mysqlconnector.util.FileUtil.getFromResources;
 import static net.javacogito.mysqlconnector.util.LoadTableUtil.*;
 
+/**
+ * Main demo class.
+ */
 public class Main {
+
+  /**
+   * This is demo method. It checks if minimal JDBC parameters are set, creates DB tables and fills in with data.
+   * @param args skipped in current implementation
+   * @throws IOException when can't read data from file
+   */
+
   public static void main(String[] args) throws IOException {
     validateJdbcParameters();
     initDbAndFillWithData();
@@ -28,6 +38,9 @@ public class Main {
     storeInDb(loadEmployees(getFromResources("employee.csv")));
     storeInDb(loadEmployeeEmails(getFromResources("employee-email.csv")));
     storeInDb(loadEmployeePhones(getFromResources("employee-phone.csv")));
+    storeInDb(loadOrders(getFromResources("order.csv")));
+    storeInDb(loadProducts(getFromResources("product.csv")));
+    storeInDb(loadProductTypes(getFromResources("product-type.csv")));
     return true;
   }
 
