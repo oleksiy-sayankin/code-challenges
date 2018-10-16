@@ -70,9 +70,8 @@
   </build>
 
   <modules>
-    <module>easy</module>
-    <module>moderate</module>
-    <module>hard</module>
+    <module>algorithms</module>
+    <module>javaee</module>
   </modules>
 
 </project>

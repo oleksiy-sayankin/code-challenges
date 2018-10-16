@@ -85,7 +85,5 @@
     <module>real-fake</module>
     <module>distinct-words</module>
     <module>array-into-collection</module>
-    <module>synchronization</module>
-    <module>jdbc-connector</module>
   </modules>
 </project>
