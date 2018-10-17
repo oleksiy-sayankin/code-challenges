@@ -61,4 +61,9 @@ public interface Controller<E, K> {
    * @return true if deletion is successful
    */
   boolean drop();
+
+  /**
+   * After connection has been used we return it into pool to be available for other requests.
+   */
+  void returnConnectionInPool();
 }

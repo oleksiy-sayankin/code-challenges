@@ -2,8 +2,7 @@ package net.javacogito.jdbcconnector;
 
 import java.io.IOException;
 
-import static net.javacogito.jdbcconnector.util.DbUtil.initDb;
-import static net.javacogito.jdbcconnector.util.DbUtil.storeInDb;
+import static net.javacogito.jdbcconnector.util.DbUtil.*;
 import static net.javacogito.jdbcconnector.util.FileUtil.getFromResources;
 import static net.javacogito.jdbcconnector.util.LoadTableUtil.*;
 
@@ -31,7 +30,8 @@ public class Main {
    *
    */
   public static boolean initDbAndFillWithData() throws IOException {
-    initDb();
+    createCurrentDb();
+    createAllTablesInDb();
     storeInDb(loadCountries(getFromResources("country.csv")));
     storeInDb(loadCustomers(getFromResources("customer.csv")));
     storeInDb(loadDepartments(getFromResources("department.csv")));
@@ -49,7 +49,7 @@ public class Main {
    *
    */
   public static void validateJdbcParameters(){
-    String[] jdbcParameters = {"DB_URL", "DB_DRIVER", "DB_USER", "DB_PASSWORD"};
+    String[] jdbcParameters = {"DB_URL", "DB_DRIVER", "DB_USER", "DB_PASSWORD", "DB_NAME"};
     for (String jdbcParameter : jdbcParameters) {
       String value = System.getenv(jdbcParameter);
       if (value == null || value.isEmpty()) {

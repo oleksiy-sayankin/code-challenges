@@ -28,7 +28,7 @@ public abstract class AbstractController<E, K> implements Controller<E, K> {
    * After connection has been used we return it into pool to be available for other requests.
    */
 
-  public void returnConnectionInPool() {
+  @Override public void returnConnectionInPool() {
     connectionPool.releaseConnection(connection);
   }
 

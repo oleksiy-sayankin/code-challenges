@@ -2,6 +2,7 @@ package net.javacogito.jdbcconnector;
 
 import net.javacogito.jdbcconnector.util.DbUtil;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -21,9 +22,9 @@ public class MainTest {
    * Rigorous Test :-)
    */
   @Test public void shouldAnswerWithTrue() throws IOException {
-    DbUtil.dropDb();
+    DbUtil.dropDbIfExists();
     Assert.assertTrue(Main.initDbAndFillWithData());
-    DbUtil.dropDb();
+    DbUtil.dropDbIfExists();
   }
 
   @Test public void validateJdbcParametersNegativeDbUrlTest() throws Exception {

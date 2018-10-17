@@ -14,13 +14,24 @@ import java.util.List;
  */
 
 public class OrderController extends AbstractController<Order, Integer> {
-  public static final String SELECT_ALL_ORDERS = "SELECT * FROM `order`";
-  public static final String INSERT_ORDER = "INSERT INTO `order` VALUES (?, ?, ?, ?)";
-  public static final String DELETE_ORDER = "DELETE FROM `order` WHERE id = ?";
-  public static final String SELECT_ORDER_BY_ID = "SELECT * FROM `order` WHERE id = ?";
-  public static final String UPDATE_ORDER_BY_ID = "UPDATE `order` SET customer_id = ?, product_id = ?, amount = ? WHERE id = ?";
-  public static final String CREATE_ORDER = "CREATE TABLE `order` (id INT PRIMARY KEY, customer_id INT, product_id INT, amount INT)";
-  public static final String DROP_ORDER = "DROP TABLE IF EXISTS `order`";
+  private static final String SELECT_ALL_ORDERS = "SELECT * FROM `order`";
+  private static final String INSERT_ORDER = "INSERT INTO `order` VALUES (?, ?, ?, ?)";
+  private static final String DELETE_ORDER = "DELETE FROM `order` WHERE id = ?";
+  private static final String SELECT_ORDER_BY_ID = "SELECT * FROM `order` WHERE id = ?";
+  private static final String UPDATE_ORDER_BY_ID = "UPDATE `order` SET customer_id = ?, product_id = ?, amount = ? WHERE id = ?";
+  private static final String CREATE_ORDER = "CREATE TABLE `order` (id INT PRIMARY KEY, customer_id INT, product_id INT, amount INT)";
+  private static final String DROP_ORDER = "DROP TABLE IF EXISTS `order`";
+  private static final OrderController ORDER_CONTROLLER = new OrderController();
+  private OrderController() {}
+
+  /**
+   * Gets Order Controller
+   *
+   * @return Order Controller
+   */
+  public static OrderController getOrderController() {
+    return ORDER_CONTROLLER;
+  }
 
   /**
    * Returns all orders as list. Executes SELECT * FROM order.

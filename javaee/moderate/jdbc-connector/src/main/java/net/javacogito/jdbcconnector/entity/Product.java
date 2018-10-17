@@ -15,6 +15,7 @@ public final class Product implements Serializable, Entity {
   private String name;
   private int productTypeId;
   private float price;
+  private static final Controller CONTROLLER = ProductController.getProductController();
 
   /**
    * Gets id.
@@ -95,7 +96,7 @@ public final class Product implements Serializable, Entity {
    */
 
   @Override public Controller getController() {
-    return new ProductController();
+    return CONTROLLER;
   }
 
   @Override public boolean equals(Object o) {

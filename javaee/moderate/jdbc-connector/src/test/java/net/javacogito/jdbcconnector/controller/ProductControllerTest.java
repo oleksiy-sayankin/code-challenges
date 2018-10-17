@@ -36,7 +36,7 @@ public class ProductControllerTest extends AbstractControllerTest<Product, Integ
   }
 
   @Override protected void createController() {
-    controller = new ProductController();
+    controller = ProductController.getProductController();
   }
 
   @Override protected void insertData() {

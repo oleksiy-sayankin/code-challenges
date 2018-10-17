@@ -14,6 +14,7 @@ public final class Customer implements Serializable, Entity {
   private String company;
   private String address;
   private int countryId;
+  private static final Controller CONTROLLER = CustomerController.getCustomerController();
 
   /**
    * Gets id.
@@ -89,7 +90,7 @@ public final class Customer implements Serializable, Entity {
    * @return customer controller.
    */
   @Override public Controller getController() {
-    return new CustomerController();
+    return CONTROLLER;
   }
 
 

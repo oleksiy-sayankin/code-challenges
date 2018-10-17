@@ -18,6 +18,7 @@ public final class Employee implements Serializable, Entity {
   private int departmentId;
   private int countryId;
   private float salary;
+  private static final Controller CONTROLLER = EmployeeController.getEmployeeController();
 
   /**
    * Gets id.
@@ -149,7 +150,7 @@ public final class Employee implements Serializable, Entity {
    * @return employee controller.
    */
   @Override public Controller getController() {
-    return new EmployeeController();
+    return CONTROLLER;
   }
 
   @Override public boolean equals(Object o) {

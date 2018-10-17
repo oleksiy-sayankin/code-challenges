@@ -36,7 +36,7 @@ public class OrderControllerTest extends AbstractControllerTest<Order, Integer> 
   }
 
   @Override protected void createController() {
-    controller = new OrderController();
+    controller = OrderController.getOrderController();
   }
 
   @Override protected void insertData() {

@@ -14,13 +14,24 @@ import java.util.List;
  */
 
 public class DepartmentController extends AbstractController<Department, Integer> {
-  public static final String SELECT_ALL_DEPARTMENTS = "SELECT * FROM department";
-  public static final String INSERT_DEPARTMENT = "INSERT INTO department VALUES (?, ?)";
-  public static final String DELETE_DEPARTMENT = "DELETE FROM department WHERE id = ?";
-  public static final String SELECT_DEPARTMENT_BY_ID = "SELECT * FROM department WHERE id = ?";
-  public static final String UPDATE_DEPARTMENT_BY_ID = "UPDATE department SET name = ? WHERE id = ?";
-  public static final String CREATE_DEPARTMENT = "CREATE TABLE department (id INT PRIMARY KEY, name VARCHAR(100))";
-  public static final String DROP_DEPARTMENT = "DROP TABLE IF EXISTS department";
+  private static final String SELECT_ALL_DEPARTMENTS = "SELECT * FROM department";
+  private static final String INSERT_DEPARTMENT = "INSERT INTO department VALUES (?, ?)";
+  private static final String DELETE_DEPARTMENT = "DELETE FROM department WHERE id = ?";
+  private static final String SELECT_DEPARTMENT_BY_ID = "SELECT * FROM department WHERE id = ?";
+  private static final String UPDATE_DEPARTMENT_BY_ID = "UPDATE department SET name = ? WHERE id = ?";
+  private static final String CREATE_DEPARTMENT = "CREATE TABLE department (id INT PRIMARY KEY, name VARCHAR(100))";
+  private static final String DROP_DEPARTMENT = "DROP TABLE IF EXISTS department";
+  private static final DepartmentController DEPARTMENT_CONTROLLER = new DepartmentController();
+  private DepartmentController() {}
+
+  /**
+   * Gets Department Controller
+   *
+   * @return Department Controller
+   */
+  public static DepartmentController getDepartmentController() {
+    return DEPARTMENT_CONTROLLER;
+  }
 
   /**
    * Returns all countries as list. Executes SELECT * FROM department.

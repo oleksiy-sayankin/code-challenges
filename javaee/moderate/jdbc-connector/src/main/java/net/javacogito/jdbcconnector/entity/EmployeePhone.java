@@ -14,6 +14,7 @@ public final class EmployeePhone implements Serializable, Entity {
   private int id;
   private int employeeId;
   private String number;
+  private static final Controller CONTROLLER = EmployeePhoneController.getEmployeePhoneController();
 
   /**
    * Gets id.
@@ -73,7 +74,7 @@ public final class EmployeePhone implements Serializable, Entity {
    * @return employee phone controller
    */
   @Override public Controller getController() {
-    return new EmployeePhoneController();
+    return CONTROLLER;
   }
 
   @Override public boolean equals(Object o) {

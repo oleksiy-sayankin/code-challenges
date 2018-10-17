@@ -13,6 +13,7 @@ import java.util.Objects;
 public final class Department implements Serializable, Entity {
   private int id;
   private String name;
+  private static final Controller CONTROLLER  = DepartmentController.getDepartmentController();
 
   /**
    * Gets id.
@@ -56,7 +57,7 @@ public final class Department implements Serializable, Entity {
    * @return department controller.
    */
   @Override public Controller getController() {
-    return new DepartmentController();
+    return CONTROLLER;
   }
 
   @Override public boolean equals(Object o) {

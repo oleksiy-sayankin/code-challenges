@@ -36,7 +36,7 @@ public class DepartmentControllerTest extends AbstractControllerTest<Department,
   }
 
   @Override protected void createController() {
-    controller = new DepartmentController();
+    controller = DepartmentController.getDepartmentController();
   }
 
   @Override protected void insertData() {

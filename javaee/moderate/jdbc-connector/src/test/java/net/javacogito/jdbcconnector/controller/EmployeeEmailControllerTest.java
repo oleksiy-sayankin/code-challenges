@@ -36,7 +36,7 @@ public class EmployeeEmailControllerTest extends AbstractControllerTest<Employee
   }
 
   @Override protected void createController() {
-    controller = new EmployeeEmailController();
+    controller = EmployeeEmailController.getEmployeeEmailController();
   }
 
   @Override protected void insertData() {

@@ -15,6 +15,7 @@ public final class Order implements Serializable, Entity {
   private int customerId;
   private int productId;
   private int amount;
+  private static final Controller CONTROLLER = OrderController.getOrderController();
 
   /**
    * Gets id.
@@ -92,7 +93,7 @@ public final class Order implements Serializable, Entity {
    * @return order controller.
    */
   @Override public Controller getController() {
-    return new OrderController();
+    return CONTROLLER;
   }
 
   @Override public boolean equals(Object o) {

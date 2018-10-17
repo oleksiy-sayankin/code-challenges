@@ -32,4 +32,11 @@ public interface Context {
    * @return JDBC driver class name as string
    */
   String getDbDriver();
+
+  /**
+   * Gets JDBC DB name
+   *
+   * @return DB name
+   */
+  String getDbName();
 }

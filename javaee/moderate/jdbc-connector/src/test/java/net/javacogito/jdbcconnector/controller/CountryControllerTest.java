@@ -37,7 +37,7 @@ public class CountryControllerTest extends AbstractControllerTest<Country, Integ
   }
 
   @Override protected void createController() {
-    controller = new CountryController();
+    controller = CountryController.getCountryController();
   }
 
   @Override protected void insertData() {

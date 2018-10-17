@@ -37,10 +37,11 @@
             <version>${maven.surefire.plugin.version}</version>
             <configuration>
               <environmentVariables>
+                <DB_NAME>test</DB_NAME>
                 <DB_DRIVER>org.h2.Driver</DB_DRIVER>
-                <DB_URL>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1</DB_URL>
-                <DB_USER>test</DB_USER>
-                <DB_PASSWORD>test</DB_PASSWORD>
+                <DB_URL>jdbc:h2:mem:${DB_NAME};DB_CLOSE_DELAY=-1</DB_URL>
+                <DB_USER>root</DB_USER>
+                <DB_PASSWORD>123456</DB_PASSWORD>
               </environmentVariables>
             </configuration>
           </plugin>
@@ -58,8 +59,9 @@
             <version>${maven.surefire.plugin.version}</version>
             <configuration>
               <environmentVariables>
+                <DB_NAME>test</DB_NAME>
                 <DB_DRIVER>com.mysql.jdbc.Driver</DB_DRIVER>
-                <DB_URL>jdbc:mysql://localhost/test?createDatabaseIfNotExist=true</DB_URL>
+                <DB_URL>jdbc:mysql://localhost/${DB_NAME}?createDatabaseIfNotExist=true</DB_URL>
                 <DB_USER>root</DB_USER>
                 <DB_PASSWORD>123456</DB_PASSWORD>
               </environmentVariables>

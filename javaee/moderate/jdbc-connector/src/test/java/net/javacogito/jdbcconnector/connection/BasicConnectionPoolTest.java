@@ -8,8 +8,9 @@ import java.sql.Connection;
 
 public class BasicConnectionPoolTest {
   @Test public void createConnectionTest() {
-    ConnectionPool cp = BasicConnectionPool.create(new EnvContext());
+    ConnectionPool cp = BasicConnectionPool.getConnectionPool(new EnvContext());
     Connection connection = cp.getConnection();
     Assert.assertNotNull(connection);
+    cp.releaseConnection(connection);
   }
 }

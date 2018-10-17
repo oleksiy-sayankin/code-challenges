@@ -36,7 +36,7 @@ public class EmployeeControllerTest extends AbstractControllerTest<Employee, Int
   }
 
   @Override protected void createController() {
-    controller = new EmployeeController();
+    controller = EmployeeController.getEmployeeController();
   }
 
   @Override protected void insertData() {

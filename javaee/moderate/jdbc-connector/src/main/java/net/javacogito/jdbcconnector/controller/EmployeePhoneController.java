@@ -14,13 +14,24 @@ import java.util.List;
  */
 
 public class EmployeePhoneController extends AbstractController<EmployeePhone, Integer> {
-  public static final String SELECT_ALL_EMPLOYEE_PHONES = "SELECT * FROM employee_phone";
-  public static final String INSERT_EMPLOYEE_PHONE = "INSERT INTO employee_phone VALUES (?, ?, ?)";
-  public static final String DELETE_EMPLOYEE_PHONE = "DELETE FROM employee_phone WHERE id = ?";
-  public static final String SELECT_EMPLOYEE_PHONE_BY_ID = "SELECT * FROM employee_phone WHERE id = ?";
-  public static final String UPDATE_EMPLOYEE_PHONE_BY_ID = "UPDATE employee_phone SET employee_id = ?, number = ? WHERE id = ?";
-  public static final String CREATE_EMPLOYEE_PHONE = "CREATE TABLE employee_phone (id INT PRIMARY KEY, employee_id INT, number VARCHAR(100))";
-  public static final String DROP_EMPLOYEE_PHONE = "DROP TABLE IF EXISTS employee_phone";
+  private static final String SELECT_ALL_EMPLOYEE_PHONES = "SELECT * FROM employee_phone";
+  private static final String INSERT_EMPLOYEE_PHONE = "INSERT INTO employee_phone VALUES (?, ?, ?)";
+  private static final String DELETE_EMPLOYEE_PHONE = "DELETE FROM employee_phone WHERE id = ?";
+  private static final String SELECT_EMPLOYEE_PHONE_BY_ID = "SELECT * FROM employee_phone WHERE id = ?";
+  private static final String UPDATE_EMPLOYEE_PHONE_BY_ID = "UPDATE employee_phone SET employee_id = ?, number = ? WHERE id = ?";
+  private static final String CREATE_EMPLOYEE_PHONE = "CREATE TABLE employee_phone (id INT PRIMARY KEY, employee_id INT, number VARCHAR(100))";
+  private static final String DROP_EMPLOYEE_PHONE = "DROP TABLE IF EXISTS employee_phone";
+  private static final EmployeePhoneController EMPLOYEE_PHONE_CONTROLLER = new EmployeePhoneController();
+  private EmployeePhoneController() {}
+
+  /**
+   * Gets Employee Phone Controller
+   *
+   * @return Employee Phone Controller
+   */
+  public static EmployeePhoneController getEmployeePhoneController() {
+    return EMPLOYEE_PHONE_CONTROLLER;
+  }
 
   /**
    * Returns all employee phones as list. Executes SELECT * FROM employee_phone.

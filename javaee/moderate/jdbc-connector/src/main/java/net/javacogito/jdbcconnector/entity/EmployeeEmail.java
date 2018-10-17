@@ -14,6 +14,7 @@ public final class EmployeeEmail implements Serializable, Entity {
   private int id;
   private int employeeId;
   private String email;
+  private static final Controller CONTROLLER = EmployeeEmailController.getEmployeeEmailController();
 
   /**
    * Gets id.
@@ -73,7 +74,7 @@ public final class EmployeeEmail implements Serializable, Entity {
    * @return employee email controller.
    */
   @Override public Controller getController() {
-    return new EmployeeEmailController();
+    return CONTROLLER;
   }
 
   @Override public boolean equals(Object o) {

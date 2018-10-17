@@ -12,12 +12,13 @@ import java.util.List;
  * Basic implementation of the connection pool.
  */
 public final class BasicConnectionPool implements ConnectionPool {
-  private List<Connection> connectionPool;
+  private List<Connection> feeConnections;
   private List<Connection> usedConnections = new ArrayList<>();
   private static int INITIAL_POOL_SIZE = 3;
+  private static ConnectionPool connectionPool = null;
 
   private BasicConnectionPool(List<Connection> pool) {
-    this.connectionPool = pool;
+    this.feeConnections = pool;
   }
 
   /**
@@ -26,7 +27,7 @@ public final class BasicConnectionPool implements ConnectionPool {
    * @return JDBC connection object
    */
   @Override public Connection getConnection() {
-    Connection connection = connectionPool.remove(connectionPool.size() - 1);
+    Connection connection = feeConnections.remove(feeConnections.size() - 1);
     usedConnections.add(connection);
     return connection;
   }
@@ -38,7 +39,7 @@ public final class BasicConnectionPool implements ConnectionPool {
    * @return true if connection successfully released.
    */
   @Override public boolean releaseConnection(Connection connection) {
-    connectionPool.add(connection);
+    feeConnections.add(connection);
     return usedConnections.remove(connection);
   }
 
@@ -54,6 +55,18 @@ public final class BasicConnectionPool implements ConnectionPool {
       pool.add(createConnection(context.getDbUrl(), context.getDbDriver(), context.getDbUser(), context.getDbPassword()));
     }
     return new BasicConnectionPool(pool);
+  }
+
+  /**
+   * Gets connection pool if it already exists and creates if not.
+   * @param context context with JDBC parameters
+   * @return existing or created connection pool
+   */
+  public static ConnectionPool getConnectionPool(Context context){
+    if (connectionPool == null) {
+      connectionPool = create(context);
+    }
+    return connectionPool;
   }
 
   /**

@@ -12,6 +12,7 @@ import java.util.Objects;
 public final class ProductType implements Serializable, Entity {
   private int id;
   private String name;
+  private static final Controller CONTROLLER = ProductTypeController.getProductTypeController();
 
   /**
    * Gets id.
@@ -55,7 +56,7 @@ public final class ProductType implements Serializable, Entity {
    * @return product type controller
    */
   @Override public Controller getController() {
-    return new ProductTypeController();
+    return CONTROLLER;
   }
 
   @Override public boolean equals(Object o) {

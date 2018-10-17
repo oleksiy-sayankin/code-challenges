@@ -14,13 +14,24 @@ import java.util.List;
  */
 
 public class EmployeeEmailController extends AbstractController<EmployeeEmail, Integer> {
-  public static final String SELECT_ALL_EMPLOYEE_EMAIL = "SELECT * FROM employee_email";
-  public static final String INSERT_EMPLOYEE_EMAIL = "INSERT INTO employee_email VALUES (?, ?, ?)";
-  public static final String DELETE_EMPLOYEE_EMAIL = "DELETE FROM employee_email WHERE id = ?";
-  public static final String SELECT_EMPLOYEE_EMAIL_BY_ID = "SELECT * FROM employee_email WHERE id = ?";
-  public static final String UPDATE_EMPLOYEE_EMAIL_BY_ID = "UPDATE employee_email SET employee_id = ?, email = ? WHERE id = ?";
-  public static final String CREATE_EMPLOYEE_EMAIL = "CREATE TABLE employee_email (id INT PRIMARY KEY, employee_id INT, email VARCHAR(100))";
-  public static final String DROP_EMPLOYEE_EMAIL = "DROP TABLE IF EXISTS employee_email";
+  private static final String SELECT_ALL_EMPLOYEE_EMAIL = "SELECT * FROM employee_email";
+  private static final String INSERT_EMPLOYEE_EMAIL = "INSERT INTO employee_email VALUES (?, ?, ?)";
+  private static final String DELETE_EMPLOYEE_EMAIL = "DELETE FROM employee_email WHERE id = ?";
+  private static final String SELECT_EMPLOYEE_EMAIL_BY_ID = "SELECT * FROM employee_email WHERE id = ?";
+  private static final String UPDATE_EMPLOYEE_EMAIL_BY_ID = "UPDATE employee_email SET employee_id = ?, email = ? WHERE id = ?";
+  private static final String CREATE_EMPLOYEE_EMAIL = "CREATE TABLE employee_email (id INT PRIMARY KEY, employee_id INT, email VARCHAR(100))";
+  private static final String DROP_EMPLOYEE_EMAIL = "DROP TABLE IF EXISTS employee_email";
+  private static final EmployeeEmailController EMPLOYEE_EMAIL_CONTROLLER = new EmployeeEmailController();
+  private EmployeeEmailController() {}
+
+  /**
+   * Gets Employee Email Controller
+   *
+   * @return Employee Email Controller
+   */
+  public static EmployeeEmailController getEmployeeEmailController() {
+    return EMPLOYEE_EMAIL_CONTROLLER;
+  }
 
   /**
    * Returns all employee mails as list. Executes SELECT * FROM employee_email.

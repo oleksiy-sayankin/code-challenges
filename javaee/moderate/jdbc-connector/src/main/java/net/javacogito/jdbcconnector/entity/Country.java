@@ -12,6 +12,7 @@ import java.util.Objects;
 public final class Country implements Serializable, Entity {
   private int id;
   private String name;
+  private static final Controller CONTROLLER = CountryController.getCountryController();
 
   /**
    * Gets id.
@@ -55,7 +56,7 @@ public final class Country implements Serializable, Entity {
    * @return country controller
    */
   @Override public Controller getController() {
-    return new CountryController();
+    return CONTROLLER;
   }
 
   @Override public boolean equals(Object o) {

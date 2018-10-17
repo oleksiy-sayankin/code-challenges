@@ -14,13 +14,24 @@ import java.util.List;
  */
 
 public class EmployeeController extends AbstractController<Employee, Integer> {
-  public static final String SELECT_ALL_EMPLOYEES = "SELECT * FROM employee";
-  public static final String INSERT_EMPLOYEE = "INSERT INTO employee VALUES (?, ?, ?, ?, ?, ?, ?)";
-  public static final String DELETE_EMPLOYEE = "DELETE FROM employee WHERE id = ?";
-  public static final String SELECT_EMPLOYEE_BY_ID = "SELECT * FROM employee WHERE id = ?";
-  public static final String UPDATE_EMPLOYEE_BY_ID = "UPDATE employee SET first_name = ?, last_name = ?, age = ?, department_id = ?, country_id = ?, salary = ? WHERE id = ?";
-  public static final String CREATE_EMPLOYEE = "CREATE TABLE employee (id INT PRIMARY KEY, first_name VARCHAR(100), last_name VARCHAR(100), age INT, department_id INT, country_id INT, salary FLOAT)";
-  public static final String DROP_EMPLOYEE = "DROP TABLE IF EXISTS employee";
+  private static final String SELECT_ALL_EMPLOYEES = "SELECT * FROM employee";
+  private static final String INSERT_EMPLOYEE = "INSERT INTO employee VALUES (?, ?, ?, ?, ?, ?, ?)";
+  private static final String DELETE_EMPLOYEE = "DELETE FROM employee WHERE id = ?";
+  private static final String SELECT_EMPLOYEE_BY_ID = "SELECT * FROM employee WHERE id = ?";
+  private static final String UPDATE_EMPLOYEE_BY_ID = "UPDATE employee SET first_name = ?, last_name = ?, age = ?, department_id = ?, country_id = ?, salary = ? WHERE id = ?";
+  private static final String CREATE_EMPLOYEE = "CREATE TABLE employee (id INT PRIMARY KEY, first_name VARCHAR(100), last_name VARCHAR(100), age INT, department_id INT, country_id INT, salary FLOAT)";
+  private static final String DROP_EMPLOYEE = "DROP TABLE IF EXISTS employee";
+  private static final EmployeeController EMPLOYEE_CONTROLLER = new EmployeeController();
+  private EmployeeController() {}
+
+  /**
+   * Gets Employee Controller
+   *
+   * @return Employee Controller
+   */
+  public static EmployeeController getEmployeeController() {
+    return EMPLOYEE_CONTROLLER;
+  }
 
   /**
    * Returns all employees as list. Executes SELECT * FROM employee.

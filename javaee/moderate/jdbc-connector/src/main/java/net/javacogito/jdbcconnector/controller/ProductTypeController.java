@@ -14,13 +14,24 @@ import java.util.List;
  */
 
 public class ProductTypeController extends AbstractController<ProductType, Integer> {
-  public static final String SELECT_ALL_PRODUCT_TYPES = "SELECT * FROM product_type";
-  public static final String INSERT_PRODUCT_TYPE = "INSERT INTO product_type VALUES (?, ?)";
-  public static final String DELETE_PRODUCT_TYPE = "DELETE FROM product_type WHERE id = ?";
-  public static final String SELECT_PRODUCT_TYPE_BY_ID = "SELECT * FROM product_type WHERE id = ?";
-  public static final String UPDATE_PRODUCT_TYPE_BY_ID = "UPDATE product_type SET name = ? WHERE id = ?";
-  public static final String CREATE_PRODUCT_TYPE = "CREATE TABLE product_type (id INT PRIMARY KEY, name VARCHAR(100))";
-  public static final String DROP_PRODUCT_TYPE = "DROP TABLE IF EXISTS product_type";
+  private static final String SELECT_ALL_PRODUCT_TYPES = "SELECT * FROM product_type";
+  private static final String INSERT_PRODUCT_TYPE = "INSERT INTO product_type VALUES (?, ?)";
+  private static final String DELETE_PRODUCT_TYPE = "DELETE FROM product_type WHERE id = ?";
+  private static final String SELECT_PRODUCT_TYPE_BY_ID = "SELECT * FROM product_type WHERE id = ?";
+  private static final String UPDATE_PRODUCT_TYPE_BY_ID = "UPDATE product_type SET name = ? WHERE id = ?";
+  private static final String CREATE_PRODUCT_TYPE = "CREATE TABLE product_type (id INT PRIMARY KEY, name VARCHAR(100))";
+  private static final String DROP_PRODUCT_TYPE = "DROP TABLE IF EXISTS product_type";
+  private static final ProductTypeController PRODUCT_TYPE_CONTROLLER = new ProductTypeController();
+  private ProductTypeController() {}
+
+  /**
+   * Gets Product Type Controller
+   *
+   * @return Product Type Controller
+   */
+  public static ProductTypeController getProductTypeController() {
+    return PRODUCT_TYPE_CONTROLLER;
+  }
 
   /**
    * Returns all product types as list. Executes SELECT * FROM product_type.

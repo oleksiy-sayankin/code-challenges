@@ -3,11 +3,15 @@ package net.javacogito.jdbcconnector.controller;
 import org.junit.After;
 import org.junit.Before;
 
+import static net.javacogito.jdbcconnector.util.DbUtil.createCurrentDb;
+import static net.javacogito.jdbcconnector.util.DbUtil.dropDbIfExists;
+
 public abstract class AbstractControllerTest<E, K> {
   protected Controller<E, K> controller;
 
   @Before public void init() {
     createController();
+    createCurrentDb();
     dropTable();
     createTable();
     insertData();
@@ -15,6 +19,8 @@ public abstract class AbstractControllerTest<E, K> {
 
   @After public void close() {
     dropTable();
+    dropDbIfExists();
+    releaseConnection();
   }
 
   protected abstract void createController();
@@ -23,6 +29,10 @@ public abstract class AbstractControllerTest<E, K> {
 
   private void dropTable() {
     controller.drop();
+  }
+
+  private void releaseConnection() {
+    controller.returnConnectionInPool();
   }
 
   private void createTable() {

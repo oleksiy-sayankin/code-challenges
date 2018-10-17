@@ -9,6 +9,7 @@ public class EnvContext implements Context{
   private final String dbUser = System.getenv("DB_USER");
   private final String dbPassword = System.getenv("DB_PASSWORD");
   private final String dbDriver = System.getenv("DB_DRIVER");
+  private final String dbName = System.getenv("DB_NAME");
 
 
   /**
@@ -45,5 +46,14 @@ public class EnvContext implements Context{
    */
   public String getDbDriver() {
     return dbDriver;
+  }
+
+  /**
+   * Gets JDBC DB name
+   *
+   * @return DB name
+   */
+  @Override public String getDbName() {
+    return dbName;
   }
 }

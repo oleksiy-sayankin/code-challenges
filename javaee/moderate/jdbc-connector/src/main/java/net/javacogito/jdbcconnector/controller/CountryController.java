@@ -14,13 +14,24 @@ import java.util.List;
  */
 
 public class CountryController extends AbstractController<Country, Integer> {
-  public static final String SELECT_ALL_COUNTRIES = "SELECT * FROM country";
-  public static final String INSERT_COUNTRY = "INSERT INTO country VALUES (?, ?)";
-  public static final String DELETE_COUNTRY = "DELETE FROM country WHERE id = ?";
-  public static final String SELECT_COUNTRY_BY_ID = "SELECT * FROM country WHERE id = ?";
-  public static final String UPDATE_COUNTRY_BY_ID = "UPDATE country SET name = ? WHERE id = ?";
-  public static final String CREATE_COUNTRY = "CREATE TABLE country (id INT PRIMARY KEY, name VARCHAR(100))";
-  public static final String DROP_COUNTRY = "DROP TABLE IF EXISTS country";
+  private static final String SELECT_ALL_COUNTRIES = "SELECT * FROM country";
+  private static final String INSERT_COUNTRY = "INSERT INTO country VALUES (?, ?)";
+  private static final String DELETE_COUNTRY = "DELETE FROM country WHERE id = ?";
+  private static final String SELECT_COUNTRY_BY_ID = "SELECT * FROM country WHERE id = ?";
+  private static final String UPDATE_COUNTRY_BY_ID = "UPDATE country SET name = ? WHERE id = ?";
+  private static final String CREATE_COUNTRY = "CREATE TABLE country (id INT PRIMARY KEY, name VARCHAR(100))";
+  private static final String DROP_COUNTRY = "DROP TABLE IF EXISTS country";
+  private static final CountryController COUNTRY_CONTROLLER = new CountryController();
+  private CountryController() {}
+
+  /**
+   * Gets Country Controller
+   *
+   * @return Country Controller
+   */
+  public static CountryController getCountryController() {
+    return COUNTRY_CONTROLLER;
+  }
 
   /**
    * Returns all countries as list. Executes SELECT * FROM country.

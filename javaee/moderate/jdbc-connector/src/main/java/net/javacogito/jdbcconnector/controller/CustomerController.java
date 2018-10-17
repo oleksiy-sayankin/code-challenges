@@ -14,13 +14,25 @@ import java.util.List;
  */
 
 public class CustomerController extends AbstractController<Customer, Integer> {
-  public static final String SELECT_ALL_CUSTOMERS = "SELECT * FROM customer";
-  public static final String INSERT_CUSTOMER = "INSERT INTO customer VALUES (?, ?, ?, ?)";
-  public static final String DELETE_CUSTOMER = "DELETE FROM customer WHERE id = ?";
-  public static final String SELECT_CUSTOMER_BY_ID = "SELECT * FROM customer WHERE id = ?";
-  public static final String UPDATE_CUSTOMER_BY_ID = "UPDATE customer SET company = ?, address = ?, country_id = ? WHERE id = ?";
-  public static final String CREATE_CUSTOMER = "CREATE TABLE customer (id INT PRIMARY KEY, company VARCHAR(100), address VARCHAR(100), country_id INT)";
-  public static final String DROP_CUSTOMER = "DROP TABLE IF EXISTS customer";
+  private static final String SELECT_ALL_CUSTOMERS = "SELECT * FROM customer";
+  private static final String INSERT_CUSTOMER = "INSERT INTO customer VALUES (?, ?, ?, ?)";
+  private static final String DELETE_CUSTOMER = "DELETE FROM customer WHERE id = ?";
+  private static final String SELECT_CUSTOMER_BY_ID = "SELECT * FROM customer WHERE id = ?";
+  private static final String UPDATE_CUSTOMER_BY_ID = "UPDATE customer SET company = ?, address = ?, country_id = ? WHERE id = ?";
+  private static final String CREATE_CUSTOMER = "CREATE TABLE customer (id INT PRIMARY KEY, company VARCHAR(100), address VARCHAR(100), country_id INT)";
+  private static final String DROP_CUSTOMER = "DROP TABLE IF EXISTS customer";
+  private static final CustomerController CUSTOMER_CONTROLLER = new CustomerController();
+  private CustomerController() {}
+
+  /**
+   * Gets Customer Controller
+   *
+   * @return Customer Controller
+   */
+  public static CustomerController getCustomerController() {
+    return CUSTOMER_CONTROLLER;
+  }
+
 
   /**
    * Returns all customers as list. Executes SELECT * FROM customer.

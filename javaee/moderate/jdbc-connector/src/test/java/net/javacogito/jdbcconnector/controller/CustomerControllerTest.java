@@ -37,7 +37,7 @@ public class CustomerControllerTest extends AbstractControllerTest<Customer, Int
   }
 
   @Override protected void createController() {
-    controller = new CustomerController();
+    controller = CustomerController.getCustomerController();
   }
 
   @Override protected void insertData() {
