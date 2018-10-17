@@ -1,25 +1,13 @@
 package net.javacogito.jdbcconnector.controller;
 
 import net.javacogito.jdbcconnector.entity.Order;
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
 import static net.javacogito.jdbcconnector.util.EntityUtil.createOrder;
 
-public class OrderControllerTest {
-  private Controller<Order, Integer> controller;
-
-  @Before public void init() {
-    createTable();
-    insertData();
-  }
-
-  @After public void close() {
-    controller.drop();
-  }
+public class OrderControllerTest extends AbstractControllerTest<Order, Integer> {
 
   @Test public void insertCustomerTest() {
     List<Order> orders = controller.getAll();
@@ -47,14 +35,11 @@ public class OrderControllerTest {
     Assert.assertEquals(order, controller.getEntityById(2));
   }
 
-  private void createTable() {
+  @Override protected void createController() {
     controller = new OrderController();
-    if (!controller.create()) {
-      throw new IllegalArgumentException("Can not create table.");
-    }
   }
 
-  private void insertData() {
+  @Override protected void insertData() {
     Assert.assertTrue(controller.insert(createOrder(1,1,1,1)));
     Assert.assertTrue(controller.insert(createOrder(2,2,2,2)));
     Assert.assertTrue(controller.insert(createOrder(3,3,3,3)));

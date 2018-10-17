@@ -1,26 +1,14 @@
 package net.javacogito.jdbcconnector.controller;
 
 import net.javacogito.jdbcconnector.entity.Country;
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
 
 import static net.javacogito.jdbcconnector.util.EntityUtil.createCountry;
 
-public class CountryControllerTest {
-  private Controller<Country, Integer> controller;
-
-  @Before public void init() {
-    createTable();
-    insertData();
-  }
-
-  @After public void close() {
-    controller.drop();
-  }
+public class CountryControllerTest extends AbstractControllerTest<Country, Integer> {
 
   @Test public void insertTest() {
     List<Country> countries = controller.getAll();
@@ -48,14 +36,11 @@ public class CountryControllerTest {
     Assert.assertEquals(country, controller.getEntityById(2));
   }
 
-  private void createTable() {
+  @Override protected void createController() {
     controller = new CountryController();
-    if (!controller.create()) {
-      throw new IllegalArgumentException("Can not create table.");
-    }
   }
 
-  private void insertData() {
+  @Override protected void insertData() {
     Assert.assertTrue(controller.insert(createCountry(1, "Ukraine")));
     Assert.assertTrue(controller.insert(createCountry(2, "USA")));
     Assert.assertTrue(controller.insert(createCountry(3, "Great Britain")));

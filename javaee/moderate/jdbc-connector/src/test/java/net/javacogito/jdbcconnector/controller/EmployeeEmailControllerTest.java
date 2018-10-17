@@ -1,25 +1,13 @@
 package net.javacogito.jdbcconnector.controller;
 
 import net.javacogito.jdbcconnector.entity.EmployeeEmail;
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
 import static net.javacogito.jdbcconnector.util.EntityUtil.createEmployeeEmail;
 
-public class EmployeeEmailControllerTest {
-  private Controller<EmployeeEmail, Integer> controller;
-
-  @Before public void init() {
-    createTable();
-    insertData();
-  }
-
-  @After public void close() {
-    controller.drop();
-  }
+public class EmployeeEmailControllerTest extends AbstractControllerTest<EmployeeEmail, Integer>{
 
   @Test public void insertEmployeeEmailTest() {
     List<EmployeeEmail> employeeEmails = controller.getAll();
@@ -47,14 +35,11 @@ public class EmployeeEmailControllerTest {
     Assert.assertEquals(employeeEmail, controller.getEntityById(2));
   }
 
-  private void createTable() {
+  @Override protected void createController() {
     controller = new EmployeeEmailController();
-    if (!controller.create()) {
-      throw new IllegalArgumentException("Can not create table.");
-    }
   }
 
-  private void insertData() {
+  @Override protected void insertData() {
     Assert.assertTrue(controller.insert(createEmployeeEmail(1, 1, "test@gmail.com")));
     Assert.assertTrue(controller.insert(createEmployeeEmail(2, 2, "test@mail.ru")));
     Assert.assertTrue(controller.insert(createEmployeeEmail(3, 3, "test@list.ru")));

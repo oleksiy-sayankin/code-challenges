@@ -1,25 +1,13 @@
 package net.javacogito.jdbcconnector.controller;
 
 import net.javacogito.jdbcconnector.entity.Department;
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
 import static net.javacogito.jdbcconnector.util.EntityUtil.createDepartment;
 
-public class DepartmentControllerTest {
-  private Controller<Department, Integer> controller;
-
-  @Before public void init() {
-    createTable();
-    insertData();
-  }
-
-  @After public void close() {
-    controller.drop();
-  }
+public class DepartmentControllerTest extends AbstractControllerTest<Department, Integer> {
 
   @Test public void insertTest() {
     List<Department> departments = controller.getAll();
@@ -47,14 +35,11 @@ public class DepartmentControllerTest {
     Assert.assertEquals(department, controller.getEntityById(2));
   }
 
-  private void createTable() {
+  @Override protected void createController() {
     controller = new DepartmentController();
-    if (!controller.create()) {
-      throw new IllegalArgumentException("Can not create table.");
-    }
   }
 
-  private void insertData() {
+  @Override protected void insertData() {
     Assert.assertTrue(controller.insert(createDepartment(1, "Management Department")));
     Assert.assertTrue(controller.insert(createDepartment(2, "Financial Department")));
     Assert.assertTrue(controller.insert(createDepartment(3, "HR Department")));

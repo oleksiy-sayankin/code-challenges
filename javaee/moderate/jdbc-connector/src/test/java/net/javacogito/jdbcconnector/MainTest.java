@@ -21,6 +21,7 @@ public class MainTest {
    * Rigorous Test :-)
    */
   @Test public void shouldAnswerWithTrue() throws IOException {
+    DbUtil.dropDb();
     Assert.assertTrue(Main.initDbAndFillWithData());
     DbUtil.dropDb();
   }

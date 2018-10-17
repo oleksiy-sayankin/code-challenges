@@ -9,17 +9,7 @@ import org.junit.Test;
 import java.util.List;
 import static net.javacogito.jdbcconnector.util.EntityUtil.createProductType;
 
-public class ProductTypeControllerTest {
-  private Controller<ProductType, Integer> controller;
-
-  @Before public void init() {
-    createTable();
-    insertData();
-  }
-
-  @After public void close() {
-    controller.drop();
-  }
+public class ProductTypeControllerTest extends AbstractControllerTest<ProductType, Integer>{
 
   @Test public void insertTest() {
     List<ProductType> productTypes = controller.getAll();
@@ -47,14 +37,11 @@ public class ProductTypeControllerTest {
     Assert.assertEquals(productType, controller.getEntityById(2));
   }
 
-  private void createTable() {
+  @Override protected void createController() {
     controller = new ProductTypeController();
-    if (!controller.create()) {
-      throw new IllegalArgumentException("Can not create table.");
-    }
   }
 
-  private void insertData() {
+  @Override protected void insertData() {
     Assert.assertTrue(controller.insert(createProductType(1, "Movies")));
     Assert.assertTrue(controller.insert(createProductType(2, "Books")));
     Assert.assertTrue(controller.insert(createProductType(3, "Software")));

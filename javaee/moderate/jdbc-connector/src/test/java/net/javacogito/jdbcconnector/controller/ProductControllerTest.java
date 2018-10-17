@@ -1,25 +1,13 @@
 package net.javacogito.jdbcconnector.controller;
 
 import net.javacogito.jdbcconnector.entity.Product;
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
 import static net.javacogito.jdbcconnector.util.EntityUtil.createProduct;
 
-public class ProductControllerTest {
-  private Controller<Product, Integer> controller;
-
-  @Before public void init() {
-    createTable();
-    insertData();
-  }
-
-  @After public void close() {
-    controller.drop();
-  }
+public class ProductControllerTest extends AbstractControllerTest<Product, Integer>{
 
   @Test public void insertTest() {
     List<Product> products = controller.getAll();
@@ -47,14 +35,11 @@ public class ProductControllerTest {
     Assert.assertEquals(product, controller.getEntityById(2));
   }
 
-  private void createTable() {
+  @Override protected void createController() {
     controller = new ProductController();
-    if (!controller.create()) {
-      throw new IllegalArgumentException("Can not create table.");
-    }
   }
 
-  private void insertData() {
+  @Override protected void insertData() {
     Assert.assertTrue(controller.insert(createProduct(1, "Pepsi", 1, 3.44f)));
     Assert.assertTrue(controller.insert(createProduct(2, "Ice Cream", 2, 5.49f)));
     Assert.assertTrue(controller.insert(createProduct(3, "Personal Computer", 3, 702.44f)));
