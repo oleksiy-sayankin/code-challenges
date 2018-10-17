@@ -49,7 +49,7 @@ public class Main {
    *
    */
   public static void validateJdbcParameters(){
-    String[] jdbcParameters = {"DB_URL", "DB_DRIVER"};
+    String[] jdbcParameters = {"DB_URL", "DB_DRIVER", "DB_USER", "DB_PASSWORD"};
     for (String jdbcParameter : jdbcParameters) {
       String value = System.getenv(jdbcParameter);
       if (value == null || value.isEmpty()) {
