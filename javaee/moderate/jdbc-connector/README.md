@@ -13,7 +13,7 @@ Challenge Description:
 7. Use env variables to configure JDBC parameters (user, password, driver etc.)
 8. Add two profiles in maven for running JUnit tests with two DBs: H2 and MySQL.
 9. Add bash scripts to configure env variables of JDBC connection
-10. Use manifest file for main jar
+10. Configure main class for jar file
 
 ![Challenge Image](dbschema.png)
 
