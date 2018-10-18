@@ -1,5 +1,7 @@
 package net.javacogito.jdbcconnector.util;
 
+import net.javacogito.jdbcconnector.context.EnvContext;
+
 import java.io.File;
 
 /**
@@ -10,13 +12,12 @@ public final class FileUtil {
   private FileUtil(){}
 
   /**
-   * Gets file from resources.
+   * Gets file from $HOME/data folder.
    *
    * @param fileName file name.
-   * @return file from resources.
+   * @return file from $HOME/data.
    */
-  public static File getFromResources(String fileName){
-    ClassLoader classLoader = FileUtil.class.getClassLoader();
-    return new File(classLoader.getResource(fileName).getFile());
+  public static File getFromDataDir(String fileName){
+    return new File(new EnvContext().getHome() + File.separator + "data" + File.separator + fileName);
   }
 }

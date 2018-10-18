@@ -86,7 +86,7 @@ public final class BasicConnectionPool implements ConnectionPool {
       connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
       connection.setAutoCommit(true);
     } catch (SQLException | ClassNotFoundException e) {
-      // TODO: log this
+      System.out.println(e);
     }
     return connection;
   }

@@ -39,4 +39,10 @@ public interface Context {
    * @return DB name
    */
   String getDbName();
+
+  /**
+   * Gets home folder of the submodule
+   * @return home folder of the submodule
+   */
+  String getHome();
 }

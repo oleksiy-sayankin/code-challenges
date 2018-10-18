@@ -10,6 +10,7 @@ public class EnvContext implements Context{
   private final String dbPassword = System.getenv("DB_PASSWORD");
   private final String dbDriver = System.getenv("DB_DRIVER");
   private final String dbName = System.getenv("DB_NAME");
+  private final String home = System.getenv("JDBC_CONNECTOR_HOME");
 
 
   /**
@@ -55,5 +56,37 @@ public class EnvContext implements Context{
    */
   @Override public String getDbName() {
     return dbName;
+  }
+
+  /**
+   * Gets home folder of the submodule
+   * @return home folder of the submodule
+   */
+  @Override public String getHome() {
+    return home;
+  }
+
+  @Override public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("[");
+    sb.append("dbUrl=");
+    sb.append(dbUrl);
+    sb.append(", ");
+    sb.append("dbUser=");
+    sb.append(dbUser);
+    sb.append(", ");
+    sb.append("dbPassword=");
+    sb.append(dbPassword);
+    sb.append(", ");
+    sb.append("dbName=");
+    sb.append(dbName);
+    sb.append(", ");
+    sb.append("dbDriver=");
+    sb.append(dbDriver);
+    sb.append(", ");
+    sb.append("home=");
+    sb.append(home);
+    sb.append("]");
+    return sb.toString();
   }
 }

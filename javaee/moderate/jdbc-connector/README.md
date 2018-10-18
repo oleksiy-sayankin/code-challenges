@@ -16,3 +16,30 @@ Challenge Description:
 10. Use manifest file for main jar
 
 ![Challenge Image](dbschema.png)
+
+Prerequisites
+-------------
+
+    mysql-server, git, java, maven
+    OS: CentOS, Ubuntu
+
+How to start
+------------
+
+    git clone https://github.com/oleksiy-sayankin/code-challenges.git
+    cd code-challenges/javaee/moderate/jdbc-connector
+    mvn clean package
+    . bin/jdbc-connector.sh
+
+Folders structure
+-----------------
+
+    JDBC_CONNECTOR_HOME
+        |
+        + bin          # shell scripts to configure JDBC and run jar file  
+        |
+        + data         # data for tables
+        |
+        + src          # source folder
+        |
+        + target       # jar files

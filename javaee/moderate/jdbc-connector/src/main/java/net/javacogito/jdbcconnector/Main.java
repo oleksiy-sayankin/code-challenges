@@ -3,7 +3,7 @@ package net.javacogito.jdbcconnector;
 import java.io.IOException;
 
 import static net.javacogito.jdbcconnector.util.DbUtil.*;
-import static net.javacogito.jdbcconnector.util.FileUtil.getFromResources;
+import static net.javacogito.jdbcconnector.util.FileUtil.getFromDataDir;
 import static net.javacogito.jdbcconnector.util.LoadTableUtil.*;
 
 /**
@@ -30,17 +30,18 @@ public class Main {
    *
    */
   public static boolean initDbAndFillWithData() throws IOException {
+    dropDbIfExists();
     createCurrentDb();
     createAllTablesInDb();
-    storeInDb(loadCountries(getFromResources("country.csv")));
-    storeInDb(loadCustomers(getFromResources("customer.csv")));
-    storeInDb(loadDepartments(getFromResources("department.csv")));
-    storeInDb(loadEmployees(getFromResources("employee.csv")));
-    storeInDb(loadEmployeeEmails(getFromResources("employee-email.csv")));
-    storeInDb(loadEmployeePhones(getFromResources("employee-phone.csv")));
-    storeInDb(loadOrders(getFromResources("order.csv")));
-    storeInDb(loadProducts(getFromResources("product.csv")));
-    storeInDb(loadProductTypes(getFromResources("product-type.csv")));
+    storeInDb(loadCountries(getFromDataDir("country.csv")));
+    storeInDb(loadCustomers(getFromDataDir("customer.csv")));
+    storeInDb(loadDepartments(getFromDataDir("department.csv")));
+    storeInDb(loadEmployees(getFromDataDir("employee.csv")));
+    storeInDb(loadEmployeeEmails(getFromDataDir("employee-email.csv")));
+    storeInDb(loadEmployeePhones(getFromDataDir("employee-phone.csv")));
+    storeInDb(loadOrders(getFromDataDir("order.csv")));
+    storeInDb(loadProducts(getFromDataDir("product.csv")));
+    storeInDb(loadProductTypes(getFromDataDir("product-type.csv")));
     return true;
   }
 

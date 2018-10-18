@@ -9,6 +9,6 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>easy</artifactId>
-
+    <artifactId>easy-level</artifactId>
+    <packaging>pom</packaging>
 </project>
