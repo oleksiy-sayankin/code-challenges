@@ -55,8 +55,8 @@ public final class DbUtil {
    */
   public static void createCurrentDb(){
     Context context =  new EnvContext();
-    ConnectionPool cp = BasicConnectionPool.create(context);
-    Connection connection=  cp.getConnection();
+    ConnectionPool cp = BasicConnectionPool.getConnectionPool(context);
+    Connection connection = cp.getConnection();
     String dropDb = String.format("CREATE SCHEMA IF NOT EXISTS %s", context.getDbName());
     PreparedStatement ps = null;
     try {
@@ -73,6 +73,7 @@ public final class DbUtil {
         }
       }
     }
+    cp.releaseConnection(connection);
   }
 
 
