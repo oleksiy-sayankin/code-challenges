@@ -6,6 +6,8 @@ import net.javacogito.jdbcconnector.context.Context;
 import net.javacogito.jdbcconnector.context.EnvContext;
 import net.javacogito.jdbcconnector.controller.*;
 import net.javacogito.jdbcconnector.entity.Entity;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,12 +18,12 @@ import java.util.List;
  * Utility class to create / drop all tables in DB.
  */
 public final class DbUtil {
-  private static final Controller[] CONTROLLERS = {CountryController.getCountryController(),
-      CustomerController.getCustomerController(),
-      DepartmentController.getDepartmentController(), EmployeeController.getEmployeeController(),
-      EmployeeEmailController.getEmployeeEmailController(),
-      EmployeePhoneController.getEmployeePhoneController(), OrderController.getOrderController(),
-      ProductController.getProductController(), ProductTypeController.getProductTypeController() };
+  private static final Controller[] CONTROLLERS =
+      { CountryController.getCountryController(), CustomerController.getCustomerController(), DepartmentController.getDepartmentController(), EmployeeController.getEmployeeController(),
+          EmployeeEmailController.getEmployeeEmailController(), EmployeePhoneController.getEmployeePhoneController(),
+          OrderController.getOrderController(), ProductController.getProductController(), ProductTypeController.getProductTypeController() };
+  private static final Logger LOG = LogManager.getLogger(DbUtil.class);
+
   private DbUtil(){}
 
   /**
@@ -48,6 +50,7 @@ public final class DbUtil {
       }
     }
     cp.releaseConnection(connection);
+    LOG.info(String.format("Database %s is successfully dropped", context.getDbName()));
   }
 
   /**
@@ -74,6 +77,7 @@ public final class DbUtil {
       }
     }
     cp.releaseConnection(connection);
+    LOG.info(String.format("Database %s is successfully created", context.getDbName()));
   }
 
 

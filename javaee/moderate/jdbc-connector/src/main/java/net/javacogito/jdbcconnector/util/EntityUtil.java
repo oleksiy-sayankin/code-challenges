@@ -108,6 +108,7 @@ public final class EntityUtil {
     EmployeePhone employeePhone = new EmployeePhone();
     employeePhone.setId(id);
     employeePhone.setEmployeeId(employeeId);
+    employeePhone.setNumber(number);
     return employeePhone;
   }
 

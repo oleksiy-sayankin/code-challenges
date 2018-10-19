@@ -3,6 +3,8 @@ package net.javacogito.jdbcconnector.controller;
 import net.javacogito.jdbcconnector.connection.BasicConnectionPool;
 import net.javacogito.jdbcconnector.connection.ConnectionPool;
 import net.javacogito.jdbcconnector.context.EnvContext;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,6 +20,7 @@ import java.sql.SQLException;
 public abstract class AbstractController<E, K> implements Controller<E, K> {
   private Connection connection;
   private ConnectionPool connectionPool;
+  private static final Logger LOG = LogManager.getLogger(CountryController.class);
 
   public AbstractController() {
     connectionPool = BasicConnectionPool.create(new EnvContext());
@@ -44,7 +47,7 @@ public abstract class AbstractController<E, K> implements Controller<E, K> {
     try {
       ps = connection.prepareStatement(sql);
     } catch (SQLException e) {
-      e.printStackTrace();
+      LOG.error(e);
     }
     return ps;
   }
@@ -59,7 +62,7 @@ public abstract class AbstractController<E, K> implements Controller<E, K> {
       try {
         ps.close();
       } catch (SQLException e) {
-        e.printStackTrace();
+        LOG.error(e);
       }
     }
   }

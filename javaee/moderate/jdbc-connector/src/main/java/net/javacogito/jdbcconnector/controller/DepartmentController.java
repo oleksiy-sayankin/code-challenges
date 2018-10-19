@@ -1,6 +1,8 @@
 package net.javacogito.jdbcconnector.controller;
 
 import net.javacogito.jdbcconnector.entity.Department;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,6 +24,7 @@ public class DepartmentController extends AbstractController<Department, Integer
   private static final String CREATE_DEPARTMENT = "CREATE TABLE department (id INT PRIMARY KEY, name VARCHAR(100))";
   private static final String DROP_DEPARTMENT = "DROP TABLE IF EXISTS department";
   private static final DepartmentController DEPARTMENT_CONTROLLER = new DepartmentController();
+  private static final Logger LOG = LogManager.getLogger(DepartmentController.class);
   private DepartmentController() {}
 
   /**
@@ -73,6 +76,7 @@ public class DepartmentController extends AbstractController<Department, Integer
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info(String.format("Entity with id = %d updated to new value %s.", entity.getId(), entity));
     return true;
   }
 
@@ -97,6 +101,7 @@ public class DepartmentController extends AbstractController<Department, Integer
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info(String.format("Found entity %s.", department));
     return department;
   }
 
@@ -116,6 +121,7 @@ public class DepartmentController extends AbstractController<Department, Integer
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info(String.format("Entity with id = %d deleted", id));
     return true;
   }
 
@@ -136,6 +142,7 @@ public class DepartmentController extends AbstractController<Department, Integer
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info(String.format("Entity %s inserted", entity));
     return true;
   }
 
@@ -153,6 +160,7 @@ public class DepartmentController extends AbstractController<Department, Integer
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info("Table for entity is created");
     return true;
   }
 
@@ -170,6 +178,7 @@ public class DepartmentController extends AbstractController<Department, Integer
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info("Table for entity is dropped");
     return true;
   }
 }

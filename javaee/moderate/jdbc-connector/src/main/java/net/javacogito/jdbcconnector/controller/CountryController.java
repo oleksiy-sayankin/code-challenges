@@ -7,6 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 
 /**
  * Implementation for table 'country' controller.
@@ -22,6 +25,7 @@ public class CountryController extends AbstractController<Country, Integer> {
   private static final String CREATE_COUNTRY = "CREATE TABLE country (id INT PRIMARY KEY, name VARCHAR(100))";
   private static final String DROP_COUNTRY = "DROP TABLE IF EXISTS country";
   private static final CountryController COUNTRY_CONTROLLER = new CountryController();
+  private static final Logger LOG = LogManager.getLogger(CountryController.class);
   private CountryController() {}
 
   /**
@@ -73,6 +77,7 @@ public class CountryController extends AbstractController<Country, Integer> {
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info(String.format("Entity with id = %d updated to new value %s.", entity.getId(), entity));
     return true;
   }
 
@@ -97,6 +102,7 @@ public class CountryController extends AbstractController<Country, Integer> {
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info(String.format("Found entity %s.", country));
     return country;
   }
 
@@ -116,6 +122,7 @@ public class CountryController extends AbstractController<Country, Integer> {
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info(String.format("Entity with id = %d deleted", id));
     return true;
   }
 
@@ -136,6 +143,7 @@ public class CountryController extends AbstractController<Country, Integer> {
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info(String.format("Entity %s inserted", entity));
     return true;
   }
 
@@ -153,6 +161,7 @@ public class CountryController extends AbstractController<Country, Integer> {
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info("Table for entity is created");
     return true;
   }
 
@@ -170,6 +179,7 @@ public class CountryController extends AbstractController<Country, Integer> {
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info("Table for entity is dropped");
     return true;
   }
 }

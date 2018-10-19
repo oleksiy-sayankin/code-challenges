@@ -2,7 +2,6 @@ package net.javacogito.jdbcconnector;
 
 import net.javacogito.jdbcconnector.util.DbUtil;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;

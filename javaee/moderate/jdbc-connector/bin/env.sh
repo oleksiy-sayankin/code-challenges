@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+#
+# JDBC connection parameters are here
+#
 export DB_HOST=localhost
 export DB_NAME=test
 export DB_URL=jdbc:mysql://"${DB_HOST}"/"${DB_NAME}"?createDatabaseIfNotExist=true

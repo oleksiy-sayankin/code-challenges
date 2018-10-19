@@ -1,6 +1,8 @@
 package net.javacogito.jdbcconnector.controller;
 
 import net.javacogito.jdbcconnector.entity.Product;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,6 +24,7 @@ public class ProductController extends AbstractController<Product, Integer> {
   private static final String CREATE_PRODUCT = "CREATE TABLE product (id INT PRIMARY KEY, name VARCHAR(100), product_type_id INT, price FLOAT)";
   private static final String DROP_PRODUCT = "DROP TABLE IF EXISTS product";
   private static final ProductController PRODUCT_CONTROLLER = new ProductController();
+  private static final Logger LOG = LogManager.getLogger(ProductController.class);
   private ProductController() {}
 
   /**
@@ -77,6 +80,7 @@ public class ProductController extends AbstractController<Product, Integer> {
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info(String.format("Entity with id = %d updated to new value %s.", entity.getId(), entity));
     return true;
   }
 
@@ -103,6 +107,7 @@ public class ProductController extends AbstractController<Product, Integer> {
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info(String.format("Found entity %s.", product));
     return product;
   }
 
@@ -122,6 +127,7 @@ public class ProductController extends AbstractController<Product, Integer> {
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info(String.format("Entity with id = %d deleted", id));
     return true;
   }
 
@@ -144,6 +150,7 @@ public class ProductController extends AbstractController<Product, Integer> {
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info(String.format("Entity %s inserted", entity));
     return true;
   }
 
@@ -161,6 +168,7 @@ public class ProductController extends AbstractController<Product, Integer> {
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info("Table for entity is created");
     return true;
   }
 
@@ -178,6 +186,7 @@ public class ProductController extends AbstractController<Product, Integer> {
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info("Table for entity is dropped");
     return true;
   }
 }

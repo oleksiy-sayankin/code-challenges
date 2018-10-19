@@ -1,6 +1,8 @@
 package net.javacogito.jdbcconnector.controller;
 
 import net.javacogito.jdbcconnector.entity.Customer;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,6 +24,7 @@ public class CustomerController extends AbstractController<Customer, Integer> {
   private static final String CREATE_CUSTOMER = "CREATE TABLE customer (id INT PRIMARY KEY, company VARCHAR(100), address VARCHAR(100), country_id INT)";
   private static final String DROP_CUSTOMER = "DROP TABLE IF EXISTS customer";
   private static final CustomerController CUSTOMER_CONTROLLER = new CustomerController();
+  private static final Logger LOG = LogManager.getLogger(CustomerController.class);
   private CustomerController() {}
 
   /**
@@ -78,6 +81,7 @@ public class CustomerController extends AbstractController<Customer, Integer> {
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info(String.format("Entity with id = %d updated to new value %s.", entity.getId(), entity));
     return true;
   }
 
@@ -104,6 +108,7 @@ public class CustomerController extends AbstractController<Customer, Integer> {
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info(String.format("Found entity %s.", customer));
     return customer;
   }
 
@@ -123,6 +128,7 @@ public class CustomerController extends AbstractController<Customer, Integer> {
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info(String.format("Entity with id = %d deleted", id));
     return true;
   }
 
@@ -145,6 +151,7 @@ public class CustomerController extends AbstractController<Customer, Integer> {
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info(String.format("Entity %s inserted", entity));
     return true;
   }
 
@@ -162,6 +169,7 @@ public class CustomerController extends AbstractController<Customer, Integer> {
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info("Table for entity is created");
     return true;
   }
 
@@ -179,6 +187,7 @@ public class CustomerController extends AbstractController<Customer, Integer> {
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info("Table for entity is dropped");
     return true;
   }
 }

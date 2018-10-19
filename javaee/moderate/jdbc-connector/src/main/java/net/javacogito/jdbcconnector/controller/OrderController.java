@@ -1,6 +1,8 @@
 package net.javacogito.jdbcconnector.controller;
 
 import net.javacogito.jdbcconnector.entity.Order;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,6 +24,7 @@ public class OrderController extends AbstractController<Order, Integer> {
   private static final String CREATE_ORDER = "CREATE TABLE `order` (id INT PRIMARY KEY, customer_id INT, product_id INT, amount INT)";
   private static final String DROP_ORDER = "DROP TABLE IF EXISTS `order`";
   private static final OrderController ORDER_CONTROLLER = new OrderController();
+  private static final Logger LOG = LogManager.getLogger(OrderController.class);
   private OrderController() {}
 
   /**
@@ -77,6 +80,7 @@ public class OrderController extends AbstractController<Order, Integer> {
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info(String.format("Entity with id = %d updated to new value %s.", entity.getId(), entity));
     return true;
   }
 
@@ -103,6 +107,7 @@ public class OrderController extends AbstractController<Order, Integer> {
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info(String.format("Found entity %s.", order));
     return order;
   }
 
@@ -122,6 +127,7 @@ public class OrderController extends AbstractController<Order, Integer> {
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info(String.format("Entity with id = %d deleted", id));
     return true;
   }
 
@@ -144,6 +150,7 @@ public class OrderController extends AbstractController<Order, Integer> {
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info(String.format("Entity %s inserted", entity));
     return true;
   }
 
@@ -161,6 +168,7 @@ public class OrderController extends AbstractController<Order, Integer> {
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info("Table for entity is created");
     return true;
   }
 
@@ -178,6 +186,7 @@ public class OrderController extends AbstractController<Order, Integer> {
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info("Table for entity is dropped");
     return true;
   }
 }

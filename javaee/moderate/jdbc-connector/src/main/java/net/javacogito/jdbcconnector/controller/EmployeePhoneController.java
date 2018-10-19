@@ -1,6 +1,8 @@
 package net.javacogito.jdbcconnector.controller;
 
 import net.javacogito.jdbcconnector.entity.EmployeePhone;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,6 +24,7 @@ public class EmployeePhoneController extends AbstractController<EmployeePhone, I
   private static final String CREATE_EMPLOYEE_PHONE = "CREATE TABLE employee_phone (id INT PRIMARY KEY, employee_id INT, number VARCHAR(100))";
   private static final String DROP_EMPLOYEE_PHONE = "DROP TABLE IF EXISTS employee_phone";
   private static final EmployeePhoneController EMPLOYEE_PHONE_CONTROLLER = new EmployeePhoneController();
+  private static final Logger LOG = LogManager.getLogger(EmployeePhoneController.class);
   private EmployeePhoneController() {}
 
   /**
@@ -75,6 +78,7 @@ public class EmployeePhoneController extends AbstractController<EmployeePhone, I
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info(String.format("Entity with id = %d updated to new value %s.", entity.getId(), entity));
     return true;
   }
 
@@ -100,6 +104,7 @@ public class EmployeePhoneController extends AbstractController<EmployeePhone, I
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info(String.format("Found entity %s.", employeePhone));
     return employeePhone;
   }
 
@@ -119,6 +124,7 @@ public class EmployeePhoneController extends AbstractController<EmployeePhone, I
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info(String.format("Entity with id = %d deleted", id));
     return true;
   }
 
@@ -140,6 +146,7 @@ public class EmployeePhoneController extends AbstractController<EmployeePhone, I
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info(String.format("Entity %s inserted", entity));
     return true;
   }
 
@@ -157,6 +164,7 @@ public class EmployeePhoneController extends AbstractController<EmployeePhone, I
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info("Table for entity is created");
     return true;
   }
 
@@ -174,6 +182,7 @@ public class EmployeePhoneController extends AbstractController<EmployeePhone, I
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info("Table for entity is dropped");
     return true;
   }
 }

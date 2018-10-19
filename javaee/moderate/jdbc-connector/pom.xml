@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <artifactId>moderate-level</artifactId>
+    <artifactId>javaee-moderate</artifactId>
     <groupId>net.javacogito</groupId>
     <version>1.0-SNAPSHOT</version>
   </parent>
@@ -20,6 +20,7 @@
     <maven.surefire.plugin.version>2.22.0</maven.surefire.plugin.version>
     <commoms.scv.version>1.6</commoms.scv.version>
     <maven.assebly.plugin.version>2.3</maven.assebly.plugin.version>
+    <log4j2.version>2.11.1</log4j2.version>
   </properties>
 
   <profiles>
@@ -91,6 +92,16 @@
       <artifactId>commons-csv</artifactId>
       <version>${commoms.scv.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>${log4j2.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>${log4j2.version}</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -117,6 +128,17 @@
             </goals>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${maven.surefire.plugin.version}</version>
+        <configuration>
+          <systemPropertyVariables>
+            <log4j.configurationFile>${basedir}/conf/log4j2.properties</log4j.configurationFile>
+            <jdbc.connector.home>${basedir}</jdbc.connector.home>
+          </systemPropertyVariables>
+        </configuration>
       </plugin>
     </plugins>
   </build>

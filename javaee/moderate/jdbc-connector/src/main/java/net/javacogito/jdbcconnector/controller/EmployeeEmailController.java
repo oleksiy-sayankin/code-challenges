@@ -1,6 +1,8 @@
 package net.javacogito.jdbcconnector.controller;
 
 import net.javacogito.jdbcconnector.entity.EmployeeEmail;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,6 +24,7 @@ public class EmployeeEmailController extends AbstractController<EmployeeEmail, I
   private static final String CREATE_EMPLOYEE_EMAIL = "CREATE TABLE employee_email (id INT PRIMARY KEY, employee_id INT, email VARCHAR(100))";
   private static final String DROP_EMPLOYEE_EMAIL = "DROP TABLE IF EXISTS employee_email";
   private static final EmployeeEmailController EMPLOYEE_EMAIL_CONTROLLER = new EmployeeEmailController();
+  private static final Logger LOG = LogManager.getLogger(EmployeeEmailController.class);
   private EmployeeEmailController() {}
 
   /**
@@ -75,6 +78,7 @@ public class EmployeeEmailController extends AbstractController<EmployeeEmail, I
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info(String.format("Entity with id = %d updated to new value %s.", entity.getId(), entity));
     return true;
   }
 
@@ -100,6 +104,7 @@ public class EmployeeEmailController extends AbstractController<EmployeeEmail, I
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info(String.format("Found entity %s.", employeeEmail));
     return employeeEmail;
   }
 
@@ -119,6 +124,7 @@ public class EmployeeEmailController extends AbstractController<EmployeeEmail, I
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info(String.format("Entity with id = %d deleted", id));
     return true;
   }
 
@@ -140,6 +146,7 @@ public class EmployeeEmailController extends AbstractController<EmployeeEmail, I
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info(String.format("Entity %s inserted", entity));
     return true;
   }
 
@@ -157,6 +164,7 @@ public class EmployeeEmailController extends AbstractController<EmployeeEmail, I
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info("Table for entity is created");
     return true;
   }
 
@@ -174,6 +182,7 @@ public class EmployeeEmailController extends AbstractController<EmployeeEmail, I
     } finally {
       closePrepareStatement(ps);
     }
+    LOG.info("Table for entity is dropped");
     return true;
   }
 }
