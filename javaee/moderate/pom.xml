@@ -9,6 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>moderate-level</artifactId>
+    <artifactId>javaee-moderate</artifactId>
     <packaging>pom</packaging>
+    <modules>
+        <module>jdbc-connector</module>
+    </modules>
 </project>

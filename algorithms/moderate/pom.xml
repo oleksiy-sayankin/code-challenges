@@ -7,7 +7,7 @@
     <artifactId>code-challenges</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
-  <artifactId>moderate-level</artifactId>
+  <artifactId>algorithms-moderate</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 

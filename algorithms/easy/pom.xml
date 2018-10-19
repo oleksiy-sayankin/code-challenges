@@ -8,7 +8,7 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>easy-level</artifactId>
+  <artifactId>algorithms-easy</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
