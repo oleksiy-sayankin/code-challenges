@@ -45,4 +45,11 @@ public interface Context {
    * @return home folder of the submodule
    */
   String getHome();
+
+  /**
+   * Get initial connection pool size.
+   *
+   * @return initial connection pool size
+   */
+  int getInitialPoolSize();
 }

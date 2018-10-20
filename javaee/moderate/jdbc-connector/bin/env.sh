@@ -8,3 +8,4 @@ export DB_URL=jdbc:mysql://"${DB_HOST}"/"${DB_NAME}"?createDatabaseIfNotExist=tr
 export DB_DRIVER=com.mysql.jdbc.Driver
 export DB_USER=root
 export DB_PASSWORD=123456
+export INITIAL_POOL_SIZE=3

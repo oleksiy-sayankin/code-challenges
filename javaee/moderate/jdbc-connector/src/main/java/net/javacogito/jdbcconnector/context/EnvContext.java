@@ -4,13 +4,14 @@ package net.javacogito.jdbcconnector.context;
  * Class to return connection parameters from environment variables.
  */
 
-public class EnvContext implements Context{
+class EnvContext implements Context{
   private final String dbUrl = System.getenv("DB_URL");
   private final String dbUser = System.getenv("DB_USER");
   private final String dbPassword = System.getenv("DB_PASSWORD");
   private final String dbDriver = System.getenv("DB_DRIVER");
   private final String dbName = System.getenv("DB_NAME");
   private final String home = System.getenv("JDBC_CONNECTOR_HOME");
+  private final int initialPoolSize = Integer.parseInt(System.getenv("INITIAL_POOL_SIZE"));
 
 
   /**
@@ -64,6 +65,15 @@ public class EnvContext implements Context{
    */
   @Override public String getHome() {
     return home;
+  }
+
+  /**
+   * Get initial connection pool size.
+   *
+   * @return initial connection pool size
+   */
+  @Override public int getInitialPoolSize() {
+    return initialPoolSize;
   }
 
   @Override public String toString() {

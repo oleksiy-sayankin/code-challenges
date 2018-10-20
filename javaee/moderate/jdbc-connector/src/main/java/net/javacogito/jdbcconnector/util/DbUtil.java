@@ -3,7 +3,7 @@ package net.javacogito.jdbcconnector.util;
 import net.javacogito.jdbcconnector.connection.BasicConnectionPool;
 import net.javacogito.jdbcconnector.connection.ConnectionPool;
 import net.javacogito.jdbcconnector.context.Context;
-import net.javacogito.jdbcconnector.context.EnvContext;
+import net.javacogito.jdbcconnector.context.ContextFactory;
 import net.javacogito.jdbcconnector.controller.*;
 import net.javacogito.jdbcconnector.entity.Entity;
 import org.apache.logging.log4j.Logger;
@@ -30,8 +30,8 @@ public final class DbUtil {
    * Drop current Data Base if exists.
    */
   public static void dropDbIfExists() {
-    Context context =  new EnvContext();
-    ConnectionPool cp = BasicConnectionPool.getConnectionPool(context);
+    Context context = ContextFactory.getDefaultContext();
+    ConnectionPool cp = BasicConnectionPool.getConnectionPool();
     Connection connection = cp.getConnection();
     String dropDb = String.format("DROP SCHEMA IF EXISTS %s", context.getDbName());
     PreparedStatement ps = null;
@@ -57,8 +57,8 @@ public final class DbUtil {
    * Create current Data Base.
    */
   public static void createCurrentDb(){
-    Context context =  new EnvContext();
-    ConnectionPool cp = BasicConnectionPool.getConnectionPool(context);
+    Context context = ContextFactory.getDefaultContext();
+    ConnectionPool cp = BasicConnectionPool.getConnectionPool();
     Connection connection = cp.getConnection();
     String dropDb = String.format("CREATE SCHEMA IF NOT EXISTS %s", context.getDbName());
     PreparedStatement ps = null;

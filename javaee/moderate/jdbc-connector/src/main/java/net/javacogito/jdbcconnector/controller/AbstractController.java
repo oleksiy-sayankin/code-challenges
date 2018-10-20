@@ -2,7 +2,6 @@ package net.javacogito.jdbcconnector.controller;
 
 import net.javacogito.jdbcconnector.connection.BasicConnectionPool;
 import net.javacogito.jdbcconnector.connection.ConnectionPool;
-import net.javacogito.jdbcconnector.context.EnvContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -23,7 +22,7 @@ public abstract class AbstractController<E, K> implements Controller<E, K> {
   private static final Logger LOG = LogManager.getLogger(CountryController.class);
 
   public AbstractController() {
-    connectionPool = BasicConnectionPool.create(new EnvContext());
+    connectionPool = BasicConnectionPool.create();
     connection = connectionPool.getConnection();
   }
 

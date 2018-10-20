@@ -35,11 +35,21 @@ Quick start
 Run JUnit tests with H2 JDBC diver
 -----------------------------------------
 
+1. Configure JDBC connection params in main pom.xml
+
+2. Run in command line
+ 
+
     cd $JDBC_CONNECTOR_HOME
     mvn clean install -Ptest-h2 
 
 Run JUnit tests with MySQL JDBC diver
 -----------------------------------------
+
+1. Configure JDBC connection params in main pom.xml
+
+2. Run in command line
+ 
 
     cd $JDBC_CONNECTOR_HOME
     mvn clean install -Ptest-mysql 

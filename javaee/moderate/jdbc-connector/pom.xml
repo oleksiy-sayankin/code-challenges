@@ -21,6 +21,7 @@
     <commoms.scv.version>1.6</commoms.scv.version>
     <maven.assebly.plugin.version>2.3</maven.assebly.plugin.version>
     <log4j2.version>2.11.1</log4j2.version>
+    <test.db.name>test</test.db.name>
   </properties>
 
   <profiles>
@@ -38,12 +39,8 @@
             <version>${maven.surefire.plugin.version}</version>
             <configuration>
               <environmentVariables>
-                <JDBC_CONNECTOR_HOME>${basedir}</JDBC_CONNECTOR_HOME>
-                <DB_NAME>test</DB_NAME>
                 <DB_DRIVER>org.h2.Driver</DB_DRIVER>
-                <DB_URL>jdbc:h2:mem:${DB_NAME};DB_CLOSE_DELAY=-1</DB_URL>
-                <DB_USER>root</DB_USER>
-                <DB_PASSWORD>123456</DB_PASSWORD>
+                <DB_URL>jdbc:h2:mem:${test.db.name};DB_CLOSE_DELAY=-1</DB_URL>
               </environmentVariables>
             </configuration>
           </plugin>
@@ -61,12 +58,8 @@
             <version>${maven.surefire.plugin.version}</version>
             <configuration>
               <environmentVariables>
-                <JDBC_CONNECTOR_HOME>${basedir}</JDBC_CONNECTOR_HOME>
-                <DB_NAME>test</DB_NAME>
                 <DB_DRIVER>com.mysql.jdbc.Driver</DB_DRIVER>
-                <DB_URL>jdbc:mysql://localhost/${DB_NAME}?createDatabaseIfNotExist=true</DB_URL>
-                <DB_USER>root</DB_USER>
-                <DB_PASSWORD>123456</DB_PASSWORD>
+                <DB_URL>jdbc:mysql://localhost/${test.db.name}?createDatabaseIfNotExist=true</DB_URL>
               </environmentVariables>
             </configuration>
           </plugin>
@@ -134,6 +127,13 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${maven.surefire.plugin.version}</version>
         <configuration>
+          <environmentVariables>
+            <JDBC_CONNECTOR_HOME>${basedir}</JDBC_CONNECTOR_HOME>
+            <DB_NAME>${test.db.name}</DB_NAME>
+            <INITIAL_POOL_SIZE>3</INITIAL_POOL_SIZE>
+            <DB_USER>root</DB_USER>
+            <DB_PASSWORD>123456</DB_PASSWORD>
+          </environmentVariables>
           <systemPropertyVariables>
             <log4j.configurationFile>${basedir}/conf/log4j2.properties</log4j.configurationFile>
             <jdbc.connector.home>${basedir}</jdbc.connector.home>

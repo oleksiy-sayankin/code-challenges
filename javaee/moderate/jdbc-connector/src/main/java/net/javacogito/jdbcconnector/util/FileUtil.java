@@ -1,6 +1,6 @@
 package net.javacogito.jdbcconnector.util;
 
-import net.javacogito.jdbcconnector.context.EnvContext;
+import net.javacogito.jdbcconnector.context.ContextFactory;
 
 import java.io.File;
 
@@ -18,6 +18,6 @@ public final class FileUtil {
    * @return file from $HOME/data.
    */
   public static File getFromDataDir(String fileName){
-    return new File(new EnvContext().getHome() + File.separator + "data" + File.separator + fileName);
+    return new File(ContextFactory.getDefaultContext().getHome() + File.separator + "data" + File.separator + fileName);
   }
 }
