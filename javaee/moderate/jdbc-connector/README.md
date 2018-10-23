@@ -27,10 +27,20 @@ Prerequisites
 Quick start
 ------------
 
-    git clone https://github.com/oleksiy-sayankin/code-challenges.git
-    cd code-challenges/javaee/moderate/jdbc-connector
-    mvn clean package -DskipTests
-    . bin/jdbc-connector.sh
+1. Clone project
+
+       git clone https://github.com/oleksiy-sayankin/code-challenges.git
+       cd code-challenges/javaee/moderate/jdbc-connector
+
+2. Configure JDBC parameters in $JDBC_CONNECTOR_HOME/env.sh
+
+3. Build project
+
+       mvn clean package -DskipTests
+
+4. Run data insertion
+
+       . bin/jdbc-connector.sh
 
 Run JUnit tests with H2 JDBC diver
 -----------------------------------------
@@ -39,9 +49,8 @@ Run JUnit tests with H2 JDBC diver
 
 2. Run in command line
  
-
-    cd $JDBC_CONNECTOR_HOME
-    mvn clean install -Ptest-h2 
+        cd $JDBC_CONNECTOR_HOME
+        mvn clean install -Ptest-h2 
 
 Run JUnit tests with MySQL JDBC diver
 -----------------------------------------
@@ -50,9 +59,8 @@ Run JUnit tests with MySQL JDBC diver
 
 2. Run in command line
  
-
-    cd $JDBC_CONNECTOR_HOME
-    mvn clean install -Ptest-mysql 
+        cd $JDBC_CONNECTOR_HOME
+        mvn clean install -Ptest-mysql 
 
 Folders structure
 -----------------
