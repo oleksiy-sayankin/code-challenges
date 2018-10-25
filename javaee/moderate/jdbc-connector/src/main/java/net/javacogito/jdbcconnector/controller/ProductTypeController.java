@@ -23,6 +23,7 @@ public class ProductTypeController extends AbstractController<ProductType, Integ
   private static final String UPDATE_PRODUCT_TYPE_BY_ID = "UPDATE product_type SET name = ? WHERE id = ?";
   private static final String CREATE_PRODUCT_TYPE = "CREATE TABLE product_type (id INT PRIMARY KEY, name VARCHAR(100))";
   private static final String DROP_PRODUCT_TYPE = "DROP TABLE IF EXISTS product_type";
+  private static final String SELECT_MAX_ID = "SELECT max(id) FROM product_type";
   private static final ProductTypeController PRODUCT_TYPE_CONTROLLER = new ProductTypeController();
   private static final Logger LOG = LogManager.getLogger(ProductTypeController.class);
   private ProductTypeController() {}
@@ -180,5 +181,31 @@ public class ProductTypeController extends AbstractController<ProductType, Integ
     }
     LOG.info("Table for entity is dropped");
     return true;
+  }
+  /**
+   * Returns last id of entity in database.
+   *
+   * @return last id of entity in database
+   */
+  @Override public Integer getLastId() {
+    return getLastIdAsInteger();
+  }
+
+  /**
+   * Returns next available id of entity in database.
+   *
+   * @return next available id of entity in database
+   */
+  @Override public Integer getNextId() {
+    return getNextIdAsInteger();
+  }
+
+  /**
+   * Gets query for selecting of id if an entity.
+   *
+   * @return query for selecting of id if an entity
+   */
+  @Override protected String getMaxIdQuery(){
+    return SELECT_MAX_ID;
   }
 }

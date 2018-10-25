@@ -23,6 +23,7 @@ public class OrderController extends AbstractController<Order, Integer> {
   private static final String UPDATE_ORDER_BY_ID = "UPDATE `order` SET customer_id = ?, product_id = ?, amount = ? WHERE id = ?";
   private static final String CREATE_ORDER = "CREATE TABLE `order` (id INT PRIMARY KEY, customer_id INT, product_id INT, amount INT)";
   private static final String DROP_ORDER = "DROP TABLE IF EXISTS `order`";
+  private static final String SELECT_MAX_ID = "SELECT max(id) FROM `order`";
   private static final OrderController ORDER_CONTROLLER = new OrderController();
   private static final Logger LOG = LogManager.getLogger(OrderController.class);
   private OrderController() {}
@@ -188,5 +189,31 @@ public class OrderController extends AbstractController<Order, Integer> {
     }
     LOG.info("Table for entity is dropped");
     return true;
+  }
+  /**
+   * Returns last id of entity in database.
+   *
+   * @return last id of entity in database
+   */
+  @Override public Integer getLastId() {
+    return getLastIdAsInteger();
+  }
+
+  /**
+   * Returns next available id of entity in database.
+   *
+   * @return next available id of entity in database
+   */
+  @Override public Integer getNextId() {
+    return getNextIdAsInteger();
+  }
+
+  /**
+   * Gets query for selecting of id if an entity.
+   *
+   * @return query for selecting of id if an entity
+   */
+  @Override protected String getMaxIdQuery(){
+    return SELECT_MAX_ID;
   }
 }

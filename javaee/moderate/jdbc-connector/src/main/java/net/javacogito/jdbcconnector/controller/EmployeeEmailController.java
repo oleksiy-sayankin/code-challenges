@@ -23,6 +23,7 @@ public class EmployeeEmailController extends AbstractController<EmployeeEmail, I
   private static final String UPDATE_EMPLOYEE_EMAIL_BY_ID = "UPDATE employee_email SET employee_id = ?, email = ? WHERE id = ?";
   private static final String CREATE_EMPLOYEE_EMAIL = "CREATE TABLE employee_email (id INT PRIMARY KEY, employee_id INT, email VARCHAR(100))";
   private static final String DROP_EMPLOYEE_EMAIL = "DROP TABLE IF EXISTS employee_email";
+  private static final String SELECT_MAX_ID = "SELECT max(id) FROM employee_email";
   private static final EmployeeEmailController EMPLOYEE_EMAIL_CONTROLLER = new EmployeeEmailController();
   private static final Logger LOG = LogManager.getLogger(EmployeeEmailController.class);
   private EmployeeEmailController() {}
@@ -184,5 +185,32 @@ public class EmployeeEmailController extends AbstractController<EmployeeEmail, I
     }
     LOG.info("Table for entity is dropped");
     return true;
+  }
+
+  /**
+   * Returns last id of entity in database.
+   *
+   * @return last id of entity in database
+   */
+  @Override public Integer getLastId() {
+    return getLastIdAsInteger();
+  }
+
+  /**
+   * Returns next available id of entity in database.
+   *
+   * @return next available id of entity in database
+   */
+  @Override public Integer getNextId() {
+    return getNextIdAsInteger();
+  }
+
+  /**
+   * Gets query for selecting of id if an entity.
+   *
+   * @return query for selecting of id if an entity
+   */
+  @Override protected String getMaxIdQuery(){
+    return SELECT_MAX_ID;
   }
 }

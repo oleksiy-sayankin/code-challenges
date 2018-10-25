@@ -1,5 +1,6 @@
 package net.javacogito.jdbcconnector.util;
 
+import net.javacogito.jdbcconnector.controller.*;
 import net.javacogito.jdbcconnector.entity.*;
 
 /**
@@ -24,6 +25,16 @@ public final class EntityUtil {
   }
 
   /**
+   * Creates country entity.
+   *
+   * @param name country name
+   * @return country entity
+   */
+  public static Country createCountry(String name){
+    return createCountry(CountryController.getCountryController().getNextId(), name);
+  }
+
+  /**
    * Creates customer entity.
    *
    * @param id customer id
@@ -42,6 +53,18 @@ public final class EntityUtil {
   }
 
   /**
+   * Creates customer entity.
+   *
+   * @param company customer company
+   * @param address customer address
+   * @param country customer country
+   * @return customer entity
+   */
+  public static Customer createCustomer(String company, String address, Country country){
+    return createCustomer(CustomerController.getCustomerController().getNextId(), company, address, country.getId());
+  }
+
+  /**
    * Creates department entity.
    *
    * @param id department id
@@ -54,6 +77,17 @@ public final class EntityUtil {
     department.setName(name);
     return department;
   }
+
+  /**
+   * Creates department entity.
+   *
+   * @param name department name
+   * @return department entity
+   */
+  public static Department createDepartment(String name){
+    return createDepartment(DepartmentController.getDepartmentController().getNextId(), name);
+  }
+
 
   /**
    * Creates employee entity.
@@ -80,6 +114,22 @@ public final class EntityUtil {
     return employee;
   }
 
+
+  /**
+   * Creates employee entity.
+   *
+   * @param firstName employee first name
+   * @param lastName employee last name
+   * @param age employee age
+   * @param department employee department Id
+   * @param country employee country Id
+   * @param salary employee salary
+   * @return employee entity
+   */
+  public static Employee createEmployee(String firstName, String lastName, int age, Department department, Country country, float salary){
+    return createEmployee(EmployeeController.getEmployeeController().getNextId(), firstName, lastName, age, department.getId(), country.getId(), salary);
+  }
+
   /**
    * Creates employee email entity.
    *
@@ -94,6 +144,17 @@ public final class EntityUtil {
     employeeEmail.setEmployeeId(employeeId);
     employeeEmail.setEmail(email);
     return employeeEmail;
+  }
+
+  /**
+   * Creates employee email entity.
+   *
+   * @param employee employee id
+   * @param email email value
+   * @return employee email entity
+   */
+  public static EmployeeEmail createEmployeeEmail(Employee employee, String email) {
+    return createEmployeeEmail(EmployeeEmailController.getEmployeeEmailController().getNextId(), employee.getId(), email);
   }
 
   /**
@@ -113,6 +174,18 @@ public final class EntityUtil {
   }
 
   /**
+   * Creates employee phone entity.
+   *
+   * @param employee employee id
+   * @param number phone value
+   * @return employee phone entity
+   */
+  public static EmployeePhone createEmployeePhone(Employee employee, String number){
+    return createEmployeePhone(EmployeePhoneController.getEmployeePhoneController().getNextId(), employee.getId(), number);
+  }
+
+
+  /**
    * Creates order entity.
    *
    * @param id order id
@@ -128,6 +201,18 @@ public final class EntityUtil {
     order.setProductId(productId);
     order.setAmount(amount);
     return order;
+  }
+
+  /**
+   * Creates order entity.
+   *
+   * @param customer customer Id
+   * @param product product Id
+   * @param amount amount of product
+   * @return order entity
+   */
+  public static Order createOrder(Customer customer, Product product, int amount) {
+    return createOrder(OrderController.getOrderController().getNextId(), customer.getId(), product.getId(), amount);
   }
 
   /**
@@ -149,6 +234,18 @@ public final class EntityUtil {
   }
 
   /**
+   * Creates product entity.
+   *
+   * @param name product name
+   * @param productType product type Id
+   * @param price product price
+   * @return product entity
+   */
+  public static Product createProduct(String name, ProductType productType, float price){
+    return createProduct(ProductController.getProductController().getNextId(), name, productType.getId(), price);
+  }
+
+  /**
    * Creates product type entity.
    *
    * @param id product type id
@@ -160,5 +257,15 @@ public final class EntityUtil {
     productType.setId(id);
     productType.setName(name);
     return productType;
+  }
+
+  /**
+   * Creates product type entity.
+   *
+   * @param name product type name
+   * @return product type
+   */
+  public static ProductType createProductType(String name){
+    return createProductType(ProductTypeController.getProductTypeController().getNextId(), name);
   }
 }

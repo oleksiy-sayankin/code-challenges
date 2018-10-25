@@ -23,6 +23,7 @@ public class EmployeeController extends AbstractController<Employee, Integer> {
   private static final String UPDATE_EMPLOYEE_BY_ID = "UPDATE employee SET first_name = ?, last_name = ?, age = ?, department_id = ?, country_id = ?, salary = ? WHERE id = ?";
   private static final String CREATE_EMPLOYEE = "CREATE TABLE employee (id INT PRIMARY KEY, first_name VARCHAR(100), last_name VARCHAR(100), age INT, department_id INT, country_id INT, salary FLOAT)";
   private static final String DROP_EMPLOYEE = "DROP TABLE IF EXISTS employee";
+  private static final String SELECT_MAX_ID = "SELECT max(id) FROM employee";
   private static final EmployeeController EMPLOYEE_CONTROLLER = new EmployeeController();
   private static final Logger LOG = LogManager.getLogger(EmployeeController.class);
   private EmployeeController() {}
@@ -200,5 +201,32 @@ public class EmployeeController extends AbstractController<Employee, Integer> {
     }
     LOG.info("Table for entity is dropped");
     return true;
+  }
+
+  /**
+   * Returns last id of entity in database.
+   *
+   * @return last id of entity in database
+   */
+  @Override public Integer getLastId() {
+    return getLastIdAsInteger();
+  }
+
+  /**
+   * Returns next available id of entity in database.
+   *
+   * @return next available id of entity in database
+   */
+  @Override public Integer getNextId() {
+    return getNextIdAsInteger();
+  }
+
+  /**
+   * Gets query for selecting of id if an entity.
+   *
+   * @return query for selecting of id if an entity
+   */
+  @Override protected String getMaxIdQuery(){
+    return SELECT_MAX_ID;
   }
 }

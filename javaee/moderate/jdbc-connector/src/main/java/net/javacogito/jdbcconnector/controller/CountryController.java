@@ -24,6 +24,7 @@ public class CountryController extends AbstractController<Country, Integer> {
   private static final String UPDATE_COUNTRY_BY_ID = "UPDATE country SET name = ? WHERE id = ?";
   private static final String CREATE_COUNTRY = "CREATE TABLE country (id INT PRIMARY KEY, name VARCHAR(100))";
   private static final String DROP_COUNTRY = "DROP TABLE IF EXISTS country";
+  private static final String SELECT_MAX_ID = "SELECT max(id) FROM country";
   private static final CountryController COUNTRY_CONTROLLER = new CountryController();
   private static final Logger LOG = LogManager.getLogger(CountryController.class);
   private CountryController() {}
@@ -181,5 +182,32 @@ public class CountryController extends AbstractController<Country, Integer> {
     }
     LOG.info("Table for entity is dropped");
     return true;
+  }
+
+  /**
+   * Returns last id of entity in database.
+   *
+   * @return last id of entity in database
+   */
+  @Override public Integer getLastId() {
+    return getLastIdAsInteger();
+  }
+
+  /**
+   * Returns next available id of entity in database.
+   *
+   * @return next available id of entity in database
+   */
+  @Override public Integer getNextId() {
+    return getNextIdAsInteger();
+  }
+
+  /**
+   * Gets query for selecting of id if an entity.
+   *
+   * @return query for selecting of id if an entity
+   */
+  @Override protected String getMaxIdQuery(){
+    return SELECT_MAX_ID;
   }
 }

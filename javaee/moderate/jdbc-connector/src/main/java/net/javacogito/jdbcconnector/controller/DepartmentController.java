@@ -23,6 +23,7 @@ public class DepartmentController extends AbstractController<Department, Integer
   private static final String UPDATE_DEPARTMENT_BY_ID = "UPDATE department SET name = ? WHERE id = ?";
   private static final String CREATE_DEPARTMENT = "CREATE TABLE department (id INT PRIMARY KEY, name VARCHAR(100))";
   private static final String DROP_DEPARTMENT = "DROP TABLE IF EXISTS department";
+  private static final String SELECT_MAX_ID = "SELECT max(id) FROM department";
   private static final DepartmentController DEPARTMENT_CONTROLLER = new DepartmentController();
   private static final Logger LOG = LogManager.getLogger(DepartmentController.class);
   private DepartmentController() {}
@@ -180,5 +181,31 @@ public class DepartmentController extends AbstractController<Department, Integer
     }
     LOG.info("Table for entity is dropped");
     return true;
+  }
+  /**
+   * Returns last id of entity in database.
+   *
+   * @return last id of entity in database
+   */
+  @Override public Integer getLastId() {
+    return getLastIdAsInteger();
+  }
+
+  /**
+   * Returns next available id of entity in database.
+   *
+   * @return next available id of entity in database
+   */
+  @Override public Integer getNextId() {
+    return getNextIdAsInteger();
+  }
+
+  /**
+   * Gets query for selecting of id if an entity.
+   *
+   * @return query for selecting of id if an entity
+   */
+  @Override protected String getMaxIdQuery(){
+    return SELECT_MAX_ID;
   }
 }
