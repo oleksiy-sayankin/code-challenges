@@ -17,13 +17,12 @@ import java.util.List;
 
 public class EmployeeController extends AbstractController<Employee, Integer> {
   private static final String SELECT_ALL_EMPLOYEES = "SELECT * FROM employee";
-  private static final String INSERT_EMPLOYEE = "INSERT INTO employee VALUES (?, ?, ?, ?, ?, ?, ?)";
+  private static final String INSERT_EMPLOYEE = "INSERT INTO employee(first_name, last_name, age, department_id, country_id, salary) VALUES (?, ?, ?, ?, ?, ?)";
   private static final String DELETE_EMPLOYEE = "DELETE FROM employee WHERE id = ?";
   private static final String SELECT_EMPLOYEE_BY_ID = "SELECT * FROM employee WHERE id = ?";
   private static final String UPDATE_EMPLOYEE_BY_ID = "UPDATE employee SET first_name = ?, last_name = ?, age = ?, department_id = ?, country_id = ?, salary = ? WHERE id = ?";
-  private static final String CREATE_EMPLOYEE = "CREATE TABLE employee (id INT PRIMARY KEY, first_name VARCHAR(100), last_name VARCHAR(100), age INT, department_id INT, country_id INT, salary FLOAT)";
+  private static final String CREATE_EMPLOYEE = "CREATE TABLE employee (id INT AUTO_INCREMENT PRIMARY KEY, first_name VARCHAR(100), last_name VARCHAR(100), age INT, department_id INT, country_id INT, salary FLOAT)";
   private static final String DROP_EMPLOYEE = "DROP TABLE IF EXISTS employee";
-  private static final String SELECT_MAX_ID = "SELECT max(id) FROM employee";
   private static final EmployeeController EMPLOYEE_CONTROLLER = new EmployeeController();
   private static final Logger LOG = LogManager.getLogger(EmployeeController.class);
   private EmployeeController() {}
@@ -150,13 +149,12 @@ public class EmployeeController extends AbstractController<Employee, Integer> {
   @Override public boolean insert(Employee entity) {
     PreparedStatement ps = getPrepareStatement(INSERT_EMPLOYEE);
     try {
-      ps.setInt(1, entity.getId());
-      ps.setString(2, entity.getFirstName());
-      ps.setString(3, entity.getLastName());
-      ps.setInt(4, entity.getAge());
-      ps.setInt(5, entity.getDepartmentId());
-      ps.setInt(6, entity.getCountryId());
-      ps.setFloat(7, entity.getSalary());
+      ps.setString(1, entity.getFirstName());
+      ps.setString(2, entity.getLastName());
+      ps.setInt(3, entity.getAge());
+      ps.setInt(4, entity.getDepartmentId());
+      ps.setInt(5, entity.getCountryId());
+      ps.setFloat(6, entity.getSalary());
       ps.executeUpdate();
     } catch (SQLException e) {
       return false;
@@ -201,32 +199,5 @@ public class EmployeeController extends AbstractController<Employee, Integer> {
     }
     LOG.info("Table for entity is dropped");
     return true;
-  }
-
-  /**
-   * Returns last id of entity in database.
-   *
-   * @return last id of entity in database
-   */
-  @Override public Integer getLastId() {
-    return getLastIdAsInteger();
-  }
-
-  /**
-   * Returns next available id of entity in database.
-   *
-   * @return next available id of entity in database
-   */
-  @Override public Integer getNextId() {
-    return getNextIdAsInteger();
-  }
-
-  /**
-   * Gets query for selecting of id if an entity.
-   *
-   * @return query for selecting of id if an entity
-   */
-  @Override protected String getMaxIdQuery(){
-    return SELECT_MAX_ID;
   }
 }

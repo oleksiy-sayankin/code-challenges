@@ -17,13 +17,12 @@ import java.util.List;
 
 public class DepartmentController extends AbstractController<Department, Integer> {
   private static final String SELECT_ALL_DEPARTMENTS = "SELECT * FROM department";
-  private static final String INSERT_DEPARTMENT = "INSERT INTO department VALUES (?, ?)";
+  private static final String INSERT_DEPARTMENT = "INSERT INTO department(name) VALUES (?)";
   private static final String DELETE_DEPARTMENT = "DELETE FROM department WHERE id = ?";
   private static final String SELECT_DEPARTMENT_BY_ID = "SELECT * FROM department WHERE id = ?";
   private static final String UPDATE_DEPARTMENT_BY_ID = "UPDATE department SET name = ? WHERE id = ?";
-  private static final String CREATE_DEPARTMENT = "CREATE TABLE department (id INT PRIMARY KEY, name VARCHAR(100))";
+  private static final String CREATE_DEPARTMENT = "CREATE TABLE department (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(100))";
   private static final String DROP_DEPARTMENT = "DROP TABLE IF EXISTS department";
-  private static final String SELECT_MAX_ID = "SELECT max(id) FROM department";
   private static final DepartmentController DEPARTMENT_CONTROLLER = new DepartmentController();
   private static final Logger LOG = LogManager.getLogger(DepartmentController.class);
   private DepartmentController() {}
@@ -135,8 +134,7 @@ public class DepartmentController extends AbstractController<Department, Integer
   @Override public boolean insert(Department entity) {
     PreparedStatement ps = getPrepareStatement(INSERT_DEPARTMENT);
     try {
-      ps.setInt(1, entity.getId());
-      ps.setString(2, entity.getName());
+      ps.setString(1, entity.getName());
       ps.executeUpdate();
     } catch (SQLException e) {
       return false;
@@ -181,31 +179,5 @@ public class DepartmentController extends AbstractController<Department, Integer
     }
     LOG.info("Table for entity is dropped");
     return true;
-  }
-  /**
-   * Returns last id of entity in database.
-   *
-   * @return last id of entity in database
-   */
-  @Override public Integer getLastId() {
-    return getLastIdAsInteger();
-  }
-
-  /**
-   * Returns next available id of entity in database.
-   *
-   * @return next available id of entity in database
-   */
-  @Override public Integer getNextId() {
-    return getNextIdAsInteger();
-  }
-
-  /**
-   * Gets query for selecting of id if an entity.
-   *
-   * @return query for selecting of id if an entity
-   */
-  @Override protected String getMaxIdQuery(){
-    return SELECT_MAX_ID;
   }
 }

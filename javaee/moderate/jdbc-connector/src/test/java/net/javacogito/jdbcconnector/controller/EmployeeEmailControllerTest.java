@@ -12,10 +12,10 @@ public class EmployeeEmailControllerTest extends AbstractControllerTest<Employee
   @Test public void insertEmployeeEmailTest() {
     List<EmployeeEmail> employeeEmails = controller.getAll();
     Assert.assertEquals(3, employeeEmails.size());
-    Assert.assertTrue(employeeEmails.contains(createEmployeeEmail(1, 1, "test@gmail.com")));
-    Assert.assertTrue(employeeEmails.contains(createEmployeeEmail(2, 2, "test@mail.ru")));
-    Assert.assertTrue(employeeEmails.contains(createEmployeeEmail(3, 3, "test@list.ru")));
-    Assert.assertFalse(employeeEmails.contains(createEmployeeEmail(4, 4, "noname@list.ru")));
+    Assert.assertTrue(employeeEmails.contains(createEmployeeEmail(1, "test@gmail.com")));
+    Assert.assertTrue(employeeEmails.contains(createEmployeeEmail(2, "test@mail.ru")));
+    Assert.assertTrue(employeeEmails.contains(createEmployeeEmail(3, "test@list.ru")));
+    Assert.assertFalse(employeeEmails.contains(createEmployeeEmail(4, "noname@list.ru")));
   }
 
   @Test public void getEntityByIdTest() {
@@ -26,7 +26,7 @@ public class EmployeeEmailControllerTest extends AbstractControllerTest<Employee
     Assert.assertTrue(controller.delete(2));
     List<EmployeeEmail> employeeEmails = controller.getAll();
     Assert.assertEquals(2, employeeEmails.size());
-    Assert.assertFalse(employeeEmails.contains(createEmployeeEmail(2, 2, "test@mail.ru")));
+    Assert.assertFalse(employeeEmails.contains(createEmployeeEmail(2, "test@mail.ru")));
   }
 
   @Test public void updateTest() {
@@ -40,8 +40,8 @@ public class EmployeeEmailControllerTest extends AbstractControllerTest<Employee
   }
 
   @Override protected void insertData() {
-    Assert.assertTrue(controller.insert(createEmployeeEmail(1, 1, "test@gmail.com")));
-    Assert.assertTrue(controller.insert(createEmployeeEmail(2, 2, "test@mail.ru")));
-    Assert.assertTrue(controller.insert(createEmployeeEmail(3, 3, "test@list.ru")));
+    Assert.assertTrue(controller.insert(createEmployeeEmail(1, "test@gmail.com")));
+    Assert.assertTrue(controller.insert(createEmployeeEmail(2, "test@mail.ru")));
+    Assert.assertTrue(controller.insert(createEmployeeEmail(3, "test@list.ru")));
   }
 }

@@ -105,7 +105,7 @@ public final class Product implements Serializable, Entity {
     if (o == null || getClass() != o.getClass())
       return false;
     Product product = (Product) o;
-    return id == product.id && productTypeId == product.productTypeId && Float.compare(product.price, price) == 0
+    return productTypeId == product.productTypeId && Float.compare(product.price, price) == 0
         && Objects.equals(name, product.name);
   }
 

@@ -12,10 +12,10 @@ public class ProductControllerTest extends AbstractControllerTest<Product, Integ
   @Test public void insertTest() {
     List<Product> products = controller.getAll();
     Assert.assertEquals(3, products.size());
-    Assert.assertTrue(products.contains(createProduct(1, "Pepsi", 1, 3.44f)));
-    Assert.assertTrue(products.contains(createProduct(2, "Ice Cream", 2, 5.49f)));
-    Assert.assertTrue(products.contains(createProduct(3, "Personal Computer", 3, 702.44f)));
-    Assert.assertFalse(products.contains(createProduct(4, "No Name", 4, 322.21f)));
+    Assert.assertTrue(products.contains(createProduct("Pepsi", 1, 3.44f)));
+    Assert.assertTrue(products.contains(createProduct("Ice Cream", 2, 5.49f)));
+    Assert.assertTrue(products.contains(createProduct("Personal Computer", 3, 702.44f)));
+    Assert.assertFalse(products.contains(createProduct("No Name", 4, 322.21f)));
   }
 
   @Test public void getEntityByIdTest() {
@@ -26,7 +26,7 @@ public class ProductControllerTest extends AbstractControllerTest<Product, Integ
     Assert.assertTrue(controller.delete(2));
     List<Product> products = controller.getAll();
     Assert.assertEquals(2, products.size());
-    Assert.assertFalse(products.contains(createProduct(2, "Ice Cream", 2, 5.49f)));
+    Assert.assertFalse(products.contains(createProduct("Ice Cream", 2, 5.49f)));
   }
 
   @Test public void updateTest() {
@@ -40,8 +40,8 @@ public class ProductControllerTest extends AbstractControllerTest<Product, Integ
   }
 
   @Override protected void insertData() {
-    Assert.assertTrue(controller.insert(createProduct(1, "Pepsi", 1, 3.44f)));
-    Assert.assertTrue(controller.insert(createProduct(2, "Ice Cream", 2, 5.49f)));
-    Assert.assertTrue(controller.insert(createProduct(3, "Personal Computer", 3, 702.44f)));
+    Assert.assertTrue(controller.insert(createProduct("Pepsi", 1, 3.44f)));
+    Assert.assertTrue(controller.insert(createProduct("Ice Cream", 2, 5.49f)));
+    Assert.assertTrue(controller.insert(createProduct("Personal Computer", 3, 702.44f)));
   }
 }

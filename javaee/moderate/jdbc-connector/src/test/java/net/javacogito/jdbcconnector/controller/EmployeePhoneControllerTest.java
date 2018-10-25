@@ -12,10 +12,10 @@ public class EmployeePhoneControllerTest extends AbstractControllerTest<Employee
   @Test public void insertEmployeeEmailTest() {
     List<EmployeePhone> employeePhones = controller.getAll();
     Assert.assertEquals(3, employeePhones.size());
-    Assert.assertTrue(employeePhones.contains(createEmployeePhone(1, 1, "555-9320-23-322-3")));
-    Assert.assertTrue(employeePhones.contains(createEmployeePhone(2, 2, "555-3243-22-77-554")));
-    Assert.assertTrue(employeePhones.contains(createEmployeePhone(3, 3, "555-3408-3-323-232")));
-    Assert.assertFalse(employeePhones.contains(createEmployeePhone(4, 4, "555-000-000-000-00")));
+    Assert.assertTrue(employeePhones.contains(createEmployeePhone(1, "555-9320-23-322-3")));
+    Assert.assertTrue(employeePhones.contains(createEmployeePhone(2, "555-3243-22-77-554")));
+    Assert.assertTrue(employeePhones.contains(createEmployeePhone(3, "555-3408-3-323-232")));
+    Assert.assertFalse(employeePhones.contains(createEmployeePhone(4, "555-000-000-000-00")));
   }
 
   @Test public void getEntityByIdTest() {
@@ -26,7 +26,7 @@ public class EmployeePhoneControllerTest extends AbstractControllerTest<Employee
     Assert.assertTrue(controller.delete(2));
     List<EmployeePhone> employeePhones = controller.getAll();
     Assert.assertEquals(2, employeePhones.size());
-    Assert.assertFalse(employeePhones.contains(createEmployeePhone(2, 2, "555-3243-22-77-554")));
+    Assert.assertFalse(employeePhones.contains(createEmployeePhone(2, "555-3243-22-77-554")));
   }
 
   @Test public void updateTest() {
@@ -40,8 +40,8 @@ public class EmployeePhoneControllerTest extends AbstractControllerTest<Employee
   }
 
   @Override protected void insertData() {
-    Assert.assertTrue(controller.insert(createEmployeePhone(1, 1, "555-9320-23-322-3")));
-    Assert.assertTrue(controller.insert(createEmployeePhone(2, 2, "555-3243-22-77-554")));
-    Assert.assertTrue(controller.insert(createEmployeePhone(3, 3, "555-3408-3-323-232")));
+    Assert.assertTrue(controller.insert(createEmployeePhone(1, "555-9320-23-322-3")));
+    Assert.assertTrue(controller.insert(createEmployeePhone(2, "555-3243-22-77-554")));
+    Assert.assertTrue(controller.insert(createEmployeePhone(3, "555-3408-3-323-232")));
   }
 }

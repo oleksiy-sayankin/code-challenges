@@ -31,7 +31,7 @@ public final class LoadTableUtil {
     CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
     ) {
       for (CSVRecord csvRecord : csvParser) {
-        countries.add(createCountry(Integer.parseInt(csvRecord.get(0)), csvRecord.get(1)));
+        countries.add(createCountry(csvRecord.get(0)));
       }
     }
     return countries;
@@ -51,7 +51,7 @@ public final class LoadTableUtil {
         CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
     ) {
       for (CSVRecord csvRecord : csvParser) {
-        customers.add(createCustomer(Integer.parseInt(csvRecord.get(0)), csvRecord.get(1), csvRecord.get(2), Integer.parseInt(csvRecord.get(3))));
+        customers.add(createCustomer(csvRecord.get(0), csvRecord.get(1), Integer.parseInt(csvRecord.get(2))));
       }
     }
     return customers;
@@ -71,7 +71,7 @@ public final class LoadTableUtil {
         CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
     ) {
       for (CSVRecord csvRecord : csvParser) {
-        departments.add(createDepartment(Integer.parseInt(csvRecord.get(0)), csvRecord.get(1)));
+        departments.add(createDepartment(csvRecord.get(0)));
       }
     }
     return departments;
@@ -92,8 +92,8 @@ public final class LoadTableUtil {
         CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
     ) {
       for (CSVRecord csvRecord : csvParser) {
-        employees.add(createEmployee(Integer.parseInt(csvRecord.get(0)), csvRecord.get(1), csvRecord.get(2), Integer.parseInt(csvRecord.get(3)),
-            Integer.parseInt(csvRecord.get(4)), Integer.parseInt(csvRecord.get(5)), Float.parseFloat(csvRecord.get(6))));
+        employees.add(createEmployee(csvRecord.get(0), csvRecord.get(1), Integer.parseInt(csvRecord.get(2)),
+            Integer.parseInt(csvRecord.get(3)), Integer.parseInt(csvRecord.get(4)), Float.parseFloat(csvRecord.get(5))));
       }
     }
     return employees;
@@ -113,7 +113,7 @@ public final class LoadTableUtil {
         CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
     ) {
       for (CSVRecord csvRecord : csvParser) {
-        employees.add(createEmployeeEmail(Integer.parseInt(csvRecord.get(0)), Integer.parseInt(csvRecord.get(1)), csvRecord.get(2)));
+        employees.add(createEmployeeEmail(Integer.parseInt(csvRecord.get(0)), csvRecord.get(1)));
       }
     }
     return employees;
@@ -134,7 +134,7 @@ public final class LoadTableUtil {
         CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
     ) {
       for (CSVRecord csvRecord : csvParser) {
-        employeePhones.add(createEmployeePhone(Integer.parseInt(csvRecord.get(0)), Integer.parseInt(csvRecord.get(1)), csvRecord.get(2)));
+        employeePhones.add(createEmployeePhone(Integer.parseInt(csvRecord.get(0)), csvRecord.get(1)));
       }
     }
     return employeePhones;
@@ -154,7 +154,7 @@ public final class LoadTableUtil {
         CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
     ) {
       for (CSVRecord csvRecord : csvParser) {
-        orders.add(createOrder(Integer.parseInt(csvRecord.get(0)), Integer.parseInt(csvRecord.get(1)), Integer.parseInt(csvRecord.get(2)), Integer.parseInt(csvRecord.get(3))));
+        orders.add(createOrder(Integer.parseInt(csvRecord.get(0)), Integer.parseInt(csvRecord.get(1)), Integer.parseInt(csvRecord.get(2))));
       }
     }
     return orders;
@@ -174,7 +174,7 @@ public final class LoadTableUtil {
         CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
     ) {
       for (CSVRecord csvRecord : csvParser) {
-        products.add(createProduct(Integer.parseInt(csvRecord.get(0)), csvRecord.get(1), Integer.parseInt(csvRecord.get(2)), Float.parseFloat(csvRecord.get(3))));
+        products.add(createProduct(csvRecord.get(0), Integer.parseInt(csvRecord.get(1)), Float.parseFloat(csvRecord.get(2))));
       }
     }
     return products;
@@ -194,7 +194,7 @@ public final class LoadTableUtil {
         CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
     ) {
       for (CSVRecord csvRecord : csvParser) {
-        productTypes.add(createProductType(Integer.parseInt(csvRecord.get(0)), csvRecord.get(1)));
+        productTypes.add(createProductType(csvRecord.get(0)));
       }
     }
     return productTypes;

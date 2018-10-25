@@ -17,13 +17,12 @@ import java.util.List;
 
 public class ProductTypeController extends AbstractController<ProductType, Integer> {
   private static final String SELECT_ALL_PRODUCT_TYPES = "SELECT * FROM product_type";
-  private static final String INSERT_PRODUCT_TYPE = "INSERT INTO product_type VALUES (?, ?)";
+  private static final String INSERT_PRODUCT_TYPE = "INSERT INTO product_type(name) VALUES (?)";
   private static final String DELETE_PRODUCT_TYPE = "DELETE FROM product_type WHERE id = ?";
   private static final String SELECT_PRODUCT_TYPE_BY_ID = "SELECT * FROM product_type WHERE id = ?";
   private static final String UPDATE_PRODUCT_TYPE_BY_ID = "UPDATE product_type SET name = ? WHERE id = ?";
-  private static final String CREATE_PRODUCT_TYPE = "CREATE TABLE product_type (id INT PRIMARY KEY, name VARCHAR(100))";
+  private static final String CREATE_PRODUCT_TYPE = "CREATE TABLE product_type (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(100))";
   private static final String DROP_PRODUCT_TYPE = "DROP TABLE IF EXISTS product_type";
-  private static final String SELECT_MAX_ID = "SELECT max(id) FROM product_type";
   private static final ProductTypeController PRODUCT_TYPE_CONTROLLER = new ProductTypeController();
   private static final Logger LOG = LogManager.getLogger(ProductTypeController.class);
   private ProductTypeController() {}
@@ -135,8 +134,7 @@ public class ProductTypeController extends AbstractController<ProductType, Integ
   @Override public boolean insert(ProductType entity) {
     PreparedStatement ps = getPrepareStatement(INSERT_PRODUCT_TYPE);
     try {
-      ps.setInt(1, entity.getId());
-      ps.setString(2, entity.getName());
+      ps.setString(1, entity.getName());
       ps.executeUpdate();
     } catch (SQLException e) {
       return false;
@@ -181,31 +179,5 @@ public class ProductTypeController extends AbstractController<ProductType, Integ
     }
     LOG.info("Table for entity is dropped");
     return true;
-  }
-  /**
-   * Returns last id of entity in database.
-   *
-   * @return last id of entity in database
-   */
-  @Override public Integer getLastId() {
-    return getLastIdAsInteger();
-  }
-
-  /**
-   * Returns next available id of entity in database.
-   *
-   * @return next available id of entity in database
-   */
-  @Override public Integer getNextId() {
-    return getNextIdAsInteger();
-  }
-
-  /**
-   * Gets query for selecting of id if an entity.
-   *
-   * @return query for selecting of id if an entity
-   */
-  @Override protected String getMaxIdQuery(){
-    return SELECT_MAX_ID;
   }
 }

@@ -17,13 +17,12 @@ import java.util.List;
 
 public class ProductController extends AbstractController<Product, Integer> {
   private static final String SELECT_ALL_PRODUCTS = "SELECT * FROM product";
-  private static final String INSERT_PRODUCT = "INSERT INTO product VALUES (?, ?, ?, ?)";
+  private static final String INSERT_PRODUCT = "INSERT INTO product(name, product_type_id, price) VALUES (?, ?, ?)";
   private static final String DELETE_PRODUCT = "DELETE FROM product WHERE id = ?";
   private static final String SELECT_PRODUCT_BY_ID = "SELECT * FROM product WHERE id = ?";
   private static final String UPDATE_PRODUCT_BY_ID = "UPDATE product SET name = ?, product_type_id = ?, price = ? WHERE id = ?";
-  private static final String CREATE_PRODUCT = "CREATE TABLE product (id INT PRIMARY KEY, name VARCHAR(100), product_type_id INT, price FLOAT)";
+  private static final String CREATE_PRODUCT = "CREATE TABLE product (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(100), product_type_id INT, price FLOAT)";
   private static final String DROP_PRODUCT = "DROP TABLE IF EXISTS product";
-  private static final String SELECT_MAX_ID = "SELECT max(id) FROM product";
   private static final ProductController PRODUCT_CONTROLLER = new ProductController();
   private static final Logger LOG = LogManager.getLogger(ProductController.class);
   private ProductController() {}
@@ -141,10 +140,9 @@ public class ProductController extends AbstractController<Product, Integer> {
   @Override public boolean insert(Product entity) {
     PreparedStatement ps = getPrepareStatement(INSERT_PRODUCT);
     try {
-      ps.setInt(1, entity.getId());
-      ps.setString(2, entity.getName());
-      ps.setInt(3, entity.getProductTypeId());
-      ps.setFloat(4, entity.getPrice());
+      ps.setString(1, entity.getName());
+      ps.setInt(2, entity.getProductTypeId());
+      ps.setFloat(3, entity.getPrice());
       ps.executeUpdate();
     } catch (SQLException e) {
       return false;
@@ -189,31 +187,5 @@ public class ProductController extends AbstractController<Product, Integer> {
     }
     LOG.info("Table for entity is dropped");
     return true;
-  }
-  /**
-   * Returns last id of entity in database.
-   *
-   * @return last id of entity in database
-   */
-  @Override public Integer getLastId() {
-    return getLastIdAsInteger();
-  }
-
-  /**
-   * Returns next available id of entity in database.
-   *
-   * @return next available id of entity in database
-   */
-  @Override public Integer getNextId() {
-    return getNextIdAsInteger();
-  }
-
-  /**
-   * Gets query for selecting of id if an entity.
-   *
-   * @return query for selecting of id if an entity
-   */
-  @Override protected String getMaxIdQuery(){
-    return SELECT_MAX_ID;
   }
 }

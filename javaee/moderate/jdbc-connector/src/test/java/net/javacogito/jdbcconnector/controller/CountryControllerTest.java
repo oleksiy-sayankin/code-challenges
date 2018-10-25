@@ -13,21 +13,21 @@ public class CountryControllerTest extends AbstractControllerTest<Country, Integ
   @Test public void insertTest() {
     List<Country> countries = controller.getAll();
     Assert.assertEquals(3, countries.size());
-    Assert.assertTrue(countries.contains(createCountry(1, "Ukraine")));
-    Assert.assertTrue(countries.contains(createCountry(2, "USA")));
-    Assert.assertTrue(countries.contains(createCountry(3, "Great Britain")));
-    Assert.assertFalse(countries.contains(createCountry(4, "No Name")));
+    Assert.assertTrue(countries.contains(createCountry("Ukraine")));
+    Assert.assertTrue(countries.contains(createCountry("USA")));
+    Assert.assertTrue(countries.contains(createCountry("Great Britain")));
+    Assert.assertFalse(countries.contains(createCountry("No Name")));
   }
 
   @Test public void getEntityByIdTest() {
-    Assert.assertEquals(createCountry(2, "USA"), controller.getEntityById(2));
+    Assert.assertEquals(createCountry("USA"), controller.getEntityById(2));
   }
 
   @Test public void deleteTest() {
     Assert.assertTrue(controller.delete(2));
     List<Country> countries = controller.getAll();
     Assert.assertEquals(2, countries.size());
-    Assert.assertFalse(countries.contains(createCountry(2, "USA")));
+    Assert.assertFalse(countries.contains(createCountry( "USA")));
   }
 
   @Test public void updateTest() {
@@ -41,8 +41,8 @@ public class CountryControllerTest extends AbstractControllerTest<Country, Integ
   }
 
   @Override protected void insertData() {
-    Assert.assertTrue(controller.insert(createCountry(1, "Ukraine")));
-    Assert.assertTrue(controller.insert(createCountry(2, "USA")));
-    Assert.assertTrue(controller.insert(createCountry(3, "Great Britain")));
+    Assert.assertTrue(controller.insert(createCountry("Ukraine")));
+    Assert.assertTrue(controller.insert(createCountry("USA")));
+    Assert.assertTrue(controller.insert(createCountry("Great Britain")));
   }
 }

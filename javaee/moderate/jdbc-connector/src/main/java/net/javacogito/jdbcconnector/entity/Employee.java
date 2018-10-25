@@ -159,7 +159,7 @@ public final class Employee implements Serializable, Entity {
     if (o == null || getClass() != o.getClass())
       return false;
     Employee employee = (Employee) o;
-    return id == employee.id && age == employee.age && Objects.equals(firstName, employee.firstName) && Objects
+    return age == employee.age && Objects.equals(firstName, employee.firstName) && Objects
         .equals(lastName, employee.lastName);
   }
 

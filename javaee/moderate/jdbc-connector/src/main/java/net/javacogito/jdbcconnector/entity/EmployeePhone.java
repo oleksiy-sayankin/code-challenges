@@ -83,7 +83,7 @@ public final class EmployeePhone implements Serializable, Entity {
     if (o == null || getClass() != o.getClass())
       return false;
     EmployeePhone that = (EmployeePhone) o;
-    return id == that.id && employeeId == that.employeeId && Objects.equals(number, that.number);
+    return employeeId == that.employeeId && Objects.equals(number, that.number);
   }
 
   @Override public int hashCode() {

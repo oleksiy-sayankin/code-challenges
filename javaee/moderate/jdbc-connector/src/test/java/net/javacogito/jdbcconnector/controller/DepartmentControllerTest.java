@@ -12,10 +12,10 @@ public class DepartmentControllerTest extends AbstractControllerTest<Department,
   @Test public void insertTest() {
     List<Department> departments = controller.getAll();
     Assert.assertEquals(3, departments.size());
-    Assert.assertTrue(departments.contains(createDepartment(1, "Management Department")));
-    Assert.assertTrue(departments.contains(createDepartment(2, "Financial Department")));
-    Assert.assertTrue(departments.contains(createDepartment(3, "HR Department")));
-    Assert.assertFalse(departments.contains(createDepartment(4, "No Name")));
+    Assert.assertTrue(departments.contains(createDepartment("Management Department")));
+    Assert.assertTrue(departments.contains(createDepartment("Financial Department")));
+    Assert.assertTrue(departments.contains(createDepartment("HR Department")));
+    Assert.assertFalse(departments.contains(createDepartment("No Name")));
   }
 
   @Test public void getEntityByIdTest() {
@@ -26,7 +26,7 @@ public class DepartmentControllerTest extends AbstractControllerTest<Department,
     Assert.assertTrue(controller.delete(2));
     List<Department> countries = controller.getAll();
     Assert.assertEquals(2, countries.size());
-    Assert.assertFalse(countries.contains(createDepartment(2, "Financial Department")));
+    Assert.assertFalse(countries.contains(createDepartment("Financial Department")));
   }
 
   @Test public void updateTest() {
@@ -40,8 +40,8 @@ public class DepartmentControllerTest extends AbstractControllerTest<Department,
   }
 
   @Override protected void insertData() {
-    Assert.assertTrue(controller.insert(createDepartment(1, "Management Department")));
-    Assert.assertTrue(controller.insert(createDepartment(2, "Financial Department")));
-    Assert.assertTrue(controller.insert(createDepartment(3, "HR Department")));
+    Assert.assertTrue(controller.insert(createDepartment("Management Department")));
+    Assert.assertTrue(controller.insert(createDepartment("Financial Department")));
+    Assert.assertTrue(controller.insert(createDepartment("HR Department")));
   }
 }

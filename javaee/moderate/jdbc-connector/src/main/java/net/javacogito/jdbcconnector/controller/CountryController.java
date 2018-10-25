@@ -18,13 +18,12 @@ import org.apache.logging.log4j.LogManager;
 
 public class CountryController extends AbstractController<Country, Integer> {
   private static final String SELECT_ALL_COUNTRIES = "SELECT * FROM country";
-  private static final String INSERT_COUNTRY = "INSERT INTO country VALUES (?, ?)";
+  private static final String INSERT_COUNTRY = "INSERT INTO country (name) VALUES (?)";
   private static final String DELETE_COUNTRY = "DELETE FROM country WHERE id = ?";
   private static final String SELECT_COUNTRY_BY_ID = "SELECT * FROM country WHERE id = ?";
   private static final String UPDATE_COUNTRY_BY_ID = "UPDATE country SET name = ? WHERE id = ?";
-  private static final String CREATE_COUNTRY = "CREATE TABLE country (id INT PRIMARY KEY, name VARCHAR(100))";
+  private static final String CREATE_COUNTRY = "CREATE TABLE country (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(100))";
   private static final String DROP_COUNTRY = "DROP TABLE IF EXISTS country";
-  private static final String SELECT_MAX_ID = "SELECT max(id) FROM country";
   private static final CountryController COUNTRY_CONTROLLER = new CountryController();
   private static final Logger LOG = LogManager.getLogger(CountryController.class);
   private CountryController() {}
@@ -136,8 +135,7 @@ public class CountryController extends AbstractController<Country, Integer> {
   @Override public boolean insert(Country entity) {
     PreparedStatement ps = getPrepareStatement(INSERT_COUNTRY);
     try {
-      ps.setInt(1, entity.getId());
-      ps.setString(2, entity.getName());
+      ps.setString(1, entity.getName());
       ps.executeUpdate();
     } catch (SQLException e) {
       return false;
@@ -182,32 +180,5 @@ public class CountryController extends AbstractController<Country, Integer> {
     }
     LOG.info("Table for entity is dropped");
     return true;
-  }
-
-  /**
-   * Returns last id of entity in database.
-   *
-   * @return last id of entity in database
-   */
-  @Override public Integer getLastId() {
-    return getLastIdAsInteger();
-  }
-
-  /**
-   * Returns next available id of entity in database.
-   *
-   * @return next available id of entity in database
-   */
-  @Override public Integer getNextId() {
-    return getNextIdAsInteger();
-  }
-
-  /**
-   * Gets query for selecting of id if an entity.
-   *
-   * @return query for selecting of id if an entity
-   */
-  @Override protected String getMaxIdQuery(){
-    return SELECT_MAX_ID;
   }
 }

@@ -65,7 +65,7 @@ public final class Country implements Serializable, Entity {
     if (o == null || getClass() != o.getClass())
       return false;
     Country country = (Country) o;
-    return id == country.id && Objects.equals(name, country.name);
+    return Objects.equals(name, country.name);
   }
 
   @Override public int hashCode() {

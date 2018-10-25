@@ -1,6 +1,5 @@
 package net.javacogito.jdbcconnector.util;
 
-import net.javacogito.jdbcconnector.controller.*;
 import net.javacogito.jdbcconnector.entity.*;
 
 /**
@@ -31,7 +30,7 @@ public final class EntityUtil {
    * @return country entity
    */
   public static Country createCountry(String name){
-    return createCountry(CountryController.getCountryController().getNextId(), name);
+    return createCountry(0, name);
   }
 
   /**
@@ -57,11 +56,11 @@ public final class EntityUtil {
    *
    * @param company customer company
    * @param address customer address
-   * @param country customer country
+   * @param countryId customer country id
    * @return customer entity
    */
-  public static Customer createCustomer(String company, String address, Country country){
-    return createCustomer(CustomerController.getCustomerController().getNextId(), company, address, country.getId());
+  public static Customer createCustomer(String company, String address, int countryId){
+    return createCustomer(0, company, address, countryId);
   }
 
   /**
@@ -85,7 +84,7 @@ public final class EntityUtil {
    * @return department entity
    */
   public static Department createDepartment(String name){
-    return createDepartment(DepartmentController.getDepartmentController().getNextId(), name);
+    return createDepartment(0, name);
   }
 
 
@@ -121,13 +120,14 @@ public final class EntityUtil {
    * @param firstName employee first name
    * @param lastName employee last name
    * @param age employee age
-   * @param department employee department Id
-   * @param country employee country Id
+   * @param departmentId employee department Id
+   * @param countryId employee country Id
    * @param salary employee salary
    * @return employee entity
    */
-  public static Employee createEmployee(String firstName, String lastName, int age, Department department, Country country, float salary){
-    return createEmployee(EmployeeController.getEmployeeController().getNextId(), firstName, lastName, age, department.getId(), country.getId(), salary);
+
+  public static Employee createEmployee(String firstName, String lastName, int age, int departmentId, int countryId, float salary){
+    return createEmployee(0, firstName, lastName, age, departmentId, countryId, salary);
   }
 
   /**
@@ -149,12 +149,12 @@ public final class EntityUtil {
   /**
    * Creates employee email entity.
    *
-   * @param employee employee id
+   * @param employeeId employee id
    * @param email email value
    * @return employee email entity
    */
-  public static EmployeeEmail createEmployeeEmail(Employee employee, String email) {
-    return createEmployeeEmail(EmployeeEmailController.getEmployeeEmailController().getNextId(), employee.getId(), email);
+  public static EmployeeEmail createEmployeeEmail(int employeeId, String email){
+    return createEmployeeEmail(0, employeeId, email);
   }
 
   /**
@@ -176,12 +176,12 @@ public final class EntityUtil {
   /**
    * Creates employee phone entity.
    *
-   * @param employee employee id
+   * @param employeeId employee id
    * @param number phone value
    * @return employee phone entity
    */
-  public static EmployeePhone createEmployeePhone(Employee employee, String number){
-    return createEmployeePhone(EmployeePhoneController.getEmployeePhoneController().getNextId(), employee.getId(), number);
+  public static EmployeePhone createEmployeePhone(int employeeId, String number){
+    return createEmployeePhone(0, employeeId, number);
   }
 
 
@@ -206,13 +206,13 @@ public final class EntityUtil {
   /**
    * Creates order entity.
    *
-   * @param customer customer Id
-   * @param product product Id
+   * @param customerId customer Id
+   * @param productId product Id
    * @param amount amount of product
    * @return order entity
    */
-  public static Order createOrder(Customer customer, Product product, int amount) {
-    return createOrder(OrderController.getOrderController().getNextId(), customer.getId(), product.getId(), amount);
+  public static Order createOrder(int customerId, int productId, int amount){
+    return createOrder(0, customerId, productId, amount);
   }
 
   /**
@@ -237,12 +237,12 @@ public final class EntityUtil {
    * Creates product entity.
    *
    * @param name product name
-   * @param productType product type Id
+   * @param productTypeId product type Id
    * @param price product price
    * @return product entity
    */
-  public static Product createProduct(String name, ProductType productType, float price){
-    return createProduct(ProductController.getProductController().getNextId(), name, productType.getId(), price);
+  public static Product createProduct(String name, int productTypeId, float price){
+    return createProduct(0, name, productTypeId, price);
   }
 
   /**
@@ -266,6 +266,6 @@ public final class EntityUtil {
    * @return product type
    */
   public static ProductType createProductType(String name){
-    return createProductType(ProductTypeController.getProductTypeController().getNextId(), name);
+    return createProductType(0, name);
   }
 }

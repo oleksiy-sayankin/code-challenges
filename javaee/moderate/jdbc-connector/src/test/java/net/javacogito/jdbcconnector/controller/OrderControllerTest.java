@@ -12,10 +12,10 @@ public class OrderControllerTest extends AbstractControllerTest<Order, Integer> 
   @Test public void insertCustomerTest() {
     List<Order> orders = controller.getAll();
     Assert.assertEquals(3, orders.size());
-    Assert.assertTrue(orders.contains(createOrder(1,1,1,1)));
-    Assert.assertTrue(orders.contains(createOrder(2,2,2,2)));
-    Assert.assertTrue(orders.contains(createOrder(3,3,3,3)));
-    Assert.assertFalse(orders.contains(createOrder(4,4,4,4)));
+    Assert.assertTrue(orders.contains(createOrder(1,1,1)));
+    Assert.assertTrue(orders.contains(createOrder(2,2,2)));
+    Assert.assertTrue(orders.contains(createOrder(3,3,3)));
+    Assert.assertFalse(orders.contains(createOrder(4,4,4)));
   }
 
   @Test public void getEntityByIdTest() {
@@ -26,7 +26,7 @@ public class OrderControllerTest extends AbstractControllerTest<Order, Integer> 
     Assert.assertTrue(controller.delete(2));
     List<Order> orders = controller.getAll();
     Assert.assertEquals(2, orders.size());
-    Assert.assertFalse(orders.contains(createOrder(2,2,2,2)));
+    Assert.assertFalse(orders.contains(createOrder(2,2,2)));
   }
 
   @Test public void updateTest() {
@@ -40,8 +40,8 @@ public class OrderControllerTest extends AbstractControllerTest<Order, Integer> 
   }
 
   @Override protected void insertData() {
-    Assert.assertTrue(controller.insert(createOrder(1,1,1,1)));
-    Assert.assertTrue(controller.insert(createOrder(2,2,2,2)));
-    Assert.assertTrue(controller.insert(createOrder(3,3,3,3)));
+    Assert.assertTrue(controller.insert(createOrder(1,1,1)));
+    Assert.assertTrue(controller.insert(createOrder(2,2,2)));
+    Assert.assertTrue(controller.insert(createOrder(3,3,3)));
   }
 }

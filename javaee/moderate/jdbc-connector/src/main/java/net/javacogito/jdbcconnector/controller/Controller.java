@@ -66,19 +66,4 @@ public interface Controller<E, K> {
    * After connection has been used we return it into pool to be available for other requests.
    */
   void returnConnectionInPool();
-
-  /**
-   * Returns last id of entity in database.
-   *
-   * @return last id of entity in database
-   */
-  K getLastId();
-
-
-  /**
-   * Returns next available id of entity in database.
-   *
-   * @return next available id of entity in database
-   */
-  K getNextId();
 }

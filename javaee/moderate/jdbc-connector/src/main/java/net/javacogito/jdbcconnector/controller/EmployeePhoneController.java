@@ -17,13 +17,12 @@ import java.util.List;
 
 public class EmployeePhoneController extends AbstractController<EmployeePhone, Integer> {
   private static final String SELECT_ALL_EMPLOYEE_PHONES = "SELECT * FROM employee_phone";
-  private static final String INSERT_EMPLOYEE_PHONE = "INSERT INTO employee_phone VALUES (?, ?, ?)";
+  private static final String INSERT_EMPLOYEE_PHONE = "INSERT INTO employee_phone(employee_id, number) VALUES (?, ?)";
   private static final String DELETE_EMPLOYEE_PHONE = "DELETE FROM employee_phone WHERE id = ?";
   private static final String SELECT_EMPLOYEE_PHONE_BY_ID = "SELECT * FROM employee_phone WHERE id = ?";
   private static final String UPDATE_EMPLOYEE_PHONE_BY_ID = "UPDATE employee_phone SET employee_id = ?, number = ? WHERE id = ?";
-  private static final String CREATE_EMPLOYEE_PHONE = "CREATE TABLE employee_phone (id INT PRIMARY KEY, employee_id INT, number VARCHAR(100))";
+  private static final String CREATE_EMPLOYEE_PHONE = "CREATE TABLE employee_phone (id INT AUTO_INCREMENT PRIMARY KEY, employee_id INT, number VARCHAR(100))";
   private static final String DROP_EMPLOYEE_PHONE = "DROP TABLE IF EXISTS employee_phone";
-  private static final String SELECT_MAX_ID = "SELECT max(id) FROM employee_phone";
   private static final EmployeePhoneController EMPLOYEE_PHONE_CONTROLLER = new EmployeePhoneController();
   private static final Logger LOG = LogManager.getLogger(EmployeePhoneController.class);
   private EmployeePhoneController() {}
@@ -138,9 +137,8 @@ public class EmployeePhoneController extends AbstractController<EmployeePhone, I
   @Override public boolean insert(EmployeePhone entity) {
     PreparedStatement ps = getPrepareStatement(INSERT_EMPLOYEE_PHONE);
     try {
-      ps.setInt(1, entity.getId());
-      ps.setInt(2, entity.getEmployeeId());
-      ps.setString(3, entity.getNumber());
+      ps.setInt(1, entity.getEmployeeId());
+      ps.setString(2, entity.getNumber());
       ps.executeUpdate();
     } catch (SQLException e) {
       return false;
@@ -185,32 +183,5 @@ public class EmployeePhoneController extends AbstractController<EmployeePhone, I
     }
     LOG.info("Table for entity is dropped");
     return true;
-  }
-
-  /**
-   * Returns last id of entity in database.
-   *
-   * @return last id of entity in database
-   */
-  @Override public Integer getLastId() {
-    return getLastIdAsInteger();
-  }
-
-  /**
-   * Returns next available id of entity in database.
-   *
-   * @return next available id of entity in database
-   */
-  @Override public Integer getNextId() {
-    return getNextIdAsInteger();
-  }
-
-  /**
-   * Gets query for selecting of id if an entity.
-   *
-   * @return query for selecting of id if an entity
-   */
-  @Override protected String getMaxIdQuery(){
-    return SELECT_MAX_ID;
   }
 }

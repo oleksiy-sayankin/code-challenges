@@ -14,10 +14,10 @@ public class ProductTypeControllerTest extends AbstractControllerTest<ProductTyp
   @Test public void insertTest() {
     List<ProductType> productTypes = controller.getAll();
     Assert.assertEquals(3, productTypes.size());
-    Assert.assertTrue(productTypes.contains(createProductType(1, "Movies")));
-    Assert.assertTrue(productTypes.contains(createProductType(2, "Books")));
-    Assert.assertTrue(productTypes.contains(createProductType(3, "Software")));
-    Assert.assertFalse(productTypes.contains(createProductType(3, "No Name")));
+    Assert.assertTrue(productTypes.contains(createProductType("Movies")));
+    Assert.assertTrue(productTypes.contains(createProductType("Books")));
+    Assert.assertTrue(productTypes.contains(createProductType("Software")));
+    Assert.assertFalse(productTypes.contains(createProductType("No Name")));
   }
 
   @Test public void getEntityByIdTest() {
@@ -28,7 +28,7 @@ public class ProductTypeControllerTest extends AbstractControllerTest<ProductTyp
     Assert.assertTrue(controller.delete(2));
     List<ProductType> productTypes = controller.getAll();
     Assert.assertEquals(2, productTypes.size());
-    Assert.assertFalse(productTypes.contains(createProductType(2, "Books")));
+    Assert.assertFalse(productTypes.contains(createProductType("Books")));
   }
 
   @Test public void updateTest() {
@@ -42,8 +42,8 @@ public class ProductTypeControllerTest extends AbstractControllerTest<ProductTyp
   }
 
   @Override protected void insertData() {
-    Assert.assertTrue(controller.insert(createProductType(1, "Movies")));
-    Assert.assertTrue(controller.insert(createProductType(2, "Books")));
-    Assert.assertTrue(controller.insert(createProductType(3, "Software")));
+    Assert.assertTrue(controller.insert(createProductType("Movies")));
+    Assert.assertTrue(controller.insert(createProductType("Books")));
+    Assert.assertTrue(controller.insert(createProductType("Software")));
   }
 }

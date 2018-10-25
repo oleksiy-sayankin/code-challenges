@@ -83,7 +83,7 @@ public final class EmployeeEmail implements Serializable, Entity {
     if (o == null || getClass() != o.getClass())
       return false;
     EmployeeEmail that = (EmployeeEmail) o;
-    return id == that.id && employeeId == that.employeeId && Objects.equals(email, that.email);
+    return employeeId == that.employeeId && Objects.equals(email, that.email);
   }
 
   @Override public int hashCode() {

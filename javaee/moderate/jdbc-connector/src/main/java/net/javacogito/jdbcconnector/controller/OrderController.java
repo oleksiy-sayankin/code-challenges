@@ -17,13 +17,12 @@ import java.util.List;
 
 public class OrderController extends AbstractController<Order, Integer> {
   private static final String SELECT_ALL_ORDERS = "SELECT * FROM `order`";
-  private static final String INSERT_ORDER = "INSERT INTO `order` VALUES (?, ?, ?, ?)";
+  private static final String INSERT_ORDER = "INSERT INTO `order`(customer_id, product_id, amount) VALUES (?, ?, ?)";
   private static final String DELETE_ORDER = "DELETE FROM `order` WHERE id = ?";
   private static final String SELECT_ORDER_BY_ID = "SELECT * FROM `order` WHERE id = ?";
   private static final String UPDATE_ORDER_BY_ID = "UPDATE `order` SET customer_id = ?, product_id = ?, amount = ? WHERE id = ?";
-  private static final String CREATE_ORDER = "CREATE TABLE `order` (id INT PRIMARY KEY, customer_id INT, product_id INT, amount INT)";
+  private static final String CREATE_ORDER = "CREATE TABLE `order` (id INT AUTO_INCREMENT PRIMARY KEY, customer_id INT, product_id INT, amount INT)";
   private static final String DROP_ORDER = "DROP TABLE IF EXISTS `order`";
-  private static final String SELECT_MAX_ID = "SELECT max(id) FROM `order`";
   private static final OrderController ORDER_CONTROLLER = new OrderController();
   private static final Logger LOG = LogManager.getLogger(OrderController.class);
   private OrderController() {}
@@ -141,10 +140,9 @@ public class OrderController extends AbstractController<Order, Integer> {
   @Override public boolean insert(Order entity) {
     PreparedStatement ps = getPrepareStatement(INSERT_ORDER);
     try {
-      ps.setInt(1, entity.getId());
-      ps.setInt(2, entity.getCustomerId());
-      ps.setInt(3, entity.getProductId());
-      ps.setInt(4, entity.getAmount());
+      ps.setInt(1, entity.getCustomerId());
+      ps.setInt(2, entity.getProductId());
+      ps.setInt(3, entity.getAmount());
       ps.executeUpdate();
     } catch (SQLException e) {
       return false;
@@ -189,31 +187,5 @@ public class OrderController extends AbstractController<Order, Integer> {
     }
     LOG.info("Table for entity is dropped");
     return true;
-  }
-  /**
-   * Returns last id of entity in database.
-   *
-   * @return last id of entity in database
-   */
-  @Override public Integer getLastId() {
-    return getLastIdAsInteger();
-  }
-
-  /**
-   * Returns next available id of entity in database.
-   *
-   * @return next available id of entity in database
-   */
-  @Override public Integer getNextId() {
-    return getNextIdAsInteger();
-  }
-
-  /**
-   * Gets query for selecting of id if an entity.
-   *
-   * @return query for selecting of id if an entity
-   */
-  @Override protected String getMaxIdQuery(){
-    return SELECT_MAX_ID;
   }
 }

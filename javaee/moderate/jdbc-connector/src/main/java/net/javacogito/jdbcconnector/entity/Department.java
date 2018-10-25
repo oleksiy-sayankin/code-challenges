@@ -66,7 +66,7 @@ public final class Department implements Serializable, Entity {
     if (o == null || getClass() != o.getClass())
       return false;
     Department that = (Department) o;
-    return id == that.id && Objects.equals(name, that.name);
+    return Objects.equals(name, that.name);
   }
 
   @Override public int hashCode() {

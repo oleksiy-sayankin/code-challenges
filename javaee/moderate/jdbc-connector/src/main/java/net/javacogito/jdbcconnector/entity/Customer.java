@@ -100,7 +100,7 @@ public final class Customer implements Serializable, Entity {
     if (o == null || getClass() != o.getClass())
       return false;
     Customer customer = (Customer) o;
-    return id == customer.id && countryId == customer.countryId && Objects.equals(company, customer.company) && Objects
+    return  Objects.equals(countryId,customer.countryId) && Objects.equals(company, customer.company) && Objects
         .equals(address, customer.address);
   }
 
