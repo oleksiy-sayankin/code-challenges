@@ -33,6 +33,14 @@ public interface Controller<E, K> {
   E getEntityById(K id);
 
   /**
+   * Returns id of the entity by its value
+   *
+   * @param entity entity with filled in data
+   * @return id of the entity by its value
+   */
+  K getIdByEntity(E entity);
+
+  /**
    * Deletes entity by id.
    *
    * @param id Id of entity to delete

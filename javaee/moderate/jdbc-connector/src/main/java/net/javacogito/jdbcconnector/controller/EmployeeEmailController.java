@@ -20,6 +20,7 @@ public class EmployeeEmailController extends AbstractController<EmployeeEmail, I
   private static final String INSERT_EMPLOYEE_EMAIL = "INSERT INTO employee_email(employee_id, email) VALUES (?, ?)";
   private static final String DELETE_EMPLOYEE_EMAIL = "DELETE FROM employee_email WHERE id = ?";
   private static final String SELECT_EMPLOYEE_EMAIL_BY_ID = "SELECT * FROM employee_email WHERE id = ?";
+  private static final String SELECT_ID_BY_EMPLOYEE_EMAIL = "SELECT id FROM employee_email WHERE email = ?";
   private static final String UPDATE_EMPLOYEE_EMAIL_BY_ID = "UPDATE employee_email SET employee_id = ?, email = ? WHERE id = ?";
   private static final String CREATE_EMPLOYEE_EMAIL = "CREATE TABLE employee_email (id INT AUTO_INCREMENT PRIMARY KEY, employee_id INT, email VARCHAR(100))";
   private static final String DROP_EMPLOYEE_EMAIL = "DROP TABLE IF EXISTS employee_email";
@@ -106,6 +107,31 @@ public class EmployeeEmailController extends AbstractController<EmployeeEmail, I
     }
     LOG.info(String.format("Found entity %s.", employeeEmail));
     return employeeEmail;
+  }
+
+  /**
+   * Returns id of the entity by its value
+   *
+   * @param entity entity with filled in data
+   * @return id of the entity by its value
+   */
+  @Override public Integer getIdByEntity(EmployeeEmail entity) {
+    PreparedStatement ps = getPrepareStatement(SELECT_ID_BY_EMPLOYEE_EMAIL);
+    Integer id = null;
+    try {
+      ps.setString(1, entity.getEmail());
+      ResultSet rs = ps.executeQuery();
+      while (rs.next()) {
+        id = rs.getInt(1);
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } finally {
+      closePrepareStatement(ps);
+    }
+    LOG.info(String.format("Found id %d for entity %s.",id, entity));
+    return id;
+
   }
 
   /**

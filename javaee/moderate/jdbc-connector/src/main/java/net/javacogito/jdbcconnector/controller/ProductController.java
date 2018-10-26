@@ -20,6 +20,7 @@ public class ProductController extends AbstractController<Product, Integer> {
   private static final String INSERT_PRODUCT = "INSERT INTO product(name, product_type_id, price) VALUES (?, ?, ?)";
   private static final String DELETE_PRODUCT = "DELETE FROM product WHERE id = ?";
   private static final String SELECT_PRODUCT_BY_ID = "SELECT * FROM product WHERE id = ?";
+  private static final String SELECT_ID_BY_PRODUCT = "SELECT id FROM product WHERE name = ? AND product_type_id = ?";
   private static final String UPDATE_PRODUCT_BY_ID = "UPDATE product SET name = ?, product_type_id = ?, price = ? WHERE id = ?";
   private static final String CREATE_PRODUCT = "CREATE TABLE product (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(100), product_type_id INT, price FLOAT)";
   private static final String DROP_PRODUCT = "DROP TABLE IF EXISTS product";
@@ -109,6 +110,31 @@ public class ProductController extends AbstractController<Product, Integer> {
     }
     LOG.info(String.format("Found entity %s.", product));
     return product;
+  }
+
+  /**
+   * Returns id of the entity by its value
+   *
+   * @param entity entity with filled in data
+   * @return id of the entity by its value
+   */
+  @Override public Integer getIdByEntity(Product entity) {
+    PreparedStatement ps = getPrepareStatement(SELECT_ID_BY_PRODUCT);
+    Integer id = null;
+    try {
+      ps.setString(1, entity.getName());
+      ps.setInt(2, entity.getProductTypeId());
+      ResultSet rs = ps.executeQuery();
+      while (rs.next()) {
+        id = rs.getInt(1);
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } finally {
+      closePrepareStatement(ps);
+    }
+    LOG.info(String.format("Found id %d for entity %s.",id, entity));
+    return id;
   }
 
   /**

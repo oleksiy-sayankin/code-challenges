@@ -1,38 +1,46 @@
 package net.javacogito.jdbcconnector.controller;
 
 import net.javacogito.jdbcconnector.entity.Department;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.List;
+
 import static net.javacogito.jdbcconnector.util.EntityUtil.createDepartment;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 public class DepartmentControllerTest extends AbstractControllerTest<Department, Integer> {
 
   @Test public void insertTest() {
     List<Department> departments = controller.getAll();
-    Assert.assertEquals(3, departments.size());
-    Assert.assertTrue(departments.contains(createDepartment("Management Department")));
-    Assert.assertTrue(departments.contains(createDepartment("Financial Department")));
-    Assert.assertTrue(departments.contains(createDepartment("HR Department")));
-    Assert.assertFalse(departments.contains(createDepartment("No Name")));
+    assertEquals(3, departments.size());
+    assertTrue(departments.contains(createDepartment("Management Department")));
+    assertTrue(departments.contains(createDepartment("Financial Department")));
+    assertTrue(departments.contains(createDepartment("HR Department")));
+    assertFalse(departments.contains(createDepartment("No Name")));
   }
 
   @Test public void getEntityByIdTest() {
-    Assert.assertEquals(createDepartment(2, "Financial Department"), controller.getEntityById(2));
+    assertEquals(createDepartment("Financial Department"), controller.getEntityById(2));
   }
 
+  @Test public void getIdByEntityTest() {
+    assertEquals(new Integer(2), controller.getIdByEntity(createDepartment("Financial Department")));
+  }
+
+
   @Test public void deleteTest() {
-    Assert.assertTrue(controller.delete(2));
+    assertTrue(controller.delete(2));
     List<Department> countries = controller.getAll();
-    Assert.assertEquals(2, countries.size());
-    Assert.assertFalse(countries.contains(createDepartment("Financial Department")));
+    assertEquals(2, countries.size());
+    assertFalse(countries.contains(createDepartment("Financial Department")));
   }
 
   @Test public void updateTest() {
     Department department = createDepartment(2, "Storage Department");
-    Assert.assertTrue(controller.update(department));
-    Assert.assertEquals(department, controller.getEntityById(2));
+    assertTrue(controller.update(department));
+    assertEquals(department, controller.getEntityById(2));
   }
 
   @Override protected void createController() {
@@ -40,8 +48,8 @@ public class DepartmentControllerTest extends AbstractControllerTest<Department,
   }
 
   @Override protected void insertData() {
-    Assert.assertTrue(controller.insert(createDepartment("Management Department")));
-    Assert.assertTrue(controller.insert(createDepartment("Financial Department")));
-    Assert.assertTrue(controller.insert(createDepartment("HR Department")));
+    assertTrue(controller.insert(createDepartment("Management Department")));
+    assertTrue(controller.insert(createDepartment("Financial Department")));
+    assertTrue(controller.insert(createDepartment("HR Department")));
   }
 }

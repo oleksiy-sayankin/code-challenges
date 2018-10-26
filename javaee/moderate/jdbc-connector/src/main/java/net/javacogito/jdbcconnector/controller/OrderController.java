@@ -20,6 +20,7 @@ public class OrderController extends AbstractController<Order, Integer> {
   private static final String INSERT_ORDER = "INSERT INTO `order`(customer_id, product_id, amount) VALUES (?, ?, ?)";
   private static final String DELETE_ORDER = "DELETE FROM `order` WHERE id = ?";
   private static final String SELECT_ORDER_BY_ID = "SELECT * FROM `order` WHERE id = ?";
+  private static final String SELECT_ID_BY_ORDER = "SELECT id FROM `order` WHERE customer_id = ? AND product_id = ? AND amount = ?";
   private static final String UPDATE_ORDER_BY_ID = "UPDATE `order` SET customer_id = ?, product_id = ?, amount = ? WHERE id = ?";
   private static final String CREATE_ORDER = "CREATE TABLE `order` (id INT AUTO_INCREMENT PRIMARY KEY, customer_id INT, product_id INT, amount INT)";
   private static final String DROP_ORDER = "DROP TABLE IF EXISTS `order`";
@@ -109,6 +110,32 @@ public class OrderController extends AbstractController<Order, Integer> {
     }
     LOG.info(String.format("Found entity %s.", order));
     return order;
+  }
+
+  /**
+   * Returns id of the entity by its value
+   *
+   * @param entity entity with filled in data
+   * @return id of the entity by its value
+   */
+  @Override public Integer getIdByEntity(Order entity) {
+    PreparedStatement ps = getPrepareStatement(SELECT_ID_BY_ORDER);
+    Integer id = null;
+    try {
+      ps.setInt(1, entity.getCustomerId());
+      ps.setInt(2, entity.getProductId());
+      ps.setInt(3, entity.getAmount());
+      ResultSet rs = ps.executeQuery();
+      while (rs.next()) {
+        id = rs.getInt(1);
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } finally {
+      closePrepareStatement(ps);
+    }
+    LOG.info(String.format("Found id %d for entity %s.",id, entity));
+    return id;
   }
 
   /**

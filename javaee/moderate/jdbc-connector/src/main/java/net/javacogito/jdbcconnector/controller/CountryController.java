@@ -21,6 +21,7 @@ public class CountryController extends AbstractController<Country, Integer> {
   private static final String INSERT_COUNTRY = "INSERT INTO country (name) VALUES (?)";
   private static final String DELETE_COUNTRY = "DELETE FROM country WHERE id = ?";
   private static final String SELECT_COUNTRY_BY_ID = "SELECT * FROM country WHERE id = ?";
+  private static final String SELECT_ID_BY_COUNTRY = "SELECT id FROM country WHERE name = ?";
   private static final String UPDATE_COUNTRY_BY_ID = "UPDATE country SET name = ? WHERE id = ?";
   private static final String CREATE_COUNTRY = "CREATE TABLE country (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(100))";
   private static final String DROP_COUNTRY = "DROP TABLE IF EXISTS country";
@@ -104,6 +105,30 @@ public class CountryController extends AbstractController<Country, Integer> {
     }
     LOG.info(String.format("Found entity %s.", country));
     return country;
+  }
+
+  /**
+   * Returns id of the entity by its value
+   *
+   * @param entity entity with filled in data
+   * @return id of the entity by its value
+   */
+  @Override public Integer getIdByEntity(Country entity) {
+    PreparedStatement ps = getPrepareStatement(SELECT_ID_BY_COUNTRY);
+    Integer id = null;
+    try {
+      ps.setString(1, entity.getName());
+      ResultSet rs = ps.executeQuery();
+      while (rs.next()) {
+        id = rs.getInt(1);
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } finally {
+      closePrepareStatement(ps);
+    }
+    LOG.info(String.format("Found id %d for entity %s.",id, entity));
+    return id;
   }
 
   /**

@@ -20,6 +20,7 @@ public class DepartmentController extends AbstractController<Department, Integer
   private static final String INSERT_DEPARTMENT = "INSERT INTO department(name) VALUES (?)";
   private static final String DELETE_DEPARTMENT = "DELETE FROM department WHERE id = ?";
   private static final String SELECT_DEPARTMENT_BY_ID = "SELECT * FROM department WHERE id = ?";
+  private static final String SELECT_ID_BY_DEPARTMENT = "SELECT id FROM department WHERE name = ?";
   private static final String UPDATE_DEPARTMENT_BY_ID = "UPDATE department SET name = ? WHERE id = ?";
   private static final String CREATE_DEPARTMENT = "CREATE TABLE department (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(100))";
   private static final String DROP_DEPARTMENT = "DROP TABLE IF EXISTS department";
@@ -103,6 +104,30 @@ public class DepartmentController extends AbstractController<Department, Integer
     }
     LOG.info(String.format("Found entity %s.", department));
     return department;
+  }
+
+  /**
+   * Returns id of the entity by its value
+   *
+   * @param entity entity with filled in data
+   * @return id of the entity by its value
+   */
+  @Override public Integer getIdByEntity(Department entity) {
+    PreparedStatement ps = getPrepareStatement(SELECT_ID_BY_DEPARTMENT);
+    Integer id = null;
+    try {
+      ps.setString(1, entity.getName());
+      ResultSet rs = ps.executeQuery();
+      while (rs.next()) {
+        id = rs.getInt(1);
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } finally {
+      closePrepareStatement(ps);
+    }
+    LOG.info(String.format("Found id %d for entity %s.",id, entity));
+    return id;
   }
 
   /**

@@ -20,6 +20,7 @@ public class EmployeePhoneController extends AbstractController<EmployeePhone, I
   private static final String INSERT_EMPLOYEE_PHONE = "INSERT INTO employee_phone(employee_id, number) VALUES (?, ?)";
   private static final String DELETE_EMPLOYEE_PHONE = "DELETE FROM employee_phone WHERE id = ?";
   private static final String SELECT_EMPLOYEE_PHONE_BY_ID = "SELECT * FROM employee_phone WHERE id = ?";
+  private static final String SELECT_ID_BY_EMPLOYEE_PHONE = "SELECT id FROM employee_phone WHERE number = ?";
   private static final String UPDATE_EMPLOYEE_PHONE_BY_ID = "UPDATE employee_phone SET employee_id = ?, number = ? WHERE id = ?";
   private static final String CREATE_EMPLOYEE_PHONE = "CREATE TABLE employee_phone (id INT AUTO_INCREMENT PRIMARY KEY, employee_id INT, number VARCHAR(100))";
   private static final String DROP_EMPLOYEE_PHONE = "DROP TABLE IF EXISTS employee_phone";
@@ -106,6 +107,30 @@ public class EmployeePhoneController extends AbstractController<EmployeePhone, I
     }
     LOG.info(String.format("Found entity %s.", employeePhone));
     return employeePhone;
+  }
+
+  /**
+   * Returns id of the entity by its value
+   *
+   * @param entity entity with filled in data
+   * @return id of the entity by its value
+   */
+  @Override public Integer getIdByEntity(EmployeePhone entity) {
+    PreparedStatement ps = getPrepareStatement(SELECT_ID_BY_EMPLOYEE_PHONE);
+    Integer id = null;
+    try {
+      ps.setString(1, entity.getNumber());
+      ResultSet rs = ps.executeQuery();
+      while (rs.next()) {
+        id = rs.getInt(1);
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } finally {
+      closePrepareStatement(ps);
+    }
+    LOG.info(String.format("Found id %d for entity %s.",id, entity));
+    return id;
   }
 
   /**

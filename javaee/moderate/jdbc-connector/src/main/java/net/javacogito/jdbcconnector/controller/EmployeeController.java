@@ -20,6 +20,7 @@ public class EmployeeController extends AbstractController<Employee, Integer> {
   private static final String INSERT_EMPLOYEE = "INSERT INTO employee(first_name, last_name, age, department_id, country_id, salary) VALUES (?, ?, ?, ?, ?, ?)";
   private static final String DELETE_EMPLOYEE = "DELETE FROM employee WHERE id = ?";
   private static final String SELECT_EMPLOYEE_BY_ID = "SELECT * FROM employee WHERE id = ?";
+  private static final String SELECT_ID_BY_EMPLOYEE = "SELECT id FROM employee WHERE first_name = ? AND last_name = ? AND age = ? AND department_id = ? AND country_id = ?";
   private static final String UPDATE_EMPLOYEE_BY_ID = "UPDATE employee SET first_name = ?, last_name = ?, age = ?, department_id = ?, country_id = ?, salary = ? WHERE id = ?";
   private static final String CREATE_EMPLOYEE = "CREATE TABLE employee (id INT AUTO_INCREMENT PRIMARY KEY, first_name VARCHAR(100), last_name VARCHAR(100), age INT, department_id INT, country_id INT, salary FLOAT)";
   private static final String DROP_EMPLOYEE = "DROP TABLE IF EXISTS employee";
@@ -118,6 +119,34 @@ public class EmployeeController extends AbstractController<Employee, Integer> {
     }
     LOG.info(String.format("Found entity %s.", employee));
     return employee;
+  }
+
+  /**
+   * Returns id of the entity by its value
+   *
+   * @param entity entity with filled in data
+   * @return id of the entity by its value
+   */
+  @Override public Integer getIdByEntity(Employee entity) {
+    PreparedStatement ps = getPrepareStatement(SELECT_ID_BY_EMPLOYEE);
+    Integer id = null;
+    try {
+      ps.setString(1, entity.getFirstName());
+      ps.setString(2, entity.getLastName());
+      ps.setInt(3, entity.getAge());
+      ps.setInt(4, entity.getDepartmentId());
+      ps.setInt(5, entity.getCountryId());
+      ResultSet rs = ps.executeQuery();
+      while (rs.next()) {
+        id = rs.getInt(1);
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } finally {
+      closePrepareStatement(ps);
+    }
+    LOG.info(String.format("Found id %d for entity %s.",id, entity));
+    return id;
   }
 
   /**

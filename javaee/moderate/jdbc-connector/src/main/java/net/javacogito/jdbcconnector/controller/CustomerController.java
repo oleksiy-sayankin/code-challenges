@@ -20,6 +20,7 @@ public class CustomerController extends AbstractController<Customer, Integer> {
   private static final String INSERT_CUSTOMER = "INSERT INTO customer(company, address, country_id) VALUES (?, ?, ?)";
   private static final String DELETE_CUSTOMER = "DELETE FROM customer WHERE id = ?";
   private static final String SELECT_CUSTOMER_BY_ID = "SELECT * FROM customer WHERE id = ?";
+  private static final String SELECT_ID_BY_CUSTOMER = "SELECT id FROM customer WHERE company = ? AND address = ? AND country_id = ?";
   private static final String UPDATE_CUSTOMER_BY_ID = "UPDATE customer SET company = ?, address = ?, country_id = ? WHERE id = ?";
   private static final String CREATE_CUSTOMER = "CREATE TABLE customer (id INT AUTO_INCREMENT PRIMARY KEY, company VARCHAR(100), address VARCHAR(100), country_id INT)";
   private static final String DROP_CUSTOMER = "DROP TABLE IF EXISTS customer";
@@ -110,6 +111,32 @@ public class CustomerController extends AbstractController<Customer, Integer> {
     }
     LOG.info(String.format("Found entity %s.", customer));
     return customer;
+  }
+
+  /**
+   * Returns id of the entity by its value
+   *
+   * @param entity entity with filled in data
+   * @return id of the entity by its value
+   */
+  @Override public Integer getIdByEntity(Customer entity) {
+    PreparedStatement ps = getPrepareStatement(SELECT_ID_BY_CUSTOMER);
+    Integer id = null;
+    try {
+      ps.setString(1, entity.getCompany());
+      ps.setString(2, entity.getAddress());
+      ps.setInt(3, entity.getCountryId());
+      ResultSet rs = ps.executeQuery();
+      while (rs.next()) {
+        id = rs.getInt(1);
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } finally {
+      closePrepareStatement(ps);
+    }
+    LOG.info(String.format("Found id %d for entity %s.",id, entity));
+    return id;
   }
 
   /**
