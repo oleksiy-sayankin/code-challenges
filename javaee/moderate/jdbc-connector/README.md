@@ -36,14 +36,14 @@ Quick start
 
         nano bin/env.sh
 
-Set values for system variables:
+Set values for environment variables:
 
-* DB_HOST
-* DB_NAME
-* DB_URL
-* DB_DRIVER
-* DB_USER
-* DB_PASSWORD
+* `DB_HOST`
+* `DB_NAME`
+* `DB_URL`
+* `DB_DRIVER`
+* `DB_USER`
+* `DB_PASSWORD`
 
 3. Build project
 
@@ -57,6 +57,9 @@ Run JUnit tests with H2 JDBC diver
 -----------------------------------------
 
 1. Configure JDBC connection params in main pom.xml
+
+        cd code-challenges/javaee/moderate/jdbc-connector
+        nano pom.xml
 
 2. Run in command line
  
