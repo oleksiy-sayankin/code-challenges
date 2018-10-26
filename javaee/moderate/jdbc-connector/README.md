@@ -32,7 +32,18 @@ Quick start
        git clone https://github.com/oleksiy-sayankin/code-challenges.git
        cd code-challenges/javaee/moderate/jdbc-connector
 
-2. Configure JDBC parameters in $JDBC_CONNECTOR_HOME/env.sh
+2. Configure JDBC parameters in `$JDBC_CONNECTOR_HOME/bin/env.sh`
+
+        nano bin/env.sh
+
+Set values for system variables:
+
+* DB_HOST
+* DB_NAME
+* DB_URL
+* DB_DRIVER
+* DB_USER
+* DB_PASSWORD
 
 3. Build project
 
@@ -56,6 +67,9 @@ Run JUnit tests with MySQL JDBC diver
 -----------------------------------------
 
 1. Configure JDBC connection params in main pom.xml
+
+        cd code-challenges/javaee/moderate/jdbc-connector
+        nano pom.xml
 
 2. Run in command line
  
