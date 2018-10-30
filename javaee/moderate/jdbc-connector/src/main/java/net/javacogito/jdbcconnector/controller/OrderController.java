@@ -56,7 +56,7 @@ public class OrderController extends AbstractController<Order, Integer> {
         orders.add(order);
       }
     } catch (SQLException e) {
-      e.printStackTrace();
+      LOG.error(e);
     } finally {
       closePrepareStatement(ps);
     }
@@ -77,6 +77,7 @@ public class OrderController extends AbstractController<Order, Integer> {
       ps.setInt(4, entity.getId());
       ps.executeUpdate();
     } catch (SQLException e) {
+      LOG.error(e);
       return false;
     } finally {
       closePrepareStatement(ps);
@@ -104,7 +105,7 @@ public class OrderController extends AbstractController<Order, Integer> {
         order.setAmount(rs.getInt(4));
       }
     } catch (SQLException e) {
-      e.printStackTrace();
+      LOG.error(e);
     } finally {
       closePrepareStatement(ps);
     }
@@ -130,7 +131,7 @@ public class OrderController extends AbstractController<Order, Integer> {
         id = rs.getInt(1);
       }
     } catch (SQLException e) {
-      e.printStackTrace();
+      LOG.error(e);
     } finally {
       closePrepareStatement(ps);
     }
@@ -150,6 +151,7 @@ public class OrderController extends AbstractController<Order, Integer> {
       ps.setInt(1, id);
       ps.executeUpdate();
     } catch (SQLException e) {
+      LOG.error(e);
       return false;
     } finally {
       closePrepareStatement(ps);
@@ -172,6 +174,7 @@ public class OrderController extends AbstractController<Order, Integer> {
       ps.setInt(3, entity.getAmount());
       ps.executeUpdate();
     } catch (SQLException e) {
+      LOG.error(e);
       return false;
     } finally {
       closePrepareStatement(ps);
@@ -190,6 +193,7 @@ public class OrderController extends AbstractController<Order, Integer> {
     try {
       ps.executeUpdate();
     } catch (SQLException e) {
+      LOG.error(e);
       return false;
     } finally {
       closePrepareStatement(ps);
@@ -208,6 +212,7 @@ public class OrderController extends AbstractController<Order, Integer> {
     try {
       ps.executeUpdate();
     } catch (SQLException e) {
+      LOG.error(e);
       return false;
     } finally {
       closePrepareStatement(ps);

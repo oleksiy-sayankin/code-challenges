@@ -55,7 +55,7 @@ public class EmployeeEmailController extends AbstractController<EmployeeEmail, I
         employeeEmails.add(employeeEmail);
       }
     } catch (SQLException e) {
-      e.printStackTrace();
+      LOG.error(e);
     } finally {
       closePrepareStatement(ps);
     }
@@ -75,6 +75,7 @@ public class EmployeeEmailController extends AbstractController<EmployeeEmail, I
       ps.setInt(3, entity.getId());
       ps.executeUpdate();
     } catch (SQLException e) {
+      LOG.error(e);
       return false;
     } finally {
       closePrepareStatement(ps);
@@ -101,7 +102,7 @@ public class EmployeeEmailController extends AbstractController<EmployeeEmail, I
         employeeEmail.setEmail(rs.getString(3));
       }
     } catch (SQLException e) {
-      e.printStackTrace();
+      LOG.error(e);
     } finally {
       closePrepareStatement(ps);
     }
@@ -125,7 +126,7 @@ public class EmployeeEmailController extends AbstractController<EmployeeEmail, I
         id = rs.getInt(1);
       }
     } catch (SQLException e) {
-      e.printStackTrace();
+      LOG.error(e);
     } finally {
       closePrepareStatement(ps);
     }
@@ -146,6 +147,7 @@ public class EmployeeEmailController extends AbstractController<EmployeeEmail, I
       ps.setInt(1, id);
       ps.executeUpdate();
     } catch (SQLException e) {
+      LOG.error(e);
       return false;
     } finally {
       closePrepareStatement(ps);
@@ -167,6 +169,7 @@ public class EmployeeEmailController extends AbstractController<EmployeeEmail, I
       ps.setString(2, entity.getEmail());
       ps.executeUpdate();
     } catch (SQLException e) {
+      LOG.error(e);
       return false;
     } finally {
       closePrepareStatement(ps);
@@ -185,6 +188,7 @@ public class EmployeeEmailController extends AbstractController<EmployeeEmail, I
     try {
       ps.executeUpdate();
     } catch (SQLException e) {
+      LOG.error(e);
       return false;
     } finally {
       closePrepareStatement(ps);
@@ -203,6 +207,7 @@ public class EmployeeEmailController extends AbstractController<EmployeeEmail, I
     try {
       ps.executeUpdate();
     } catch (SQLException e) {
+      LOG.error(e);
       return false;
     } finally {
       closePrepareStatement(ps);

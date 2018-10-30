@@ -54,7 +54,7 @@ public class DepartmentController extends AbstractController<Department, Integer
         departments.add(department);
       }
     } catch (SQLException e) {
-      e.printStackTrace();
+      LOG.error(e);
     } finally {
       closePrepareStatement(ps);
     }
@@ -73,6 +73,7 @@ public class DepartmentController extends AbstractController<Department, Integer
       ps.setInt(2, entity.getId());
       ps.executeUpdate();
     } catch (SQLException e) {
+      LOG.error(e);
       return false;
     } finally {
       closePrepareStatement(ps);
@@ -98,7 +99,7 @@ public class DepartmentController extends AbstractController<Department, Integer
         department.setName(rs.getString(2));
       }
     } catch (SQLException e) {
-      e.printStackTrace();
+      LOG.error(e);
     } finally {
       closePrepareStatement(ps);
     }
@@ -122,7 +123,7 @@ public class DepartmentController extends AbstractController<Department, Integer
         id = rs.getInt(1);
       }
     } catch (SQLException e) {
-      e.printStackTrace();
+      LOG.error(e);
     } finally {
       closePrepareStatement(ps);
     }
@@ -142,6 +143,7 @@ public class DepartmentController extends AbstractController<Department, Integer
       ps.setInt(1, id);
       ps.executeUpdate();
     } catch (SQLException e) {
+      LOG.error(e);
       return false;
     } finally {
       closePrepareStatement(ps);
@@ -162,6 +164,7 @@ public class DepartmentController extends AbstractController<Department, Integer
       ps.setString(1, entity.getName());
       ps.executeUpdate();
     } catch (SQLException e) {
+      LOG.error(e);
       return false;
     } finally {
       closePrepareStatement(ps);
@@ -180,6 +183,7 @@ public class DepartmentController extends AbstractController<Department, Integer
     try {
       ps.executeUpdate();
     } catch (SQLException e) {
+      LOG.error(e);
       return false;
     } finally {
       closePrepareStatement(ps);
@@ -198,6 +202,7 @@ public class DepartmentController extends AbstractController<Department, Integer
     try {
       ps.executeUpdate();
     } catch (SQLException e) {
+      LOG.error(e);
       return false;
     } finally {
       closePrepareStatement(ps);

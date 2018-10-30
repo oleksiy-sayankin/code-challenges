@@ -55,7 +55,7 @@ public class EmployeePhoneController extends AbstractController<EmployeePhone, I
         employeePhones.add(employeePhone);
       }
     } catch (SQLException e) {
-      e.printStackTrace();
+      LOG.error(e);
     } finally {
       closePrepareStatement(ps);
     }
@@ -75,6 +75,7 @@ public class EmployeePhoneController extends AbstractController<EmployeePhone, I
       ps.setInt(3, entity.getId());
       ps.executeUpdate();
     } catch (SQLException e) {
+      LOG.error(e);
       return false;
     } finally {
       closePrepareStatement(ps);
@@ -101,7 +102,7 @@ public class EmployeePhoneController extends AbstractController<EmployeePhone, I
         employeePhone.setNumber(rs.getString(3));
       }
     } catch (SQLException e) {
-      e.printStackTrace();
+      LOG.error(e);
     } finally {
       closePrepareStatement(ps);
     }
@@ -125,7 +126,7 @@ public class EmployeePhoneController extends AbstractController<EmployeePhone, I
         id = rs.getInt(1);
       }
     } catch (SQLException e) {
-      e.printStackTrace();
+      LOG.error(e);
     } finally {
       closePrepareStatement(ps);
     }
@@ -145,6 +146,7 @@ public class EmployeePhoneController extends AbstractController<EmployeePhone, I
       ps.setInt(1, id);
       ps.executeUpdate();
     } catch (SQLException e) {
+      LOG.error(e);
       return false;
     } finally {
       closePrepareStatement(ps);
@@ -166,6 +168,7 @@ public class EmployeePhoneController extends AbstractController<EmployeePhone, I
       ps.setString(2, entity.getNumber());
       ps.executeUpdate();
     } catch (SQLException e) {
+      LOG.error(e);
       return false;
     } finally {
       closePrepareStatement(ps);
@@ -184,6 +187,7 @@ public class EmployeePhoneController extends AbstractController<EmployeePhone, I
     try {
       ps.executeUpdate();
     } catch (SQLException e) {
+      LOG.error(e);
       return false;
     } finally {
       closePrepareStatement(ps);
@@ -202,6 +206,7 @@ public class EmployeePhoneController extends AbstractController<EmployeePhone, I
     try {
       ps.executeUpdate();
     } catch (SQLException e) {
+      LOG.error(e);
       return false;
     } finally {
       closePrepareStatement(ps);

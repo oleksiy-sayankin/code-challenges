@@ -59,7 +59,7 @@ public class EmployeeController extends AbstractController<Employee, Integer> {
         employees.add(employee);
       }
     } catch (SQLException e) {
-      e.printStackTrace();
+      LOG.error(e);
     } finally {
       closePrepareStatement(ps);
     }
@@ -83,6 +83,7 @@ public class EmployeeController extends AbstractController<Employee, Integer> {
       ps.setInt(7, entity.getId());
       ps.executeUpdate();
     } catch (SQLException e) {
+      LOG.error(e);
       return false;
     } finally {
       closePrepareStatement(ps);
@@ -113,7 +114,7 @@ public class EmployeeController extends AbstractController<Employee, Integer> {
         employee.setSalary(rs.getFloat(7));
       }
     } catch (SQLException e) {
-      e.printStackTrace();
+      LOG.error(e);
     } finally {
       closePrepareStatement(ps);
     }
@@ -141,7 +142,7 @@ public class EmployeeController extends AbstractController<Employee, Integer> {
         id = rs.getInt(1);
       }
     } catch (SQLException e) {
-      e.printStackTrace();
+      LOG.error(e);
     } finally {
       closePrepareStatement(ps);
     }
@@ -161,6 +162,7 @@ public class EmployeeController extends AbstractController<Employee, Integer> {
       ps.setInt(1, id);
       ps.executeUpdate();
     } catch (SQLException e) {
+      LOG.error(e);
       return false;
     } finally {
       closePrepareStatement(ps);
@@ -186,6 +188,7 @@ public class EmployeeController extends AbstractController<Employee, Integer> {
       ps.setFloat(6, entity.getSalary());
       ps.executeUpdate();
     } catch (SQLException e) {
+      LOG.error(e);
       return false;
     } finally {
       closePrepareStatement(ps);
@@ -204,6 +207,7 @@ public class EmployeeController extends AbstractController<Employee, Integer> {
     try {
       ps.executeUpdate();
     } catch (SQLException e) {
+      LOG.error(e);
       return false;
     } finally {
       closePrepareStatement(ps);
@@ -222,6 +226,7 @@ public class EmployeeController extends AbstractController<Employee, Integer> {
     try {
       ps.executeUpdate();
     } catch (SQLException e) {
+      LOG.error(e);
       return false;
     } finally {
       closePrepareStatement(ps);

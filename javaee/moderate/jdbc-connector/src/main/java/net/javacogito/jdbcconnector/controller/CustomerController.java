@@ -57,7 +57,7 @@ public class CustomerController extends AbstractController<Customer, Integer> {
         customers.add(customer);
       }
     } catch (SQLException e) {
-      e.printStackTrace();
+      LOG.error(e);
     } finally {
       closePrepareStatement(ps);
     }
@@ -78,6 +78,7 @@ public class CustomerController extends AbstractController<Customer, Integer> {
       ps.setInt(4, entity.getId());
       ps.executeUpdate();
     } catch (SQLException e) {
+      LOG.error(e);
       return false;
     } finally {
       closePrepareStatement(ps);
@@ -105,7 +106,7 @@ public class CustomerController extends AbstractController<Customer, Integer> {
         customer.setCountryId(rs.getInt(4));
       }
     } catch (SQLException e) {
-      e.printStackTrace();
+      LOG.error(e);
     } finally {
       closePrepareStatement(ps);
     }
@@ -131,7 +132,7 @@ public class CustomerController extends AbstractController<Customer, Integer> {
         id = rs.getInt(1);
       }
     } catch (SQLException e) {
-      e.printStackTrace();
+      LOG.error(e);
     } finally {
       closePrepareStatement(ps);
     }
@@ -151,6 +152,7 @@ public class CustomerController extends AbstractController<Customer, Integer> {
       ps.setInt(1, id);
       ps.executeUpdate();
     } catch (SQLException e) {
+      LOG.error(e);
       return false;
     } finally {
       closePrepareStatement(ps);
@@ -173,6 +175,7 @@ public class CustomerController extends AbstractController<Customer, Integer> {
       ps.setInt(3, entity.getCountryId());
       ps.executeUpdate();
     } catch (SQLException e) {
+      LOG.error(e);
       return false;
     } finally {
       closePrepareStatement(ps);
@@ -191,6 +194,7 @@ public class CustomerController extends AbstractController<Customer, Integer> {
     try {
       ps.executeUpdate();
     } catch (SQLException e) {
+      LOG.error(e);
       return false;
     } finally {
       closePrepareStatement(ps);
@@ -209,6 +213,7 @@ public class CustomerController extends AbstractController<Customer, Integer> {
     try {
       ps.executeUpdate();
     } catch (SQLException e) {
+      LOG.error(e);
       return false;
     } finally {
       closePrepareStatement(ps);
