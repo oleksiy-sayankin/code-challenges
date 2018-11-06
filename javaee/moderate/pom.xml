@@ -13,5 +13,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>jdbc-connector</module>
+        <module>jpa-hibernate</module>
     </modules>
 </project>
