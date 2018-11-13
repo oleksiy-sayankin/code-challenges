@@ -67,7 +67,7 @@ public class CountryController extends AbstractController<Country, Integer> {
    *
    * @param entity country to update.
    */
-  @Override public boolean update(Country entity) {
+  @Override public Integer update(Country entity) {
     PreparedStatement ps = getPrepareStatement(UPDATE_COUNTRY_BY_ID);
     try {
       ps.setString(1, entity.getName());
@@ -75,12 +75,12 @@ public class CountryController extends AbstractController<Country, Integer> {
       ps.executeUpdate();
     } catch (SQLException e) {
       LOG.error(e);
-      return false;
+      return entity.getId();
     } finally {
       closePrepareStatement(ps);
     }
     LOG.info(String.format("Entity with id = %d updated to new value %s.", entity.getId(), entity));
-    return true;
+    return entity.getId();
   }
 
   /**
@@ -159,19 +159,19 @@ public class CountryController extends AbstractController<Country, Integer> {
    * @param entity country to create.
    * @return true of creation completes successfully.
    */
-  @Override public boolean insert(Country entity) {
+  @Override public Integer insert(Country entity) {
     PreparedStatement ps = getPrepareStatement(INSERT_COUNTRY);
     try {
       ps.setString(1, entity.getName());
       ps.executeUpdate();
     } catch (SQLException e) {
       LOG.error(e);
-      return false;
+      return null;
     } finally {
       closePrepareStatement(ps);
     }
     LOG.info(String.format("Entity %s inserted", entity));
-    return true;
+    return getIdByEntity(entity);
   }
 
   /**

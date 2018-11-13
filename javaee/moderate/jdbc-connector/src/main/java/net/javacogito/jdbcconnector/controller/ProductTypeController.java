@@ -66,7 +66,7 @@ public class ProductTypeController extends AbstractController<ProductType, Integ
    *
    * @param entity product type to update.
    */
-  @Override public boolean update(ProductType entity) {
+  @Override public Integer update(ProductType entity) {
     PreparedStatement ps = getPrepareStatement(UPDATE_PRODUCT_TYPE_BY_ID);
     try {
       ps.setString(1, entity.getName());
@@ -74,12 +74,12 @@ public class ProductTypeController extends AbstractController<ProductType, Integ
       ps.executeUpdate();
     } catch (SQLException e) {
       LOG.error(e);
-      return false;
+      return null;
     } finally {
       closePrepareStatement(ps);
     }
     LOG.info(String.format("Entity with id = %d updated to new value %s.", entity.getId(), entity));
-    return true;
+    return entity.getId();
   }
 
   /**
@@ -158,19 +158,19 @@ public class ProductTypeController extends AbstractController<ProductType, Integ
    * @param entity product type to create.
    * @return true of creation completes successfully.
    */
-  @Override public boolean insert(ProductType entity) {
+  @Override public Integer insert(ProductType entity) {
     PreparedStatement ps = getPrepareStatement(INSERT_PRODUCT_TYPE);
     try {
       ps.setString(1, entity.getName());
       ps.executeUpdate();
     } catch (SQLException e) {
       LOG.error(e);
-      return false;
+      return null;
     } finally {
       closePrepareStatement(ps);
     }
     LOG.info(String.format("Entity %s inserted", entity));
-    return true;
+    return getIdByEntity(entity);
   }
 
   /**

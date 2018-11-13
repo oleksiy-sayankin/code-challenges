@@ -67,7 +67,7 @@ public class EmployeePhoneController extends AbstractController<EmployeePhone, I
    *
    * @param entity employee phone to update.
    */
-  @Override public boolean update(EmployeePhone entity) {
+  @Override public Integer update(EmployeePhone entity) {
     PreparedStatement ps = getPrepareStatement(UPDATE_EMPLOYEE_PHONE_BY_ID);
     try {
       ps.setInt(1, entity.getEmployeeId());
@@ -76,12 +76,12 @@ public class EmployeePhoneController extends AbstractController<EmployeePhone, I
       ps.executeUpdate();
     } catch (SQLException e) {
       LOG.error(e);
-      return false;
+      return null;
     } finally {
       closePrepareStatement(ps);
     }
     LOG.info(String.format("Entity with id = %d updated to new value %s.", entity.getId(), entity));
-    return true;
+    return entity.getId();
   }
 
   /**
@@ -161,7 +161,7 @@ public class EmployeePhoneController extends AbstractController<EmployeePhone, I
    * @param entity employee phone to create.
    * @return true of creation completes successfully.
    */
-  @Override public boolean insert(EmployeePhone entity) {
+  @Override public Integer insert(EmployeePhone entity) {
     PreparedStatement ps = getPrepareStatement(INSERT_EMPLOYEE_PHONE);
     try {
       ps.setInt(1, entity.getEmployeeId());
@@ -169,12 +169,12 @@ public class EmployeePhoneController extends AbstractController<EmployeePhone, I
       ps.executeUpdate();
     } catch (SQLException e) {
       LOG.error(e);
-      return false;
+      return null;
     } finally {
       closePrepareStatement(ps);
     }
     LOG.info(String.format("Entity %s inserted", entity));
-    return true;
+    return getIdByEntity(entity);
   }
 
   /**

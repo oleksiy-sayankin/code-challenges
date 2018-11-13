@@ -21,8 +21,10 @@ public interface Controller<E, K> {
    * Updates an entity.
    *
    * @param entity entity to update.
+   * @return id of entity
    */
-  boolean update(E entity);
+
+  K update(E entity);
 
   /**
    * Returns entity by it's id, usually primary key.
@@ -54,7 +56,15 @@ public interface Controller<E, K> {
    * @param entity Entity to create.
    * @return true of creation completes successfully.
    */
-  boolean insert(E entity);
+  K insert(E entity);
+
+  /**
+   * Updates entity or inserts it if it does not exist
+   *
+   * @param entity entity for update or insert
+   * @return id of entity
+   */
+  K instertOrUpdateIfExists(E entity);
 
   /**
    * Creates table for entity.

@@ -20,7 +20,7 @@ public class EntityUtilTest {
     Customer customerExpected = new Customer();
     customerExpected.setCompany("IBM");
     customerExpected.setAddress("Perova str. 10");
-    customerExpected.setCountryId(1);
+    customerExpected.setCountry(1);
     Customer customerActual = createCustomer("IBM", "Perova str. 10", 1);
     assertEquals(customerExpected, customerActual);
   }
@@ -37,8 +37,8 @@ public class EntityUtilTest {
     employeeExpected.setFirstName("AAA");
     employeeExpected.setLastName("BBB");
     employeeExpected.setAge(33);
-    employeeExpected.setCountryId(1);
-    employeeExpected.setDepartmentId(1);
+    employeeExpected.setCountry(1);
+    employeeExpected.setDepartment(1);
     employeeExpected.setSalary(3.8f);
     Employee employeeActual = createEmployee("AAA", "BBB", 33, 1, 1, 3.8f);
     assertEquals(employeeExpected, employeeActual);
@@ -63,8 +63,8 @@ public class EntityUtilTest {
   @Test public void createOrderTest() {
     Order orderExpected = new Order();
     orderExpected.setAmount(100);
-    orderExpected.setCustomerId(123);
-    orderExpected.setProductId(321);
+    orderExpected.setCustomer(123);
+    orderExpected.setProduct(321);
     Order orderActual = createOrder(123, 321, 100);
     assertEquals(orderExpected, orderActual);
   }
@@ -72,7 +72,7 @@ public class EntityUtilTest {
   @Test public void createProductTest() {
     Product productExpected = new Product();
     productExpected.setName("asd");
-    productExpected.setProductTypeId(1);
+    productExpected.setProductType(1);
     productExpected.setPrice(32.32f);
     Product productActual = createProduct("asd", 1, 32.32f);
     assertEquals(productExpected, productActual);

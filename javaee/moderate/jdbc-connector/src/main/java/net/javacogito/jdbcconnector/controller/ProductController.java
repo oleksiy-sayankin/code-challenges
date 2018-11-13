@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
+import static net.javacogito.jdbcconnector.controller.ProductTypeController.getProductTypeController;
+
 /**
  * Implementation for table 'product' controller.
  * Contains basic CRUD operations for table 'product'.
@@ -25,6 +27,7 @@ public class ProductController extends AbstractController<Product, Integer> {
   private static final String CREATE_PRODUCT = "CREATE TABLE product (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(100), product_type_id INT, price FLOAT)";
   private static final String DROP_PRODUCT = "DROP TABLE IF EXISTS product";
   private static final ProductController PRODUCT_CONTROLLER = new ProductController();
+  private static final ProductTypeController PRODUCT_TYPE_CONTROLLER = getProductTypeController();
   private static final Logger LOG = LogManager.getLogger(ProductController.class);
   private ProductController() {}
 
@@ -51,7 +54,7 @@ public class ProductController extends AbstractController<Product, Integer> {
         Product product = new Product();
         product.setId(rs.getInt(1));
         product.setName(rs.getString(2));
-        product.setProductTypeId(rs.getInt(3));
+        product.setProductType(PRODUCT_TYPE_CONTROLLER.getEntityById(rs.getInt(3)));
         product.setPrice(rs.getFloat(4));
         products.add(product);
       }
@@ -68,22 +71,22 @@ public class ProductController extends AbstractController<Product, Integer> {
    *
    * @param entity product to update.
    */
-  @Override public boolean update(Product entity) {
+  @Override public Integer update(Product entity) {
     PreparedStatement ps = getPrepareStatement(UPDATE_PRODUCT_BY_ID);
     try {
       ps.setString(1, entity.getName());
-      ps.setInt(2, entity.getProductTypeId());
+      ps.setInt(2, entity.getProductType().getId());
       ps.setFloat(3, entity.getPrice());
       ps.setInt(4, entity.getId());
       ps.executeUpdate();
     } catch (SQLException e) {
       LOG.error(e);
-      return false;
+      return null;
     } finally {
       closePrepareStatement(ps);
     }
     LOG.info(String.format("Entity with id = %d updated to new value %s.", entity.getId(), entity));
-    return true;
+    return entity.getId();
   }
 
   /**
@@ -101,7 +104,7 @@ public class ProductController extends AbstractController<Product, Integer> {
       while (rs.next()) {
         product.setId(rs.getInt(1));
         product.setName(rs.getString(2));
-        product.setProductTypeId(rs.getInt(3));
+        product.setProductType(PRODUCT_TYPE_CONTROLLER.getEntityById(rs.getInt(3)));
         product.setPrice(rs.getFloat(4));
       }
     } catch (SQLException e) {
@@ -124,7 +127,7 @@ public class ProductController extends AbstractController<Product, Integer> {
     Integer id = null;
     try {
       ps.setString(1, entity.getName());
-      ps.setInt(2, entity.getProductTypeId());
+      ps.setInt(2, entity.getProductType().getId());
       ResultSet rs = ps.executeQuery();
       while (rs.next()) {
         id = rs.getInt(1);
@@ -165,21 +168,21 @@ public class ProductController extends AbstractController<Product, Integer> {
    * @param entity product to create.
    * @return true of creation completes successfully.
    */
-  @Override public boolean insert(Product entity) {
+  @Override public Integer insert(Product entity) {
     PreparedStatement ps = getPrepareStatement(INSERT_PRODUCT);
     try {
       ps.setString(1, entity.getName());
-      ps.setInt(2, entity.getProductTypeId());
+      ps.setInt(2, entity.getProductType().getId());
       ps.setFloat(3, entity.getPrice());
       ps.executeUpdate();
     } catch (SQLException e) {
       LOG.error(e);
-      return false;
+      return null;
     } finally {
       closePrepareStatement(ps);
     }
     LOG.info(String.format("Entity %s inserted", entity));
-    return true;
+    return getIdByEntity(entity);
   }
 
   /**

@@ -4,6 +4,8 @@ import net.javacogito.jdbcconnector.controller.Controller;
 import net.javacogito.jdbcconnector.controller.EmployeeController;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -15,8 +17,10 @@ public final class Employee implements Serializable, Entity {
   private String firstName;
   private String lastName;
   private int age;
-  private int departmentId;
-  private int countryId;
+  private Department department;
+  private Country country;
+  private List<EmployeeEmail> employeeEmails = new ArrayList<>();
+  private List<EmployeePhone> employeePhones = new ArrayList<>();
   private float salary;
   private static final Controller CONTROLLER = EmployeeController.getEmployeeController();
 
@@ -95,17 +99,17 @@ public final class Employee implements Serializable, Entity {
    *
    * @return employee department Id
    */
-  public int getDepartmentId() {
-    return departmentId;
+  public Department getDepartment() {
+    return department;
   }
 
   /**
    * Sets employee department Id.
    *
-   * @param departmentId employee department Id.
+   * @param department employee department Id.
    */
-  public void setDepartmentId(int departmentId) {
-    this.departmentId = departmentId;
+  public void setDepartment(Department department) {
+    this.department = department;
   }
 
   /**
@@ -113,17 +117,17 @@ public final class Employee implements Serializable, Entity {
    *
    * @return employee country Id
    */
-  public int getCountryId() {
-    return countryId;
+  public Country getCountry() {
+    return country;
   }
 
   /**
    * Sets employee country Id.
    *
-   * @param countryId employee country Id
+   * @param country employee country Id
    */
-  public void setCountryId(int countryId) {
-    this.countryId = countryId;
+  public void setCountry(Country country) {
+    this.country = country;
   }
 
   /**
@@ -142,6 +146,43 @@ public final class Employee implements Serializable, Entity {
    */
   public void setSalary(float salary) {
     this.salary = salary;
+  }
+
+
+  /**
+   * Gets employee Emails
+   *
+   * @return list of emails
+   */
+  public List<EmployeeEmail> getEmployeeEmails() {
+    return employeeEmails;
+  }
+
+  /**
+   * Sets employee Emails
+   *
+   * @param employeeEmails list of emails
+   */
+  public void setEmployeeEmails(List<EmployeeEmail> employeeEmails) {
+    this.employeeEmails = employeeEmails;
+  }
+
+  /**
+   * Gets employee phones
+   *
+   * @return employee phones
+   */
+  public List<EmployeePhone> getEmployeePhones() {
+    return employeePhones;
+  }
+
+  /**
+   * Sets employee phones
+   *
+   * @param employeePhones employee phones
+   */
+  public void setEmployeePhones(List<EmployeePhone> employeePhones) {
+    this.employeePhones = employeePhones;
   }
 
   /**

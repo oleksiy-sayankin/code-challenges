@@ -67,7 +67,7 @@ public class EmployeeEmailController extends AbstractController<EmployeeEmail, I
    *
    * @param entity employee mail to update.
    */
-  @Override public boolean update(EmployeeEmail entity) {
+  @Override public Integer update(EmployeeEmail entity) {
     PreparedStatement ps = getPrepareStatement(UPDATE_EMPLOYEE_EMAIL_BY_ID);
     try {
       ps.setInt(1, entity.getEmployeeId());
@@ -76,12 +76,12 @@ public class EmployeeEmailController extends AbstractController<EmployeeEmail, I
       ps.executeUpdate();
     } catch (SQLException e) {
       LOG.error(e);
-      return false;
+      return null;
     } finally {
       closePrepareStatement(ps);
     }
     LOG.info(String.format("Entity with id = %d updated to new value %s.", entity.getId(), entity));
-    return true;
+    return entity.getId();
   }
 
   /**
@@ -162,7 +162,7 @@ public class EmployeeEmailController extends AbstractController<EmployeeEmail, I
    * @param entity employee mail to create.
    * @return true of creation completes successfully.
    */
-  @Override public boolean insert(EmployeeEmail entity) {
+  @Override public Integer insert(EmployeeEmail entity) {
     PreparedStatement ps = getPrepareStatement(INSERT_EMPLOYEE_EMAIL);
     try {
       ps.setInt(1, entity.getEmployeeId());
@@ -170,12 +170,12 @@ public class EmployeeEmailController extends AbstractController<EmployeeEmail, I
       ps.executeUpdate();
     } catch (SQLException e) {
       LOG.error(e);
-      return false;
+      return null;
     } finally {
       closePrepareStatement(ps);
     }
     LOG.info(String.format("Entity %s inserted", entity));
-    return true;
+    return getIdByEntity(entity);
   }
 
   /**

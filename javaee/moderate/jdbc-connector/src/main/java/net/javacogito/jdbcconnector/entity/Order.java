@@ -12,8 +12,8 @@ import java.util.Objects;
 
 public final class Order implements Serializable, Entity {
   private int id;
-  private int customerId;
-  private int productId;
+  private Customer customer;
+  private Product product;
   private int amount;
   private static final Controller CONTROLLER = OrderController.getOrderController();
 
@@ -38,17 +38,17 @@ public final class Order implements Serializable, Entity {
    *
    * @return customer Id
    */
-  public int getCustomerId() {
-    return customerId;
+  public Customer getCustomer() {
+    return customer;
   }
 
   /**
    * Sets customer Id.
    *
-   * @param customerId customer Id
+   * @param customer customer Id
    */
-  public void setCustomerId(int customerId) {
-    this.customerId = customerId;
+  public void setCustomer(Customer customer) {
+    this.customer = customer;
   }
 
   /**
@@ -56,17 +56,17 @@ public final class Order implements Serializable, Entity {
    *
    * @return product Id
    */
-  public int getProductId() {
-    return productId;
+  public Product getProduct() {
+    return product;
   }
 
   /**
    * Sets product Id.
    *
-   * @param productId product Id
+   * @param product product Id
    */
-  public void setProductId(int productId) {
-    this.productId = productId;
+  public void setProduct(Product product) {
+    this.product = product;
   }
 
   /**
@@ -102,11 +102,11 @@ public final class Order implements Serializable, Entity {
     if (o == null || getClass() != o.getClass())
       return false;
     Order order = (Order) o;
-    return customerId == order.customerId && productId == order.productId && amount == order.amount;
+    return customer == order.customer && product == order.product && amount == order.amount;
   }
 
   @Override public int hashCode() {
-    return Objects.hash(id, customerId, productId, amount);
+    return Objects.hash(id, customer, product, amount);
   }
 
   @Override public String toString() {
@@ -116,10 +116,10 @@ public final class Order implements Serializable, Entity {
     sb.append(Integer.toString(id));
     sb.append(", ");
     sb.append("customer_id=");
-    sb.append(Integer.toString(customerId));
+    sb.append(customer);
     sb.append(", ");
-    sb.append("product_id=");
-    sb.append(Integer.toString(productId));
+    sb.append("product=");
+    sb.append(product);
     sb.append(", ");
     sb.append("amount=");
     sb.append(Integer.toString(amount));

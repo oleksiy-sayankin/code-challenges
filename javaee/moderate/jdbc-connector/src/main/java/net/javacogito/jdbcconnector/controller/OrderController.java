@@ -10,6 +10,9 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
+import static net.javacogito.jdbcconnector.controller.CustomerController.getCustomerController;
+import static net.javacogito.jdbcconnector.controller.ProductController.getProductController;
+
 /**
  * Implementation for table 'order' controller.
  * Contains basic CRUD operations for table 'order'.
@@ -25,6 +28,8 @@ public class OrderController extends AbstractController<Order, Integer> {
   private static final String CREATE_ORDER = "CREATE TABLE `order` (id INT AUTO_INCREMENT PRIMARY KEY, customer_id INT, product_id INT, amount INT)";
   private static final String DROP_ORDER = "DROP TABLE IF EXISTS `order`";
   private static final OrderController ORDER_CONTROLLER = new OrderController();
+  private static final CustomerController CUSTOMER_CONTROLLER = getCustomerController();
+  private static final ProductController PRODUCT_CONTROLLER = getProductController();
   private static final Logger LOG = LogManager.getLogger(OrderController.class);
   private OrderController() {}
 
@@ -50,8 +55,8 @@ public class OrderController extends AbstractController<Order, Integer> {
       while (rs.next()) {
         Order order = new Order();
         order.setId(rs.getInt(1));
-        order.setCustomerId(rs.getInt(2));
-        order.setProductId(rs.getInt(3));
+        order.setCustomer(CUSTOMER_CONTROLLER.getEntityById(rs.getInt(2)));
+        order.setProduct(PRODUCT_CONTROLLER.getEntityById(rs.getInt(3)));
         order.setAmount(rs.getInt(4));
         orders.add(order);
       }
@@ -68,22 +73,22 @@ public class OrderController extends AbstractController<Order, Integer> {
    *
    * @param entity order to update.
    */
-  @Override public boolean update(Order entity) {
+  @Override public Integer update(Order entity) {
     PreparedStatement ps = getPrepareStatement(UPDATE_ORDER_BY_ID);
     try {
-      ps.setInt(1, entity.getCustomerId());
-      ps.setInt(2, entity.getProductId());
+      ps.setInt(1, entity.getCustomer().getId());
+      ps.setInt(2, entity.getProduct().getId());
       ps.setInt(3, entity.getAmount());
       ps.setInt(4, entity.getId());
       ps.executeUpdate();
     } catch (SQLException e) {
       LOG.error(e);
-      return false;
+      return null;
     } finally {
       closePrepareStatement(ps);
     }
     LOG.info(String.format("Entity with id = %d updated to new value %s.", entity.getId(), entity));
-    return true;
+    return entity.getId();
   }
 
   /**
@@ -100,8 +105,8 @@ public class OrderController extends AbstractController<Order, Integer> {
       ResultSet rs = ps.executeQuery();
       while (rs.next()) {
         order.setId(rs.getInt(1));
-        order.setCustomerId(rs.getInt(2));
-        order.setProductId(rs.getInt(3));
+        order.setCustomer(CUSTOMER_CONTROLLER.getEntityById(rs.getInt(2)));
+        order.setProduct(PRODUCT_CONTROLLER.getEntityById(rs.getInt(3)));
         order.setAmount(rs.getInt(4));
       }
     } catch (SQLException e) {
@@ -123,8 +128,8 @@ public class OrderController extends AbstractController<Order, Integer> {
     PreparedStatement ps = getPrepareStatement(SELECT_ID_BY_ORDER);
     Integer id = null;
     try {
-      ps.setInt(1, entity.getCustomerId());
-      ps.setInt(2, entity.getProductId());
+      ps.setInt(1, entity.getCustomer().getId());
+      ps.setInt(2, entity.getProduct().getId());
       ps.setInt(3, entity.getAmount());
       ResultSet rs = ps.executeQuery();
       while (rs.next()) {
@@ -166,21 +171,21 @@ public class OrderController extends AbstractController<Order, Integer> {
    * @param entity order to create.
    * @return true of creation completes successfully.
    */
-  @Override public boolean insert(Order entity) {
+  @Override public Integer insert(Order entity) {
     PreparedStatement ps = getPrepareStatement(INSERT_ORDER);
     try {
-      ps.setInt(1, entity.getCustomerId());
-      ps.setInt(2, entity.getProductId());
+      ps.setInt(1, entity.getCustomer().getId());
+      ps.setInt(2, entity.getProduct().getId());
       ps.setInt(3, entity.getAmount());
       ps.executeUpdate();
     } catch (SQLException e) {
       LOG.error(e);
-      return false;
+      return null;
     } finally {
       closePrepareStatement(ps);
     }
     LOG.info(String.format("Entity %s inserted", entity));
-    return true;
+    return getIdByEntity(entity);
   }
 
   /**

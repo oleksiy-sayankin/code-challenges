@@ -38,7 +38,7 @@ public class CountryControllerTest extends AbstractControllerTest<Country, Integ
 
   @Test public void updateTest() {
     Country country = createCountry(2, "Russia");
-    assertTrue(controller.update(country));
+    assertEquals(2, (int) controller.update(country));
     assertEquals(country, controller.getEntityById(2));
   }
 
@@ -47,8 +47,8 @@ public class CountryControllerTest extends AbstractControllerTest<Country, Integ
   }
 
   @Override protected void insertData() {
-    assertTrue(controller.insert(createCountry("Ukraine")));
-    assertTrue(controller.insert(createCountry("USA")));
-    assertTrue(controller.insert(createCountry("Great Britain")));
+    assertEquals(1, (int) controller.insert(createCountry("Ukraine")));
+    assertEquals(2, (int) controller.insert(createCountry("USA")));
+    assertEquals(3, (int) controller.insert(createCountry("Great Britain")));
   }
 }

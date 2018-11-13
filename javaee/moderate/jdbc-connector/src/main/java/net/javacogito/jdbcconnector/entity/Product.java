@@ -13,7 +13,7 @@ import java.util.Objects;
 public final class Product implements Serializable, Entity {
   private int id;
   private String name;
-  private int productTypeId;
+  private ProductType productType;
   private float price;
   private static final Controller CONTROLLER = ProductController.getProductController();
 
@@ -58,17 +58,17 @@ public final class Product implements Serializable, Entity {
    *
    * @return Product Type Id
    */
-  public int getProductTypeId() {
-    return productTypeId;
+  public ProductType getProductType() {
+    return productType;
   }
 
   /**
    * Sets Product Type Id
    *
-   * @param productTypeId Product Type Id
+   * @param productType Product Type Id
    */
-  public void setProductTypeId(int productTypeId) {
-    this.productTypeId = productTypeId;
+  public void setProductType(ProductType productType) {
+    this.productType = productType;
   }
 
   /**
@@ -105,12 +105,12 @@ public final class Product implements Serializable, Entity {
     if (o == null || getClass() != o.getClass())
       return false;
     Product product = (Product) o;
-    return productTypeId == product.productTypeId && Float.compare(product.price, price) == 0
+    return productType == product.productType && Float.compare(product.price, price) == 0
         && Objects.equals(name, product.name);
   }
 
   @Override public int hashCode() {
-    return Objects.hash(id, name, productTypeId, price);
+    return Objects.hash(id, name, productType, price);
   }
 
   @Override public String toString() {
@@ -122,8 +122,8 @@ public final class Product implements Serializable, Entity {
     sb.append("name=");
     sb.append(name);
     sb.append(", ");
-    sb.append("product_type_id=");
-    sb.append(Integer.toString(productTypeId));
+    sb.append("product_type=");
+    sb.append(productType);
     sb.append(", ");
     sb.append("price=");
     sb.append(Float.toString(price));

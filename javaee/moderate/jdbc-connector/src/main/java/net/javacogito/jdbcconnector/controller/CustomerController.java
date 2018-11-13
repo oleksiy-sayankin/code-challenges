@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
+import static net.javacogito.jdbcconnector.controller.CountryController.getCountryController;
+
 /**
  * Implementation for table 'customer' controller.
  * Contains basic CRUD operations for table 'customer'.
@@ -25,6 +27,7 @@ public class CustomerController extends AbstractController<Customer, Integer> {
   private static final String CREATE_CUSTOMER = "CREATE TABLE customer (id INT AUTO_INCREMENT PRIMARY KEY, company VARCHAR(100), address VARCHAR(100), country_id INT)";
   private static final String DROP_CUSTOMER = "DROP TABLE IF EXISTS customer";
   private static final CustomerController CUSTOMER_CONTROLLER = new CustomerController();
+  private static final CountryController COUNTRY_CONTROLLER = getCountryController();
   private static final Logger LOG = LogManager.getLogger(CustomerController.class);
   private CustomerController() {}
 
@@ -53,7 +56,7 @@ public class CustomerController extends AbstractController<Customer, Integer> {
         customer.setId(rs.getInt(1));
         customer.setCompany(rs.getString(2));
         customer.setAddress(rs.getString(3));
-        customer.setCountryId(rs.getInt(4));
+        customer.setCountry(COUNTRY_CONTROLLER.getEntityById(rs.getInt(4)));
         customers.add(customer);
       }
     } catch (SQLException e) {
@@ -65,26 +68,27 @@ public class CustomerController extends AbstractController<Customer, Integer> {
   }
 
   /**
-   * Updates an customer.
+   * Updates an customer cascade.
    *
    * @param entity customer to update.
    */
-  @Override public boolean update(Customer entity) {
+  @Override public Integer update(Customer entity) {
     PreparedStatement ps = getPrepareStatement(UPDATE_CUSTOMER_BY_ID);
+    int countryId = COUNTRY_CONTROLLER.instertOrUpdateIfExists(entity.getCountry());
     try {
       ps.setString(1, entity.getCompany());
       ps.setString(2, entity.getAddress());
-      ps.setInt(3, entity.getCountryId());
+      ps.setInt(3, countryId);
       ps.setInt(4, entity.getId());
       ps.executeUpdate();
     } catch (SQLException e) {
       LOG.error(e);
-      return false;
+      return entity.getId();
     } finally {
       closePrepareStatement(ps);
     }
     LOG.info(String.format("Entity with id = %d updated to new value %s.", entity.getId(), entity));
-    return true;
+    return entity.getId();
   }
 
   /**
@@ -103,7 +107,7 @@ public class CustomerController extends AbstractController<Customer, Integer> {
         customer.setId(rs.getInt(1));
         customer.setCompany(rs.getString(2));
         customer.setAddress(rs.getString(3));
-        customer.setCountryId(rs.getInt(4));
+        customer.setCountry(COUNTRY_CONTROLLER.getEntityById(rs.getInt(4)));
       }
     } catch (SQLException e) {
       LOG.error(e);
@@ -126,7 +130,7 @@ public class CustomerController extends AbstractController<Customer, Integer> {
     try {
       ps.setString(1, entity.getCompany());
       ps.setString(2, entity.getAddress());
-      ps.setInt(3, entity.getCountryId());
+      ps.setInt(3, entity.getCountry().getId());
       ResultSet rs = ps.executeQuery();
       while (rs.next()) {
         id = rs.getInt(1);
@@ -167,21 +171,22 @@ public class CustomerController extends AbstractController<Customer, Integer> {
    * @param entity customer to create.
    * @return true of creation completes successfully.
    */
-  @Override public boolean insert(Customer entity) {
+  @Override public Integer insert(Customer entity) {
     PreparedStatement ps = getPrepareStatement(INSERT_CUSTOMER);
+    int countryId = COUNTRY_CONTROLLER.instertOrUpdateIfExists(entity.getCountry());
     try {
       ps.setString(1, entity.getCompany());
       ps.setString(2, entity.getAddress());
-      ps.setInt(3, entity.getCountryId());
+      ps.setInt(3, countryId);
       ps.executeUpdate();
     } catch (SQLException e) {
       LOG.error(e);
-      return false;
+      return null;
     } finally {
       closePrepareStatement(ps);
     }
     LOG.info(String.format("Entity %s inserted", entity));
-    return true;
+    return getIdByEntity(entity);
   }
 
   /**

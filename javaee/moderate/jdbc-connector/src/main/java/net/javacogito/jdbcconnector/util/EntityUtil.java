@@ -39,15 +39,15 @@ public final class EntityUtil {
    * @param id customer id
    * @param company customer company
    * @param address customer address
-   * @param countryId customer country id
+   * @param country customer country id
    * @return customer entity
    */
-  public static Customer createCustomer(int id, String company, String address, int countryId){
+  public static Customer createCustomer(int id, String company, String address, Country country){
     Customer customer = new Customer();
     customer.setId(id);
     customer.setCompany(company);
     customer.setAddress(address);
-    customer.setCountryId(countryId);
+    customer.setCountry(country);
     return customer;
   }
 
@@ -56,11 +56,11 @@ public final class EntityUtil {
    *
    * @param company customer company
    * @param address customer address
-   * @param countryId customer country id
+   * @param country customer country id
    * @return customer entity
    */
-  public static Customer createCustomer(String company, String address, int countryId){
-    return createCustomer(0, company, address, countryId);
+  public static Customer createCustomer(String company, String address, Country country){
+    return createCustomer(0, company, address, country);
   }
 
   /**
@@ -95,20 +95,20 @@ public final class EntityUtil {
    * @param firstName employee first name
    * @param lastName employee last name
    * @param age employee age
-   * @param departmentId employee department Id
-   * @param countryId employee country Id
+   * @param department employee department Id
+   * @param country employee country Id
    * @param salary employee salary
    * @return employee entity
    */
 
-  public static Employee createEmployee(int id, String firstName, String lastName, int age, int departmentId, int countryId, float salary){
+  public static Employee createEmployee(int id, String firstName, String lastName, int age, Department department, Country country, float salary){
     Employee employee = new Employee();
     employee.setId(id);
     employee.setFirstName(firstName);
     employee.setLastName(lastName);
     employee.setAge(age);
-    employee.setDepartmentId(departmentId);
-    employee.setCountryId(countryId);
+    employee.setDepartment(department);
+    employee.setCountry(country);
     employee.setSalary(salary);
     return employee;
   }
@@ -120,14 +120,14 @@ public final class EntityUtil {
    * @param firstName employee first name
    * @param lastName employee last name
    * @param age employee age
-   * @param departmentId employee department Id
-   * @param countryId employee country Id
+   * @param department employee department Id
+   * @param country employee country Id
    * @param salary employee salary
    * @return employee entity
    */
 
-  public static Employee createEmployee(String firstName, String lastName, int age, int departmentId, int countryId, float salary){
-    return createEmployee(0, firstName, lastName, age, departmentId, countryId, salary);
+  public static Employee createEmployee(String firstName, String lastName, int age, Department department, Country country, float salary){
+    return createEmployee(0, firstName, lastName, age, department, country, salary);
   }
 
   /**
@@ -189,16 +189,16 @@ public final class EntityUtil {
    * Creates order entity.
    *
    * @param id order id
-   * @param customerId customer Id
-   * @param productId product Id
+   * @param customer customer Id
+   * @param product product Id
    * @param amount amount of product
    * @return order entity
    */
-  public static Order createOrder(int id, int customerId, int productId, int amount){
+  public static Order createOrder(int id, Customer customer, Product product, int amount){
     Order order = new Order();
     order.setId(id);
-    order.setCustomerId(customerId);
-    order.setProductId(productId);
+    order.setCustomer(customer);
+    order.setProduct(product);
     order.setAmount(amount);
     return order;
   }
@@ -206,13 +206,13 @@ public final class EntityUtil {
   /**
    * Creates order entity.
    *
-   * @param customerId customer Id
-   * @param productId product Id
+   * @param customer customer Id
+   * @param product product Id
    * @param amount amount of product
    * @return order entity
    */
-  public static Order createOrder(int customerId, int productId, int amount){
-    return createOrder(0, customerId, productId, amount);
+  public static Order createOrder(Customer customer, Product product, int amount){
+    return createOrder(0, customer, product, amount);
   }
 
   /**
@@ -220,15 +220,15 @@ public final class EntityUtil {
    *
    * @param id product Id
    * @param name product name
-   * @param productTypeId product type Id
+   * @param productType product type Id
    * @param price product price
    * @return product entity
    */
-  public static Product createProduct(int id, String name, int productTypeId, float price){
+  public static Product createProduct(int id, String name, ProductType productType, float price){
     Product product = new Product();
     product.setId(id);
     product.setName(name);
-    product.setProductTypeId(productTypeId);
+    product.setProductType(productType);
     product.setPrice(price);
     return product;
   }
@@ -237,12 +237,12 @@ public final class EntityUtil {
    * Creates product entity.
    *
    * @param name product name
-   * @param productTypeId product type Id
+   * @param productType product type Id
    * @param price product price
    * @return product entity
    */
-  public static Product createProduct(String name, int productTypeId, float price){
-    return createProduct(0, name, productTypeId, price);
+  public static Product createProduct(String name, ProductType productType, float price){
+    return createProduct(0, name, productType, price);
   }
 
   /**

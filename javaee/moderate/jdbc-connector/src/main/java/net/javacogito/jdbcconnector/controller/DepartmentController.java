@@ -66,7 +66,7 @@ public class DepartmentController extends AbstractController<Department, Integer
    *
    * @param entity department to update.
    */
-  @Override public boolean update(Department entity) {
+  @Override public Integer update(Department entity) {
     PreparedStatement ps = getPrepareStatement(UPDATE_DEPARTMENT_BY_ID);
     try {
       ps.setString(1, entity.getName());
@@ -74,12 +74,12 @@ public class DepartmentController extends AbstractController<Department, Integer
       ps.executeUpdate();
     } catch (SQLException e) {
       LOG.error(e);
-      return false;
+      return null;
     } finally {
       closePrepareStatement(ps);
     }
     LOG.info(String.format("Entity with id = %d updated to new value %s.", entity.getId(), entity));
-    return true;
+    return entity.getId();
   }
 
   /**
@@ -158,19 +158,19 @@ public class DepartmentController extends AbstractController<Department, Integer
    * @param entity department to create.
    * @return true of creation completes successfully.
    */
-  @Override public boolean insert(Department entity) {
+  @Override public Integer insert(Department entity) {
     PreparedStatement ps = getPrepareStatement(INSERT_DEPARTMENT);
     try {
       ps.setString(1, entity.getName());
       ps.executeUpdate();
     } catch (SQLException e) {
       LOG.error(e);
-      return false;
+      return null;
     } finally {
       closePrepareStatement(ps);
     }
     LOG.info(String.format("Entity %s inserted", entity));
-    return true;
+    return getIdByEntity(entity);
   }
 
   /**

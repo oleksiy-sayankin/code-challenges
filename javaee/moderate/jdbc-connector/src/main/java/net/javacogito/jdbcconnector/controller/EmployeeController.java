@@ -10,6 +10,9 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
+import static net.javacogito.jdbcconnector.controller.CountryController.getCountryController;
+import static net.javacogito.jdbcconnector.controller.DepartmentController.getDepartmentController;
+
 /**
  * Implementation for table 'employee' controller.
  * Contains basic CRUD operations for table 'employee'.
@@ -25,6 +28,8 @@ public class EmployeeController extends AbstractController<Employee, Integer> {
   private static final String CREATE_EMPLOYEE = "CREATE TABLE employee (id INT AUTO_INCREMENT PRIMARY KEY, first_name VARCHAR(100), last_name VARCHAR(100), age INT, department_id INT, country_id INT, salary FLOAT)";
   private static final String DROP_EMPLOYEE = "DROP TABLE IF EXISTS employee";
   private static final EmployeeController EMPLOYEE_CONTROLLER = new EmployeeController();
+  private static final DepartmentController DEPARTMENT_CONTROLLER = getDepartmentController();
+  private static final CountryController COUNTRY_CONTROLLER = getCountryController();
   private static final Logger LOG = LogManager.getLogger(EmployeeController.class);
   private EmployeeController() {}
 
@@ -53,8 +58,8 @@ public class EmployeeController extends AbstractController<Employee, Integer> {
         employee.setFirstName(rs.getString(2));
         employee.setLastName(rs.getString(3));
         employee.setAge(rs.getInt(4));
-        employee.setDepartmentId(rs.getInt(5));
-        employee.setCountryId(rs.getInt(6));
+        employee.setDepartment(DEPARTMENT_CONTROLLER.getEntityById(rs.getInt(5)));
+        employee.setCountry(COUNTRY_CONTROLLER.getEntityById(rs.getInt(6)));
         employee.setSalary(rs.getFloat(7));
         employees.add(employee);
       }
@@ -71,25 +76,25 @@ public class EmployeeController extends AbstractController<Employee, Integer> {
    *
    * @param entity employee to update.
    */
-  @Override public boolean update(Employee entity) {
+  @Override public Integer update(Employee entity) {
     PreparedStatement ps = getPrepareStatement(UPDATE_EMPLOYEE_BY_ID);
     try {
       ps.setString(1, entity.getFirstName());
       ps.setString(2, entity.getLastName());
       ps.setInt(3, entity.getAge());
-      ps.setInt(4, entity.getDepartmentId());
-      ps.setInt(5, entity.getCountryId());
+      ps.setInt(4, entity.getDepartment().getId());
+      ps.setInt(5, entity.getCountry().getId());
       ps.setFloat(6, entity.getSalary());
       ps.setInt(7, entity.getId());
       ps.executeUpdate();
     } catch (SQLException e) {
       LOG.error(e);
-      return false;
+      return null;
     } finally {
       closePrepareStatement(ps);
     }
     LOG.info(String.format("Entity with id = %d updated to new value %s.", entity.getId(), entity));
-    return true;
+    return entity.getId();
   }
 
   /**
@@ -109,8 +114,8 @@ public class EmployeeController extends AbstractController<Employee, Integer> {
         employee.setFirstName(rs.getString(2));
         employee.setLastName(rs.getString(3));
         employee.setAge(rs.getInt(4));
-        employee.setDepartmentId(rs.getInt(5));
-        employee.setCountryId(rs.getInt(6));
+        employee.setDepartment(DEPARTMENT_CONTROLLER.getEntityById(rs.getInt(5)));
+        employee.setCountry(COUNTRY_CONTROLLER.getEntityById(rs.getInt(6)));
         employee.setSalary(rs.getFloat(7));
       }
     } catch (SQLException e) {
@@ -135,8 +140,8 @@ public class EmployeeController extends AbstractController<Employee, Integer> {
       ps.setString(1, entity.getFirstName());
       ps.setString(2, entity.getLastName());
       ps.setInt(3, entity.getAge());
-      ps.setInt(4, entity.getDepartmentId());
-      ps.setInt(5, entity.getCountryId());
+      ps.setInt(4, entity.getDepartment().getId());
+      ps.setInt(5, entity.getCountry().getId());
       ResultSet rs = ps.executeQuery();
       while (rs.next()) {
         id = rs.getInt(1);
@@ -177,24 +182,24 @@ public class EmployeeController extends AbstractController<Employee, Integer> {
    * @param entity employee to create.
    * @return true of creation completes successfully.
    */
-  @Override public boolean insert(Employee entity) {
+  @Override public Integer insert(Employee entity) {
     PreparedStatement ps = getPrepareStatement(INSERT_EMPLOYEE);
     try {
       ps.setString(1, entity.getFirstName());
       ps.setString(2, entity.getLastName());
       ps.setInt(3, entity.getAge());
-      ps.setInt(4, entity.getDepartmentId());
-      ps.setInt(5, entity.getCountryId());
+      ps.setInt(4, entity.getDepartment().getId());
+      ps.setInt(5, entity.getCountry().getId());
       ps.setFloat(6, entity.getSalary());
       ps.executeUpdate();
     } catch (SQLException e) {
       LOG.error(e);
-      return false;
+      return null;
     } finally {
       closePrepareStatement(ps);
     }
     LOG.info(String.format("Entity %s inserted", entity));
-    return true;
+    return getIdByEntity(entity);
   }
 
   /**

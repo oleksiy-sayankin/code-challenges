@@ -13,7 +13,7 @@ public final class Customer implements Serializable, Entity {
   private int id;
   private String company;
   private String address;
-  private int countryId;
+  private Country country;
   private static final Controller CONTROLLER = CustomerController.getCustomerController();
 
   /**
@@ -73,15 +73,15 @@ public final class Customer implements Serializable, Entity {
    *
    * @return address.
    */
-  public int getCountryId() {
-    return countryId;
+  public Country getCountry() {
+    return country;
   }
 
   /**
    * Sets country Id.
    */
-  public void setCountryId(int countryId) {
-    this.countryId = countryId;
+  public void setCountry(Country country) {
+    this.country = country;
   }
 
   /**
@@ -100,12 +100,12 @@ public final class Customer implements Serializable, Entity {
     if (o == null || getClass() != o.getClass())
       return false;
     Customer customer = (Customer) o;
-    return  Objects.equals(countryId,customer.countryId) && Objects.equals(company, customer.company) && Objects
+    return  Objects.equals(country,customer.country) && Objects.equals(company, customer.company) && Objects
         .equals(address, customer.address);
   }
 
   @Override public int hashCode() {
-    return Objects.hash(id, company, address, countryId);
+    return Objects.hash(id, company, address, country);
   }
 
   @Override public String toString() {

@@ -7,7 +7,6 @@ import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -69,5 +68,28 @@ public abstract class AbstractController<E, K> implements Controller<E, K> {
         LOG.error(e);
       }
     }
+  }
+
+  /**
+   * Updates entity or inserts it if it does not exist
+   *
+   * @param entity entity for update or insert
+   * @return id of entity
+   */
+  @Override public K instertOrUpdateIfExists(E entity) {
+    if (exists(entity)) {
+      return update(entity);
+    } else {
+      return insert(entity);
+    }
+  }
+
+  /**
+   * Check if entity exists in DB
+   * @param entity entity to test
+   * @return true if exists
+   */
+  boolean exists(E entity) {
+   return getIdByEntity(entity) != null;
   }
 }
