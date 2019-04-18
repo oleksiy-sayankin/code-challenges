@@ -4,6 +4,11 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.javacogito.jdbcconnector.controller.CountryController;
+import net.javacogito.jdbcconnector.controller.CustomerController;
+import net.javacogito.jdbcconnector.controller.DepartmentController;
+import net.javacogito.jdbcconnector.controller.ProductController;
+import net.javacogito.jdbcconnector.controller.ProductTypeController;
 import net.javacogito.jdbcconnector.entity.*;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -50,8 +55,9 @@ public final class LoadTableUtil {
         Reader reader = new FileReader(customersFile);
         CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
     ) {
+      CountryController cc = CountryController.getCountryController();
       for (CSVRecord csvRecord : csvParser) {
-        customers.add(createCustomer(csvRecord.get(0), csvRecord.get(1), Integer.parseInt(csvRecord.get(2))));
+        customers.add(createCustomer(csvRecord.get(0), csvRecord.get(1), cc.getEntityById(Integer.parseInt(csvRecord.get(2)))));
       }
     }
     return customers;
@@ -91,9 +97,11 @@ public final class LoadTableUtil {
         Reader reader = new FileReader(employeesFile);
         CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
     ) {
+      DepartmentController dec = DepartmentController.getDepartmentController();
+      CountryController coc = CountryController.getCountryController();
       for (CSVRecord csvRecord : csvParser) {
         employees.add(createEmployee(csvRecord.get(0), csvRecord.get(1), Integer.parseInt(csvRecord.get(2)),
-            Integer.parseInt(csvRecord.get(3)), Integer.parseInt(csvRecord.get(4)), Float.parseFloat(csvRecord.get(5))));
+            dec.getEntityById(Integer.parseInt(csvRecord.get(3))), coc.getEntityById(Integer.parseInt(csvRecord.get(4))), Float.parseFloat(csvRecord.get(5))));
       }
     }
     return employees;
@@ -153,8 +161,10 @@ public final class LoadTableUtil {
         Reader reader = new FileReader(ordersFile);
         CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
     ) {
+      CustomerController cuc = CustomerController.getCustomerController();
+      ProductController prc = ProductController.getProductController();
       for (CSVRecord csvRecord : csvParser) {
-        orders.add(createOrder(Integer.parseInt(csvRecord.get(0)), Integer.parseInt(csvRecord.get(1)), Integer.parseInt(csvRecord.get(2))));
+        orders.add(createOrder(cuc.getEntityById(Integer.parseInt(csvRecord.get(0))), prc.getEntityById(Integer.parseInt(csvRecord.get(1))), Integer.parseInt(csvRecord.get(2))));
       }
     }
     return orders;
@@ -173,8 +183,9 @@ public final class LoadTableUtil {
         Reader reader = new FileReader(productsFile);
         CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
     ) {
+      ProductTypeController ptc = ProductTypeController.getProductTypeController();
       for (CSVRecord csvRecord : csvParser) {
-        products.add(createProduct(csvRecord.get(0), Integer.parseInt(csvRecord.get(1)), Float.parseFloat(csvRecord.get(2))));
+        products.add(createProduct(csvRecord.get(0), ptc.getEntityById(Integer.parseInt(csvRecord.get(1))), Float.parseFloat(csvRecord.get(2))));
       }
     }
     return products;

@@ -34,14 +34,14 @@ public class Main {
     createCurrentDb();
     createAllTablesInDb();
     storeInDb(loadCountries(getFromDataDir("country.csv")));
-    storeInDb(loadCustomers(getFromDataDir("customer.csv")));
     storeInDb(loadDepartments(getFromDataDir("department.csv")));
+    storeInDb(loadProductTypes(getFromDataDir("product-type.csv")));
+    storeInDb(loadCustomers(getFromDataDir("customer.csv")));
     storeInDb(loadEmployees(getFromDataDir("employee.csv")));
     storeInDb(loadEmployeeEmails(getFromDataDir("employee-email.csv")));
     storeInDb(loadEmployeePhones(getFromDataDir("employee-phone.csv")));
-    storeInDb(loadOrders(getFromDataDir("order.csv")));
     storeInDb(loadProducts(getFromDataDir("product.csv")));
-    storeInDb(loadProductTypes(getFromDataDir("product-type.csv")));
+    storeInDb(loadOrders(getFromDataDir("order.csv")));
     return true;
   }
 

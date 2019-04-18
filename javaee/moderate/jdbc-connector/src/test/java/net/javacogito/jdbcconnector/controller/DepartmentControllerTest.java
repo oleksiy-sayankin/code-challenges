@@ -39,7 +39,7 @@ public class DepartmentControllerTest extends AbstractControllerTest<Department,
 
   @Test public void updateTest() {
     Department department = createDepartment(2, "Storage Department");
-    assertTrue(controller.update(department));
+    assertEquals(new Integer(2), controller.update(department));
     assertEquals(department, controller.getEntityById(2));
   }
 
@@ -48,8 +48,8 @@ public class DepartmentControllerTest extends AbstractControllerTest<Department,
   }
 
   @Override protected void insertData() {
-    assertTrue(controller.insert(createDepartment("Management Department")));
-    assertTrue(controller.insert(createDepartment("Financial Department")));
-    assertTrue(controller.insert(createDepartment("HR Department")));
+    assertEquals(new Integer(1), controller.insert(createDepartment("Management Department")));
+    assertEquals(new Integer(2), controller.insert(createDepartment("Financial Department")));
+    assertEquals(new Integer(3), controller.insert(createDepartment("HR Department")));
   }
 }

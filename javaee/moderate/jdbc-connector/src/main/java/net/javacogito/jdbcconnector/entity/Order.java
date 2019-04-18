@@ -102,7 +102,7 @@ public final class Order implements Serializable, Entity {
     if (o == null || getClass() != o.getClass())
       return false;
     Order order = (Order) o;
-    return customer == order.customer && product == order.product && amount == order.amount;
+    return Objects.equals(customer, order.customer) && Objects.equals(product, order.product) && amount == order.amount;
   }
 
   @Override public int hashCode() {

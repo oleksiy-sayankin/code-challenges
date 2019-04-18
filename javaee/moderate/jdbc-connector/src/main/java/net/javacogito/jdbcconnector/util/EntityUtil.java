@@ -26,6 +26,18 @@ public final class EntityUtil {
   /**
    * Creates country entity.
    *
+   * @param id country id
+   * @return country entity
+   */
+  public static Country createCountry(int id){
+    Country country = new Country();
+    country.setId(id);
+    return country;
+  }
+
+  /**
+   * Creates country entity.
+   *
    * @param name country name
    * @return country entity
    */
@@ -54,6 +66,18 @@ public final class EntityUtil {
   /**
    * Creates customer entity.
    *
+   * @param id customer id
+   * @return customer entity
+   */
+  public static Customer createCustomer(int id){
+    Customer customer = new Customer();
+    customer.setId(id);
+    return customer;
+  }
+
+  /**
+   * Creates customer entity.
+   *
    * @param company customer company
    * @param address customer address
    * @param country customer country id
@@ -74,6 +98,18 @@ public final class EntityUtil {
     Department department = new Department();
     department.setId(id);
     department.setName(name);
+    return department;
+  }
+
+  /**
+   * Creates department entity.
+   *
+   * @param id department id
+   * @return department entity
+   */
+  public static Department createDepartment(int id){
+    Department department = new Department();
+    department.setId(id);
     return department;
   }
 
@@ -236,6 +272,19 @@ public final class EntityUtil {
   /**
    * Creates product entity.
    *
+   * @param id product Id
+   * @return product entity
+   */
+  public static Product createProduct(int id){
+    Product product = new Product();
+    product.setId(id);
+    return product;
+  }
+
+
+  /**
+   * Creates product entity.
+   *
    * @param name product name
    * @param productType product type Id
    * @param price product price
@@ -256,6 +305,18 @@ public final class EntityUtil {
     ProductType productType = new ProductType();
     productType.setId(id);
     productType.setName(name);
+    return productType;
+  }
+
+  /**
+   * Creates product type entity.
+   *
+   * @param id product type id
+   * @return product type
+   */
+  public static ProductType createProductType(int id){
+    ProductType productType = new ProductType();
+    productType.setId(id);
     return productType;
   }
 

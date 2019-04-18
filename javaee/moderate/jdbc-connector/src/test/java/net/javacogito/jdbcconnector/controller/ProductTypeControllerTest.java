@@ -39,7 +39,7 @@ public class ProductTypeControllerTest extends AbstractControllerTest<ProductTyp
 
   @Test public void updateTest() {
     ProductType productType = createProductType(2, "Electronics");
-    assertTrue(controller.update(productType));
+    assertEquals(new Integer(2), controller.update(productType));
     assertEquals(productType, controller.getEntityById(2));
   }
 
@@ -48,8 +48,8 @@ public class ProductTypeControllerTest extends AbstractControllerTest<ProductTyp
   }
 
   @Override protected void insertData() {
-    assertTrue(controller.insert(createProductType("Movies")));
-    assertTrue(controller.insert(createProductType("Books")));
-    assertTrue(controller.insert(createProductType("Software")));
+    assertEquals(new Integer(1), controller.insert(createProductType("Movies")));
+    assertEquals(new Integer(2), controller.insert(createProductType("Books")));
+    assertEquals(new Integer(3), controller.insert(createProductType("Software")));
   }
 }
