@@ -30,6 +30,7 @@ Hard level
 
 Moderate level
 --------------
+* [International Standard Book Numbers](algorithms/moderate/isbn/README.md)
 * [Lucky Tickets](algorithms/moderate/lucky-tickets/README.md)
 * [Longest Lines](algorithms/moderate/longest-lines/README.md)
 * [Particles](algorithms/moderate/particles/README.md)
