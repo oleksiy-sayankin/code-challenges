@@ -71,6 +71,7 @@
     <module>lowest-common-ancestor</module>
     <module>cash-register</module>
     <module>isbn</module>
+    <module>remove-the-letters</module>
   </modules>
 
 </project>
