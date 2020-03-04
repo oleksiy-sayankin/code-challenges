@@ -30,6 +30,7 @@ Hard level
 
 Moderate level
 --------------
+* [Kaprekar's Constant](algorithms/moderate/kaprekars-constant/README.md)
 * [Remove The Word](algorithms/moderate/remove-the-letters/README.md)
 * [International Standard Book Numbers](algorithms/moderate/isbn/README.md)
 * [Lucky Tickets](algorithms/moderate/lucky-tickets/README.md)
