@@ -73,6 +73,7 @@
     <module>isbn</module>
     <module>remove-the-letters</module>
     <module>kaprekars-constant</module>
+    <module>pig-latin</module>
   </modules>
 
 </project>

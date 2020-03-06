@@ -30,6 +30,7 @@ Hard level
 
 Moderate level
 --------------
+* [English to Pig Latin Translator](algorithms/moderate/pig-latin/README.md)
 * [Kaprekar's Constant](algorithms/moderate/kaprekars-constant/README.md)
 * [Remove The Word](algorithms/moderate/remove-the-letters/README.md)
 * [International Standard Book Numbers](algorithms/moderate/isbn/README.md)
