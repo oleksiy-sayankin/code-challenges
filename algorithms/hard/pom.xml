@@ -19,6 +19,7 @@
     <module>labyrinth</module>
     <module>labyrinth2</module>
     <module>string-permutations</module>
+    <module>ulam-sequence</module>
   </modules>
 
 </project>

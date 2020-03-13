@@ -22,6 +22,7 @@ Algorithms
 
 Hard level
 ----------
+* [Ulam Sequence](algorithms/hard/ulam-sequence/README.md)
 * [The Labyrinth 1](algorithms/hard/labyrinth/README.md)
 * [The Labyrinth 2](algorithms/hard/labyrinth2/README.md)
 * [String permutations](algorithms/hard/string-permutations/README.md)
