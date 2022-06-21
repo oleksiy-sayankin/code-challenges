@@ -15,7 +15,7 @@
   <url>http://javacogito.net</url>
 
   <properties>
-    <mysql.connector.version>8.0.16</mysql.connector.version>
+    <mysql.connector.version>8.0.28</mysql.connector.version>
     <h2.database.version>1.4.197</h2.database.version>
     <maven.surefire.plugin.version>2.22.0</maven.surefire.plugin.version>
     <commoms.scv.version>1.6</commoms.scv.version>
