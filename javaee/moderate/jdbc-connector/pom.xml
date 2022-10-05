@@ -20,7 +20,7 @@
     <maven.surefire.plugin.version>2.22.0</maven.surefire.plugin.version>
     <commoms.scv.version>1.6</commoms.scv.version>
     <maven.assebly.plugin.version>2.3</maven.assebly.plugin.version>
-    <log4j2.version>2.13.3</log4j2.version>
+    <log4j2.version>2.17.1</log4j2.version>
     <test.db.name>test</test.db.name>
   </properties>
 
