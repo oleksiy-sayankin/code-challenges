@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>net.javacogito</groupId>
-    <artifactId>hard-level</artifactId>
+    <artifactId>algorithms-hard</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
   <groupId>net.javacogito.labyrinth2</groupId>
