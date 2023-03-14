@@ -164,3 +164,4 @@ Easy level
 * [Real Fake](algorithms/easy/real-fake/README.md)
 * [Distinct Words](algorithms/easy/distinct-words/README.md)
 * [Array into collection](algorithms/easy/array-into-collection/README.md)
+* [Watermelon](algorithms/easy/watermelon/src/README.md)
