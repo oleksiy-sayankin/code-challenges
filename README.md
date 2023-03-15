@@ -94,6 +94,8 @@ Moderate level
 
 Easy level
 ----------
+* [Candies](algorithms/easy/candies/README.md)
+* [Watermelon](algorithms/easy/watermelon/src/README.md)
 * [Prime Palindrome](algorithms/easy/prime-palindrome/README.md)
 * [Fizz Buzz](algorithms/easy/fizz-buzz/README.md)
 * [Multiplication Tables](algorithms/easy/multiplication-tables/README.md)
@@ -164,4 +166,3 @@ Easy level
 * [Real Fake](algorithms/easy/real-fake/README.md)
 * [Distinct Words](algorithms/easy/distinct-words/README.md)
 * [Array into collection](algorithms/easy/array-into-collection/README.md)
-* [Watermelon](algorithms/easy/watermelon/src/README.md)
