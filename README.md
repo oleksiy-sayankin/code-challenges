@@ -94,6 +94,7 @@ Moderate level
 
 Easy level
 ----------
+* [A+B?](algorithms/easy/aplusb/README.md)
 * [Candies](algorithms/easy/candies/README.md)
 * [Watermelon](algorithms/easy/watermelon/src/README.md)
 * [Prime Palindrome](algorithms/easy/prime-palindrome/README.md)
