@@ -94,6 +94,7 @@ Moderate level
 
 Easy level
 ----------
+* [Three Doors](algorithms/easy/theedoors/README.md)
 * [Sum](algorithms/easy/sum/README.md)
 * [A+B?](algorithms/easy/aplusb/README.md)
 * [Candies](algorithms/easy/candies/README.md)

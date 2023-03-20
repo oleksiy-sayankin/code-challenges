@@ -87,5 +87,6 @@
     <module>array-into-collection</module>
     <module>watermelon</module>
     <module>aplusb</module>
+    <module>theedoors</module>
   </modules>
 </project>
