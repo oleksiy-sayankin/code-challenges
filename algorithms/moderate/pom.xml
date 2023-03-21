@@ -74,6 +74,7 @@
     <module>remove-the-letters</module>
     <module>kaprekars-constant</module>
     <module>pig-latin</module>
+    <module>nextbiggernumber</module>
   </modules>
 
 </project>

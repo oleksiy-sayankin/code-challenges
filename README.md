@@ -31,6 +31,7 @@ Hard level
 
 Moderate level
 --------------
+* [Next bigger number with the same digits](algorithms/moderate/nextbiggernumber/README.md)
 * [English to Pig Latin Translator](algorithms/moderate/pig-latin/README.md)
 * [Kaprekar's Constant](algorithms/moderate/kaprekars-constant/README.md)
 * [Remove The Word](algorithms/moderate/remove-the-letters/README.md)
