@@ -31,6 +31,7 @@ Hard level
 
 Moderate level
 --------------
+* [The observed PIN](algorithms/moderate/theobservedpin/README.md)
 * [Next bigger number with the same digits](algorithms/moderate/nextbiggernumber/README.md)
 * [English to Pig Latin Translator](algorithms/moderate/pig-latin/README.md)
 * [Kaprekar's Constant](algorithms/moderate/kaprekars-constant/README.md)

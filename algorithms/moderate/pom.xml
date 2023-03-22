@@ -75,6 +75,7 @@
     <module>kaprekars-constant</module>
     <module>pig-latin</module>
     <module>nextbiggernumber</module>
+    <module>theobservedpin</module>
   </modules>
 
 </project>
