@@ -96,6 +96,7 @@ Moderate level
 
 Easy level
 ----------
+* [Character with longest consecutive repetition](algorithms/easy/characterwithlongest/README.md)
 * [Multiples of 3 or 5](algorithms/easy/multiples3or5/README.md)
 * [Three Doors](algorithms/easy/theedoors/README.md)
 * [Sum](algorithms/easy/sum/README.md)

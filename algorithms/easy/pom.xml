@@ -89,5 +89,6 @@
     <module>aplusb</module>
     <module>theedoors</module>
     <module>multiples3or5</module>
+    <module>characterwithlongest</module>
   </modules>
 </project>
