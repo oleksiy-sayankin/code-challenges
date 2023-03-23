@@ -31,6 +31,7 @@ Hard level
 
 Moderate level
 --------------
+* [Find the unknown digit](algorithms/moderate/unknowndigit/README.md)
 * [The observed PIN](algorithms/moderate/theobservedpin/README.md)
 * [Next bigger number with the same digits](algorithms/moderate/nextbiggernumber/README.md)
 * [English to Pig Latin Translator](algorithms/moderate/pig-latin/README.md)

@@ -76,6 +76,7 @@
     <module>pig-latin</module>
     <module>nextbiggernumber</module>
     <module>theobservedpin</module>
+    <module>unknowndigit</module>
   </modules>
 
 </project>
