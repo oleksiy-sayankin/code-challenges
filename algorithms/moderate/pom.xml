@@ -77,6 +77,7 @@
     <module>nextbiggernumber</module>
     <module>theobservedpin</module>
     <module>unknowndigit</module>
+    <module>rangeextraction</module>
   </modules>
 
 </project>
