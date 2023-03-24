@@ -97,6 +97,7 @@ Moderate level
 
 Easy level
 ----------
+* [Convert string to camel case](algorithms/easy/tocamelcase/README.md)
 * [Character with longest consecutive repetition](algorithms/easy/characterwithlongest/README.md)
 * [Multiples of 3 or 5](algorithms/easy/multiples3or5/README.md)
 * [Three Doors](algorithms/easy/theedoors/README.md)
