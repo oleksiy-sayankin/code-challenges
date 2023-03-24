@@ -176,3 +176,14 @@ Easy level
 * [Real Fake](algorithms/easy/real-fake/README.md)
 * [Distinct Words](algorithms/easy/distinct-words/README.md)
 * [Array into collection](algorithms/easy/array-into-collection/README.md)
+
+Requirements
+============
+
+Java
+----
+Java 7 - 11
+
+Maven
+-----
+2.3.2 - 3.11.0
