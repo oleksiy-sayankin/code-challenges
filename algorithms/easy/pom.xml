@@ -91,5 +91,6 @@
     <module>multiples3or5</module>
     <module>characterwithlongest</module>
     <module>tocamelcase</module>
+    <module>longestpalindrome</module>
   </modules>
 </project>
