@@ -127,6 +127,7 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${maven.surefire.plugin.version}</version>
         <configuration>
+          <argLine>--add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED</argLine>
           <environmentVariables>
             <JDBC_CONNECTOR_HOME>${basedir}</JDBC_CONNECTOR_HOME>
             <DB_NAME>${test.db.name}</DB_NAME>
