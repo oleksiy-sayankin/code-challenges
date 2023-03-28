@@ -98,6 +98,7 @@ Moderate level
 
 Easy level
 ----------
+* [Basic Encryption](algorithms/easy/basicencryption/README.md)
 * [Longest Palindrome](algorithms/easy/longestpalindrome/README.md)
 * [Convert string to camel case](algorithms/easy/tocamelcase/README.md)
 * [Character with longest consecutive repetition](algorithms/easy/characterwithlongest/README.md)

@@ -92,5 +92,6 @@
     <module>characterwithlongest</module>
     <module>tocamelcase</module>
     <module>longestpalindrome</module>
+    <module>basicencryption</module>
   </modules>
 </project>
