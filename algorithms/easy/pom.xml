@@ -93,5 +93,6 @@
     <module>tocamelcase</module>
     <module>longestpalindrome</module>
     <module>basicencryption</module>
+    <module>removetheparentheses</module>
   </modules>
 </project>

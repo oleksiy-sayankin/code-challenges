@@ -98,6 +98,7 @@ Moderate level
 
 Easy level
 ----------
+* [Remove the parentheses](algorithms/easy/removetheparentheses/README.md)
 * [Basic Encryption](algorithms/easy/basicencryption/README.md)
 * [Longest Palindrome](algorithms/easy/longestpalindrome/README.md)
 * [Convert string to camel case](algorithms/easy/tocamelcase/README.md)
