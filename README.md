@@ -98,6 +98,7 @@ Moderate level
 
 Easy level
 ----------
+* [Playing with digits](algorithms/easy/playingwithdigits/README.md)
 * [Remove the parentheses](algorithms/easy/removetheparentheses/README.md)
 * [Basic Encryption](algorithms/easy/basicencryption/README.md)
 * [Longest Palindrome](algorithms/easy/longestpalindrome/README.md)

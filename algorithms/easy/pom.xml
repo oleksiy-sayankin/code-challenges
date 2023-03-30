@@ -94,5 +94,6 @@
     <module>longestpalindrome</module>
     <module>basicencryption</module>
     <module>removetheparentheses</module>
+    <module>playingwithdigits</module>
   </modules>
 </project>
