@@ -78,6 +78,7 @@
     <module>theobservedpin</module>
     <module>unknowndigit</module>
     <module>rangeextraction</module>
+    <module>romannumeralshelper</module>
   </modules>
 
 </project>
