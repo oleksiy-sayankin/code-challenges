@@ -11,7 +11,7 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
-  <name>Moderate Level</name>
+  <name>Algorithms. Moderate Level</name>
   <modules>
     <module>math</module>
     <module>particles</module>

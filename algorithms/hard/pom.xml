@@ -12,7 +12,7 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
-  <name>Hard Level</name>
+  <name>Algorithms. Hard Level</name>
 
   <modules>
     <module>deepforest</module>

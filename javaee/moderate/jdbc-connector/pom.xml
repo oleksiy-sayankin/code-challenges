@@ -11,7 +11,7 @@
   <artifactId>jdbc-connector</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>jdbc-connector</name>
+  <name>JDBC Connector</name>
   <url>http://javacogito.net</url>
 
   <properties>

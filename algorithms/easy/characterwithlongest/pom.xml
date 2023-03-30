@@ -11,6 +11,7 @@
 
   <groupId>net.javacogito.characterwithlongest</groupId>
   <artifactId>characterwithlongest</artifactId>
+  <name>Character with the longest consecutive repetition</name>
 
   <properties>
     <maven.compiler.source>17</maven.compiler.source>

@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>javaee-moderate</artifactId>
+    <name>Java EE. Moderate Level</name>
     <packaging>pom</packaging>
     <modules>
         <module>jdbc-connector</module>

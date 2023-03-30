@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>javaee-easy</artifactId>
+    <name>Java EE. Easy Level</name>
     <packaging>pom</packaging>
     <modules>
         <module>synchronization</module>

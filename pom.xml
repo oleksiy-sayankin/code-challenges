@@ -7,7 +7,7 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
-  <name>code-challenges</name>
+  <name>Code Challenges</name>
 
   <dependencies>
 

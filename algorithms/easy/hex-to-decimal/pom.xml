@@ -10,5 +10,5 @@
   <groupId>net.javacogito.hextodecimal</groupId>
   <artifactId>hex-to-decimal</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <name>hex-to-decimal</name>
+  <name>Hex to Decimal</name>
 </project>

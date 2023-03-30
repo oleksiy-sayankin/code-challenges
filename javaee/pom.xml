@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>javaee</artifactId>
+    <name>Java EE</name>
     <packaging>pom</packaging>
     <modules>
         <module>easy</module>

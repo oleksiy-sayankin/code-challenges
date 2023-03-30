@@ -11,5 +11,5 @@
   <groupId>net.javacogito.fizzbuzz</groupId>
   <artifactId>fizz-buzz</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <name>fizz-buzz</name>
+  <name>Fizz Buzz</name>
 </project>
