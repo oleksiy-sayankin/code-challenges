@@ -99,6 +99,7 @@ Moderate level
 
 Easy level
 ----------
+* [Build Tower](algorithms/easy/buildtower/README.md)
 * [Playing with digits](algorithms/easy/playingwithdigits/README.md)
 * [Remove the parentheses](algorithms/easy/removetheparentheses/README.md)
 * [Basic Encryption](algorithms/easy/basicencryption/README.md)
