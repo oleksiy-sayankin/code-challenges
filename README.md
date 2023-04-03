@@ -31,6 +31,7 @@ Hard level
 
 Moderate level
 --------------
+* [Strip Comments](algorithms/moderate/stripcomments/README.md)
 * [Roman Numerals Helper](algorithms/moderate/romannumeralshelper/README.md)
 * [Range Extraction](algorithms/moderate/rangeextraction/README.md)
 * [Find the unknown digit](algorithms/moderate/unknowndigit/README.md)

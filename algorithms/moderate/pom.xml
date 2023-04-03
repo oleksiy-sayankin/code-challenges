@@ -79,6 +79,7 @@
     <module>unknowndigit</module>
     <module>rangeextraction</module>
     <module>romannumeralshelper</module>
+    <module>stripcomments</module>
   </modules>
 
 </project>
