@@ -98,5 +98,6 @@
     <module>buildtower</module>
     <module>millipedeofwords</module>
     <module>binarysearchtree</module>
+    <module>mergesortedarrays</module>
   </modules>
 </project>
