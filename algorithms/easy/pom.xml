@@ -96,5 +96,6 @@
     <module>removetheparentheses</module>
     <module>playingwithdigits</module>
     <module>buildtower</module>
+    <module>millipedeofwords</module>
   </modules>
 </project>

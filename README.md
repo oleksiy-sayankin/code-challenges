@@ -99,6 +99,7 @@ Moderate level
 
 Easy level
 ----------
+* [Millipede of words](algorithms/easy/millipedeofwords/README.md)
 * [Build Tower](algorithms/easy/buildtower/README.md)
 * [Playing with digits](algorithms/easy/playingwithdigits/README.md)
 * [Remove the parentheses](algorithms/easy/removetheparentheses/README.md)
