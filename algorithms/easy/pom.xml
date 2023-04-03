@@ -97,5 +97,6 @@
     <module>playingwithdigits</module>
     <module>buildtower</module>
     <module>millipedeofwords</module>
+    <module>binarysearchtree</module>
   </modules>
 </project>

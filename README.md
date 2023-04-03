@@ -100,6 +100,7 @@ Moderate level
 
 Easy level
 ----------
+* [Binary search tree](algorithms/easy/binarysearchtree/README.md)
 * [Millipede of words](algorithms/easy/millipedeofwords/README.md)
 * [Build Tower](algorithms/easy/buildtower/README.md)
 * [Playing with digits](algorithms/easy/playingwithdigits/README.md)
