@@ -100,6 +100,7 @@ Moderate level
 
 Easy level
 ----------
+* [Highest number with two prime factors](algorithms/easy/highestnumber/README.md)
 * [Merge k sorted arrays](algorithms/easy/mergesortedarrays/README.md)
 * [Binary search tree](algorithms/easy/binarysearchtree/README.md)
 * [Millipede of words](algorithms/easy/millipedeofwords/README.md)
