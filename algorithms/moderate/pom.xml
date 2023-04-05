@@ -80,6 +80,7 @@
     <module>rangeextraction</module>
     <module>romannumeralshelper</module>
     <module>stripcomments</module>
+    <module>snailsort</module>
   </modules>
 
 </project>
