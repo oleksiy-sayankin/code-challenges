@@ -192,10 +192,8 @@ Easy level
 Requirements
 ============
 
-Java
-----
-Java 7 - 11
+| Component | Version        |
+|-----------|----------------|
+| Java      | 17             |
+| Maven     | 2.3.2 - 3.11.0 |
 
-Maven
------
-2.3.2 - 3.11.0
