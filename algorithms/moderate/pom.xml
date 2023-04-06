@@ -81,6 +81,7 @@
     <module>romannumeralshelper</module>
     <module>stripcomments</module>
     <module>snailsort</module>
+    <module>burrows-wheeler-transformation</module>
   </modules>
 
 </project>

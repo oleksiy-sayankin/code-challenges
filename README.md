@@ -31,6 +31,7 @@ Hard level
 
 Moderate level
 --------------
+* [Burrows-Wheeler Transformation](algorithms/moderate/burrows-wheeler-transformation/README.md)
 * [Snail Sort](algorithms/moderate/snailsort/README.md)
 * [Strip Comments](algorithms/moderate/stripcomments/README.md)
 * [Roman Numerals Helper](algorithms/moderate/romannumeralshelper/README.md)
