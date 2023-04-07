@@ -31,6 +31,7 @@ Hard level
 
 Moderate level
 --------------
+* [Matrix Determinant](algorithms/moderate/matrixdeterminant/README.md)
 * [Burrows-Wheeler Transformation](algorithms/moderate/burrows-wheeler-transformation/README.md)
 * [Snail Sort](algorithms/moderate/snailsort/README.md)
 * [Strip Comments](algorithms/moderate/stripcomments/README.md)

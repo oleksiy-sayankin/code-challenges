@@ -82,6 +82,7 @@
     <module>stripcomments</module>
     <module>snailsort</module>
     <module>burrows-wheeler-transformation</module>
+    <module>matrixdeterminant</module>
   </modules>
 
 </project>
