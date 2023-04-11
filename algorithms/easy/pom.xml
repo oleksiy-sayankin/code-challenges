@@ -100,5 +100,6 @@
     <module>binarysearchtree</module>
     <module>mergesortedarrays</module>
     <module>highestnumber</module>
+    <module>puzzletiles</module>
   </modules>
 </project>
