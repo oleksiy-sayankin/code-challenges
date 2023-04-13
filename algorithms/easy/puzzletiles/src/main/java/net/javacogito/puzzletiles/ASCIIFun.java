@@ -49,26 +49,49 @@ public class ASCIIFun {
         }
       }
     }
-    System.out.println(sb);
     return sb.toString();
   }
 
   private static String[] findPatter(int i, int j, int height, int width) {
+    boolean isEvenHeight = i % 2 == 0;
     // 0 0
     if (i == 0 && j == 0) {
-      return new String[]{"   _( )__", " _|     _", "(_   _ (_", null};
+      return new String[]{"   _( )__",
+                          " _|     _",
+                          "(_   _ (_", null};
     }
     // N 0
     if (i == height - 1 && j == 0) {
-      return new String[]{" |__( )_", " _|     ", "(_   _ (", " |__( )_", null};
+      return isEvenHeight ? new String[]{" |__( )_",
+                                         " _|     ",
+                                         "(_   _ (",
+                                         " |__( )_"}:
+                            new String[]{" |__( )_",
+                                         " |_     |",
+                                         "  _) _   ",
+                                         " |__( )_"} ;
     }
     // N j
     if (i == height - 1 && j > 0 && j < width - 1) {
-      return new String[]{"|__( )_", "_|     ", "_   _ (", "|__( )_"};
+      return isEvenHeight ? new String[]{"__( )_|",
+                                         "|_     ",
+                                         " _) _  ",
+                                         "|__( )_"} :
+                            new String[]{"|__( )_",
+                                          "_     |",
+                                          "_) _   ",
+                                         "|__( )_"};
     }
     // N N
     if (i == height - 1 && j == width - 1) {
-      return new String[]{"|__( )_|", "_|     _|", "_   _ (_", "|__( )_|"};
+      return isEvenHeight ?  new String[]{"|__( )_|",
+                                          "_|     _|",
+                                          "_   _ (_",
+                                          "|__( )_|"} :
+                          new String[]{   "|__( )_|",
+                                          "_     |_",
+                                          "_) _   _)",
+                                          "|__( )_|"};
     }
     // 0 j
     if (i == 0 && j > 0 && j < width - 1) {
@@ -79,16 +102,31 @@ public class ASCIIFun {
       return new String[]{" _( )__", "|     _|", "   _ (_", null};
     }
     // i 0
-    if (i > 0 && i < width - 2 && j == 0) {
-      return new String[]{" |__( )_", " |_     ", "  _) _  ", null};
+    if (i > 0 && i <= width - 2 && j == 0) {
+      return isEvenHeight ? new String[]{" |__( )_",
+                                         " _|     ",
+                                         "(_   _ (", null} :
+                            new String[]{" |__( )_",
+                                         " |_     ",
+                                         "  _) _  ", null};
     }
     // i N
     if (i > 0 && i <= height - 2 && j == width - 1) {
-      return new String[]{"|__( )_|", "|_     |_", " _) _   _)", null};
+      return isEvenHeight ? new String[]{"|__( )_|",
+                                         "_|     _|",
+                                         "_   _ (_", null} :
+                            new String[]{"|__( )_|",
+                                         "|_     |_",
+                                          " _) _   _)", null};
     }
     // center
     if (i > 0 && i < height - 1 && j > 0 && j < width - 1) {
-      return new String[]{"|__( )_", "|_     ", " _) _  ", null};
+      return isEvenHeight ? new String[]{"|__( )_",
+                                         "_|     ",
+                                         "_   _ (", null}:
+                            new String[]{"|__( )_",
+                                         "|_     ",
+                                         " _) _  ", null};
     }
     return new String[]{"        ", "        ", "        ", ""};
   }
