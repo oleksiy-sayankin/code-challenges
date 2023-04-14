@@ -2,10 +2,6 @@ package net.javacogito.puzzletiles;
 
 public class ASCIIFun {
   public static String puzzleTiles(int width, int height) {
-    if (width == 1 && height == 1) {
-      return generateOutput(buildLines1x1(), 1, 1);
-    }
-
     return generateOutput(buildLinesNxN(width, height), width, height);
   }
 
@@ -54,6 +50,44 @@ public class ASCIIFun {
 
   private static String[] findPatter(int i, int j, int height, int width) {
     boolean isEvenHeight = i % 2 == 0;
+    // width = 1
+    if (width == 1) {
+      if (height == 1) {
+        // 0 0
+        return new String[]{"   _( )__",
+                            " _|     _|",
+                            "(_   _ (_",
+                            " |__( )_|"};
+      }
+      // 0 0
+      if (i == 0) {
+        return new String[]{"   _( )__",
+                            " _|     _|",
+                            "(_   _ (_", null};
+      }
+
+      // N 0
+      if (i == height - 1) {
+        return isEvenHeight ? new String[] {" |__( )_|",
+                                            " _|     _|",
+                                            "(_   _ (_",
+                                            " |__( )_|"} :
+                              new String[] {" |__( )_|",
+                                            " |_     |_",
+                                            "  _) _   _)",
+                                            " |__( )_|" };
+      }
+      // i 0
+      if (i > 0 && i <= height - 2) {
+        return isEvenHeight ? new String[]{" |__( )_|",
+                                           " _|     _|",
+                                           "(_   _ (_", null} :
+                             new String[]{" |__( )_|",
+                                          " |_     |",
+                                          "  _) _   _)", null};
+      }
+    }
+
     // 0 0
     if (i == 0 && j == 0) {
       return new String[]{"   _( )__",
@@ -73,9 +107,9 @@ public class ASCIIFun {
     }
     // N j
     if (i == height - 1 && j > 0 && j < width - 1) {
-      return isEvenHeight ? new String[]{"__( )_|",
-                                         "|_     ",
-                                         " _) _  ",
+      return isEvenHeight ? new String[]{"|__( )_",
+                                         "_|     ",
+                                         "_   _ (",
                                          "|__( )_"} :
                             new String[]{"|__( )_",
                                           "_     |",
@@ -102,7 +136,7 @@ public class ASCIIFun {
       return new String[]{" _( )__", "|     _|", "   _ (_", null};
     }
     // i 0
-    if (i > 0 && i <= width - 2 && j == 0) {
+    if (i >= 0 && i <= height - 2 && j == 0) {
       return isEvenHeight ? new String[]{" |__( )_",
                                          " _|     ",
                                          "(_   _ (", null} :
