@@ -50,15 +50,41 @@ public class ASCIIFun {
 
   private static String[] findPatter(int i, int j, int height, int width) {
     boolean isEvenHeight = i % 2 == 0;
-    // width = 1
-    if (width == 1) {
-      if (height == 1) {
-        // 0 0
+    if (height == 1 && width == 1) {
+      // 0 0
+      return new String[]{"   _( )__",
+                          " _|     _|",
+                          "(_   _ (_",
+                          " |__( )_|"};
+    }
+    // height = 1
+    if (height == 1) {
+      // 0 0
+      if (j == 0) {
         return new String[]{"   _( )__",
                             " _|     _|",
                             "(_   _ (_",
                             " |__( )_|"};
       }
+      // 0 N
+      if (j == width - 1) {
+       return new String[]{" _( )__",
+                           "     _|",
+                           "   _ (_",
+                           "__( )_|"};
+      }
+      // 0 j
+      if(j > 0 && j <= width - 2) {
+        return new String[]{" _( )__",
+                            "     _|",
+                            "   _ (_",
+                            "__( )_|"};
+      }
+    }
+
+
+    // width = 1
+    if (width == 1) {
       // 0 0
       if (i == 0) {
         return new String[]{"   _( )__",
@@ -83,7 +109,7 @@ public class ASCIIFun {
                                            " _|     _|",
                                            "(_   _ (_", null} :
                              new String[]{" |__( )_|",
-                                          " |_     |",
+                                          " |_     |_",
                                           "  _) _   _)", null};
       }
     }
