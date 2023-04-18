@@ -101,5 +101,6 @@
     <module>mergesortedarrays</module>
     <module>highestnumber</module>
     <module>puzzletiles</module>
+    <module>uniquenumber</module>
   </modules>
 </project>
