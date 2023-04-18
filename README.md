@@ -31,6 +31,7 @@ Hard level
 
 Moderate level
 --------------
+* [Sum of Intervals](algorithms/moderate/sumofintervals/README.md)
 * [Matrix Determinant](algorithms/moderate/matrixdeterminant/README.md)
 * [Burrows-Wheeler Transformation](algorithms/moderate/burrows-wheeler-transformation/README.md)
 * [Snail Sort](algorithms/moderate/snailsort/README.md)

@@ -83,6 +83,7 @@
     <module>snailsort</module>
     <module>burrows-wheeler-transformation</module>
     <module>matrixdeterminant</module>
+    <module>sumofintervals</module>
   </modules>
 
 </project>
