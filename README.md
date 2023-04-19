@@ -31,6 +31,7 @@ Hard level
 
 Moderate level
 --------------
+* [Adding Big Numbers](algorithms/moderate/addingbignumbers/README.md)
 * [Sum of Intervals](algorithms/moderate/sumofintervals/README.md)
 * [Matrix Determinant](algorithms/moderate/matrixdeterminant/README.md)
 * [Burrows-Wheeler Transformation](algorithms/moderate/burrows-wheeler-transformation/README.md)
