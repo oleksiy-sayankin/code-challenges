@@ -105,6 +105,7 @@ Moderate level
 
 Easy level
 ----------
+* [Emotional Sort ( ︶︿︶)](algorithms/easy/emotionalsort/README.md)
 * [Find the unique number](algorithms/easy/uniquenumber/README.md)
 * [ASCII Fun #3: Puzzle Tiles](algorithms/easy/puzzletiles/README.md)
 * [Highest number with two prime factors](algorithms/easy/highestnumber/README.md)

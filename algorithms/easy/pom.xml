@@ -102,5 +102,6 @@
     <module>highestnumber</module>
     <module>puzzletiles</module>
     <module>uniquenumber</module>
+    <module>emotionalsort</module>
   </modules>
 </project>
