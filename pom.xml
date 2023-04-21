@@ -72,6 +72,7 @@
   <modules>
     <module>algorithms</module>
     <module>javaee</module>
+    <module>algorithms/easy/countthesmileyfaces</module>
   </modules>
 
 </project>
