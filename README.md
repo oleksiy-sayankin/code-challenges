@@ -105,6 +105,7 @@ Moderate level
 
 Easy level
 ----------
+* [Count the smiley faces!](algorithms/easy/countthesmileyfaces/README.md)
 * [Emotional Sort ( ︶︿︶)](algorithms/easy/emotionalsort/README.md)
 * [Find the unique number](algorithms/easy/uniquenumber/README.md)
 * [ASCII Fun #3: Puzzle Tiles](algorithms/easy/puzzletiles/README.md)
