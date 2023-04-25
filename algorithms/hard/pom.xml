@@ -20,6 +20,7 @@
     <module>labyrinth2</module>
     <module>string-permutations</module>
     <module>ulam-sequence</module>
+    <module>closestpairofpoints</module>
   </modules>
 
 </project>
