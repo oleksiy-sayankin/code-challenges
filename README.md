@@ -22,6 +22,7 @@ Algorithms
 
 Hard level
 ----------
+* [Closest pair of points in linearithmic time](algorithms/hard/closestpairofpoints/README.md)
 * [Ulam Sequence](algorithms/hard/ulam-sequence/README.md)
 * [The Labyrinth 1](algorithms/hard/labyrinth/README.md)
 * [The Labyrinth 2](algorithms/hard/labyrinth2/README.md)
