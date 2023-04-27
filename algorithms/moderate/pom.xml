@@ -85,6 +85,7 @@
     <module>matrixdeterminant</module>
     <module>sumofintervals</module>
     <module>addingbignumbers</module>
+    <module>makeaspiral</module>
   </modules>
 
 </project>
