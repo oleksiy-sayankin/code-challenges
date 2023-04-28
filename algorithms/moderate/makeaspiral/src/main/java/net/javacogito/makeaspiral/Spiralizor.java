@@ -42,22 +42,22 @@ public class Spiralizor {
     boolean canMove() {
       switch (direction) {
         case RIGHT -> {
-          if (existsAndUsed(i, j + 2) && existsAndUsed(i + 2, j)) {
+          if (existsAndUsed(i, j + 1) || existsAndUsed(i, j + 2) || existsAndUsed(i + 1, j + 1) || existsAndUsed(i - 1, j + 1)) {
             return false;
           }
         }
         case DOWN -> {
-          if (existsAndUsed(i + 2, j) && existsAndUsed(i, j - 2)) {
+          if (existsAndUsed(i + 1, j) || existsAndUsed(i + 2, j) || existsAndUsed(i + 1, j - 1) || existsAndUsed(i + 1, j + 1)) {
             return false;
           }
         }
         case LEFT -> {
-          if (existsAndUsed(i, j - 2) && existsAndUsed(i - 2, j)) {
+          if (existsAndUsed(i, j - 1) || existsAndUsed(i, j - 2) || existsAndUsed(i + 1, j - 1) || existsAndUsed(i - 1, j - 1)) {
             return false;
           }
         }
         case UP -> {
-          if (existsAndUsed(i - 2, j) && existsAndUsed(i, j + 2)) {
+          if (existsAndUsed(i - 1, j) || existsAndUsed(i - 2, j) || existsAndUsed(i - 1, j - 1) || existsAndUsed(i - 1, j + 1)) {
             return false;
           }
         }
@@ -144,16 +144,6 @@ public class Spiralizor {
     while (coordinate.canMove()) {
       coordinate.move();
     }
-    print(spiral);
     return spiral;
-  }
-
-  private static void print(int[][] spiral) {
-    for (int i = 0; i <= spiral.length - 1; i++) {
-      for (int j = 0; j <= spiral.length - 1; j++) {
-        System.out.print(spiral[i][j]);
-      }
-      System.out.println();
-    }
   }
 }
