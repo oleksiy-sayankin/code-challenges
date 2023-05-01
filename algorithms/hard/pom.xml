@@ -21,6 +21,7 @@
     <module>string-permutations</module>
     <module>ulam-sequence</module>
     <module>closestpairofpoints</module>
+    <module>binomialexpansion</module>
   </modules>
 
 </project>
