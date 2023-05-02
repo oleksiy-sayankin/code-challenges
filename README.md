@@ -32,6 +32,7 @@ Hard level
 
 Moderate level
 --------------
+* [Binomial Expansion](algorithms/hard/binomialexpansion/README.md)
 * [Make a spiral](algorithms/moderate/makeaspiral/README.md)
 * [Adding Big Numbers](algorithms/moderate/addingbignumbers/README.md)
 * [Sum of Intervals](algorithms/moderate/sumofintervals/README.md)
