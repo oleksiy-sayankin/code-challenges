@@ -86,6 +86,7 @@
     <module>sumofintervals</module>
     <module>addingbignumbers</module>
     <module>makeaspiral</module>
+    <module>nthreversenumber</module>
   </modules>
 
 </project>
