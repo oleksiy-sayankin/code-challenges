@@ -1,38 +1,118 @@
+# Code Challenges Portfolio
+
+![Java](https://img.shields.io/badge/Java-17-blue)
+![Maven](https://img.shields.io/badge/Maven-3.x-blue)
+[![Build](https://github.com/oleksiy-sayankin/code-challenges/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/oleksiy-sayankin/code-challenges/actions/workflows/build.yml)
+
 ![Main Logo](code-challenge.png)
 
-This project is portfolio to show my developing skills. 
-It consists of several code challenges each in separate folder.
-Every code challenge has its own description. 
-List of solved code challenges:
+This repository is a programming portfolio focused on algorithmic problem-solving in Java.
 
-Java core and Java EE
-=====================
+It contains solved coding challenges grouped by difficulty and topic. Each challenge includes a problem statement, 
+implementation, and tests where applicable. The goal of this project is to demonstrate practical skills in algorithms, 
+data structures, clean Java code, and automated build tools.
 
-Moderate level
---------------
-* [JDBC Connector](javaee/moderate/jdbc-connector/README.md)
+## Featured solutions
 
-Easy level
-----------
-* [Synchronization](javaee/easy/synchronization/README.md)
+| Challenge                                                                                                       | Topic                                      | Why it is interesting                               |
+|-----------------------------------------------------------------------------------------------------------------|--------------------------------------------|-----------------------------------------------------|
+| [Closest pair of points](algorithms/hard/closestpairofpoints/README.md)                                         | Computational geometry, divide and conquer | Linearithmic O(n log n) solution                    |
+| [The Labyrinth 1](algorithms/hard/labyrinth/README.md), [The Labyrinth 2](algorithms/hard/labyrinth2/README.md) | Graph algorithms, pathfinding              | Grid traversal and state-based search               |
+| [Burrows-Wheeler Transformation](algorithms/moderate/burrows-wheeler-transformation/README.md)                  | String algorithms, compression             | Non-trivial text transformation algorithm           |
+| [Matrix Determinant](algorithms/moderate/matrixdeterminant/README.md)                                           | Linear algebra, recursion                  | Recursive matrix processing                         |
+| [Adding Big Numbers](algorithms/moderate/addingbignumbers/README.md)                                            | Arbitrary precision arithmetic             | Manual implementation without relying on BigInteger |
+| [Game of Life](algorithms/moderate/game-of-life/README.md)                                                      | Simulation                                 | Matrix state transitions                            |
+| [Pass Triangle](algorithms/moderate/pass-triangle/README.md)                                                    | Dynamic programming                        | Finds an optimal path in a numeric triangle         |
+## At a glance
+
+- 169 solved algorithmic challenges;
+- 7 hard-level algorithmic problems;
+- 71 moderate-level algorithmic problems;
+- 91 easy-level algorithmic problems;
+- 2 additional Java Core / Java EE challenges;
+- Java 17 and Maven-based project structure.
+
+## Topics covered
+
+- Arrays and strings
+- Sorting and searching
+- Recursion and backtracking
+- Dynamic programming
+- Graph traversal and pathfinding
+- Computational geometry
+- Number theory
+- Matrix algorithms
+- Data structures
+- Parsing and text processing
+- Simulation problems
+
+## Repository structure
+
+```text
+.
+├── algorithms
+│   ├── easy
+│   ├── moderate
+│   └── hard
+│       └── closestpairofpoints
+│           ├── README.md
+│           └── src
+└── javaee
+    ├── easy
+    └── moderate
+```
+
+## How to build
+
+```bash
+mvn clean install
+```
+
+## How to test
+
+```bash
+mvn test
+```
+
+## Requirements
+
+| Component | Version |
+|-----------|---------|
+| Java      | 17      |
+| Maven     | 3.x     |
+
+## What this project demonstrates
+
+This repository demonstrates the following engineering and problem-solving skills:
+
+- implementing algorithms and data structures in Java;
+- decomposing problems into small, readable units;
+- working with strings, arrays, matrices, graphs, numbers, and custom data structures;
+- analyzing algorithmic complexity;
+- writing repeatable solutions with Maven-based build and test execution;
+- organizing many independent challenges in a consistent repository structure.
 
 
-Algorithms
-==========
+## Solved challenges 
 
-Hard level
-----------
+### Algorithms
+
+<details>
+<summary>Hard level challenges</summary>
+
 * [Closest pair of points in linearithmic time](algorithms/hard/closestpairofpoints/README.md)
 * [Ulam Sequence](algorithms/hard/ulam-sequence/README.md)
 * [The Labyrinth 1](algorithms/hard/labyrinth/README.md)
 * [The Labyrinth 2](algorithms/hard/labyrinth2/README.md)
 * [String permutations](algorithms/hard/string-permutations/README.md)
 * [Deep forest](algorithms/hard/deepforest/README.md)
-
-
-Moderate level
---------------
 * [Binomial Expansion](algorithms/hard/binomialexpansion/README.md)
+
+</details>
+
+<details>
+<summary>Moderate level challenges</summary>
+
 * [Make a spiral](algorithms/moderate/makeaspiral/README.md)
 * [Adding Big Numbers](algorithms/moderate/addingbignumbers/README.md)
 * [Sum of Intervals](algorithms/moderate/sumofintervals/README.md)
@@ -73,7 +153,7 @@ Moderate level
 * [City Blocks Flyover](algorithms/moderate/city-blocks-flyover/README.md)
 * [Roman and Arabic](algorithms/moderate/roman-and-arabic/README.md)
 * [Point in Circle](algorithms/moderate/point-in-circle/README.md)
-* [Broken LCD](/moderatebroken-lcd/README.md)
+* [Broken LCD](algorithms/moderate/broken-lcd/README.md)
 * [Number Operations](algorithms/moderate/number-operations/README.md)
 * [Bats Challenge](algorithms/moderate/bats-challenge/README.md)
 * [Sum to Zero](algorithms/moderate/sum-to-zero/README.md)
@@ -102,12 +182,14 @@ Moderate level
 * [Array Absurdity](algorithms/moderate/array-absurdity/README.md)
 * [Sudoku](algorithms/moderate/sudoku/README.md)
 * [Suggest Groups](algorithms/moderate/suggest-groups/README.md)
-* [Burrows-Wheeler Transform](algorithms/moderate/burrows-wheeler-transform/README.md)
 * [Gronsfeld Cipher](algorithms/moderate/gronsfeld-cipher/README.md)
 * [Meet Comb Sort](algorithms/moderate/meet-comb-sort/README.md)
 
-Easy level
-----------
+</details>
+
+<details>
+<summary>Easy level challenges</summary>
+
 * [Count the smiley faces!](algorithms/easy/countthesmileyfaces/README.md)
 * [Emotional Sort ( ︶︿︶)](algorithms/easy/emotionalsort/README.md)
 * [Find the unique number](algorithms/easy/uniquenumber/README.md)
@@ -128,12 +210,12 @@ Easy level
 * [Sum](algorithms/easy/sum/README.md)
 * [A+B?](algorithms/easy/aplusb/README.md)
 * [Candies](algorithms/easy/candies/README.md)
-* [Watermelon](algorithms/easy/watermelon/src/README.md)
+* [Watermelon](algorithms/easy/watermelon/README.md)
 * [Prime Palindrome](algorithms/easy/prime-palindrome/README.md)
 * [Fizz Buzz](algorithms/easy/fizz-buzz/README.md)
 * [Multiplication Tables](algorithms/easy/multiplication-tables/README.md)
-* [The Major Element](/easy/the-major-element/README.md)
-* [Details](/easy/details/README.md)
+* [The Major Element](algorithms/easy/the-major-element/README.md)
+* [Details](algorithms/easy/details/README.md)
 * [Hidden Digits](algorithms/easy/hidden-digits/README.md)
 * [Big Digits](algorithms/easy/big-digits/README.md)
 * [Read More](algorithms/easy/read-more/README.md)
@@ -199,12 +281,20 @@ Easy level
 * [Real Fake](algorithms/easy/real-fake/README.md)
 * [Distinct Words](algorithms/easy/distinct-words/README.md)
 * [Array into collection](algorithms/easy/array-into-collection/README.md)
+</details>
 
-Requirements
-============
+### Java core and Java EE
 
-| Component | Version        |
-|-----------|----------------|
-| Java      | 17             |
-| Maven     | 2.3.2 - 3.11.0 |
+<details>
+<summary>Moderate level challenges</summary>
+
+
+* [JDBC Connector](javaee/moderate/jdbc-connector/README.md)
+</details>
+
+<details>
+<summary>Easy level challenges</summary>
+
+* [Synchronization](javaee/easy/synchronization/README.md)
+</details>
 
