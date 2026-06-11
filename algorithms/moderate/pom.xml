@@ -64,7 +64,6 @@
     <module>array-absurdity</module>
     <module>sudoku</module>
     <module>suggest-groups</module>
-    <module>burrows-wheeler-transform</module>
     <module>gronsfeld-cipher</module>
     <module>meet-comb-sort</module>
     <module>lowest-common-ancestor</module>
