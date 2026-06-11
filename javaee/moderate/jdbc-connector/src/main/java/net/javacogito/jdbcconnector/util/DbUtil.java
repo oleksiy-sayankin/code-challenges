@@ -12,6 +12,7 @@ import org.apache.logging.log4j.LogManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 /**
@@ -109,5 +110,19 @@ public final class DbUtil {
     for (Entity entity : entities){
       entity.getController().insert(entity);
     }
+  }
+
+  /**
+   * Drops all objects in DB.
+   */
+  public static void dropAllObjects() {
+    ConnectionPool cp = BasicConnectionPool.getConnectionPool();
+    Connection connection = cp.getConnection();
+    try (Statement statement = connection.createStatement()) {
+      statement.execute("DROP ALL OBJECTS");
+    } catch (SQLException e) {
+      throw new RuntimeException("Cannot drop all database objects", e);
+    }
+    cp.releaseConnection(connection);
   }
 }
