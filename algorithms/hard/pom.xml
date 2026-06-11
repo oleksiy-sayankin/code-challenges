@@ -4,12 +4,11 @@
 
   <parent>
     <groupId>net.javacogito</groupId>
-    <artifactId>code-challenges</artifactId>
+    <artifactId>algorithms</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
 
   <artifactId>algorithms-hard</artifactId>
-  <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>Algorithms. Hard Level</name>
