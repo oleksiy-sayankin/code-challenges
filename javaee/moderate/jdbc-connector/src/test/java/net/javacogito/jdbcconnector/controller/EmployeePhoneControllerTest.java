@@ -26,7 +26,7 @@ public class EmployeePhoneControllerTest extends AbstractControllerTest<Employee
   }
 
   @Test public void getIdByEntityTest() {
-    assertEquals(new Integer(2), controller.getIdByEntity(createEmployeePhone(2, "555-3243-22-77-554")));
+    assertEquals(Integer.valueOf(2), controller.getIdByEntity(createEmployeePhone(2, "555-3243-22-77-554")));
   }
 
 
@@ -39,7 +39,7 @@ public class EmployeePhoneControllerTest extends AbstractControllerTest<Employee
 
   @Test public void updateTest() {
     EmployeePhone employeePhone = createEmployeePhone(2, 27, "555-777-22-77-888");
-    assertEquals(new Integer(2), controller.update(employeePhone));
+    assertEquals(Integer.valueOf(2), controller.update(employeePhone));
     assertEquals(employeePhone, controller.getEntityById(2));
   }
 
@@ -48,8 +48,8 @@ public class EmployeePhoneControllerTest extends AbstractControllerTest<Employee
   }
 
   @Override protected void insertData() {
-    assertEquals(new Integer(1), controller.insert(createEmployeePhone(1, "555-9320-23-322-3")));
-    assertEquals(new Integer(2), controller.insert(createEmployeePhone(2, "555-3243-22-77-554")));
-    assertEquals(new Integer(3), controller.insert(createEmployeePhone(3, "555-3408-3-323-232")));
+    assertEquals(Integer.valueOf(1), controller.insert(createEmployeePhone(1, "555-9320-23-322-3")));
+    assertEquals(Integer.valueOf(2), controller.insert(createEmployeePhone(2, "555-3243-22-77-554")));
+    assertEquals(Integer.valueOf(3), controller.insert(createEmployeePhone(3, "555-3408-3-323-232")));
   }
 }

@@ -26,7 +26,7 @@ public class EmployeeEmailControllerTest extends AbstractControllerTest<Employee
   }
 
   @Test public void getIdByEntityTest() {
-    assertEquals(new Integer(2), controller.getIdByEntity(createEmployeeEmail(2, "test@mail.ru")));
+    assertEquals(Integer.valueOf(2), controller.getIdByEntity(createEmployeeEmail(2, "test@mail.ru")));
   }
 
 
@@ -39,7 +39,7 @@ public class EmployeeEmailControllerTest extends AbstractControllerTest<Employee
 
   @Test public void updateTest() {
     EmployeeEmail employeeEmail = createEmployeeEmail(2, 8, "update@mail.ru");
-    assertEquals(new Integer(2), controller.update(employeeEmail));
+    assertEquals(Integer.valueOf(2), controller.update(employeeEmail));
     assertEquals(employeeEmail, controller.getEntityById(2));
   }
 
@@ -48,8 +48,8 @@ public class EmployeeEmailControllerTest extends AbstractControllerTest<Employee
   }
 
   @Override protected void insertData() {
-    assertEquals(new Integer(1), controller.insert(createEmployeeEmail(1, "test@gmail.com")));
-    assertEquals(new Integer(2), controller.insert(createEmployeeEmail(2, "test@mail.ru")));
-    assertEquals(new Integer(3), controller.insert(createEmployeeEmail(3, "test@list.ru")));
+    assertEquals(Integer.valueOf(1), controller.insert(createEmployeeEmail(1, "test@gmail.com")));
+    assertEquals(Integer.valueOf(2), controller.insert(createEmployeeEmail(2, "test@mail.ru")));
+    assertEquals(Integer.valueOf(3), controller.insert(createEmployeeEmail(3, "test@list.ru")));
   }
 }

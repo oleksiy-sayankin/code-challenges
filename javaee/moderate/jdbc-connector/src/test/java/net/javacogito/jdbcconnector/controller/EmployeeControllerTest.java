@@ -33,7 +33,7 @@ public class EmployeeControllerTest extends AbstractControllerTest<Employee, Int
   }
 
   @Test public void getIdByEntityTest() {
-    assertEquals(new Integer(2), controller.getIdByEntity(createEmployee("Donald", "Shea", 28, department[0], country[2], 11300.11f)));
+    assertEquals(Integer.valueOf(2), controller.getIdByEntity(createEmployee("Donald", "Shea", 28, department[0], country[2], 11300.11f)));
   }
 
 
@@ -46,7 +46,7 @@ public class EmployeeControllerTest extends AbstractControllerTest<Employee, Int
 
   @Test public void updateTest() {
     Employee employee = createEmployee(2, "John", "Sanchez", 45, department[0], country[2], 87300.43f);
-    assertEquals(new Integer(2), controller.update(employee));
+    assertEquals(Integer.valueOf(2), controller.update(employee));
     assertEquals(employee, controller.getEntityById(2));
   }
 
@@ -75,8 +75,8 @@ public class EmployeeControllerTest extends AbstractControllerTest<Employee, Int
     cc.insert(country[1]);
     cc.insert(country[2]);
 
-    assertEquals(new Integer(1), controller.insert(createEmployee("Tonya", "Miller", 32, department[0], country[0], 4300.43f)));
-    assertEquals(new Integer(2), controller.insert(createEmployee("Donald", "Shea", 28, department[0], country[2], 11300.11f)));
-    assertEquals(new Integer(3), controller.insert(createEmployee("Timmy", "Jones", 34, department[1], country[1], 32300.39f)));
+    assertEquals(Integer.valueOf(1), controller.insert(createEmployee("Tonya", "Miller", 32, department[0], country[0], 4300.43f)));
+    assertEquals(Integer.valueOf(2), controller.insert(createEmployee("Donald", "Shea", 28, department[0], country[2], 11300.11f)));
+    assertEquals(Integer.valueOf(3), controller.insert(createEmployee("Timmy", "Jones", 34, department[1], country[1], 32300.39f)));
   }
 }

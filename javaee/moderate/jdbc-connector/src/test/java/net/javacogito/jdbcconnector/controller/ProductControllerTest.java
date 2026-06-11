@@ -30,7 +30,7 @@ public class ProductControllerTest extends AbstractControllerTest<Product, Integ
   }
 
   @Test public void getIdByEntityTest() {
-    assertEquals(new Integer(2), controller.getIdByEntity(createProduct("Ice Cream", productTypes[1], 5.49f)));
+    assertEquals(Integer.valueOf(2), controller.getIdByEntity(createProduct("Ice Cream", productTypes[1], 5.49f)));
   }
 
   @Test public void deleteTest() {
@@ -42,7 +42,7 @@ public class ProductControllerTest extends AbstractControllerTest<Product, Integ
 
   @Test public void updateTest() {
     Product product = createProduct(2, "Vegetables", productTypes[1], 33.97f);
-    assertEquals(new Integer(2), controller.update(product));
+    assertEquals(Integer.valueOf(2), controller.update(product));
     assertEquals(product, controller.getEntityById(2));
   }
 
@@ -63,8 +63,8 @@ public class ProductControllerTest extends AbstractControllerTest<Product, Integ
       ptc.insert(productType);
     }
 
-    assertEquals(new Integer(1), controller.insert(createProduct("Pepsi", productTypes[0], 3.44f)));
-    assertEquals(new Integer(2), controller.insert(createProduct("Ice Cream", productTypes[1], 5.49f)));
-    assertEquals(new Integer(3), controller.insert(createProduct("Personal Computer", productTypes[2], 702.44f)));
+    assertEquals(Integer.valueOf(1), controller.insert(createProduct("Pepsi", productTypes[0], 3.44f)));
+    assertEquals(Integer.valueOf(2), controller.insert(createProduct("Ice Cream", productTypes[1], 5.49f)));
+    assertEquals(Integer.valueOf(3), controller.insert(createProduct("Personal Computer", productTypes[2], 702.44f)));
   }
 }

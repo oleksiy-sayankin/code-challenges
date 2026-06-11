@@ -26,7 +26,7 @@ public class CountryControllerTest extends AbstractControllerTest<Country, Integ
   }
 
   @Test public void getIdByEntityTest() {
-    assertEquals(new Integer(2), controller.getIdByEntity(createCountry("USA")));
+    assertEquals(Integer.valueOf(2), controller.getIdByEntity(createCountry("USA")));
   }
 
   @Test public void deleteTest() {

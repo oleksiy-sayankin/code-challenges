@@ -26,7 +26,7 @@ public class ProductTypeControllerTest extends AbstractControllerTest<ProductTyp
   }
 
   @Test public void getIdByEntityTest() {
-    assertEquals(new Integer(2), controller.getIdByEntity(createProductType("Books")));
+    assertEquals(Integer.valueOf(2), controller.getIdByEntity(createProductType("Books")));
   }
 
 
@@ -39,7 +39,7 @@ public class ProductTypeControllerTest extends AbstractControllerTest<ProductTyp
 
   @Test public void updateTest() {
     ProductType productType = createProductType(2, "Electronics");
-    assertEquals(new Integer(2), controller.update(productType));
+    assertEquals(Integer.valueOf(2), controller.update(productType));
     assertEquals(productType, controller.getEntityById(2));
   }
 
@@ -48,8 +48,8 @@ public class ProductTypeControllerTest extends AbstractControllerTest<ProductTyp
   }
 
   @Override protected void insertData() {
-    assertEquals(new Integer(1), controller.insert(createProductType("Movies")));
-    assertEquals(new Integer(2), controller.insert(createProductType("Books")));
-    assertEquals(new Integer(3), controller.insert(createProductType("Software")));
+    assertEquals(Integer.valueOf(1), controller.insert(createProductType("Movies")));
+    assertEquals(Integer.valueOf(2), controller.insert(createProductType("Books")));
+    assertEquals(Integer.valueOf(3), controller.insert(createProductType("Software")));
   }
 }

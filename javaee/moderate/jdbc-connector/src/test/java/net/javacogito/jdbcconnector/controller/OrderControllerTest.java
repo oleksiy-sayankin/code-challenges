@@ -20,9 +20,9 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 
 public class OrderControllerTest extends AbstractControllerTest<Order, Integer> {
-  private Customer[] customers = new Customer[3];
-  private Product[] products = new Product[3];
-  private ProductType[] productTypes = new ProductType[3];
+  private final Customer[] customers = new Customer[3];
+  private final Product[] products = new Product[3];
+  private final ProductType[] productTypes = new ProductType[3];
 
   @Test public void insertCustomerTest() {
     List<Order> orders = controller.getAll();
@@ -38,7 +38,7 @@ public class OrderControllerTest extends AbstractControllerTest<Order, Integer> 
   }
 
   @Test public void getIdByEntityTest() {
-    assertEquals(new Integer(2), controller.getIdByEntity(createOrder(customers[1], products[1],2)));
+    assertEquals(Integer.valueOf(2), controller.getIdByEntity(createOrder(customers[1], products[1],2)));
   }
 
 
@@ -51,7 +51,7 @@ public class OrderControllerTest extends AbstractControllerTest<Order, Integer> 
 
   @Test public void updateTest() {
     Order order = createOrder(2,createCustomer(20),createProduct(20),20);
-    assertEquals(new Integer(2), controller.update(order));
+    assertEquals(Integer.valueOf(2), controller.update(order));
     assertEquals(order, controller.getEntityById(2));
   }
 
@@ -102,8 +102,8 @@ public class OrderControllerTest extends AbstractControllerTest<Order, Integer> 
       pc.insert(product);
     }
 
-    assertEquals(new Integer(1), controller.insert(createOrder(customers[0], products[0],1)));
-    assertEquals(new Integer(2), controller.insert(createOrder(customers[1], products[1],2)));
-    assertEquals(new Integer(3), controller.insert(createOrder(customers[2], products[2],3)));
+    assertEquals(Integer.valueOf(1), controller.insert(createOrder(customers[0], products[0],1)));
+    assertEquals(Integer.valueOf(2), controller.insert(createOrder(customers[1], products[1],2)));
+    assertEquals(Integer.valueOf(3), controller.insert(createOrder(customers[2], products[2],3)));
   }
 }
